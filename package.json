@@ -1,0 +1,14 @@
+{
+  "name": "libretro-dats",
+  "version": "0.0.1",
+  "description": "libretro DATs",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "author": "Rob Loach (http://robloach.net)",
+  "license": "MIT",
+  "dependencies": {
+    "datfile": "github:robloach/datfile"
+  }
+}
