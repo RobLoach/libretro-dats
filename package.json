@@ -1,14 +1,20 @@
 {
   "name": "libretro-dats",
-  "version": "0.0.1",
-  "description": "libretro DATs",
+  "version": "0.3.0",
+  "description": "Assembled from Redump, TOSEC, and Trurip, for libretro-database.",
   "main": "index.js",
   "scripts": {
+    "pretest": "make",
     "test": "node ."
   },
   "author": "Rob Loach (http://robloach.net)",
   "license": "MIT",
+  "homepage": "http://github.com/robloach/libretro-dats",
   "dependencies": {
-    "datfile": "github:robloach/datfile"
+    "async": "^2.0.1",
+    "multi-glob": "^1.0.1",
+    "rimraf": "^2.5.4",
+    "sort-object": "^3.0.2",
+    "xml2js": "^0.4.17"
   }
 }
