@@ -35,6 +35,13 @@ var dats = {
 			'input/tosec/TOSEC-ISO/Sega Mega-CD*',
 			'input/trurip/Sega Mega-CD*'
 		]
+	},
+	'Sony - PlayStation': {
+		files: [
+			'input/redump/redump/dats/Sony - PlayStation (*',
+			'input/tosec/TOSEC-ISO/Sony PlayStation -*',
+			'input/trurip/Sony PlayStation & PSone*'
+		]
 	}
 }
 
