@@ -1,6 +1,6 @@
 # libretro-dats
 
-Builds a set of dats for [libretro-database](http://github.com/libretro/libretro-database).
+Builds a set of dats for [libretro-database](http://github.com/libretro/libretro-database) from [Redump](http://redump.org/), [Trurip](http://trurip.org/) and [TOSEC](http://www.tosecdev.org/) sources.
 
 - Sega - Saturn
 - Sega - Dreamcast
