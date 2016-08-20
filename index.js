@@ -8,8 +8,10 @@ const rimraf = require('rimraf')
 const sort = require('sort-object')
 const dats = require('./dats.json')
 
+// Clear out the dat folder.
 rimraf('dat', function () {
 	fs.mkdir('dat', function () {
+		// Process each DAT file.
 		async.mapValues(dats, processDat, function (err, results) {
 			if (err)
 				throw err
@@ -17,12 +19,19 @@ rimraf('dat', function () {
 	})
 })
 
+/**
+ * Act on a DAT file.
+ */
 function processDat(datsInfo, name, done) {
+	// Retrieve all associated files for the DAT.
 	glob(datsInfo.files, function (err, files) {
+		// Output the files to the user.
 		console.log(name, files)
+		// Loop through each given XML file associated with the DAT.
 		async.map(files, processXml, function (err, results) {
+			// Error handling.
 			if (err) {
-				done(err)
+				return done(err)
 			}
 
 			// Loop through the results and build a game database.
@@ -45,6 +54,8 @@ function processDat(datsInfo, name, done) {
 				game = game.trim()
 				output += getGameEntry(game, rom)
 			}
+
+			// Save the new DAT file.
 			var outputFile = `dat/${name}.dat`
 			console.log(outputFile)
 			fs.writeFile(outputFile, output, done)
