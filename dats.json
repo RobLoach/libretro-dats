@@ -1,0 +1,44 @@
+{
+	"NEC - PC Engine CD - TurboGrafx-CD": {
+		"files": [
+			"input/redump/redump/dats/NEC - PC Engine CD*",
+			"input/tosec/TOSEC-ISO/NEC PC-Engine CD*",
+			"input/trurip/NEC PC Engine CD*"
+		]
+	},
+	"NEC - PC-FX": {
+		"files": [
+			"input/redump/redump/dats/NEC - PC-FX*",
+			"input/tosec/TOSEC-ISO/NEC PC-FX - Games*",
+			"input/trurip/NEC PC-FX -*"
+		]
+	},
+	"Sega - Dreamcast": {
+		"files": [
+			"input/redump/redump/dats/Sega - Dreamcast*",
+			"input/tosec/TOSEC-ISO/Sega Dreamcast*",
+			"input/trurip/Sega Dreamcast*"
+		]
+	},
+	"Sega - Mega-CD - Sega CD": {
+		"files": [
+			"input/redump/redump/dats/Sega - Mega-CD*",
+			"input/tosec/TOSEC-ISO/Sega Mega-CD*",
+			"input/trurip/Sega Mega-CD*"
+		]
+	},
+	"Sony - PlayStation": {
+		"files": [
+			"input/redump/redump/dats/Sony - PlayStation (*",
+			"input/tosec/TOSEC-ISO/Sony PlayStation -*",
+			"input/trurip/Sony PlayStation & PSone*"
+		]
+	},
+	"Sega - Saturn": {
+		"files": [
+			"input/redump/redump/dats/Sega - Saturn*",
+			"input/tosec/TOSEC-ISO/Sega Saturn*",
+			"input/trurip/Sega Saturn*"
+		]
+	}
+}
