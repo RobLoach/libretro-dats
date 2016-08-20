@@ -6,44 +6,7 @@ const glob = require('multi-glob').glob
 const xml = require('xml2js').Parser()
 const rimraf = require('rimraf')
 const sort = require('sort-object')
-
-var dats = {
-	'Sega - Saturn': {
-		files: [
-			'input/redump/redump/dats/Sega - Saturn*',
-			'input/tosec/TOSEC-ISO/Sega Saturn*',
-			'input/trurip/Sega Saturn*'
-		]
-	},
-	'Sega - Dreamcast': {
-		files: [
-			'input/redump/redump/dats/Sega - Dreamcast*',
-			'input/tosec/TOSEC-ISO/Sega Dreamcast*',
-			'input/trurip/Sega Dreamcast*'
-		]
-	},
-	'NEC - PC Engine CD - TurboGrafx-CD': {
-		files: [
-			'input/redump/redump/dats/NEC - PC Engine CD*',
-			'input/tosec/TOSEC-ISO/NEC PC-Engine CD*',
-			'input/trurip/NEC PC Engine CD*'
-		]
-	},
-	'Sega - Mega-CD - Sega CD': {
-		files: [
-			'input/redump/redump/dats/Sega - Mega-CD*',
-			'input/tosec/TOSEC-ISO/Sega Mega-CD*',
-			'input/trurip/Sega Mega-CD*'
-		]
-	},
-	'Sony - PlayStation': {
-		files: [
-			'input/redump/redump/dats/Sony - PlayStation (*',
-			'input/tosec/TOSEC-ISO/Sony PlayStation -*',
-			'input/trurip/Sony PlayStation & PSone*'
-		]
-	}
-}
+const dats = require('./dats.json')
 
 rimraf('dat', function () {
 	fs.mkdir('dat', function () {
@@ -56,6 +19,7 @@ rimraf('dat', function () {
 
 function processDat(datsInfo, name, done) {
 	glob(datsInfo.files, function (err, files) {
+		console.log(name, files)
 		async.map(files, processXml, function (err, results) {
 			if (err) {
 				done(err)
@@ -81,8 +45,9 @@ function processDat(datsInfo, name, done) {
 				game = game.trim()
 				output += getGameEntry(game, rom)
 			}
-
-			fs.writeFile(`dat/${name}.dat`, output, done)
+			var outputFile = `dat/${name}.dat`
+			console.log(outputFile)
+			fs.writeFile(outputFile, output, done)
 		})
 	})
 }
