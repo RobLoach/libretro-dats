@@ -13,6 +13,13 @@
 			"input/trurip/NEC PC-FX -*"
 		]
 	},
+	"Panasonic - 3DO": {
+		"files": [
+			"input/redump/redump/dats/Panasonic - 3DO*",
+			"input/tosec/TOSEC-ISO/3DO 3DO Interactive*",
+			"input/trurip/Panasonic*"
+		]
+	},
 	"Sega - Dreamcast": {
 		"files": [
 			"input/redump/redump/dats/Sega - Dreamcast*",
