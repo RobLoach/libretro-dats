@@ -1,11 +1,4 @@
 {
-	"3DO - 3DO": {
-		"files": [
-			"input/redump/redump/dats/Panasonic - 3DO*",
-			"input/tosec/TOSEC-ISO/3DO 3DO Interactive*",
-			"input/trurip/Panasonic*"
-		]
-	},
 	"NEC - PC Engine CD - TurboGrafx-CD": {
 		"files": [
 			"input/redump/redump/dats/NEC - PC Engine CD*",
@@ -46,6 +39,13 @@
 			"input/redump/redump/dats/Sega - Saturn*",
 			"input/tosec/TOSEC-ISO/Sega Saturn*",
 			"input/trurip/Sega Saturn*"
+		]
+	},
+	"The 3DO Company - 3DO": {
+		"files": [
+			"input/redump/redump/dats/Panasonic - 3DO*",
+			"input/tosec/TOSEC-ISO/3DO 3DO Interactive*",
+			"input/trurip/Panasonic*"
 		]
 	}
 }
