@@ -34,6 +34,11 @@
 			"input/trurip/Sony PlayStation & PSone*"
 		]
 	},
+	"Sony - PlayStation Portable": {
+		"files": [
+			"input/redump/redump/dats/Sony - PlayStation Portable (*"
+		]
+	},
 	"Sega - Saturn": {
 		"files": [
 			"input/redump/redump/dats/Sega - Saturn*",
