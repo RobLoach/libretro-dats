@@ -47,5 +47,11 @@
 			"input/tosec/TOSEC-ISO/3DO 3DO Interactive*",
 			"input/trurip/Panasonic*"
 		]
+	},
+	"Sinclair - ZX Spectrum": {
+		"files": [
+			"input/tosec/TOSEC/Sinclair ZX Spectrum - Compilations - Games - *",
+			"input/tosec/TOSEC/Sinclair ZX Spectrum - Games - *"
+		]
 	}
 }
