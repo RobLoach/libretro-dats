@@ -1,27 +1,28 @@
 # libretro-dats
 
-Builds a set of dats for [libretro-database](http://github.com/libretro/libretro-database) from [Redump](http://redump.org/), [Trurip](http://trurip.org/) and [TOSEC](http://www.tosecdev.org/) sources.
+Builds a set of dats for [libretro-database](http://github.com/libretro/libretro-database) from [Redump](http://redump.org/), [Trurip](http://trurip.org/), [TOSEC](http://www.tosecdev.org/), and [AdvanceSCENE](http://www.advanscene.com) sources.
 
 - NEC - PC Engine CD - TurboGrafx-CD
 - NEC - PC-FX
-- Panasonic - 3DO
 - Sega - Saturn
 - Sega - Dreamcast
 - Sega - Mega-CD - Sega CD
 - Sony - PlayStation
-
-## Dependencies
-
-- Node.js
-- unzip
-- make
-- wget
+- Sony - PlayStation Portable
+- Sinclair - ZX Spectrum
+- The 3DO Company - 3DO
 
 ## Usage
 
-Build the DATs by running:
+1. Install dependencies
 
-```
-npm i
-npm test
-```
+  - Node.js
+  - unzip
+  - make
+  - wget
+
+2. Build the DATs by running:
+  ```
+  npm i
+  npm test
+  ```
