@@ -1,4 +1,4 @@
-default: nointro redump tosec trurip
+default: nointro redump tosec trurip advancescene
 
 clean:
 	rm -rf input
@@ -38,3 +38,15 @@ input/trurip.zip: input/trurip
 
 trurip: input/trurip.zip
 	unzip -u input/trurip.zip -d input/trurip
+
+input/advancescene:
+	mkdir -p input/advancescene
+
+input/advancescene_psp.zip: input/advancescene
+	-wget --no-clobber --output-document=input/advancescene_psp.zip --referer=http://www.advanscene.com/html/dats.php http://www.advanscene.com/offline/datas/ADVANsCEne_PSP.zip
+
+input/advancescene_psn.zip: input/advancescene
+	-wget --no-clobber --output-document=input/advancescene_psn.zip --referer=http://www.advanscene.com/html/dats.php http://www.advanscene.com/offline/datas/ADVANsCEne_PSN.zip
+
+advancescene: input/advancescene_psn.zip input/advancescene_psp.zip
+	unzip -u 'input/advancescene*.zip' -d input/advancescene

@@ -117,11 +117,11 @@ function processXml(filepath, done) {
  */
 function getGamesFromXml(dat) {
 	var out = {}
-
-	// Loop through each game.
-	for (var i in dat.datafile.game) {
+	var header = dat.datafile || dat.dat
+	var games = header.game || header.games[0].game
+	games.forEach(function (game, i) {
 		// Set up the entries to watch for.
-		var game = dat.datafile.game[i]
+		var title = null
 		var finalCue = null
 		var finalIso = null
 		var finalGdi = null
@@ -129,42 +129,54 @@ function getGamesFromXml(dat) {
 		var finalEntry = null
 
 		// Find all the entries.
-		for (var x in game.rom) {
-			var rom = game.rom[x]['$']
-			if (rom.name.indexOf('.cue') >= 0 && !finalCue) {
-				finalCue = rom
+		if (game.rom) {
+			title = game.description[0]
+			for (var x in game.rom) {
+				var rom = game.rom[x]['$']
+				if (rom.name.indexOf('.cue') >= 0 && !finalCue) {
+					finalCue = rom
+				}
+				else if (rom.name.indexOf('.iso') >= 0 && !finalIso) {
+					finalIso = rom
+				}
+				else if (rom.name.indexOf('.gdi') >= 0 && !finalGdi) {
+					finalGdi = rom
+				}
+				else if (rom.name.indexOf('.img') >= 0 && !finalImg) {
+					finalImg = rom
+				}
+				else {
+					finalEntry = rom
+				}
 			}
-			else if (rom.name.indexOf('.iso') >= 0 && !finalIso) {
-				finalIso = rom
-			}
-			else if (rom.name.indexOf('.gdi') >= 0 && !finalGdi) {
-				finalGdi = rom
-			}
-			else if (rom.name.indexOf('.img') >= 0 && !finalImg) {
-				finalImg = rom
-			}
-			else {
-				finalEntry = rom
+		}
+		else if (!game.trurip) {
+			// AdvanceSCENE
+			title = game.title
+			finalIso = {
+				name: game.title + '.iso',
+				size: game.romSize,
+				crc: game.files[0].romCRC[0]['_']
 			}
 		}
 
 		// Choose which entry to use.
 		if (finalCue) {
-			out[game.description[0]] = finalCue
+			out[title] = finalCue
 		}
 		else if (finalGdi) {
-			out[game.description[0]] = finalGdi
+			out[title] = finalGdi
 		}
 		else if (finalIso) {
-			out[game.description[0]] = finalIso
+			out[title] = finalIso
 		}
 		else if (finalImg) {
-			out[game.description[0]] = finalImg
+			out[title] = finalImg
 		}
 		else if (finalEntry) {
-			out[game.description[0]] = finalEntry
+			out[title] = finalEntry
 		}
-	}
+	})
 
 	return out
 }

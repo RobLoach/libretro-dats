@@ -27,6 +27,13 @@
 			"input/trurip/Sega Mega-CD*"
 		]
 	},
+	"Sega - Saturn": {
+		"files": [
+			"input/redump/redump/dats/Sega - Saturn*",
+			"input/tosec/TOSEC-ISO/Sega Saturn*",
+			"input/trurip/Sega Saturn*"
+		]
+	},
 	"Sony - PlayStation": {
 		"files": [
 			"input/redump/redump/dats/Sony - PlayStation (*",
@@ -36,14 +43,14 @@
 	},
 	"Sony - PlayStation Portable": {
 		"files": [
-			"input/redump/redump/dats/Sony - PlayStation Portable (*"
+			"input/redump/redump/dats/Sony - PlayStation Portable (*",
+			"input/advancescene/*.xml"
 		]
 	},
-	"Sega - Saturn": {
+	"Sinclair - ZX Spectrum": {
 		"files": [
-			"input/redump/redump/dats/Sega - Saturn*",
-			"input/tosec/TOSEC-ISO/Sega Saturn*",
-			"input/trurip/Sega Saturn*"
+			"input/tosec/TOSEC/Sinclair ZX Spectrum - Compilations - Games - *",
+			"input/tosec/TOSEC/Sinclair ZX Spectrum - Games - *"
 		]
 	},
 	"The 3DO Company - 3DO": {
@@ -51,12 +58,6 @@
 			"input/redump/redump/dats/Panasonic - 3DO*",
 			"input/tosec/TOSEC-ISO/3DO 3DO Interactive*",
 			"input/trurip/Panasonic*"
-		]
-	},
-	"Sinclair - ZX Spectrum": {
-		"files": [
-			"input/tosec/TOSEC/Sinclair ZX Spectrum - Compilations - Games - *",
-			"input/tosec/TOSEC/Sinclair ZX Spectrum - Games - *"
 		]
 	}
 }
