@@ -31,7 +31,8 @@
 		"files": [
 			"input/redump/redump/dats/Sega - Saturn*",
 			"input/tosec/TOSEC-ISO/Sega Saturn*",
-			"input/trurip/Sega Saturn*"
+			"input/trurip/Sega Saturn*",
+			"input/darkwater/Saturn*"
 		]
 	},
 	"Sony - PlayStation": {
