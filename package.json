@@ -1,7 +1,7 @@
 {
   "name": "libretro-dats",
-  "version": "2016.8.20",
-  "description": "Assembled from Redump, TOSEC, and Trurip, for libretro-database.",
+  "version": "2016.9.25",
+  "description": "Assembled from Redump, Trurip, TOSEC, Darkwater and AdvanceSCENE, for libretro-database.",
   "main": "index.js",
   "scripts": {
     "pretest": "make",
