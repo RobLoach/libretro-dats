@@ -50,3 +50,12 @@ input/advancescene_psn.zip: input/advancescene
 
 advancescene: input/advancescene_psn.zip input/advancescene_psp.zip
 	unzip -u 'input/advancescene*.zip' -d input/advancescene
+
+input/darkwater:
+	mkdir -p input/darkwater
+
+input/darkwater-saturn.zip: input/darkwater
+	-wget --no-clobber --output-document=input/darkwater-saturn.zip --referer=https://github.com/RobLoach/libretro-dats/releases/tag/darkwater-saturn-20100731 https://github.com/RobLoach/libretro-dats/releases/download/darkwater-saturn-20100731/darkwater-saturn-20100731.zip
+
+darkwater: input/darkwater.zip
+	unzip -u 'input/darkwater*' -d input/darkwater
