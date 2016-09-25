@@ -6,6 +6,8 @@ const glob = require('multi-glob').glob
 const xml = require('xml2js').Parser()
 const rimraf = require('rimraf')
 const sort = require('sort-object')
+const unidecode = require('unidecode')
+const sanitizeFilename = require('sanitize-filename')
 const dats = require('./dats.json')
 
 // Clear out the dat folder.
@@ -80,10 +82,14 @@ function getHeader(name, pkg) {
  * Construct a game entry for a DAT file.
  */
 function getGameEntry(game, rom) {
+	// Replace Unicode characters, and trim the title.
+	var gameName = unidecode(game).trim()
+	// The filename must be a valid filename.
+	var gameFile = sanitizeFilename(path.basename(unidecode(rom.name)))
 	return `\ngame (
-	name "${game}"
-	description "${game}"
-	rom ( name "${path.basename(rom.name)}" size ${rom.size} crc ${rom.crc} md5 ${rom.md5} sha1 ${rom.sha1} )
+	name "${gameName}"
+	description "${gameName}"
+	rom ( name "${gameFile}" size ${rom.size} crc ${rom.crc} md5 ${rom.md5} sha1 ${rom.sha1} )
 )\n`
 }
 
