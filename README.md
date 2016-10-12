@@ -6,6 +6,7 @@ Builds a set of DATs for [libretro-database](http://github.com/libretro/libretro
 - NEC - PC Engine CD - TurboGrafx-CD
 - NEC - PC-FX
 - Nintendo - GameCube
+- Nintendo - Wii
 - Sega - Saturn
 - Sega - Dreamcast
 - Sega - Mega-CD - Sega CD

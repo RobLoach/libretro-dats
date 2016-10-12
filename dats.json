@@ -25,6 +25,11 @@
 			"input/trurip/Nintendo GameCube - *"
 		]
 	},
+	"Nintendo - Wii": {
+		"files": [
+			"input/redump/redump/dats/Nintendo - Wii (*"
+		]
+	},
 	"Sega - Dreamcast": {
 		"files": [
 			"input/redump/redump/dats/Sega - Dreamcast*",
