@@ -1,4 +1,9 @@
 {
+	"Atari - 2600": {
+		"files": [
+			"static/Atari - 2600*"
+		]
+	},
 	"NEC - PC Engine CD - TurboGrafx-CD": {
 		"files": [
 			"input/redump/redump/dats/NEC - PC Engine CD*",

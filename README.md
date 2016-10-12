@@ -1,7 +1,8 @@
 # libretro-dats
 
-Builds a set of DATs for [libretro-database](http://github.com/libretro/libretro-database) from [Redump](http://redump.org/), [Trurip](http://trurip.org/), [TOSEC](http://www.tosecdev.org/), [Darkwater](http://darkwater.info) and [AdvanceSCENE](http://www.advanscene.com) sources.
+Builds a set of DATs for [libretro-database](http://github.com/libretro/libretro-database) from [Redump](http://redump.org/), [Trurip](http://trurip.org/), [TOSEC](http://www.tosecdev.org/), [Darkwater](http://darkwater.info), [AdvanceSCENE](http://www.advanscene.com), and [AtariMania](http://www.atarimania.com/) sources.
 
+- Atari - 2600
 - NEC - PC Engine CD - TurboGrafx-CD
 - NEC - PC-FX
 - Sega - Saturn
@@ -23,6 +24,7 @@ Builds a set of DATs for [libretro-database](http://github.com/libretro/libretro
 
 2. Build the DATs by running:
   ```
-  npm i
+  make
+  npm install
   npm test
   ```

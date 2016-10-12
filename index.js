@@ -124,7 +124,7 @@ function processXml(filepath, done) {
 function getGamesFromXml(dat) {
 	var out = {}
 	var header = dat.datafile || dat.dat
-	var games = header.game || header.games[0].game
+	var games = header.machine || header.game || header.games[0].game
 	games.forEach(function (game, i) {
 		// Set up the entries to watch for.
 		var title = null
