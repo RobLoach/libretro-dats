@@ -18,6 +18,13 @@
 			"input/trurip/NEC PC-FX -*"
 		]
 	},
+	"Nintendo - GameCube": {
+		"files": [
+			"input/tosec/TOSEC-ISO/Nintendo GameCube - Games*",
+			"input/redump/redump/dats/Nintendo - GameCube (*",
+			"input/trurip/Nintendo GameCube - *"
+		]
+	},
 	"Sega - Dreamcast": {
 		"files": [
 			"input/redump/redump/dats/Sega - Dreamcast*",
