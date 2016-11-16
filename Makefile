@@ -41,8 +41,8 @@ input/trurip:
 
 input/trurip.zip: input/trurip
 	-wget --no-clobber --output-document=input/trurip.zip \
-		--referer=https://github.com/RobLoach/libretro-dats/releases/tag/tr-2016.08.17 \
-		https://github.com/RobLoach/libretro-dats/releases/download/tr-2016.08.17/tr.zip
+		--referer=https://github.com/RobLoach/libretro-dats/releases/tag/tr-2016.11.16 \
+		https://github.com/RobLoach/libretro-dats/releases/download/tr-2016.11.16/tr-2016.11.16.zip
 
 trurip: input/trurip.zip
 	unzip -u input/trurip.zip -d input/trurip

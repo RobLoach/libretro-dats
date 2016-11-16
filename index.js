@@ -124,7 +124,19 @@ function processXml(filepath, done) {
 function getGamesFromXml(dat) {
 	var out = {}
 	var header = dat.datafile || dat.dat
-	var games = header.machine || header.game || header.games[0].game
+	var games = header.machine || header.game || null
+	// Find the games array.
+	if (!games) {
+		if (header.games && header.games[0] && header.games[0].game) {
+			games = header.games[0].game
+		}
+		else {
+			games = []
+			console.log('No Games Found: ', header.header[0].name[0])
+		}
+	}
+
+	// Loop through each game.
 	games.forEach(function (game, i) {
 		// Set up the entries to watch for.
 		var title = null
