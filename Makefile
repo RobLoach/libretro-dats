@@ -9,7 +9,7 @@ input/nointro:
 input/nointro.zip: input/nointro
 	-wget --no-clobber --output-document=input/nointro.zip \
 		--referer=http://www.emulab.it/rommanager/datfiles.php?category=14 \
-		http://www.emulab.it/rommanager/getfile.php?id=1573857e7efce16e796cea99e398b20c
+		http://www.emulab.it/rommanager/getfile.php?id=a925415748db28169826f6eed536f1c0
 
 nointro: input/nointro.zip
 	unzip -u input/nointro.zip -d input/nointro
@@ -20,7 +20,7 @@ input/redump:
 input/redump.zip: input/redump
 	-wget --no-clobber --output-document=input/redump.zip \
 		--referer=http://www.emulab.it/rommanager/datfiles.php?category=15 \
-		http://www.emulab.it/rommanager/getfile.php?id=4d21495167d87592f2ca189eacf7bc93
+		http://www.emulab.it/rommanager/getfile.php?id=f92152505cb7cc9b2c4885f5cc3277e4
 
 redump: input/redump.zip
 	unzip -u input/redump.zip -d input/redump
@@ -30,8 +30,8 @@ input/tosec:
 
 input/tosec.zip: input/tosec
 	-wget --no-clobber --output-document=input/tosec.zip \
-		--referer=http://www.tosecdev.org/downloads/category/37-2016-07-02?download=73:tosec-dat-pack-complete-2313-tosec-v2016-07-02 \
-		http://www.tosecdev.org/downloads/category/37-2016-07-02?download=73:tosec-dat-pack-complete-2313-tosec-v2016-07-02
+		--referer=http://www.tosecdev.org/downloads/category/38-2016-11-11 \
+		http://www.tosecdev.org/downloads/category/38-2016-11-11?download=75:tosec-dat-pack-complete-2321-tosec-v2016-11-11
 
 tosec: input/tosec.zip
 	unzip -u input/tosec.zip -d input/tosec
