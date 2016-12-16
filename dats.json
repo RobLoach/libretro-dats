@@ -30,6 +30,11 @@
 			"input/redump/dats/Nintendo - Wii (*"
 		]
 	},
+	"Nokia - N-Gage": {
+		"files": [
+			"input/nointro/Nokia - N-Gage (*"
+		]
+	},
 	"Sega - Dreamcast": {
 		"files": [
 			"input/redump/dats/Sega - Dreamcast*",
