@@ -13,10 +13,14 @@ const dats = require('./dats.json')
 // Clear out the dat folder.
 rimraf('dat', function () {
 	fs.mkdir('dat', function () {
-		// Process each DAT file.
-		async.mapValues(dats, processDat, function (err, results) {
-			if (err)
-				throw err
+		fs.mkdir('dat/redump', function () {
+			fs.mkdir('dat/libretro-dats', function () {
+				// Process each DAT file.
+				async.mapValues(dats, processDat, function (err, results) {
+					if (err)
+						throw err
+				})
+			})
 		})
 	})
 })
@@ -70,10 +74,9 @@ function processDat(datsInfo, name, done) {
  */
 function getHeader(name, pkg) {
 	return `clrmamepro (
-	name "${name}"
-	description "${name}"
+	name "${path.basename(name)}"
+	description "${path.basename(name)}"
 	version "${pkg.version}"
-	comment "${pkg.description}"
 	homepage "${pkg.homepage}"
 )\n`
 }

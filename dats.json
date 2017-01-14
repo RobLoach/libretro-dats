@@ -1,86 +1,122 @@
 {
-	"Atari - 2600": {
+	"libretro-dats/NEC - PC Engine CD - TurboGrafx-CD": {
 		"files": [
-			"static/Atari - 2600*"
-		]
-	},
-	"NEC - PC Engine CD - TurboGrafx-CD": {
-		"files": [
-			"input/redump/dats/NEC - PC Engine CD*",
 			"input/tosec/TOSEC-ISO/NEC PC-Engine CD*",
 			"input/trurip/NEC PC Engine CD*"
 		]
 	},
-	"NEC - PC-FX": {
+	"redump/NEC - PC Engine CD - TurboGrafx-CD": {
 		"files": [
-			"input/redump/dats/NEC - PC-FX*",
+			"input/redump/dats/NEC - PC Engine CD*"
+		]
+	},
+	"libretro-dats/NEC - PC-FX": {
+		"files": [
 			"input/tosec/TOSEC-ISO/NEC PC-FX - Games*",
 			"input/trurip/NEC PC-FX -*"
 		]
 	},
-	"Nintendo - GameCube": {
+	"redump/NEC - PC-FX": {
+		"files": [
+			"input/redump/dats/NEC - PC-FX*"
+		]
+	},
+	"redump/SNK - Neo Geo CD": {
+		"files": [
+			"input/redump/dats/SNK - Neo Geo CD (*"
+		]
+	},
+	"libretro-dats/Nintendo - GameCube": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Nintendo GameCube - Games*",
-			"input/redump/dats/Nintendo - GameCube (*",
 			"input/trurip/Nintendo GameCube - *"
 		]
 	},
-	"Nintendo - Wii": {
+	"redump/Nintendo - GameCube": {
+		"files": [
+			"input/redump/dats/Nintendo - GameCube (*"
+		]
+	},
+	"redump/Nintendo - Wii": {
 		"files": [
 			"input/redump/dats/Nintendo - Wii (*"
 		]
 	},
-	"Nokia - N-Gage": {
+	"libretro-dats/Sega - Dreamcast": {
 		"files": [
-			"input/nointro/Nokia - N-Gage (*"
-		]
-	},
-	"Sega - Dreamcast": {
-		"files": [
-			"input/redump/dats/Sega - Dreamcast*",
 			"input/tosec/TOSEC-ISO/Sega Dreamcast*",
 			"input/trurip/Sega Dreamcast*"
 		]
 	},
-	"Sega - Mega-CD - Sega CD": {
+	"redump/Sega - Dreamcast": {
 		"files": [
-			"input/redump/dats/Sega - Mega-CD*",
+			"input/redump/dats/Sega - Dreamcast*"
+		]
+	},
+	"libretro-dats/Sega - Mega-CD - Sega CD": {
+		"files": [
 			"input/tosec/TOSEC-ISO/Sega Mega-CD*",
 			"input/trurip/Sega Mega-CD*"
 		]
 	},
-	"Sega - Saturn": {
+	"redump/Sega - Mega-CD - Sega CD": {
 		"files": [
-			"input/redump/dats/Sega - Saturn*",
+			"input/redump/dats/Sega - Mega-CD*"
+		]
+	},
+	"libretro-dats/Sega - Saturn": {
+		"files": [
 			"input/tosec/TOSEC-ISO/Sega Saturn*",
 			"input/trurip/Sega Saturn*",
 			"input/darkwater/Saturn*"
 		]
 	},
-	"Sony - PlayStation": {
+	"redump/Sega - Saturn": {
 		"files": [
-			"input/redump/dats/Sony - PlayStation (*",
+			"input/redump/dats/Sega - Saturn*"
+		]
+	},
+	"libretro-dats/Sony - PlayStation": {
+		"files": [
 			"input/tosec/TOSEC-ISO/Sony PlayStation -*",
 			"input/trurip/Sony PlayStation & PSone*"
 		]
 	},
-	"Sony - PlayStation Portable": {
+	"redump/Sony - PlayStation": {
 		"files": [
-			"input/redump/dats/Sony - PlayStation Portable (*",
+			"input/redump/dats/Sony - PlayStation (*"
+		]
+	},
+	"libretro-dats/Sony - PlayStation Portable": {
+		"files": [
 			"input/advancescene/*.xml"
 		]
 	},
-	"Sinclair - ZX Spectrum": {
+	"redump/Sony - PlayStation 2": {
+		"files": [
+			"input/redump/dats/Sony - PlayStation 2 (*"
+		]
+	},
+	"redump/Sony - PlayStation Portable": {
+		"files": [
+			"input/redump/dats/Sony - PlayStation Portable (*"
+		]
+	},
+	"libretro-dats/Sinclair - ZX Spectrum": {
 		"files": [
 			"input/tosec/TOSEC/Sinclair ZX Spectrum - Compilations - Games - *",
 			"input/tosec/TOSEC/Sinclair ZX Spectrum - Games - *"
 		]
 	},
-	"The 3DO Company - 3DO": {
+	"libretro-dats/The 3DO Company - 3DO": {
 		"files": [
-			"input/redump/dats/Panasonic - 3DO*",
 			"input/tosec/TOSEC-ISO/3DO 3DO Interactive*",
 			"input/trurip/Panasonic*"
+		]
+	},
+	"redump/The 3DO Company - 3DO": {
+		"files": [
+			"input/redump/dats/Panasonic - 3DO*"
 		]
 	}
 }
