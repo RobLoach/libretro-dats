@@ -6,8 +6,8 @@
 		<name>Nintendo - Super Famicom [T-En] Collection</name>
 		<description>Nintendo - Super Famicom [T-En] Collection</description>
 		<category>Standard DatFile</category>
-		<version>2017-01-10</version>
-		<date>2017-01-10</date>
+		<version>2017-01-15</version>
+		<date>2017-01-15</date>
 		<author>Retroplay</author>
 		<email>-insert email-</email>
 		<homepage>-insert homepage-</homepage>
@@ -230,6 +230,7 @@
 		<rom name="Violinist of Hameln, The (Japan) [T-En by J2e Translations v1.00] [n].txt" size="2840" crc="a7372cc6" md5="1eee6eb50f5f1232a374f4bb1706eec9" sha1="0bbc3ea0adc25c102e78a61a0dcb020e57df636c"/>
 		<rom name="Wizardry Gaiden IV - Taima no Kodou (Japan) (Rev 1) [T-En by AgentOrange+DDS+Helly+MrRichard999 v1.01].txt" size="4311" crc="6018297e" md5="09abc605af788bb0142d0491a1cf27da" sha1="e13440c01092c0a45b9bccc84c642a30430296bd"/>
 		<rom name="Wizardry I-II-III - Story of Llylgamyn (Japan) (NP) [T-En by Aeon Genesis v1.00].txt" size="1745" crc="14ac37d6" md5="7f464475f4b8bfec0f80180203edd598" sha1="29b48908938e9ea9e7431c2929269ee96381a0d6"/>
+		<rom name="Wizardry V - Heart of the Maelstrom (Japan) [T-En by darkmoon2321 v1.0] [n].txt" size="4397" crc="2415afe6" md5="971158c6ffe1af0bef50fa696c9ffe64" sha1="e3bb007c3a3d1523f1f1d27c4ce0a8beb4cb2a83"/>
 		<rom name="Wizardry VI - Bane of the Cosmic Forge (Japan) [T-En by TiCo v0.99] [n].txt" size="1894" crc="7b8c148f" md5="07312d75aaf6f041dd874e37b31c4995" sha1="c6e34aece8106d5a38b54769b010d2c4e30d83e0"/>
 		<rom name="Wonder Project J - Mechanical Boy Pino (Japan) [T-En by WakdHacks v1.04] [n].txt" size="3176" crc="f3d018b1" md5="8d102636b9e85c77648c1520c93bd260" sha1="b01acf0cbe305dec8ccf06892129765732940930"/>
 		<rom name="Xak - The Art of Visual Stage (Japan) [T-En by Dynamic Designs v1.00].txt" size="6744" crc="7c086887" md5="ccc833e3db73b55ebfb31fb54cf9fed2" sha1="d604f07281d63c1ee62f4ed5fcd8db6c3f5a2b05"/>
@@ -1084,6 +1085,10 @@
 	<machine name="Wizardry I-II-III - Story of Llylgamyn (Japan) (NP) [T-En by Aeon Genesis v1.00]">
 		<description>Wizardry I-II-III - Story of Llylgamyn (Japan) (NP) [T-En by Aeon Genesis v1.00]</description>
 		<rom name="Wizardry I-II-III - Story of Llylgamyn (Japan) (NP) [T-En by Aeon Genesis v1.00].sfc" size="4194304" crc="16ffe85a" md5="167f3de8c5e5f464d1d473eb628b2aaf" sha1="c2fe27a3e1802b33c40b5c9fea3aab934396e792"/>
+	</machine>
+	<machine name="Wizardry V - Heart of the Maelstrom (Japan) [T-En by darkmoon2321 v1.0] [n]">
+		<description>Wizardry V - Heart of the Maelstrom (Japan) [T-En by darkmoon2321 v1.0] [n]</description>
+		<rom name="Wizardry V - Heart of the Maelstrom (Japan) [T-En by darkmoon2321 v1.0] [n].sfc" size="1048576" crc="921eb734" md5="fd7e78ce846348c14043f06ed7ef7338" sha1="ae43ad72bfdc9071406383104135c1f171f77c1f"/>
 	</machine>
 	<machine name="Wizardry VI - Bane of the Cosmic Forge (Japan) [T-En by TiCo v0.99] [n]">
 		<description>Wizardry VI - Bane of the Cosmic Forge (Japan) [T-En by TiCo v0.99] [n]</description>
