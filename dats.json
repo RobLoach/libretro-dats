@@ -1,4 +1,9 @@
 {
+	"libretro-dats/Nintendo - Super Nintendo Entertainment System": {
+		"files": [
+			"static/Nintendo - Super Famicom [T-En] Collection*"
+		]
+	},
 	"libretro-dats/NEC - PC Engine CD - TurboGrafx-CD": {
 		"files": [
 			"input/tosec/TOSEC-ISO/NEC PC-Engine CD*",
