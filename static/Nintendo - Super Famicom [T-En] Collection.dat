@@ -6,8 +6,8 @@
 		<name>Nintendo - Super Famicom [T-En] Collection</name>
 		<description>Nintendo - Super Famicom [T-En] Collection</description>
 		<category>Standard DatFile</category>
-		<version>2017-01-15</version>
-		<date>2017-01-15</date>
+		<version>2017-01-26</version>
+		<date>2017-01-26</date>
 		<author>Retroplay</author>
 		<email>-insert email-</email>
 		<homepage>-insert homepage-</homepage>
@@ -15,13 +15,13 @@
 		<comment>Based on Powerpuffs Maybe-Intro Collection</comment>
 		<clrmamepro/>
 	</header>
-	<machine name="3x3 Eyes - Juuma Houkan (Japan) [T-En by Atomizer_Zero v0.2] [i]">
-		<description>3x3 Eyes - Juuma Houkan (Japan) [T-En by Atomizer_Zero v0.2] [i]</description>
-		<rom name="3x3 Eyes - Juuma Houkan (Japan) [T-En by Atomizer_Zero v0.2] [i].sfc" size="2097152" crc="36712e46" md5="63c8d28e18cc766f6381c6181648e1d7" sha1="65856ba7f297d7bf534da091b12943e10f132037"/>
+	<machine name="3x3 Eyes - Juuma Houkan (Japan) [T-En by Atomizer_Zero v1.0]">
+		<description>3x3 Eyes - Juuma Houkan (Japan) [T-En by Atomizer_Zero v1.0]</description>
+		<rom name="3x3 Eyes - Juuma Houkan (Japan) [T-En by Atomizer_Zero v1.0].sfc" size="2097152" crc="58e51563" md5="17304ccae93e343c9fa577381fd8d7f7" sha1="00fb405e23f349f5102238eeeb87ec1ac1a8e52b"/>
 	</machine>
 	<machine name="_Nintendo Super Famicom [T-En] Docs">
 		<description>_Nintendo Super Famicom [T-En] Docs</description>
-		<rom name="3x3 Eyes - Juuma Houkan (Japan) [T-En by Atomizer_Zero v0.2] [i].txt" size="1830" crc="99b4a192" md5="8ec47497ab0ceb5864295eb48945422d" sha1="9d6c3ae7e9e6875074173a8f6c05ec054eac970a"/>
+		<rom name="3x3 Eyes - Juuma Houkan (Japan) [T-En by Atomizer_Zero v1.0].txt" size="2474" crc="20e5450d" md5="9c10858f39dbde3f129ca7ca8869cfef" sha1="f3889373d9e2f6281d247bceeae271c571308a00"/>
 		<rom name="Accele Brid (Japan) [T-En by Aeon Genesis v1.00].txt" size="2163" crc="e364eb72" md5="5724897020c31ab0d1011461fbafa16f" sha1="fe7b65167c23fbb546cbce623aec8e441b2fc357"/>
 		<rom name="Actraiser (Japan) [T-En by Aeon Genesis v1.00].txt" size="4543" crc="b3f91e21" md5="2f6250ed3acdf0e23af3a101f4a1e401" sha1="96b06b3a862ec71d0813a088bacc9afe6bf41670"/>
 		<rom name="Adventures of Hourai High, The - Transfer Student Dramabomb (Japan) [T-En by Aeon Genesis v1.00] [n] - Satsu's Notes.txt" size="11939" crc="e76b1c79" md5="51c0adf3a5badf1a74cba22709dc15e0" sha1="b537ec7a5cc2412b995e5f88c37eca5b51f4d753"/>
