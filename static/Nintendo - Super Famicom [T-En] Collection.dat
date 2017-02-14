@@ -6,8 +6,8 @@
 		<name>Nintendo - Super Famicom [T-En] Collection</name>
 		<description>Nintendo - Super Famicom [T-En] Collection</description>
 		<category>Standard DatFile</category>
-		<version>2017-01-26</version>
-		<date>2017-01-26</date>
+		<version>2017-02-10</version>
+		<date>2017-02-10</date>
 		<author>Retroplay</author>
 		<email>-insert email-</email>
 		<homepage>-insert homepage-</homepage>
@@ -15,13 +15,13 @@
 		<comment>Based on Powerpuffs Maybe-Intro Collection</comment>
 		<clrmamepro/>
 	</header>
-	<machine name="3x3 Eyes - Juuma Houkan (Japan) [T-En by Atomizer_Zero v1.0]">
-		<description>3x3 Eyes - Juuma Houkan (Japan) [T-En by Atomizer_Zero v1.0]</description>
-		<rom name="3x3 Eyes - Juuma Houkan (Japan) [T-En by Atomizer_Zero v1.0].sfc" size="2097152" crc="58e51563" md5="17304ccae93e343c9fa577381fd8d7f7" sha1="00fb405e23f349f5102238eeeb87ec1ac1a8e52b"/>
+	<machine name="3x3 Eyes - Juuma Houkan (Japan) [T-En by Atomizer_Zero v1.01]">
+		<description>3x3 Eyes - Juuma Houkan (Japan) [T-En by Atomizer_Zero v1.01]</description>
+		<rom name="3x3 Eyes - Juuma Houkan (Japan) [T-En by Atomizer_Zero v1.01].sfc" size="2097152" crc="42204f0b" md5="ae86c56153efedf65427467ba3c00461" sha1="2f29f65bc5615bbfbbd0a9407a45c13d6ddb552a"/>
 	</machine>
 	<machine name="_Nintendo Super Famicom [T-En] Docs">
 		<description>_Nintendo Super Famicom [T-En] Docs</description>
-		<rom name="3x3 Eyes - Juuma Houkan (Japan) [T-En by Atomizer_Zero v1.0].txt" size="2474" crc="20e5450d" md5="9c10858f39dbde3f129ca7ca8869cfef" sha1="f3889373d9e2f6281d247bceeae271c571308a00"/>
+		<rom name="3x3 Eyes - Juuma Houkan (Japan) [T-En by Atomizer_Zero v1.01].txt" size="2593" crc="1939a263" md5="ea1d96eb89d365122c440ffcf6798d66" sha1="d7224c2b01f30fe49f292a925b1df6ea37700018"/>
 		<rom name="Accele Brid (Japan) [T-En by Aeon Genesis v1.00].txt" size="2163" crc="e364eb72" md5="5724897020c31ab0d1011461fbafa16f" sha1="fe7b65167c23fbb546cbce623aec8e441b2fc357"/>
 		<rom name="Actraiser (Japan) [T-En by Aeon Genesis v1.00].txt" size="4543" crc="b3f91e21" md5="2f6250ed3acdf0e23af3a101f4a1e401" sha1="96b06b3a862ec71d0813a088bacc9afe6bf41670"/>
 		<rom name="Adventures of Hourai High, The - Transfer Student Dramabomb (Japan) [T-En by Aeon Genesis v1.00] [n] - Satsu's Notes.txt" size="11939" crc="e76b1c79" md5="51c0adf3a5badf1a74cba22709dc15e0" sha1="b537ec7a5cc2412b995e5f88c37eca5b51f4d753"/>
@@ -96,7 +96,7 @@
 		<rom name="Final Fantasy V (Japan) [T-En by RPGe v1.10] [Ad by HatZen08 v1.0] [Three Slots patch].pdf" size="31988" crc="47ae1791" md5="b20b6ae024ed0301c29735de4330048a" sha1="e2fbf88c2a9b09fcb98fb22cfbed00605ef7eb44"/>
 		<rom name="Final Fantasy V (Japan) [T-En by RPGe v1.10] [Ad by HatZen08 v1.0] [Three Slots patch].txt" size="395" crc="1c957e22" md5="b8f6a039c614d7ef19b3163dffe4ea6d" sha1="1b9c8341d7f04f09cc0588d7ae32eb88bf65fea3"/>
 		<rom name="Final Fantasy V (Japan) [T-En by RPGe v1.10] [Ad by HatZen08 v3.1] [Strategic Battle patch].pdf" size="69449" crc="68b6023b" md5="48bb01e188f2934c52ff9a241cee4fdf" sha1="6c462781f56f4eafe9f2c0c45784016db826c2f8"/>
-		<rom name="Final Fantasy V (Japan) [T-En by RPGe v1.10] [Add by Spooniest v1.0] [Legend of the Crystals].txt" size="1039" crc="6d4a3f09" md5="e077f1b35256eb0f8ddcf670ff4a1c71" sha1="4e9bc72404d1cb641cfe9cf4eb0623ce5fe94572"/>
+		<rom name="Final Fantasy V (Japan) [T-En by RPGe v1.10] [Add by Spooniest v1.1] [Legend of the Crystals].txt" size="1233" crc="e0ea99e3" md5="6cec5ba0e94c29754dea7ea7a91cf9cd" sha1="26811afdbc1913667205cb03621d0bdcf3418454"/>
 		<rom name="Final Fantasy V (Japan) [T-En by RPGe v1.10].txt" size="5759" crc="03d02206" md5="d5919210e0e25476c093d2bd1a253e53" sha1="474f08f00526fa670ae7451b3b2a1e1bda2e333d"/>
 		<rom name="Final Fantasy VI (Japan) [T-En by RPGOne v1.2] [All Bugs Fix] [Ad by Spooniest v2.0].txt" size="759" crc="d2384e26" md5="2b1d9575dcad0d92d6e2ae9180cb602e" sha1="5ac12f391a664d1c5270c49dd3b6058a275a7697"/>
 		<rom name="Final Fantasy VI (Japan) [T-En by RPGOne v1.2b].txt" size="39760" crc="dd831ce4" md5="12faee6c0fc052ad9dba3fa3edde2e24" sha1="5762411b8404591f8818398a25d31e9fa3ef5b1a"/>
@@ -554,9 +554,9 @@
 		<description>Final Fantasy V (Japan) [T-En by RPGe v1.10] [Add by HatZen08 v3.1] [Strategic Battle patch]</description>
 		<rom name="Final Fantasy V (Japan) [T-En by RPGe v1.10] [Add by HatZen08 v3.1] [Strategic Battle patch].sfc" size="2621440" crc="767ee242" md5="d51f84f5c0d30b08dfc76e8a4fb77736" sha1="2a4295352b94e580145baddcb537dc746f8fd280"/>
 	</machine>
-	<machine name="Final Fantasy V (Japan) [T-En by RPGe v1.10] [Add by Spooniest v1.0] [Legend of the Crystals]">
-		<description>Final Fantasy V (Japan) [T-En by RPGe v1.10] [Add by Spooniest v1.0] [Legend of the Crystals]</description>
-		<rom name="Final Fantasy V (Japan) [T-En by RPGe v1.10] [Add by Spooniest v1.0] [Legend of the Crystals].sfc" size="2621440" crc="6e742b43" md5="f27a51dd7cf49bee518be145ecb3a9fd" sha1="1e4ff710e16694b482c9f08f884ef0c1cbcbc3c7"/>
+	<machine name="Final Fantasy V (Japan) [T-En by RPGe v1.10] [Add by Spooniest v1.1] [Legend of the Crystals]">
+		<description>Final Fantasy V (Japan) [T-En by RPGe v1.10] [Add by Spooniest v1.1] [Legend of the Crystals]</description>
+		<rom name="Final Fantasy V (Japan) [T-En by RPGe v1.10] [Add by Spooniest v1.1] [Legend of the Crystals].sfc" size="2621440" crc="52b31c80" md5="c1a2e0ba65dee5bf8d47c90c4484384c" sha1="cb0a08d1c4df36f2f28dfc6d1887f143ae3ca565"/>
 	</machine>
 	<machine name="Final Fantasy VI (Japan) [T-En by RPGOne v1.2] [All Bugs Fix] [Add by Spooniest v2.0]">
 		<description>Final Fantasy VI (Japan) [T-En by RPGOne v1.2] [All Bugs Fix] [Add by Spooniest v2.0]</description>
