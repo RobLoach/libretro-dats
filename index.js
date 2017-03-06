@@ -17,8 +17,9 @@ rimraf('dat', function () {
 			fs.mkdir('dat/libretro-dats', function () {
 				// Process each DAT file.
 				async.mapValues(dats, processDat, function (err, results) {
-					if (err)
+					if (err) {
 						throw err
+					}
 				})
 			})
 		})
@@ -100,6 +101,9 @@ function getGameEntry(game, rom) {
  * Process the given XML file.
  */
 function processXml(filepath, done) {
+	if (fs.lstatSync(filepath).isDirectory()) {
+		return done(null, [])
+	}
 	// Read in the file asyncronously.
 	fs.readFile(filepath, {encoding: 'utf8'}, (err, data) => {
 		if (err) {
@@ -151,7 +155,12 @@ function getGamesFromXml(dat) {
 
 		// Find all the entries.
 		if (game.rom) {
-			title = game.description[0]
+			if (game.description) { 
+				title = game.description[0] || game.title
+			}
+			else {
+				title = game.title
+			}
 			for (var x in game.rom) {
 				var rom = game.rom[x]['$']
 				if (rom.name.indexOf('.cue') >= 0 && !finalCue) {

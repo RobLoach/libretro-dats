@@ -6,8 +6,8 @@
 		<name>Nintendo - Super Famicom [T-En] Collection</name>
 		<description>Nintendo - Super Famicom [T-En] Collection</description>
 		<category>Standard DatFile</category>
-		<version>2017-02-10</version>
-		<date>2017-02-10</date>
+		<version>2017-02-18</version>
+		<date>2017-02-18</date>
 		<author>Retroplay</author>
 		<email>-insert email-</email>
 		<homepage>-insert homepage-</homepage>
@@ -112,7 +112,7 @@
 		<rom name="Ganpuru - Gunman's Proof (Japan) [T-En by Aeon Genesis v1.03].txt" size="3202" crc="bd0fcc6e" md5="93412f1422e1bf2374f07f091d52fe48" sha1="2cb9772b3f0f9d0984c15a705d5d7f38160813c7"/>
 		<rom name="Gekitou Burning Pro Wres (Japan) [T-En by Phil v1.0].txt" size="4053" crc="499c2e15" md5="027a567d62beb8f94b5ff4e7bf72036d" sha1="364c5186f58354af3dff4678de0a10b34ce17fb2"/>
 		<rom name="Glory of Heracles III, The - Silence of the Gods (Japan) [T-En by DQ Translations v1.1a] [n].txt" size="13103" crc="80180656" md5="e608d6ff68b95b81bab2cb545aace702" sha1="2365eff8dce293fb17e23323ab8b9c58fe2ca5e0"/>
-		<rom name="Glory of Heracles IV, The - Gift from the Gods (Japan) [T-En by Translation Corporation v1.0] [n].txt" size="22590" crc="b9f0e5d0" md5="5d67b1aeda869171762fc3fedfd531dd" sha1="097b63b95b5525b48a5439f9090a0f485fc3500d"/>
+		<rom name="Glory of Heracles IV, The - Gift from the Gods (Japan) [T-En by Translation Corporation v1.1] [n].txt" size="22766" crc="ce00adc2" md5="bce731ebe20f38626bdd5ff8b1ee1f0c" sha1="87235aafdbe01229b6fcff2cc77e788ae1cc1a59"/>
 		<rom name="Go Go Ackman (Japan) [T-En by Ackman Translations v1.0].txt" size="596" crc="3865221a" md5="5bf24664205a8d38478c73359ff2d6bc" sha1="99c2f224c78140033358114e23ddf530797f1ea1"/>
 		<rom name="Gourmet Squadron Barayarou (Japan) [T-En by Aeon Genesis v0.80] [i] [n].txt" size="1080" crc="7bb421de" md5="9a775d40b9cabb76feb543baf63559e0" sha1="6dd2d38925e0a4d89644525d8d84fac94ebab8cb"/>
 		<rom name="Gulliver Boy (Japan) [T-En by Dynamic Designs v0.99a] [n].txt" size="2148" crc="4ab66956" md5="a18a01d8175aa313125049e8a2cd75ed" sha1="867a403d50ac1a836f7eba28c558f32ee74c47c7"/>
@@ -618,9 +618,9 @@
 		<description>Glory of Heracles III, The - Silence of the Gods (Japan) [T-En by DQ Translations v1.1a] [n]</description>
 		<rom name="Glory of Heracles III, The - Silence of the Gods (Japan) [T-En by DQ Translations v1.1a] [n].sfc" size="2097152" crc="684c6758" md5="818cb737675b0636f17b639ddd9c3740" sha1="77016c1efd66f54dfe84d4a787a210e1da2f37d6"/>
 	</machine>
-	<machine name="Glory of Heracles IV, The - Gift from the Gods (Japan) [T-En by Translation Corporation v1.0] [n]">
-		<description>Glory of Heracles IV, The - Gift from the Gods (Japan) [T-En by Translation Corporation v1.0] [n]</description>
-		<rom name="Glory of Heracles IV, The - Gift from the Gods (Japan) [T-En by Translation Corporation v1.0] [n].sfc" size="4194304" crc="2212f859" md5="7d2171307f7e5d32c3737a91045f11f8" sha1="36392cfb42ec79bb7d9b511ca50457378b77df09"/>
+	<machine name="Glory of Heracles IV, The - Gift from the Gods (Japan) [T-En by Translation Corporation v1.1] [n]">
+		<description>Glory of Heracles IV, The - Gift from the Gods (Japan) [T-En by Translation Corporation v1.1] [n]</description>
+		<rom name="Glory of Heracles IV, The - Gift from the Gods (Japan) [T-En by Translation Corporation v1.1] [n].sfc" size="4194304" crc="2704d638" md5="2f5bd42095038f078950df7f1bd0d9f0" sha1="8dc24d9f0df8f9abd71a8c80c18508409892103d"/>
 	</machine>
 	<machine name="Go Go Ackman (Japan) [T-En by Ackman Translations v1.0]">
 		<description>Go Go Ackman (Japan) [T-En by Ackman Translations v1.0]</description>

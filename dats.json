@@ -1,7 +1,7 @@
 {
 	"libretro-dats/Nintendo - Super Nintendo Entertainment System": {
 		"files": [
-			"static/Nintendo - Super Famicom [T-En] Collection*"
+			"static/Nintendo - Super Nintendo Entertainment System/**"
 		]
 	},
 	"libretro-dats/NEC - PC Engine CD - TurboGrafx-CD": {

@@ -18,12 +18,12 @@ input/redump:
 	mkdir -p input/redump
 
 input/redump.zip: input/redump
-	-wget --no-clobber --output-document=input/redump.zip \
+	#-wget --no-clobber --output-document=input/redump.zip \
 		--referer=http://www.emulab.it/rommanager/datfiles.php?category=15 \
 		http://www.emulab.it/rommanager/getfile.php?id=f92152505cb7cc9b2c4885f5cc3277e4
 
-redump: input/redump.zip
-	unzip -u input/redump.zip -d input/redump
+redump: #input/redump.zip
+	#unzip -u input/redump.zip -d input/redump
 
 input/tosec:
 	mkdir -p input/tosec
