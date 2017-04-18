@@ -15,11 +15,13 @@ rimraf('dat', function () {
 	fs.mkdir('dat', function () {
 		fs.mkdir('dat/redump', function () {
 			fs.mkdir('dat/libretro-dats', function () {
-				// Process each DAT file.
-				async.mapValues(dats, processDat, function (err, results) {
-					if (err) {
-						throw err
-					}
+				fs.mkdir('dat/no-intro', function () {
+					// Process each DAT file.
+					async.mapValues(dats, processDat, function (err, results) {
+						if (err) {
+							throw err
+						}
+					})
 				})
 			})
 		})
@@ -46,10 +48,13 @@ function processDat(datsInfo, name, done) {
 			for (var i in results) {
 				for (var game in results[i]) {
 					var gameName = game
-					while (gameName in games) {
-						gameName = gameName + ' '
+					// Do not add BIOS entries.
+					if (gameName.indexOf('[BIOS]') < 0) {
+						while (gameName in games) {
+							gameName = gameName + ' '
+						}
+						games[gameName] = results[i][game]
 					}
-					games[gameName] = results[i][game]
 				}
 			}
 
