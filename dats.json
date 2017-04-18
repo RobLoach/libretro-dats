@@ -123,5 +123,410 @@
 		"files": [
 			"input/redump/dats/Panasonic - 3DO*"
 		]
+	},
+	"no-intro/Atari - 2600": {
+		"files": [
+			"input/nointro/Atari - 2600*"
+		]
+	},
+	"no-intro/Atari - 5200": {
+		"files": [
+			"input/nointro/Atari - 5200*"
+		]
+	},
+	"no-intro/Atari - 7800": {
+		"files": [
+			"input/nointro/Atari - 7800*"
+		]
+	},
+	"no-intro/Atari - Jaguar": {
+		"files": [
+			"input/nointro/Atari - Jaguar*"
+		]
+	},
+	"no-intro/Atari - Lynx": {
+		"files": [
+			"input/nointro/Atari - Lynx*"
+		]
+	},
+	"no-intro/Atari - ST": {
+		"files": [
+			"input/nointro/Atari - ST*"
+		]
+	},
+	"no-intro/Bandai - WonderSwan": {
+		"files": [
+			"input/nointro/Bandai - WonderSwan (*"
+		]
+	},
+	"no-intro/Bandai - WonderSwan Color": {
+		"files": [
+			"input/nointro/Bandai - WonderSwan Color*"
+		]
+	},
+	"no-intro/Benesse - Pocket Challenge V2": {
+		"files": [
+			"input/nointro/Benesse - Pocket Challenge V2*"
+		]
+	},
+	"no-intro/Casio - Loopy": {
+		"files": [
+			"input/nointro/Casio - Loopy*"
+		]
+	},
+	"no-intro/Casio - PV-1000": {
+		"files": [
+			"input/nointro/Casio - PV-1000*"
+		]
+	},
+	"no-intro/Coleco - ColecoVision": {
+		"files": [
+			"input/nointro/Coleco - ColecoVision*"
+		]
+	},
+	"no-intro/Commodore - 64": {
+		"files": [
+			"input/nointro/Commodore - 64 (2*"
+		]
+	},
+	"no-intro/Commodore - 64 (PP)": {
+		"files": [
+			"input/nointro/Commodore - 64 (PP)*"
+		]
+	},
+	"no-intro/Commodore - 64 (Tapes)": {
+		"files": [
+			"input/nointro/Commodore - 64 (Tapes) (*"
+		]
+	},
+	"no-intro/Commodore - Amiga": {
+		"files": [
+			"input/nointro/Commodore - Amiga*"
+		]
+	},
+	"no-intro/Commodore - Plus-4": {
+		"files": [
+			"input/nointro/Commodore - Plus-4*"
+		]
+	},
+	"no-intro/Commodore - VIC-20": {
+		"files": [
+			"input/nointro/Commodore - VIC-20*"
+		]
+	},
+	"no-intro/Emerson - Arcadia 2001": {
+		"files": [
+			"input/nointro/Emerson - Arcadia 2001*"
+		]
+	},
+	"no-intro/Entex - Adventure Vision": {
+		"files": [
+			"input/nointro/Entex - Adventure Vision*"
+		]
+	},
+	"no-intro/Epoch - Super Cassette Vision": {
+		"files": [
+			"input/nointro/Epoch - Super Cassette Vision*"
+		]
+	},
+	"no-intro/Fairchild - Channel F": {
+		"files": [
+			"input/nointro/Fairchild - Channel F*"
+		]
+	},
+	"no-intro/Funtech - Super Acan": {
+		"files": [
+			"input/nointro/Funtech - Super Acan*"
+		]
+	},
+	"no-intro/GamePark - GP32": {
+		"files": [
+			"input/nointro/GamePark - GP32*"
+		]
+	},
+	"no-intro/GCE - Vectrex": {
+		"files": [
+			"input/nointro/GCE - Vectrex*"
+		]
+	},
+	"no-intro/Hartung - Game Master": {
+		"files": [
+			"input/nointro/Hartung - Game Master*"
+		]
+	},
+	"no-intro/LeapFrog - Leapster Learning Game System": {
+		"files": [
+			"input/nointro/LeapFrog - Leapster Learning Game System*"
+		]
+	},
+	"no-intro/Magnavox - Odyssey2": {
+		"files": [
+			"input/nointro/Magnavox - Odyssey2*"
+		]
+	},
+	"no-intro/Microsoft - MSX": {
+		"files": [
+			"input/nointro/Microsoft - MSX (*"
+		]
+	},
+	"no-intro/Microsoft - MSX2": {
+		"files": [
+			"input/nointro/Microsoft - MSX2*"
+		]
+	},
+	"no-intro/Atari - 2600": {
+		"files": [
+			"input/nointro/Atari - 2600*"
+		]
+	},
+	"no-intro/Microsoft - XBOX 360 (DLC)": {
+		"files": [
+			"input/nointro/Microsoft - XBOX 360 (DLC)*"
+		]
+	},
+	"no-intro/Microsoft - XBOX 360 (Games on Demand)": {
+		"files": [
+			"input/nointro/Microsoft - XBOX 360 (Games on Demand)*"
+		]
+	},
+	"no-intro/Microsoft - XBOX 360 (Title Updates)": {
+		"files": [
+			"input/nointro/Microsoft - XBOX 360 (Title Updates)*"
+		]
+	},
+	"no-intro/NEC - PC Engine SuperGrafx": {
+		"files": [
+			"input/nointro/NEC - PC Engine SuperGrafx*"
+		]
+	},
+	"no-intro/NEC - PC Engine - TurboGrafx 16": {
+		"files": [
+			"input/nointro/NEC - PC Engine - TurboGrafx 16*"
+		]
+	},
+	"no-intro/Nintendo - Family Computer Disk System": {
+		"files": [
+			"input/nointro/Nintendo - Family Computer Disk System*"
+		]
+	},
+	"no-intro/Nintendo - Game Boy": {
+		"files": [
+			"input/nointro/Nintendo - Game Boy (*"
+		]
+	},
+	"no-intro/Nintendo - Game Boy Advance": {
+		"files": [
+			"input/nointro/Nintendo - Game Boy Advance*"
+		]
+	},
+	"no-intro/Nintendo - Game Boy Advance (e-Cards)": {
+		"files": [
+			"input/nointro/Nintendo - Game Boy Advance (e-Cards) (*"
+		]
+	},
+	"no-intro/Nintendo - Game Boy Color": {
+		"files": [
+			"input/nointro/Nintendo - Game Boy Color (*"
+		]
+	},
+	"no-intro/Nintendo - New Nintendo 3DS": {
+		"files": [
+			"input/nointro/Nintendo - New Nintendo 3DS (2*"
+		]
+	},
+	"no-intro/Nintendo - New Nintendo 3DS (DLC)": {
+		"files": [
+			"input/nointro/Nintendo - New Nintendo 3DS (DLC)*"
+		]
+	},
+	"no-intro/Nintendo - Nintendo 3DS": {
+		"files": [
+			"input/nointro/Nintendo - Nintendo 3DS (2*"
+		]
+	},
+	"no-intro/Nintendo - Nintendo 3DS (DLC)": {
+		"files": [
+			"input/nointro/Nintendo - Nintendo 3DS (DLC) (2*"
+		]
+	},
+	"no-intro/Nintendo - Nintendo 64": {
+		"files": [
+			"input/nointro/Nintendo - Nintendo 64 (2*"
+		]
+	},
+	"no-intro/Nintendo - Nintendo 64DD": {
+		"files": [
+			"input/nointro/Nintendo - Nintendo 64DD (2*"
+		]
+	},
+	"no-intro/Nintendo - Nintendo DS": {
+		"files": [
+			"input/nointro/Nintendo - Nintendo DS (2*"
+		]
+	},
+	"no-intro/Nintendo - Nintendo DS (Download Play)": {
+		"files": [
+			"input/nointro/Nintendo - Nintendo DS (Download Play)*"
+		]
+	},
+	"no-intro/Nintendo - Nintendo DSi": {
+		"files": [
+			"input/nointro/Nintendo - Nintendo DSi (2*"
+		]
+	},
+	"no-intro/Nintendo - Nintendo DSi (DLC)": {
+		"files": [
+			"input/nointro/Nintendo - Nintendo DSi (DLC) (2*"
+		]
+	},
+	"no-intro/Nintendo - Nintendo Entertainment System": {
+		"files": [
+			"input/nointro/Nintendo - Nintendo Entertainment System (2*"
+		]
+	},
+	"no-intro/Nintendo - Nintendo Wii (DLC)": {
+		"files": [
+			"input/nointro/Nintendo - Nintendo Wii (DLC) (2*"
+		]
+	},
+	"no-intro/Nintendo - Pokemon Mini": {
+		"files": [
+			"input/nointro/Nintendo - Pokemon Mini (2*"
+		]
+	},
+	"no-intro/Nintendo - Satellaview": {
+		"files": [
+			"input/nointro/Nintendo - Satellaview (2*"
+		]
+	},
+	"no-intro/Nintendo - Sufami Turbo": {
+		"files": [
+			"input/nointro/Nintendo - Sufami Turbo (2*"
+		]
+	},
+	"no-intro/Nintendo - Super Nintendo Entertainment System": {
+		"files": [
+			"input/nointro/Nintendo - Super Nintendo Entertainment System (2*"
+		]
+	},
+	"no-intro/Nintendo - Virtual Boy": {
+		"files": [
+			"input/nointro/Nintendo - Virtual Boy (2*"
+		]
+	},
+	"no-intro/Philips - Videopac+": {
+		"files": [
+			"input/nointro/Philips - Videopac+*"
+		]
+	},
+	"no-intro/RCA - Studio II": {
+		"files": [
+			"input/nointro/RCA - Studio II*"
+		]
+	},
+	"no-intro/Sega - 32X": {
+		"files": [
+			"input/nointro/Sega - 32X*"
+		]
+	},
+	"no-intro/Sega - Game Gear": {
+		"files": [
+			"input/nointro/Sega - Game Gear*"
+		]
+	},
+	"no-intro/Sega - Master System - Mark III": {
+		"files": [
+			"input/nointro/Sega - Master System - Mark III*"
+		]
+	},
+	"no-intro/Sega - Mega Drive - Genesis": {
+		"files": [
+			"input/nointro/Sega - Mega Drive - Genesis*"
+		]
+	},
+	"no-intro/Sega - PICO": {
+		"files": [
+			"input/nointro/Sega - PICO*"
+		]
+	},
+	"no-intro/Sega - SG-1000": {
+		"files": [
+			"input/nointro/Sega - SG-1000*"
+		]
+	},
+	"no-intro/Sinclair - ZX Spectrum +3": {
+		"files": [
+			"input/nointro/Sinclair - ZX Spectrum +3*"
+		]
+	},
+	"no-intro/SNK - Neo Geo Pocket": {
+		"files": [
+			"input/nointro/SNK - Neo Geo Pocket (2*"
+		]
+	},
+	"no-intro/SNK - Neo Geo Pocket Color": {
+		"files": [
+			"input/nointro/SNK - Neo Geo Pocket Color*"
+		]
+	},
+	"no-intro/Atari - 2600": {
+		"files": [
+			"input/nointro/Sony - PlayStation Portable (2*"
+		]
+	},
+	"no-intro/Sony - PlayStation Portable (PSX2PSP)": {
+		"files": [
+			"input/nointro/Sony - PlayStation Portable (PSX2PSP)*"
+		]
+	},
+	"no-intro/Sony - PlayStation Portable (UMD Music)": {
+		"files": [
+			"input/nointro/Sony - PlayStation Portable (UMD Music)*"
+		]
+	},
+	"no-intro/Sony - PlayStation Portable (UMD Video)": {
+		"files": [
+			"input/nointro/Sony - PlayStation Portable (UMD Video)*"
+		]
+	},
+	"no-intro/Sony - PlayStation Vita": {
+		"files": [
+			"input/nointro/Sony - PlayStation Vita*"
+		]
+	},
+	"no-intro/Sony - PlayStation Vita (DL)": {
+		"files": [
+			"input/nointro/WIP Sony - PlayStation Vita (DL) (*"
+		]
+	},
+	"no-intro/Tiger - Game.com": {
+		"files": [
+			"input/nointro/Tiger - Game*"
+		]
+	},
+	"no-intro/VTech - CreatiVision": {
+		"files": [
+			"input/nointro/VTech - CreatiVision*"
+		]
+	},
+	"no-intro/VTech - V.Smile": {
+		"files": [
+			"input/nointro/VTech - V.Smile*"
+		]
+	},
+	"no-intro/Watara - Supervision": {
+		"files": [
+			"input/nointro/Watara - Supervision*"
+		]
+	},
+	"no-intro/Sony - PlayStation 3 (DL)": {
+		"files": [
+			"input/nointro/WIP Sony - PlayStation 3 (DL)*"
+		]
+	},
+	"no-intro/Sony - PlayStation Portable": {
+		"files": [
+			"input/nointro/WIP Sony - PlayStation Portable (DL)*"
+		]
 	}
 }

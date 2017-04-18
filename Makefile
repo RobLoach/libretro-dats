@@ -7,12 +7,13 @@ input/nointro:
 	mkdir -p input/nointro
 
 input/nointro.zip: input/nointro
-	-wget --no-clobber --output-document=input/nointro.zip \
-		--referer=http://www.emulab.it/rommanager/datfiles.php?category=14 \
-		http://www.emulab.it/rommanager/getfile.php?id=a925415748db28169826f6eed536f1c0
+	echo 'No-Intro needs manual downloads'
+	#-wget --no-clobber --output-document=input/nointro.zip \
+		#--referer=http://www.emulab.it/rommanager/datfiles.php?category=14 \
+		#http://www.emulab.it/rommanager/getfile.php?id=a925415748db28169826f6eed536f1c0
 
 nointro: input/nointro.zip
-	unzip -u input/nointro.zip -d input/nointro
+	#unzip -u input/nointro.zip -d input/nointro
 
 input/redump:
 	mkdir -p input/redump
