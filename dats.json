@@ -15,6 +15,11 @@
 			"input/redump/dats/NEC - PC Engine CD*"
 		]
 	},
+	"redump/Microsoft - Xbox": {
+		"files": [
+			"input/redump/dats/Microsoft - Xbox (*"
+		]
+	},
 	"libretro-dats/NEC - PC-FX": {
 		"files": [
 			"input/tosec/TOSEC-ISO/NEC PC-FX - Games*",
