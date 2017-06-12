@@ -6,13 +6,13 @@
 		<name>Nintendo - Super Famicom [T-En] Collection</name>
 		<description>Nintendo - Super Famicom [T-En] Collection</description>
 		<category>Standard DatFile</category>
-		<version>2017-02-18</version>
-		<date>2017-02-18</date>
+		<version>2017-05-17</version>
+		<date>2017-05-17</date>
 		<author>Retroplay</author>
 		<email>-insert email-</email>
 		<homepage>-insert homepage-</homepage>
 		<url>-insert url-</url>
-		<comment>Based on Powerpuffs Maybe-Intro Collection</comment>
+		<comment>-insert comment-</comment>
 		<clrmamepro/>
 	</header>
 	<machine name="3x3 Eyes - Juuma Houkan (Japan) [T-En by Atomizer_Zero v1.01]">
@@ -200,6 +200,7 @@
 		<rom name="Silva Saga II - The Legend of Light and Darkness (Japan) [T-En by Dynamic Designs v1.00].rtf" size="19136" crc="6048083e" md5="4b39165b44fc4da9fc08e6d69e23b7d9" sha1="83c24adeabfd45e80f304df5f74f82e763a195e1"/>
 		<rom name="Slayers (Japan) [T-En by Dynamic Designs+Matt's Messy Room v1.01].doc" size="128512" crc="6d153c5b" md5="c892f4f7b5b74e4b80dabc82901a890a" sha1="24e5ef62976ad16c12a4bc254cd3d7fd2fabe799"/>
 		<rom name="Snoopy Concert (Japan) [T-En by Aeon Genesis v1.00].txt" size="3775" crc="6d18b701" md5="3256d59b47eb1e2551a2611301ba743f" sha1="3f5e252d51939cf953c026d923b38d4859545350"/>
+		<rom name="Star Fox 2 (Japan) (Proto) (Alt 1) [T-En by Aeon Genesis v1.00] [Add by ManuLoewe v20.07.2010].txt" size="5646" crc="3073b599" md5="504d3f9e9e942c0fa5bcbe0b9102dd87" sha1="cb43373781ed6966798139d1fcf62878440da8c3"/>
 		<rom name="Star Fox 2 (Japan) (Proto) (Alt 1) [T-En by Aeon Genesis v1.00].txt" size="6198" crc="91a04295" md5="83ab634e7a472cf4e0a957a2d547e3df" sha1="a616183515aee7273dce9e7da826a599a7b8ce1d"/>
 		<rom name="Star Ocean (Japan) [T-En by DeJap v1.0].txt" size="15200" crc="99f9faf4" md5="402d747798251d1bb0ea6a96cbb04ca6" sha1="c3f0d58545fcb728e7c51554e7b33a328664bfb0"/>
 		<rom name="Super Back to the Future Part II (Japan) [T-En by mteam v1.00].txt" size="664" crc="280c4b4f" md5="7992423e9feb27ee28673ab390441296" sha1="d87adff301fc529eab76cccbe60953bd5de89e66"/>
@@ -233,7 +234,7 @@
 		<rom name="Wizardry V - Heart of the Maelstrom (Japan) [T-En by darkmoon2321 v1.0] [n].txt" size="4397" crc="2415afe6" md5="971158c6ffe1af0bef50fa696c9ffe64" sha1="e3bb007c3a3d1523f1f1d27c4ce0a8beb4cb2a83"/>
 		<rom name="Wizardry VI - Bane of the Cosmic Forge (Japan) [T-En by TiCo v0.99] [n].txt" size="1894" crc="7b8c148f" md5="07312d75aaf6f041dd874e37b31c4995" sha1="c6e34aece8106d5a38b54769b010d2c4e30d83e0"/>
 		<rom name="Wonder Project J - Mechanical Boy Pino (Japan) [T-En by WakdHacks v1.04] [n].txt" size="3176" crc="f3d018b1" md5="8d102636b9e85c77648c1520c93bd260" sha1="b01acf0cbe305dec8ccf06892129765732940930"/>
-		<rom name="Xak - The Art of Visual Stage (Japan) [T-En by Dynamic Designs v1.00].txt" size="6744" crc="7c086887" md5="ccc833e3db73b55ebfb31fb54cf9fed2" sha1="d604f07281d63c1ee62f4ed5fcd8db6c3f5a2b05"/>
+		<rom name="Xak - The Art of Visual Stage (Japan) [T-En by Dynamic Designs v1.10].txt" size="7433" crc="199cd5e6" md5="13e89485cb772cd85510719c075dae6e" sha1="1fdc1eaff152070921811ee0569e1db879eb5451"/>
 		<rom name="Ys IV - Mask of the Sun (Japan) [T-En by Aeon Genesis v2.10].txt" size="5162" crc="9d9de015" md5="7e822966da5fdf927dd0a9246fe5f9d8" sha1="5dedc356a286ceac8c34d71aa1103259437ac141"/>
 		<rom name="Ys V - Kefin, Lost Kingdom of Sand (Japan) [T-En by Aeon Genesis v1.00] [n].txt" size="2373" crc="b01eead7" md5="95ab8f043feda9abf6a3e590f802a3ec" sha1="b5bdf505d3f60a191c5a68a2464431189d2818d9"/>
 	</machine>
@@ -614,6 +615,10 @@
 		<description>Gekitou Burning Pro Wres (Japan) [T-En by Phil v1.0]</description>
 		<rom name="Gekitou Burning Pro Wres (Japan) [T-En by Phil v1.0].sfc" size="2621440" crc="91a36831" md5="b2e3fb5f44d0d2778698df7891004ee9" sha1="f7288a4aea2d1e427031f526ab7914f1a49bb2c0"/>
 	</machine>
+	<machine name="Ghost Chaser Densei (Japan) [T-En by MrRichard999+AgentOrange+rainponcho v1.0]">
+		<description>Ghost Chaser Densei (Japan) [T-En by MrRichard999+AgentOrange+rainponcho v1.0]</description>
+		<rom name="Ghost Chaser Densei (Japan) [T-En by MrRichard999+AgentOrange+rainponcho v1.0].sfc" size="4194304" crc="47d8a6e1" md5="0a0740f28ccc4cd3e21c6e4ac4d3b8d9" sha1="a878e75c3481c6b802a46d61fabb8284422ebe0b"/>
+	</machine>
 	<machine name="Glory of Heracles III, The - Silence of the Gods (Japan) [T-En by DQ Translations v1.1a] [n]">
 		<description>Glory of Heracles III, The - Silence of the Gods (Japan) [T-En by DQ Translations v1.1a] [n]</description>
 		<rom name="Glory of Heracles III, The - Silence of the Gods (Japan) [T-En by DQ Translations v1.1a] [n].sfc" size="2097152" crc="684c6758" md5="818cb737675b0636f17b639ddd9c3740" sha1="77016c1efd66f54dfe84d4a787a210e1da2f37d6"/>
@@ -708,7 +713,7 @@
 	</machine>
 	<machine name="Lennus II - The Apostles of the Seals (Japan) [T-En by Dynamic Designs v1.04] [n]">
 		<description>Lennus II - The Apostles of the Seals (Japan) [T-En by Dynamic Designs v1.04] [n]</description>
-		<rom name="Lennus II - The Apostles of the Seals (Japan) [T-En by Dynamic Designs v1.04] [n].sfc" size="4194304" crc="fb561d6b" md5="d4b9bc21ebac1de16739dd6daa3ba1c6" sha1="a89bdc2c47ae44960faeaf3647830edf05364c50"/>
+		<rom name="Lennus II - The Apostles of the Seals (Japan) [T-En by Dynamic Designs v1.04] [n].sfc" size="4194304" crc="a9d6de79" md5="8eedd52bbb4d636754a5ac4df5c17480" sha1="fd516ca9bb1d32a15e308d976760e41bcda5bd27"/>
 	</machine>
 	<machine name="Little Magic (Japan) [T-En by Aeon Genesis v1.00b]">
 		<description>Little Magic (Japan) [T-En by Aeon Genesis v1.00b]</description>
@@ -966,6 +971,10 @@
 		<description>Star Fox 2 (Japan) (Proto) (Alt 1) [T-En by Aeon Genesis v1.00]</description>
 		<rom name="Star Fox 2 (Japan) (Proto) (Alt 1) [T-En by Aeon Genesis v1.00].sfc" size="1048576" crc="a797f974" md5="e27fb54db09b3bc1cbb6d05b8f42ddbf" sha1="e6a66a8e6c929f569c8d3d625a571d8790866b42"/>
 	</machine>
+	<machine name="Star Fox 2 (Japan) (Proto) (Alt 1) [T-En by Aeon Genesis v1.00] [Add by ManuLoewe v20.07.2010]">
+		<description>Star Fox 2 (Japan) (Proto) (Alt 1) [T-En by Aeon Genesis v1.00] [Add by ManuLoewe v20.07.2010]</description>
+		<rom name="Star Fox 2 (Japan) (Proto) (Alt 1) [T-En by Aeon Genesis v1.00] [Add by ManuLoewe v20.07.2010].sfc" size="1048576" crc="85c7e727" md5="085817b184f94327d92b9fee4d3ed1de" sha1="9a87f264af6b1266500882e0c1848dd34effd38d"/>
+	</machine>
 	<machine name="Star Ocean (Japan) [T-En by DeJap v1.0]">
 		<description>Star Ocean (Japan) [T-En by DeJap v1.0]</description>
 		<rom name="Star Ocean (Japan) [T-En by DeJap v1.0].sfc" size="6291456" crc="6ba9e08d" md5="217a97e694fb916ad26c8a471f6c0e84" sha1="8574f0c49b0e823f21763331c2d66225b95c1653"/>
@@ -1098,9 +1107,9 @@
 		<description>Wonder Project J - Mechanical Boy Pino (Japan) [T-En by WakdHacks v1.04] [n]</description>
 		<rom name="Wonder Project J - Mechanical Boy Pino (Japan) [T-En by WakdHacks v1.04] [n].sfc" size="3203072" crc="36079184" md5="26b66c57f9ede1ba1485da4ae283f409" sha1="cf6e5503ba6ea23163e7c4274c931b159e93f8fc"/>
 	</machine>
-	<machine name="Xak - The Art of Visual Stage (Japan) [T-En by Dynamic Designs v1.05]">
-		<description>Xak - The Art of Visual Stage (Japan) [T-En by Dynamic Designs v1.05]</description>
-		<rom name="Xak - The Art of Visual Stage (Japan) [T-En by Dynamic Designs v1.05].sfc" size="1572864" crc="22bd8d9a" md5="7528bd961b7b2d7557979297bdec055c" sha1="a16cede62290458f9e3bf57263c84e08e2e97f92"/>
+	<machine name="Xak - The Art of Visual Stage (Japan) [T-En by Dynamic Designs v1.10]">
+		<description>Xak - The Art of Visual Stage (Japan) [T-En by Dynamic Designs v1.10]</description>
+		<rom name="Xak - The Art of Visual Stage (Japan) [T-En by Dynamic Designs v1.10].sfc" size="1572864" crc="5f182ee6" md5="5b867100a2ee7619c55ff23f69bb4f51" sha1="485c3abf7c02047a6020379dd3c4088466ed505b"/>
 	</machine>
 	<machine name="Ys IV - Mask of the Sun (Japan) [T-En by Aeon Genesis v2.10]">
 		<description>Ys IV - Mask of the Sun (Japan) [T-En by Aeon Genesis v2.10]</description>
