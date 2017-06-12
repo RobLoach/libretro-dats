@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><datafile><header><name>SMW-Unknown</name><description>SMW-Unknown</description><version>2017-01-26 05:33:47</version><author>Zandro</author></header>
+<?xml version="1.0" encoding="UTF-8"?><datafile><header><name>SMW-Unknown</name><description>SMW-Unknown</description><version>2017-06-08 09:11:45</version><author>Zandro</author></header>
 <game name="ZZZ_UNK_A;Enjooooooy [2013-03-10] (SMW Hack)"><rom name="ZZZ_UNK_A;Enjooooooy [2013-03-10] (SMW Hack).sfc" size="2097152" crc="1438dd34" sha1="23abb110589cf64914cffc14a520c941dd00b39e"/></game>
 <game name="ZZZ_UNK_A;FCW by huhwhatwhere [2009-04-08] (SMW Hack)"><rom name="ZZZ_UNK_A;FCW by huhwhatwhere [2009-04-08] (SMW Hack).sfc" size="2097152" crc="c9aa0b61" sha1="b9e62b80a872ef126bb9213484693b2c4a71a021"/></game>
 <game name="ZZZ_UNK_A;FMW (Demo) (Finnish) [2009-02-28] (SMW Hack)"><rom name="ZZZ_UNK_A;FMW (Demo) (Finnish) [2009-02-28] (SMW Hack).sfc" size="2097152" crc="388a9e5d" sha1="f99634a60097f774868e6b743a1fc40a3bd677ae"/></game>
@@ -34,6 +34,11 @@
 <game name="ZZZ_UNK_C;Fortress [2009-02-07] (SMW Hack)"><rom name="ZZZ_UNK_C;Fortress [2009-02-07] (SMW Hack).sfc" size="1048576" crc="751de31f" sha1="3d6cc68b94346001fb87e97c958a59241ee4586b"/></game>
 <game name="ZZZ_UNK_C;Fortress Contest Level [2009-02-07] (SMW Hack)"><rom name="ZZZ_UNK_C;Fortress Contest Level [2009-02-07] (SMW Hack).sfc" size="2097152" crc="a0e0c73e" sha1="15e1c4d2df73b3744c2dd66deed49f5b5fc7d2fb"/></game>
 <game name="ZZZ_UNK_C;Yellow Switch Palace Entry (V4) [2011-11-07] (SMW Hack)"><rom name="ZZZ_UNK_C;Yellow Switch Palace Entry (V4) [2011-11-07] (SMW Hack).sfc" size="2097152" crc="e997088a" sha1="e07126ca4c717aa32c715bba7974298cf4d60a99"/></game>
+<game name="ZZZ_UNK_D;2217 (NoPhys) [2017-02-02] (SMW Hack)"><rom name="ZZZ_UNK_D;2217 (NoPhys) [2017-02-02] (SMW Hack).sfc" size="4194304" crc="74f4eb9a" sha1="4f893f537ccdcfad43efe9bd3a33c0ec634c7bf2"/></game>
+<game name="ZZZ_UNK_D;2217 [2017-02-02] (SMW Hack)"><rom name="ZZZ_UNK_D;2217 [2017-02-02] (SMW Hack).sfc" size="4194304" crc="ff36d3df" sha1="1d794476bf85f26962a63bb27ed8d81ca1f05f9c"/></game>
+<game name="ZZZ_UNK_D;2317 (NoPhys) [2017-02-02] (SMW Hack)"><rom name="ZZZ_UNK_D;2317 (NoPhys) [2017-02-02] (SMW Hack).sfc" size="4194304" crc="a8e4f904" sha1="0e1b4df00fe476dcc398054213a1667419cc0cc7"/></game>
+<game name="ZZZ_UNK_D;2317 [2017-02-02] (SMW Hack)"><rom name="ZZZ_UNK_D;2317 [2017-02-02] (SMW Hack).sfc" size="4194304" crc="5384f9c8" sha1="b8e4a50e6efbff0a2d354ef19542e853985d0d67"/></game>
+<game name="ZZZ_UNK_D;2517 (SMW Hack)"><rom name="ZZZ_UNK_D;2517 (SMW Hack).sfc" size="4194304" crc="dd06c587" sha1="0fc56141d4615e9720f3969c75a6ab86afde0bcd"/></game>
 <game name="ZZZ_UNK_D;Addmusic Insert Test [2009-06-24] (SMW Hack)"><rom name="ZZZ_UNK_D;Addmusic Insert Test [2009-06-24] (SMW Hack).sfc" size="1048576" crc="b9021dfc" sha1="249b6870f72e92e9bc54d4bde980a5a1e1567b9e"/></game>
 <game name="ZZZ_UNK_D;ASM (SMW Hack)"><rom name="ZZZ_UNK_D;ASM (SMW Hack).sfc" size="2097152" crc="c20d4310" sha1="93730b158b7a1ac9204454dbb8334b0004ff7dc6"/></game>
 <game name="ZZZ_UNK_D;Backgrounds (SMW Hack)"><rom name="ZZZ_UNK_D;Backgrounds (SMW Hack).sfc" size="2097152" crc="c97e2729" sha1="84c0fbb7d1c53ab9f73cc308566b06a67aee410c"/></game>
@@ -115,8 +120,9 @@
 <game name="ZZZ_UNK_G;HACK IMPOSIBLE DE MARIO WORLD (SMW Hack)"><rom name="ZZZ_UNK_G;HACK IMPOSIBLE DE MARIO WORLD (SMW Hack).sfc" size="1048576" crc="eaa3908c" sha1="cdb341d4cea3e1e64f79095d9a442f8c94bdd646"/></game>
 <game name="ZZZ_UNK_G;Halloween Hack [2010-02-08] (SMW Hack)"><rom name="ZZZ_UNK_G;Halloween Hack [2010-02-08] (SMW Hack).sfc" size="2097152" crc="a6772d0b" sha1="1ed04fde9d44421ec6169a2dbf77dfa6d984b22c"/></game>
 <game name="ZZZ_UNK_G;Hardcore Super Mario World (V0.0.1) [2007-09-22] (SMW Hack)"><rom name="ZZZ_UNK_G;Hardcore Super Mario World (V0.0.1) [2007-09-22] (SMW Hack).sfc" size="1048576" crc="4c81ea7c" sha1="a28e283d7fd19fb30a89e28ae56cebd6e69a06cd"/></game>
-<game name="ZZZ_UNK_G;Homemade Vanilla Hack (SMW Hack)"><rom name="ZZZ_UNK_G;Homemade Vanilla Hack (SMW Hack).sfc" size="2097152" crc="e3b283a6" sha1="955718145f0456f5dc7fd9709b55746271194a53"/></game>
 <game name="ZZZ_UNK_G;Homemade Vanilla Hack (V0.2 Demo) (SMW Hack)"><rom name="ZZZ_UNK_G;Homemade Vanilla Hack (V0.2 Demo) (SMW Hack).sfc" size="2097152" crc="1e97f1c1" sha1="f15a74646055dba9db912178f0ba58158461427d"/></game>
+<game name="ZZZ_UNK_G;Homemade Vanilla Hack [2013-08-12] (SMW Hack)"><rom name="ZZZ_UNK_G;Homemade Vanilla Hack [2013-08-12] (SMW Hack).sfc" size="2097152" crc="a728f519" sha1="a630de1b2fd6de2c93b16eb37e98b98f4fb161be"/></game>
+<game name="ZZZ_UNK_G;Homemade Vanilla Hack [2013-09-05] (SMW Hack)"><rom name="ZZZ_UNK_G;Homemade Vanilla Hack [2013-09-05] (SMW Hack).sfc" size="2097152" crc="e3b283a6" sha1="955718145f0456f5dc7fd9709b55746271194a53"/></game>
 <game name="ZZZ_UNK_G;Homestar Runner (SMW Hack)"><rom name="ZZZ_UNK_G;Homestar Runner (SMW Hack).sfc" size="1048576" crc="44a59539" sha1="29d39a968ef7f0c6ab68af35fcbcbeb89ae3464c"/></game>
 <game name="ZZZ_UNK_G;Iggy's Attack [2009-08-25] (SMW Hack)"><rom name="ZZZ_UNK_G;Iggy's Attack [2009-08-25] (SMW Hack).sfc" size="1048576" crc="bc05dc02" sha1="0530a3f63803b25253e945e2e49a9ef895d8880f"/></game>
 <game name="ZZZ_UNK_G;Insane World (SMW Hack)"><rom name="ZZZ_UNK_G;Insane World (SMW Hack).sfc" size="2097152" crc="09c2bf0c" sha1="59a9dc3ff0f48d2b6b40789f25af8b909835359d"/></game>
@@ -165,7 +171,6 @@
 <game name="ZZZ_UNK_G;parallelmario [2009-11-16] (SMW Hack)"><rom name="ZZZ_UNK_G;parallelmario [2009-11-16] (SMW Hack).sfc" size="2097152" crc="7396eb6a" sha1="67359d1aa0a8f35bfcce7885b0f6a7393430c12d"/></game>
 <game name="ZZZ_UNK_G;Patch by mrwannabe [2010-02-28] (SMW Hack)"><rom name="ZZZ_UNK_G;Patch by mrwannabe [2010-02-28] (SMW Hack).sfc" size="1048576" crc="87a9b4ad" sha1="7328c7ba610ce255ac43e5f3e806bdb0c687c6ee"/></game>
 <game name="ZZZ_UNK_G;recouler [2006-08-25] (SMW Hack)"><rom name="ZZZ_UNK_G;recouler [2006-08-25] (SMW Hack).sfc" size="1048576" crc="c1c0efe4" sha1="18737ebcd3bbf0c74cc69788a784a8f73230f008"/></game>
-<game name="ZZZ_UNK_G;Revision (SMW Hack)"><rom name="ZZZ_UNK_G;Revision (SMW Hack).sfc" size="4194304" crc="c654a1de" sha1="7bb78c79ad4c3c83237e6d768aa2f0d6275c8c76"/></game>
 <game name="ZZZ_UNK_G;Riot Blade (SMW Hack)"><rom name="ZZZ_UNK_G;Riot Blade (SMW Hack).sfc" size="1048576" crc="ea0ab06e" sha1="3cadee483bdec72067585d266a51cbc7642bd3e8"/></game>
 <game name="ZZZ_UNK_G;Riot Blade [2001-08-25] (SMW Hack)"><rom name="ZZZ_UNK_G;Riot Blade [2001-08-25] (SMW Hack).sfc" size="1048576" crc="260100a7" sha1="4517cc6ff5cd91a724f43fdd49c83aef0d2c218c"/></game>
 <game name="ZZZ_UNK_G;Rise of the Mushroom Kingdom (Demo) [2008-02-09] (SMW Hack) [BAD-emu]"><rom name="ZZZ_UNK_G;Rise of the Mushroom Kingdom (Demo) [2008-02-09] (SMW Hack) [BAD-emu].sfc" size="4194304" crc="0b015088" sha1="831a4cd22e62aaa6b7364798eb0ad522e00ae301"/></game>
@@ -186,7 +191,7 @@
 <game name="ZZZ_UNK_G;SMW Hack [2010-08-01] (SMW Hack)"><rom name="ZZZ_UNK_G;SMW Hack [2010-08-01] (SMW Hack).sfc" size="1048576" crc="57bb34a2" sha1="afa1268a5917a3cff1009eff9633819a2dbcb312"/></game>
 <game name="ZZZ_UNK_G;SMW Hack by Unknown (SMW Hack) [BAD-sizeaddr]"><rom name="ZZZ_UNK_G;SMW Hack by Unknown (SMW Hack) [BAD-sizeaddr].sfc" size="2097152" crc="e7e51841" sha1="4368df710162b1b3eef6e182b2d59412f52a8f65"/></game>
 <game name="ZZZ_UNK_G;SMW Hack by Unknown (SMW Hack)"><rom name="ZZZ_UNK_G;SMW Hack by Unknown (SMW Hack).sfc" size="2097152" crc="09c1f80a" sha1="3a71fb4d68e6bf9f4d1ab82fe09701e329e3b0d0"/></game>
-<game name="ZZZ_UNK_G;SMW HP by SMW_Forever (SMW Hack) [BAD-emu]"><rom name="ZZZ_UNK_G;SMW HP by SMW_Forever (SMW Hack) [BAD-emu].sfc" size="2097152" crc="6628f977" sha1="3037ef4d29052867a03c6e926fb49ed8c3b6eee8"/></game>
+<game name="ZZZ_UNK_G;SMW HP by SMW_Forever [2013-08-11] (SMW Hack)"><rom name="ZZZ_UNK_G;SMW HP by SMW_Forever [2013-08-11] (SMW Hack).sfc" size="2097152" crc="6628f977" sha1="3037ef4d29052867a03c6e926fb49ed8c3b6eee8"/></game>
 <game name="ZZZ_UNK_G;smw patch by GN (Incognito) [2011-10-27] (SMW Hack)"><rom name="ZZZ_UNK_G;smw patch by GN (Incognito) [2011-10-27] (SMW Hack).sfc" size="1048576" crc="b081a791" sha1="ea99caf222f65851b296d34c24645ea85efe6b11"/></game>
 <game name="ZZZ_UNK_G;SMW3 [2013-04-24] (SMW Hack)"><rom name="ZZZ_UNK_G;SMW3 [2013-04-24] (SMW Hack).sfc" size="1048576" crc="bf17bc65" sha1="0d129ab0eed885a120b25d86db937c2b5daf4f99"/></game>
 <game name="ZZZ_UNK_G;Sonic the Hedgehog [2009-06-08] (SMW Hack)"><rom name="ZZZ_UNK_G;Sonic the Hedgehog [2009-06-08] (SMW Hack).sfc" size="2097152" crc="e66fda9f" sha1="1675d2313093adffce3a6bec375d1d9fbc8a731e"/></game>
@@ -244,7 +249,6 @@
 <game name="ZZZ_UNK_G;Super Mario World [2010-02-07] (SMW Hack)"><rom name="ZZZ_UNK_G;Super Mario World [2010-02-07] (SMW Hack).sfc" size="2097152" crc="8ab55d27" sha1="fcb7ec8f69695695fcd8194d24f18ea922fb30b3"/></game>
 <game name="ZZZ_UNK_G;Super Mario World [2016-03-27] (SMW Hack)"><rom name="ZZZ_UNK_G;Super Mario World [2016-03-27] (SMW Hack).sfc" size="4194304" crc="1be04e0e" sha1="6fa2d0d7b476d1b1dd3bc67381fa4e0a5353f5d4"/></game>
 <game name="ZZZ_UNK_G;Super Mario World 2010 - 20th Aniversario [2010] (SMW Hack)"><rom name="ZZZ_UNK_G;Super Mario World 2010 - 20th Aniversario [2010] (SMW Hack).sfc" size="1572864" crc="27b32c41" sha1="5a6add81ee04358f8b45f44975a9b4c24fcf7e71"/></game>
-<game name="ZZZ_UNK_G;Super Mario World 3 [2013-08-12] (SMW Hack)"><rom name="ZZZ_UNK_G;Super Mario World 3 [2013-08-12] (SMW Hack).sfc" size="2097152" crc="a728f519" sha1="a630de1b2fd6de2c93b16eb37e98b98f4fb161be"/></game>
 <game name="ZZZ_UNK_G;Super Mario World Beta Collection [2016-06-01] (SMW Hack)"><rom name="ZZZ_UNK_G;Super Mario World Beta Collection [2016-06-01] (SMW Hack).sfc" size="1048576" crc="c28b6a73" sha1="041c5fcfbd4db6e5e3fce456a91f82bd7f023d77"/></game>
 <game name="ZZZ_UNK_G;Super Mario World Laughs (alt) [2010-02-14] (SMW Hack)"><rom name="ZZZ_UNK_G;Super Mario World Laughs (alt) [2010-02-14] (SMW Hack).sfc" size="766264" crc="97cbe5ae" sha1="742fc9a87b83f4485c4d02046cd027b98a4a6821"/></game>
 <game name="ZZZ_UNK_G;Super Mario World Laughs (SMW Hack)"><rom name="ZZZ_UNK_G;Super Mario World Laughs (SMW Hack).sfc" size="1048576" crc="e88a8326" sha1="b76e4644a8575430720ca7c44bac55e60655552a"/></game>
@@ -263,7 +267,6 @@
 <game name="ZZZ_UNK_G;Super_Mario_World [2009-11-15] (SMW Hack)"><rom name="ZZZ_UNK_G;Super_Mario_World [2009-11-15] (SMW Hack).sfc" size="2097152" crc="c61b8784" sha1="475123b23a7216dcd7e3d10341d126614177fba6"/></game>
 <game name="ZZZ_UNK_G;Super_Mario_World_(U)____ [2010-03-16] (SMW Hack)"><rom name="ZZZ_UNK_G;Super_Mario_World_(U)____ [2010-03-16] (SMW Hack).sfc" size="1048576" crc="acf43941" sha1="b730319a2819275ad66f95f0d295e30dc7642e87"/></game>
 <game name="ZZZ_UNK_G;super_mario_world_ghost_house_vr [2009-05-01] (SMW Hack) [BAD]"><rom name="ZZZ_UNK_G;super_mario_world_ghost_house_vr [2009-05-01] (SMW Hack) [BAD].sfc" size="2097152" crc="efb09621" sha1="31b3a6512950f6baee0b8a8f4c27a0bd4fc4d4a4"/></game>
-<game name="ZZZ_UNK_G;Tall Tall Mountain (SMW Hack)"><rom name="ZZZ_UNK_G;Tall Tall Mountain (SMW Hack).sfc" size="4194304" crc="48456308" sha1="b8118ebc3f65f3e61d1d8c846409ce4f4346373b"/></game>
 <game name="ZZZ_UNK_G;TESTROMDOTESEMSEE (SMW Hack)"><rom name="ZZZ_UNK_G;TESTROMDOTESEMSEE (SMW Hack).sfc" size="2097152" crc="442a7054" sha1="8cb77766f8f933df6b4dd1deb58fd94526abd261"/></game>
 <game name="ZZZ_UNK_G;Thwomp Castle [2009-02-06] (SMW Hack)"><rom name="ZZZ_UNK_G;Thwomp Castle [2009-02-06] (SMW Hack).sfc" size="2097152" crc="19269d8a" sha1="8a358e657dc00c96ca7654f32e3435e6c33a7ba8"/></game>
 <game name="ZZZ_UNK_G;Thwomp Land [2009-07-09] (SMW Hack)"><rom name="ZZZ_UNK_G;Thwomp Land [2009-07-09] (SMW Hack).sfc" size="2097152" crc="19226af5" sha1="f78a12b5c625e274d99f561474beaed3ada6289c"/></game>
@@ -332,7 +335,6 @@
 <game name="ZZZ_UNK_K;doom by Kollin [2009-03-17] (SMW Hack)"><rom name="ZZZ_UNK_K;doom by Kollin [2009-03-17] (SMW Hack).sfc" size="2097152" crc="ccfdf52a" sha1="aa19d50a9e4217925954d1602d0199b3842736f1"/></game>
 <game name="ZZZ_UNK_K;hak of myn [2010-08-01] (SMW Hack)"><rom name="ZZZ_UNK_K;hak of myn [2010-08-01] (SMW Hack).sfc" size="1048576" crc="7c8eb70a" sha1="e647c2fad0368cad9ead9e3abbbb46151d6413d6"/></game>
 <game name="ZZZ_UNK_K;hiii [2010-08-01] (SMW Hack)"><rom name="ZZZ_UNK_K;hiii [2010-08-01] (SMW Hack).sfc" size="1048576" crc="f501e943" sha1="3238ab7bee4dfc7aa7473ca6ef86ae844581f36f"/></game>
-<game name="ZZZ_UNK_K;K-Kaizo Island [2010-11-14] (SMW Hack)"><rom name="ZZZ_UNK_K;K-Kaizo Island [2010-11-14] (SMW Hack).sfc" size="2097152" crc="4856f667" sha1="cc907f20945c58497ef2c891d46f0bc9dde1dc27"/></game>
 <game name="ZZZ_UNK_K;Kaizo Hack [2008-12-23] (SMW Hack)"><rom name="ZZZ_UNK_K;Kaizo Hack [2008-12-23] (SMW Hack).sfc" size="1048576" crc="22e1959d" sha1="1c572c26d269e1db740cc29ec3aaeca4b1d91e30"/></game>
 <game name="ZZZ_UNK_K;Kaizo Hack [2009-01-10] (SMW Hack)"><rom name="ZZZ_UNK_K;Kaizo Hack [2009-01-10] (SMW Hack).sfc" size="1048576" crc="07c9f017" sha1="99909a3599890e148884e5f0a5d07bc72464c402"/></game>
 <game name="ZZZ_UNK_K;Kaizo Hack [2010-07-22] (SMW Hack)"><rom name="ZZZ_UNK_K;Kaizo Hack [2010-07-22] (SMW Hack).sfc" size="1048576" crc="a22d5298" sha1="0ded0decb2e4954a02f316ec4a3e763ec8beb80d"/></game>
@@ -425,19 +427,18 @@
 <game name="ZZZ_UNK_U;Nightmare.exe [2015-09-23] (SMW Hack)"><rom name="ZZZ_UNK_U;Nightmare.exe [2015-09-23] (SMW Hack).sfc" size="2097152" crc="0d8af5cb" sha1="e9b070480201b26a539fe1098ab40d84262a1177"/></game>
 <game name="ZZZ_UNK_U;Oh no, not again ... A Vanilla Level! [2015-09-18] (SMW Hack)"><rom name="ZZZ_UNK_U;Oh no, not again ... A Vanilla Level! [2015-09-18] (SMW Hack).sfc" size="1048576" crc="108af61a" sha1="f1599811b5e224e40700cfa5d299e5a71ef6155a"/></game>
 <game name="ZZZ_UNK_U;patch by grishnax [2010-11-19] (SMW Hack)"><rom name="ZZZ_UNK_U;patch by grishnax [2010-11-19] (SMW Hack).sfc" size="2097152" crc="74244e5e" sha1="2385d190fa91ad50a0f62c113fcdd7f44f2a7a80"/></game>
-<game name="ZZZ_UNK_U;Reznor wip (SMW Hack)"><rom name="ZZZ_UNK_U;Reznor wip (SMW Hack).sfc" size="1048576" crc="8480dca2" sha1="53f7b306b5133a86d6d45a2b775a13ef2969d8d7"/></game>
+<game name="ZZZ_UNK_U;Reznor wip [2013-08-26] (SMW Hack)"><rom name="ZZZ_UNK_U;Reznor wip [2013-08-26] (SMW Hack).sfc" size="1048576" crc="8480dca2" sha1="53f7b306b5133a86d6d45a2b775a13ef2969d8d7"/></game>
 <game name="ZZZ_UNK_U;SMW Hack by 4J25 [2011-07-12] (SMW Hack)"><rom name="ZZZ_UNK_U;SMW Hack by 4J25 [2011-07-12] (SMW Hack).sfc" size="1048576" crc="758e29df" sha1="81c00b46a4679f8f31c3277009165645ce5969be"/></game>
 <game name="ZZZ_UNK_U;smw patch_1 by GN (Incognito) [2012-02-29] (SMW Hack)"><rom name="ZZZ_UNK_U;smw patch_1 by GN (Incognito) [2012-02-29] (SMW Hack).sfc" size="2097152" crc="93ad4ff3" sha1="130a5592b896758b6058e255890f4fda6339857a"/></game>
 <game name="ZZZ_UNK_U;SMWH ENGLISH (SMW Hack)"><rom name="ZZZ_UNK_U;SMWH ENGLISH (SMW Hack).sfc" size="3145728" crc="ec60eb12" sha1="d9537235c207e2db2c4082a305f0324057ab2aa9"/></game>
-<game name="ZZZ_UNK_U;Super Mario World (F) (SMW Hack)"><rom name="ZZZ_UNK_U;Super Mario World (F) (SMW Hack).sfc" size="2097152" crc="f6b455fc" sha1="7bf65fb1fa1e9513035fd632c47d49ab0f8fe008"/></game>
 <game name="ZZZ_UNK_U;Super Mario World (F) [2013-08-02] (SMW Hack)"><rom name="ZZZ_UNK_U;Super Mario World (F) [2013-08-02] (SMW Hack).sfc" size="2097152" crc="08ea1e1e" sha1="55b917f83f5cf71f882c43c88ee5525527007cd8"/></game>
-<game name="ZZZ_UNK_U;SUPER MARIO WORLD (H) (V3.0) [2013] (SMW Hack)"><rom name="ZZZ_UNK_U;SUPER MARIO WORLD (H) (V3.0) [2013] (SMW Hack).sfc" size="1048576" crc="178c3a02" sha1="bbdc4ae1ed910c8fbe97cf947040d93a3ecc6e29"/></game>
+<game name="ZZZ_UNK_U;Super Mario World (F) [2013-09-04] (SMW Hack)"><rom name="ZZZ_UNK_U;Super Mario World (F) [2013-09-04] (SMW Hack).sfc" size="2097152" crc="f6b455fc" sha1="7bf65fb1fa1e9513035fd632c47d49ab0f8fe008"/></game>
+<game name="ZZZ_UNK_U;SUPER MARIO WORLD (H) (V3.0) [2013-09-04] (SMW Hack)"><rom name="ZZZ_UNK_U;SUPER MARIO WORLD (H) (V3.0) [2013-09-04] (SMW Hack).sfc" size="1048576" crc="178c3a02" sha1="bbdc4ae1ed910c8fbe97cf947040d93a3ecc6e29"/></game>
 <game name="ZZZ_UNK_U;Super Mario World (U) [2013-08-11] (SMW Hack)"><rom name="ZZZ_UNK_U;Super Mario World (U) [2013-08-11] (SMW Hack).sfc" size="1048576" crc="eba90b82" sha1="38544e10f1ea871cfed54f8ced38092890a27ed3"/></game>
 <game name="ZZZ_UNK_U;Super Mario World (USA) (SMW Hack)"><rom name="ZZZ_UNK_U;Super Mario World (USA) (SMW Hack).sfc" size="1048576" crc="3a47f798" sha1="c822b4e00c331c8d6ebdefbd79ef1ca4779ab6fe"/></game>
 <game name="ZZZ_UNK_U;Super Mario World [#GS-T-12] (SMW Hack)"><rom name="ZZZ_UNK_U;Super Mario World [#GS-T-12] (SMW Hack).sfc" size="524288" crc="3e9e84af" sha1="6dc5147e9fbfcd0603b76f0811dd8b0641b9c4c5"/></game>
 <game name="ZZZ_UNK_U;Super Mario World [#GS-U-226] (SMW Hack)"><rom name="ZZZ_UNK_U;Super Mario World [#GS-U-226] (SMW Hack).sfc" size="524288" crc="5ea8c162" sha1="72013a8f4c361ca8071bfa6a72e74d24952f39fa"/></game>
 <game name="ZZZ_UNK_U;Super Mario World [2009-09-19] (SMW Hack)"><rom name="ZZZ_UNK_U;Super Mario World [2009-09-19] (SMW Hack).sfc" size="1048576" crc="281cf095" sha1="fe280a44abd9cf24067eb25df4b381d7d12df85c"/></game>
-<game name="ZZZ_UNK_U;Super Mario World The Of BUG (SMW Hack)"><rom name="ZZZ_UNK_U;Super Mario World The Of BUG (SMW Hack).sfc" size="1048576" crc="ba204802" sha1="c620fb7635e3f2bdc5eb581725036e0bb009869d"/></game>
 <game name="ZZZ_UNK_U;Super Vanilla Land [2015-07-23] (SMW Hack)"><rom name="ZZZ_UNK_U;Super Vanilla Land [2015-07-23] (SMW Hack).sfc" size="2097152" crc="6c4f8b76" sha1="3c727039547e4914a33ce6c9c5884f057d247579"/></game>
 <game name="ZZZ_UNK_U;test this by mr shadow [2011-04-01] (SMW Hack)"><rom name="ZZZ_UNK_U;test this by mr shadow [2011-04-01] (SMW Hack).sfc" size="1048576" crc="7b779792" sha1="0be8bd7c8de8622a8edee1cb2a802fca9de3c7da"/></game>
 <game name="ZZZ_UNK_U;Unknown Super Mario World (179) [2009] (SMW Hack)"><rom name="ZZZ_UNK_U;Unknown Super Mario World (179) [2009] (SMW Hack).sfc" size="2097152" crc="c45af0bb" sha1="9fc6181fe81e84d1b85951f2dce7b7a1a0aa07f8"/></game>
