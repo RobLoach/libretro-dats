@@ -36,6 +36,11 @@
 			"input/redump/dats/SNK - Neo Geo CD (*"
 		]
 	},
+	"libretro-dats/Nintendo - Nintendo 3DS": {
+		"files": [
+			"input/b2071988/Nintendo_3ds*"
+		]
+	},
 	"libretro-dats/Nintendo - GameCube": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Nintendo GameCube - Games*",
