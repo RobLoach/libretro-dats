@@ -172,6 +172,11 @@ function getGamesFromXml(dat) {
 			else if (game.rom[0]['$']) {
 				title = path.basename(game.rom[0]['$'].name)
 			}
+			else {
+				console.log('Could not find title for....')
+				console.log(game, i)
+				process.exit()
+			}
 			for (var x in game.rom) {
 				var rom = game.rom[x]['$']
 				if (rom.name.indexOf('.cue') >= 0 && !finalCue) {
@@ -201,7 +206,7 @@ function getGamesFromXml(dat) {
 			}
 		}
 		else {
-			console.log('Could not find title for....')
+			console.log('Could not entry for....')
 			console.log(game, i)
 			process.exit()
 		}
