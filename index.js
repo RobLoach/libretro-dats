@@ -35,7 +35,7 @@ function processDat(datsInfo, name, done) {
 	// Retrieve all associated files for the DAT.
 	glob(datsInfo.files, function (err, files) {
 		// Output the files to the user.
-		console.log(name, files)
+		//console.log(name, files)
 		// Loop through each given XML file associated with the DAT.
 		async.map(files, processXml, function (err, results) {
 			// Error handling.
@@ -47,7 +47,7 @@ function processDat(datsInfo, name, done) {
 			var games = {}
 			for (var i in results) {
 				for (var game in results[i]) {
-					var gameName = game
+					var gameName = results[i][game].title
 					// Do not add BIOS entries.
 					if (gameName.indexOf('[BIOS]') < 0) {
 						while (gameName in games) {
@@ -69,7 +69,7 @@ function processDat(datsInfo, name, done) {
 
 			// Save the new DAT file.
 			var outputFile = `dat/${name}.dat`
-			console.log(outputFile)
+			//console.log(outputFile)
 			fs.writeFile(outputFile, output, done)
 		})
 	})
@@ -160,11 +160,17 @@ function getGamesFromXml(dat) {
 
 		// Find all the entries.
 		if (game.rom) {
-			if (game.description) { 
-				title = game.description[0] || game.title
-			}
-			else {
+			if (game.title) {
 				title = game.title
+			}
+			else if (game['$'] && game['$'].name) {
+				title = game['$'].name
+			}
+			else if (game.description && game.description[0]) {
+				title = game.description[0]
+			}
+			else if (game.rom[0]['$']) {
+				title = path.basename(game.rom[0]['$'].name)
 			}
 			for (var x in game.rom) {
 				var rom = game.rom[x]['$']
@@ -194,22 +200,39 @@ function getGamesFromXml(dat) {
 				crc: game.files[0].romCRC[0]['_']
 			}
 		}
+		else {
+			console.log('Could not find title for....')
+			console.log(game, i)
+			process.exit()
+		}
 
 		// Choose which entry to use.
+		var final = null
 		if (finalCue) {
-			out[title] = finalCue
+			final = finalCue
 		}
 		else if (finalGdi) {
-			out[title] = finalGdi
+			final = finalGdi
 		}
 		else if (finalIso) {
-			out[title] = finalIso
+			final = finalIso
 		}
 		else if (finalImg) {
-			out[title] = finalImg
+			final = finalImg
 		}
 		else if (finalEntry) {
-			out[title] = finalEntry
+			final = finalEntry
+		}
+		if (final) {
+			final.title = title
+			if (final.crc) {
+				out[final.crc] = final
+			}
+			else {
+				console.log("Couldn't find key for....")
+				console.log(final)
+				process.exit()
+			}
 		}
 	})
 
