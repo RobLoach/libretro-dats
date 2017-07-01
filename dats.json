@@ -484,11 +484,6 @@
 			"input/nointro/SNK - Neo Geo Pocket Color*"
 		]
 	},
-	"no-intro/Atari - 2600": {
-		"files": [
-			"input/nointro/Sony - PlayStation Portable (2*"
-		]
-	},
 	"no-intro/Sony - PlayStation Portable (PSX2PSP)": {
 		"files": [
 			"input/nointro/Sony - PlayStation Portable (PSX2PSP)*"
