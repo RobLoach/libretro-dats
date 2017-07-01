@@ -289,11 +289,6 @@
 			"input/nointro/Microsoft - MSX2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Atari - 2600": {
-		"files": [
-			"input/nointro/Atari - 2600*"
-		]
-	},
 	"libretro-database/metadat/no-intro/Microsoft - XBOX 360 (DLC)": {
 		"files": [
 			"input/nointro/Microsoft - XBOX 360 (DLC)*"
@@ -482,11 +477,6 @@
 	"libretro-database/metadat/no-intro/SNK - Neo Geo Pocket Color": {
 		"files": [
 			"input/nointro/SNK - Neo Geo Pocket Color*"
-		]
-	},
-	"libretro-database/metadat/no-intro/Atari - 2600": {
-		"files": [
-			"input/nointro/Sony - PlayStation Portable (2*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Sony - PlayStation Portable (PSX2PSP)": {
