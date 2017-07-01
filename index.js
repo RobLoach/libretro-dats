@@ -4,28 +4,16 @@ const pkg = require('./package')
 const async = require('async')
 const glob = require('multi-glob').glob
 const xml = require('xml2js').Parser()
-const rimraf = require('rimraf')
 const sort = require('sort-object')
 const unidecode = require('unidecode')
 const sanitizeFilename = require('sanitize-filename')
 const dats = require('./dats.json')
 
-// Clear out the dat folder.
-rimraf('dat', function () {
-	fs.mkdir('dat', function () {
-		fs.mkdir('dat/redump', function () {
-			fs.mkdir('dat/libretro-dats', function () {
-				fs.mkdir('dat/no-intro', function () {
-					// Process each DAT file.
-					async.mapValues(dats, processDat, function (err, results) {
-						if (err) {
-							throw err
-						}
-					})
-				})
-			})
-		})
-	})
+// Process all the dats.
+async.mapValues(dats, processDat, function (err, results) {
+	if (err) {
+		throw err
+	}
 })
 
 /**

@@ -13,7 +13,6 @@
   "dependencies": {
     "async": "^2.0.1",
     "multi-glob": "^1.0.1",
-    "rimraf": "^2.5.4",
     "sanitize-filename": "^1.6.0",
     "sort-object": "^3.0.2",
     "unidecode": "^0.1.8",
