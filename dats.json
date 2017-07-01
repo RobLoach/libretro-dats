@@ -7,7 +7,7 @@
 	"libretro-dats/NEC - PC Engine CD - TurboGrafx-CD": {
 		"files": [
 			"input/tosec/TOSEC-ISO/NEC PC-Engine CD*",
-			"input/trurip/NEC PC Engine CD*"
+			"input/trurip/NEC NEC - PC Engine CD*"
 		]
 	},
 	"redump/NEC - PC Engine CD - TurboGrafx-CD": {
@@ -23,7 +23,7 @@
 	"libretro-dats/NEC - PC-FX": {
 		"files": [
 			"input/tosec/TOSEC-ISO/NEC PC-FX - Games*",
-			"input/trurip/NEC PC-FX -*"
+			"input/trurip/NEC NEC - PC-FX -*"
 		]
 	},
 	"redump/NEC - PC-FX": {
@@ -44,7 +44,7 @@
 	"libretro-dats/Nintendo - GameCube": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Nintendo GameCube - Games*",
-			"input/trurip/Nintendo GameCube - *"
+			"input/trurip/Namco - Sega - Nintendo Namco, Sega, Nintendo - Triforce - *"
 		]
 	},
 	"redump/Nintendo - GameCube": {
@@ -60,7 +60,7 @@
 	"libretro-dats/Sega - Dreamcast": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Sega Dreamcast*",
-			"input/trurip/Sega Dreamcast*"
+			"input/trurip/Sega Sega - Dreamcast*"
 		]
 	},
 	"redump/Sega - Dreamcast": {
@@ -71,7 +71,7 @@
 	"libretro-dats/Sega - Mega-CD - Sega CD": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Sega Mega-CD*",
-			"input/trurip/Sega Mega-CD*"
+			"input/trurip/Sega Sega - Mega-CD*"
 		]
 	},
 	"redump/Sega - Mega-CD - Sega CD": {
@@ -82,7 +82,7 @@
 	"libretro-dats/Sega - Saturn": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Sega Saturn*",
-			"input/trurip/Sega Saturn*",
+			"input/trurip/Sega Sega - Saturn*",
 			"input/darkwater/Saturn*"
 		]
 	},
@@ -94,7 +94,7 @@
 	"libretro-dats/Sony - PlayStation": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Sony PlayStation -*",
-			"input/trurip/Sony PlayStation & PSone*"
+			"input/trurip/Sony Sony - PlayStation & PSone*"
 		]
 	},
 	"redump/Sony - PlayStation": {

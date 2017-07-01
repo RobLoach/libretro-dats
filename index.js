@@ -92,7 +92,7 @@ function getHeader(name, pkg) {
  */
 function getGameEntry(game, rom) {
 	// Replace Unicode characters, and trim the title.
-	var gameName = unidecode(game).trim()
+	var gameName = unidecode(game).trim();
 	// The filename must be a valid filename.
 	var gameFile = sanitizeFilename(path.basename(unidecode(rom.name)))
 	return `\ngame (
@@ -143,8 +143,8 @@ function getGamesFromXml(dat) {
 			games = header.games[0].game
 		}
 		else {
-			games = []
 			console.log('No Games Found: ', header.header[0].name[0])
+			return {}
 		}
 	}
 
@@ -207,8 +207,13 @@ function getGamesFromXml(dat) {
 		}
 		else {
 			console.log('Could not entry for....')
-			console.log(game, i)
-			process.exit()
+			if (game['$']) {
+				console.log(game['$'], i)
+			}
+			else {
+				console.log(game, i)
+			}
+			return;
 		}
 
 		// Choose which entry to use.
@@ -233,10 +238,14 @@ function getGamesFromXml(dat) {
 			if (final.crc) {
 				out[final.crc] = final
 			}
+			else if (final.status == 'nodump') {
+				// Nothing.
+				console.log("No dump for " + final.title)
+			}
 			else {
 				console.log("Couldn't find key for....")
 				console.log(final)
-				process.exit()
+				//process.exit()
 			}
 		}
 	})
