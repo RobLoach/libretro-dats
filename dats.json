@@ -326,7 +326,7 @@
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Game Boy Advance": {
 		"files": [
-			"input/nointro/Nintendo - Game Boy Advance*"
+			"input/nointro/Nintendo - Game Boy Advance (2*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Game Boy Advance (e-Cards)": {
@@ -341,7 +341,8 @@
 	},
 	"libretro-database/metadat/no-intro/Nintendo - New Nintendo 3DS": {
 		"files": [
-			"input/nointro/Nintendo - New Nintendo 3DS (2*"
+			"input/nointro/Nintendo - New Nintendo 3DS (2*",
+			"input/nointro/Nintendo - New Nintendo 3DS Decrypted*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - New Nintendo 3DS (DLC)": {
@@ -351,7 +352,8 @@
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo 3DS": {
 		"files": [
-			"input/nointro/Nintendo - Nintendo 3DS (2*"
+			"input/nointro/Nintendo - Nintendo 3DS (2*",
+			"input/nointro/Nintendo - Nintendo 3DS Decrypted *"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo 3DS (DLC)": {
@@ -361,7 +363,8 @@
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo 64": {
 		"files": [
-			"input/nointro/Nintendo - Nintendo 64 (2*"
+			"input/nointro/Nintendo - Nintendo 64 (2*",
+			"input/nointro/Nintendo - Nintendo 64 Byte Swapped *"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo 64DD": {
@@ -479,6 +482,11 @@
 			"input/nointro/SNK - Neo Geo Pocket Color*"
 		]
 	},
+	"libretro-database/metadat/no-intro/Sony - PlayStation Portable": {
+		"files": [
+			"input/nointro/Sony - PlayStation Portable (2*"
+		]
+	},
 	"libretro-database/metadat/no-intro/Sony - PlayStation Portable (PSX2PSP)": {
 		"files": [
 			"input/nointro/Sony - PlayStation Portable (PSX2PSP)*"
@@ -496,12 +504,7 @@
 	},
 	"libretro-database/metadat/no-intro/Sony - PlayStation Vita": {
 		"files": [
-			"input/nointro/Sony - PlayStation Vita*"
-		]
-	},
-	"libretro-database/metadat/no-intro/Sony - PlayStation Vita (DL)": {
-		"files": [
-			"input/nointro/WIP Sony - PlayStation Vita (DL) (*"
+			"input/nointro/Sony - PlayStation Vita (2*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Tiger - Game.com": {
@@ -529,9 +532,14 @@
 			"input/nointro/WIP Sony - PlayStation 3 (DL)*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sony - PlayStation Portable": {
+	"libretro-database/metadat/no-intro/Sony - PlayStation Portable (DL)": {
 		"files": [
 			"input/nointro/WIP Sony - PlayStation Portable (DL)*"
+		]
+	},
+	"libretro-database/metadat/no-intro/Sony - PlayStation Vita (DL)": {
+		"files": [
+			"input/nointro/WIP Sony - PlayStation Vita (DL)*"
 		]
 	}
 }
