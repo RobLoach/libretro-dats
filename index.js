@@ -56,7 +56,7 @@ function processDat(datsInfo, name, done) {
 			}
 
 			// Save the new DAT file.
-			var outputFile = `dat/${name}.dat`
+			var outputFile = `${name}.dat`
 			//console.log(outputFile)
 			fs.writeFile(outputFile, output, done)
 		})
