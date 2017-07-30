@@ -47,6 +47,7 @@ function cleanSerial(serialName) {
 		.replace(' Version! Latino Beta 3', '')
 		.replace(' Version! Latino', '')
 		.replace(' - ', ': ')
+		.replace(' : ', ': ')
 		.replace(' The Rise of Hex', '')
 		.replace('The Gottlieb Collection', 'The Williams Collection')
 		.replace('The Sands of Time', 'The Forgotten Sands')
