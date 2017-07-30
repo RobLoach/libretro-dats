@@ -28,7 +28,8 @@ let strictNames = {
 	'Tetris Party': 'Tetris Party Deluxe',
 	'Super Smash Bros. Brawl DX': 'Super Smash Bros. Brawl - Hack: DX Edition',
 	'Super Smash Bros. Brawl Plus': 'Super Smash Bros. Brawl - Hack Plus Edition',
-	'Super Smash Bros. Brawl Shock': 'Super Smash Bros. Brawl - Hack Shock Edition'
+	'Super Smash Bros. Brawl Shock': 'Super Smash Bros. Brawl - Hack Shock Edition',
+	'BIT.TRIP COMPLETE': 'Bit.Trip Complete'
 }
 
 
