@@ -8,7 +8,15 @@ const stringSimilarity = require('string-similarity')
  */
 let strictSerials = {
 	'RSBE01': 'Super Smash Bros. Brawl (USA) (v1.01)',
-	'RSBP01': 'Super Smash Bros. Brawl (Europe) (En,Fr,De,Es,It) (v1.01)'
+	'RSBP01': 'Super Smash Bros. Brawl (Europe) (En,Fr,De,Es,It) (v1.01)',
+	'RMGC01': 'Super Mario Galaxy (Europe) (En,Fr,De,Es,It)',
+	'RMGE01': 'Super Mario Galaxy (USA) (En,Fr,Es)',
+	'RMGJ01': 'Super Mario Galaxy (Japan)',
+	'SB4C01': 'Super Mario Galaxy 2 (Europe) (En,Fr,De,Es,It)',
+	'SB4E01': 'Super Mario Galaxy 2 (USA) (En,Fr,Es)',
+	'SB4J01': 'Super Mario Galaxy 2 (Japan)',
+	'RGLE7D': 'Geometry Wars - Galaxies (USA)',
+	'RGLP7D': 'Geometry Wars - Galaxies (Europe)'
 }
 
 let strictNames = {
