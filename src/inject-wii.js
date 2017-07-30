@@ -53,7 +53,9 @@ function serials() {
 			let contents = fs.readFileSync(iniFiles[iniFile], 'utf-8')
 			let data = ini.parse(contents)
 			for (serialNumber in data) {
-				serials.data[serialNumber] = cleanSerial(data[serialNumber], serialNumber)
+				if (!serials.data[serialNumber]) {
+					serials.data[serialNumber] = cleanSerial(data[serialNumber], serialNumber)
+				}
 			}
 		}
 	}
@@ -88,8 +90,8 @@ function cleanSerial(serialName, serial) {
 	if (strictSerials[serial]) {
 		return strictSerials[serial]
 	}
-	if (strictNames[finalName]) {
-		return strictNames[finalName]
+	if (strictNames[serialName]) {
+		return strictNames[serialName]
 	}
 
 	let finalName = serialName.replace(' Undub', '')
@@ -105,7 +107,6 @@ function cleanSerial(serialName, serial) {
 		.replace('Radian Dawn', 'Radiant Dawn')
 		.replace(' + ', ' and ')
 		.replace('Family Games', 'Big Family Games')
-
 
 	return finalName.trim()
 }
@@ -126,9 +127,9 @@ function injectSerialData(games) {
 	// Starts precise, and then degrade through
 	let similarityChart = [
 		1,
-		0.966,
-		0.933,
-		0.9
+		0.95,
+		0.9,
+		0.85
 	]
 
 	for (let matchAmountIndex in similarityChart) {
@@ -151,6 +152,27 @@ function injectSerialData(games) {
 			}
 		}
 	}
+
+	// Add missing games.
+	/*
+	for (let serialNumber in db) {
+		// Make sure the serial isn't already used.
+		let gameName = db[serialNumber]
+		if (gameName) {
+			if (games[gameName] && !games[gameName].serial) {
+				games[gameName].serial = serialNumber
+			}
+			else {
+				while (games[gameName]) {
+					gameName += ' '
+				}
+				games[gameName] = {
+					serial: serialNumber,
+					name: gameName.trim() + '.iso'
+				}
+			}
+		}
+	}*/
 
 	return games
 }

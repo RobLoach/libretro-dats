@@ -46,9 +46,9 @@ function processDat(datsInfo, name, done) {
 			}
 
 			// Loop through the results and build a game database.
-			var games = {}
-			for (var i in results) {
-				for (var game in results[i]) {
+			let games = {}
+			for (let i in results) {
+				for (let game in results[i]) {
 					var gameName = results[i][game].title
 					// Do not add BIOS entries.
 					if (gameName.indexOf('[BIOS]') < 0) {
@@ -63,17 +63,17 @@ function processDat(datsInfo, name, done) {
 			// Allow injecting additional information into the games.
 			games = injectExtraInfo(name, games)
 
-			var output = getHeader(name, pkg)
+			let output = getHeader(name, pkg)
 
 			// Loop through the sorted games database, and output the rom.
-			for (var game in sort(games)) {
-				var rom = games[game]
+			for (let game in sort(games)) {
+				let rom = games[game]
 				game = game.trim()
 				output += getGameEntry(game, rom)
 			}
 
 			// Save the new DAT file.
-			var outputFile = `${name}.dat`
+			let outputFile = `${name}.dat`
 			//console.log(outputFile)
 			fs.writeFile(outputFile, output, done)
 		})
@@ -97,19 +97,26 @@ function getHeader(name, pkg) {
  */
 function getGameEntry(game, rom) {
 	// Replace Unicode characters, and trim the title.
-	var gameName = unidecode(game).trim();
+	let gameName = unidecode(game).trim();
 	// The filename must be a valid filename.
-	var gameFile = sanitizeFilename(path.basename(unidecode(rom.name)))
+	let gameFile = sanitizeFilename(path.basename(unidecode(rom.name)))
+
+	// Construct the individual properties.
+	let size = rom.size ? ` size ${rom.size}` : ''
+	let crc = rom.crc ? ` crc ${rom.crc}` : ''
+	let md5 = rom.md5 ? ` md5 ${rom.md5}` : ''
+	let sha1 = rom.sha1 ? ` sha1 ${rom.sha1}` : ''
 	let serialGame = ''
 	let serialRom = ''
 	if (rom.serial) {
 		serialGame = `\n\tserial "${rom.serial}"`
 		serialRom = ` serial "${rom.serial}"`
 	}
+
 	return `\ngame (
-	name "${gameName}"${serialGame}
-	description "${gameName}"
-	rom ( name "${gameFile}" size ${rom.size} crc ${rom.crc} md5 ${rom.md5} sha1 ${rom.sha1}${serialRom} )
+	name "${gameName}"
+	description "${gameName}"${serialGame}
+	rom ( name "${gameFile}"${size}${crc}${md5}${sha1}${serialRom} )
 )\n`
 }
 
