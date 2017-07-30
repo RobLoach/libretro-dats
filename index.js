@@ -8,6 +8,7 @@ const sort = require('sort-object')
 const unidecode = require('unidecode')
 const sanitizeFilename = require('sanitize-filename')
 const dats = require('./dats.json')
+const injectWii = require('./src/inject-wii')
 
 // Process all the dats.
 async.mapValues(dats, processDat, function (err, results) {
@@ -15,6 +16,19 @@ async.mapValues(dats, processDat, function (err, results) {
 		throw err
 	}
 })
+
+/**
+ * Inject extra information into the games array.
+ */
+function injectExtraInfo(name, games) {
+	switch (name) {
+		case 'libretro-database/metadat/redump/Nintendo - Wii':
+			games = injectWii(games)
+		break;
+	}
+
+	return games
+}
 
 /**
  * Act on a DAT file.
@@ -45,6 +59,9 @@ function processDat(datsInfo, name, done) {
 					}
 				}
 			}
+
+			// Allow injecting additional information into the games.
+			games = injectExtraInfo(name, games)
 
 			var output = getHeader(name, pkg)
 
@@ -83,10 +100,16 @@ function getGameEntry(game, rom) {
 	var gameName = unidecode(game).trim();
 	// The filename must be a valid filename.
 	var gameFile = sanitizeFilename(path.basename(unidecode(rom.name)))
+	let serialGame = ''
+	let serialRom = ''
+	if (rom.serial) {
+		serialGame = `\n\tserial "${rom.serial}"`
+		serialRom = ` serial "${rom.serial}"`
+	}
 	return `\ngame (
-	name "${gameName}"
+	name "${gameName}"${serialGame}
 	description "${gameName}"
-	rom ( name "${gameFile}" size ${rom.size} crc ${rom.crc} md5 ${rom.md5} sha1 ${rom.sha1} )
+	rom ( name "${gameFile}" size ${rom.size} crc ${rom.crc} md5 ${rom.md5} sha1 ${rom.sha1}${serialRom} )
 )\n`
 }
 
