@@ -44,7 +44,8 @@
 	},
 	"libretro-database/metadat/libretro-dats/Nintendo - GameCube": {
 		"files": [
-			"input/tosec/TOSEC-ISO/Nintendo GameCube - Games*"
+			"input/tosec/TOSEC-ISO/Nintendo GameCube - Games*",
+			"input/trurip/Namco, Sega, Nintendo - Triforce*"
 		]
 	},
 	"libretro-database/metadat/redump/Nintendo - GameCube": {
