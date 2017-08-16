@@ -1,6 +1,3 @@
-# This is currently the best known public source.
-TRURIP_URL=		https://www.emulab.it/rommanager/getfile.php?id=2c2da08cb2a31e58538b9be3dab3f6b9
-
 TOSEC_URL=		https://www.tosecdev.org/downloads/category/40-2017-08-01?download=79:tosec-dat-pack-complete-2480-tosec-v2017-08-01
 
 REDUMP_URL=		http://redump.org/datfile
@@ -39,13 +36,6 @@ REDUMP_SYSTEMS+=	triforce
 REDUMP_SYSTEMS+=	chihiro
 REDUMP_SYSTEMS+=	lindbergh
 REDUMP_SYSTEMS+=	naomi
-
-input/trurip: temp/trurip-dats.zip
-	unzip -o temp/trurip-dats.zip -d input/trurip
-
-temp/trurip-dats.zip:
-	mkdir temp || true
-	curl -L "$(TRURIP_URL)" -o temp/trurip-dats.zip
 
 input/redump:
 	mkdir temp || true
