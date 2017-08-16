@@ -7,7 +7,8 @@
 	"libretro-database/metadat/libretro-dats/NEC - PC Engine CD - TurboGrafx-CD": {
 		"files": [
 			"input/tosec/TOSEC-ISO/NEC PC-Engine CD*",
-			"input/trurip/NEC NEC - PC Engine CD*"
+			"input/trurip/NEC - PC Engine CD*",
+			"input/trurip/NEC - TurboGrafx-CD*"
 		]
 	},
 	"libretro-database/metadat/redump/NEC - PC Engine CD - TurboGrafx-CD": {
@@ -23,7 +24,7 @@
 	"libretro-database/metadat/libretro-dats/NEC - PC-FX": {
 		"files": [
 			"input/tosec/TOSEC-ISO/NEC PC-FX - Games*",
-			"input/trurip/NEC NEC - PC-FX -*"
+			"input/trurip/NEC - PC-FX -*"
 		]
 	},
 	"libretro-database/metadat/redump/NEC - PC-FX": {
@@ -43,8 +44,7 @@
 	},
 	"libretro-database/metadat/libretro-dats/Nintendo - GameCube": {
 		"files": [
-			"input/tosec/TOSEC-ISO/Nintendo GameCube - Games*",
-			"input/trurip/Namco - Sega - Nintendo Namco, Sega, Nintendo - Triforce - *"
+			"input/tosec/TOSEC-ISO/Nintendo GameCube - Games*"
 		]
 	},
 	"libretro-database/metadat/redump/Nintendo - GameCube": {
@@ -60,7 +60,7 @@
 	"libretro-database/metadat/libretro-dats/Sega - Dreamcast": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Sega Dreamcast*",
-			"input/trurip/Sega Sega - Dreamcast*"
+			"input/trurip/Sega - Dreamcast*"
 		]
 	},
 	"libretro-database/metadat/redump/Sega - Dreamcast": {
@@ -71,7 +71,7 @@
 	"libretro-database/metadat/libretro-dats/Sega - Mega-CD - Sega CD": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Sega Mega-CD*",
-			"input/trurip/Sega Sega - Mega-CD*"
+			"input/trurip/Sega - Mega-CD*"
 		]
 	},
 	"libretro-database/metadat/redump/Sega - Mega-CD - Sega CD": {
@@ -82,7 +82,7 @@
 	"libretro-database/metadat/libretro-dats/Sega - Saturn": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Sega Saturn*",
-			"input/trurip/Sega Sega - Saturn*",
+			"input/trurip/Sega - Saturn*",
 			"input/darkwater/Saturn*"
 		]
 	},
@@ -94,7 +94,7 @@
 	"libretro-database/metadat/libretro-dats/Sony - PlayStation": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Sony PlayStation -*",
-			"input/trurip/Sony Sony - PlayStation & PSone*"
+			"input/trurip/Sony - PlayStation & PSone*"
 		]
 	},
 	"libretro-database/metadat/redump/Sony - PlayStation": {
