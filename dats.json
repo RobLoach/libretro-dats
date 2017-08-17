@@ -72,7 +72,8 @@
 	"libretro-database/metadat/libretro-dats/Sega - Mega-CD - Sega CD": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Sega Mega-CD*",
-			"input/trurip/Sega - Mega-CD*"
+			"input/trurip/Sega - Mega-CD*",
+			"input/trurip/Sega - Sega CD*"
 		]
 	},
 	"libretro-database/metadat/redump/Sega - Mega-CD - Sega CD": {
