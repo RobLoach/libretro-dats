@@ -80,13 +80,28 @@ function getHeader(name, pkg) {
  */
 function getGameEntry(game, rom) {
 	// Replace Unicode characters, and trim the title.
-	var gameName = unidecode(game).trim();
+	let gameName = unidecode(game).trim();
 	// The filename must be a valid filename.
-	var gameFile = sanitizeFilename(path.basename(unidecode(rom.name)))
+	let gameFile = sanitizeFilename(path.basename(unidecode(rom.name)))
+
+	let gameParams = `name "${gameFile}"`
+	if (rom.size) {
+		gameParams += ` size ${rom.size}`
+	}
+	if (rom.crc) {
+		gameParams += ` crc ${rom.crc}`
+	}
+	if (rom.md5) {
+		gameParams += ` md5 ${rom.md5}`
+	}
+	if (rom.sha1) {
+		gameParams += ` sha1 ${rom.sha1}`
+	}
+
 	return `\ngame (
 	name "${gameName}"
 	description "${gameName}"
-	rom ( name "${gameFile}" size ${rom.size} crc ${rom.crc} md5 ${rom.md5} sha1 ${rom.sha1} )
+	rom ( ${gameParams} )
 )\n`
 }
 
