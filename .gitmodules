@@ -1,3 +1,6 @@
 [submodule "libretro-database"]
 	path = libretro-database
 	url = git@github.com:libretro/libretro-database.git
+[submodule "vendor/dolphin"]
+	path = vendor/dolphin
+	url = https://github.com/dolphin-emu/dolphin.git
