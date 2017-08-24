@@ -37,6 +37,11 @@ REDUMP_SYSTEMS+=	chihiro
 REDUMP_SYSTEMS+=	lindbergh
 REDUMP_SYSTEMS+=	naomi
 
+default:
+	@echo "Available commands:"
+	@echo "    make input/redump"
+	@echo "    make input/tosec"
+
 input/redump:
 	mkdir temp || true
 	for i in $(REDUMP_SYSTEMS); do \
