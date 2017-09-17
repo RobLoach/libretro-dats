@@ -1,6 +1,8 @@
 TOSEC_URL=		https://www.tosecdev.org/downloads/category/40-2017-08-01?download=79:tosec-dat-pack-complete-2480-tosec-v2017-08-01
 
 REDUMP_URL=		http://redump.org/datfile
+REDUMP_CUES_URL=	http://redump.org/cues
+REDUMP_GDI_URL=	http://redump.org/gdi
 
 REDUMP_SYSTEMS+=	xbox-bios
 REDUMP_SYSTEMS+=	gc-bios
@@ -43,12 +45,18 @@ default:
 	@echo "    make input/tosec"
 
 input/redump:
-	mkdir temp || true
 	for i in $(REDUMP_SYSTEMS); do \
-		curl -L $(REDUMP_URL)/$$i -o temp/$$i ;\
-		unzip -o temp/$$i -d temp ;\
+		mkdir -p temp/$$i/; \
+		curl -L $(REDUMP_URL)/$$i -o temp/dat.$$i.zip ;\
+		if [ "$$i" = "dc" ]; then \
+			curl -L $(REDUMP_GDI_URL)/$$i -o temp/cue.$$i.zip ;\
+		else \
+			curl -L $(REDUMP_CUES_URL)/$$i -o temp/cue.$$i.zip ;\
+		fi; \
+		unzip -o temp/dat.$$i.zip -d temp/$$i || true ;\
+		unzip -o temp/cue.$$i.zip -d temp/$$i || true ;\
 	done
-	mkdir input/redump && mv temp/*.dat input/redump
+	mv temp input/redump
 
 input/tosec: temp/tosec.zip
 	unzip -o temp/tosec.zip -d input/tosec
