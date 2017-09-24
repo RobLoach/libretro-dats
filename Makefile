@@ -56,7 +56,7 @@ input/redump:
 		unzip -o temp/dat.$$i.zip -d temp/$$i || true ;\
 		unzip -o temp/cue.$$i.zip -d temp/$$i || true ;\
 	done
-	mkdir -p input/redump
+	mkdir -p input
 	mv temp input/redump
 
 input/tosec: temp/tosec.zip
