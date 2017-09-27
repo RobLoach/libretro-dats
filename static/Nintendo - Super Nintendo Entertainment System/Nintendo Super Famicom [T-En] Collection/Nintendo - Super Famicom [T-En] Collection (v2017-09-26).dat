@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE datafile PUBLIC "-//Logiqx//DTD ROM Management Datafile//EN" "http://www.logiqx.com/Dats/datafile.dtd">
 
@@ -6,8 +7,8 @@
 		<name>Nintendo - Super Famicom [T-En] Collection</name>
 		<description>Nintendo - Super Famicom [T-En] Collection</description>
 		<category>Standard DatFile</category>
-		<version>2017-05-17</version>
-		<date>2017-05-17</date>
+		<version>2017-09-26</version>
+		<date>2017-09-26</date>
 		<author>Retroplay</author>
 		<email>-insert email-</email>
 		<homepage>-insert homepage-</homepage>
@@ -140,6 +141,7 @@
 		<rom name="Lennus II - The Apostles of the Seals (Japan) [T-En by Dynamic Designs v1.04] [n] - Spoiler Hints and Tips.doc" size="53760" crc="459b83de" md5="f816b71ddc4a5fbc2236a3162ee628b9" sha1="afa747d0a70073ab2a48cd979a986190b116194c"/>
 		<rom name="Lennus II - The Apostles of the Seals (Japan) [T-En by Dynamic Designs v1.04] [n].doc" size="86528" crc="b09aa2bd" md5="30b3e6ca8324cb47519f87d5d5a42fd1" sha1="62ed2de89f5b1de0185e80ea1946dd7ef4be8b1b"/>
 		<rom name="Little Magic (Japan) [T-En by Aeon Genesis v1.00b].txt" size="1936" crc="3b0a8358" md5="927d511823dc98f36714054baa0a2f1a" sha1="991ffdb583868e8a2b7bdcb22c88d51abcca54f4"/>
+		<rom name="Live A Live (Japan) [T-En by Aeon Genesis v2.00 Deluxe] [Add by jensma v1.0].txt" size="183" crc="e972cc22" md5="7d594a2eb3cce8025fca0809c64dffe1" sha1="870decade2d00b25831d3c22967f8321e0c64514"/>
 		<rom name="Live A Live (Japan) [T-En by Aeon Genesis v2.00 Deluxe].txt" size="6227" crc="423e122e" md5="9765c7b88d1c51ab0696e264c2595493" sha1="9a85ef72581c8b1f2c3324b533eb2cd3a9c2fbe7"/>
 		<rom name="Madou Monogatari - Big Kindergarten Kids (Japan) [T-En by Aeon Genesis v1.01] [n].txt" size="8698" crc="3792337e" md5="2d9f689357ba00e4db5f86ff14e08a4b" sha1="9eeb08424cda1dfba96fa136c857178190d067e0"/>
 		<rom name="Magic Knight Rayearth (Japan) [T-En by RPGe v1.01].txt" size="6770" crc="cbbb32df" md5="562dd899c0e7aed29ef20ce17407fa79" sha1="9ae5e762a3afa2c07486435fc84eb5f50a5db882"/>
@@ -362,6 +364,10 @@
 	<machine name="Chrono Trigger (USA) [T-En by Doctor L v1.01]">
 		<description>Chrono Trigger (USA) [T-En by Doctor L v1.01]</description>
 		<rom name="Chrono Trigger (USA) [T-En by Doctor L v1.01].sfc" size="6291456" crc="0eb4d818" md5="b0eb0ad0abc65a73b9df3bbd89a84958" sha1="d0b41fd54bdde17d6691234761facb7f1047600d"/>
+	</machine>
+	<machine name="Chrono Trigger (USA) [T-En by Doctor L v1.01] [Add by LethargicOwl v1.0]">
+		<description>Chrono Trigger (USA) [T-En by Doctor L v1.01] [Add by LethargicOwl v1.0]</description>
+		<rom name="Chrono Trigger (USA) [T-En by Doctor L v1.01] [Add by LethargicOwl v1.0].sfc" size="6291456" crc="b7c9b14e" md5="23663146fcc5f985c74f68feab88b4a9" sha1="a95aba29cb57103b69f51cda835ad5572f23583f"/>
 	</machine>
 	<machine name="Chrono Trigger - Music Library (Japan) (BS) [T-En by Terminus Traduction v1.00e]">
 		<description>Chrono Trigger - Music Library (Japan) (BS) [T-En by Terminus Traduction v1.00e]</description>
@@ -730,6 +736,10 @@
 	<machine name="Live A Live (Japan) [T-En by Aeon Genesis v2.00 Deluxe]">
 		<description>Live A Live (Japan) [T-En by Aeon Genesis v2.00 Deluxe]</description>
 		<rom name="Live A Live (Japan) [T-En by Aeon Genesis v2.00 Deluxe].sfc" size="2621440" crc="5ad071f3" md5="65884a7aff5949fa171072fd994f29ee" sha1="a4fd4324f36f73f953f42f1677a75b1608b14c9a"/>
+	</machine>
+	<machine name="Live A Live (Japan) [T-En by Aeon Genesis v2.00 Deluxe] [Add by jensma v1.0]">
+		<description>Live A Live (Japan) [T-En by Aeon Genesis v2.00 Deluxe] [Add by jensma v1.0]</description>
+		<rom name="Live A Live (Japan) [T-En by Aeon Genesis v2.00 Deluxe] [Add by jensma v1.0].sfc" size="2621440" crc="b6cd0bab" md5="ec98dd14344271652a0e244cf8b8d7f4" sha1="207875cdb2c5f6132c050982f6a8a219c83f09de"/>
 	</machine>
 	<machine name="Madou Monogatari - Big Kindergarten Kids (Japan) [T-En by Aeon Genesis v1.01] [n]">
 		<description>Madou Monogatari - Big Kindergarten Kids (Japan) [T-En by Aeon Genesis v1.01] [n]</description>
