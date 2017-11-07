@@ -13,12 +13,12 @@
 	},
 	"libretro-database/metadat/redump/NEC - PC Engine CD - TurboGrafx-CD": {
 		"files": [
-			"input/redump/pce/NEC - PC Engine CD*.dat"
+			"input/redump/NEC - PC Engine CD*.dat"
 		]
 	},
 	"libretro-database/metadat/redump/Microsoft - Xbox": {
 		"files": [
-			"input/redump/xbox/Microsoft - Xbox (*.dat"
+			"input/redump/Microsoft - Xbox - Dat*.dat"
 		]
 	},
 	"libretro-database/metadat/libretro-dats/NEC - PC-FX": {
@@ -29,12 +29,12 @@
 	},
 	"libretro-database/metadat/redump/NEC - PC-FX": {
 		"files": [
-			"input/redump/pc-fx/NEC - PC-FX*.dat"
+			"input/redump/NEC - PC-FX*.dat"
 		]
 	},
 	"libretro-database/metadat/redump/SNK - Neo Geo CD": {
 		"files": [
-			"input/redump/ngcd/SNK - Neo Geo CD (*.dat"
+			"input/redump/SNK - Neo Geo CD - D*.dat"
 		]
 	},
 	"libretro-database/metadat/libretro-dats/Nintendo - GameCube": {
@@ -45,12 +45,12 @@
 	},
 	"libretro-database/metadat/redump/Nintendo - GameCube": {
 		"files": [
-			"input/redump/gc/Nintendo - GameCube (*.dat"
+			"input/redump/Nintendo - GameCube - D*.dat"
 		]
 	},
 	"libretro-database/metadat/redump/Nintendo - Wii": {
 		"files": [
-			"input/redump/Nintendo - Wii (*"
+			"input/redump/Nintendo - Wii - *"
 		]
 	},
 	"libretro-database/metadat/libretro-dats/Sega - Dreamcast": {
@@ -61,7 +61,7 @@
 	},
 	"libretro-database/metadat/redump/Sega - Dreamcast": {
 		"files": [
-			"input/redump/dc/Sega - Dreamcast*.dat"
+			"input/redump/Sega - Dreamcast*.dat"
 		]
 	},
 	"libretro-database/metadat/libretro-dats/Sega - Mega-CD - Sega CD": {
@@ -73,7 +73,7 @@
 	},
 	"libretro-database/metadat/redump/Sega - Mega-CD - Sega CD": {
 		"files": [
-			"input/redump/scd/Sega - Mega-CD*.dat"
+			"input/redump/Sega - Mega-CD*.dat"
 		]
 	},
 	"libretro-database/metadat/libretro-dats/Sega - Saturn": {
@@ -85,7 +85,7 @@
 	},
 	"libretro-database/metadat/redump/Sega - Saturn": {
 		"files": [
-			"input/redump/ss/Sega - Saturn*.dat"
+			"input/redump/Sega - Saturn*.dat"
 		]
 	},
 	"libretro-database/metadat/libretro-dats/Sony - PlayStation": {
@@ -96,17 +96,17 @@
 	},
 	"libretro-database/metadat/redump/Sony - PlayStation": {
 		"files": [
-			"input/redump/psx/Sony - PlayStation (*.dat"
+			"input/redump/Sony - PlayStation - Dat*.dat"
 		]
 	},
 	"libretro-database/metadat/redump/Sony - PlayStation 2": {
 		"files": [
-			"input/redump/ps2/Sony - PlayStation 2 (*.dat"
+			"input/redump/Sony - PlayStation 2 - Dat*.dat"
 		]
 	},
 	"libretro-database/metadat/redump/Sony - PlayStation Portable": {
 		"files": [
-			"input/redump/Sony - PlayStation Portable (*"
+			"input/redump/Sony - PlayStation Portable - Dat*"
 		]
 	},
 	"libretro-database/metadat/libretro-dats/Sinclair - ZX Spectrum": {
@@ -128,7 +128,7 @@
 	},
 	"libretro-database/metadat/redump/The 3DO Company - 3DO": {
 		"files": [
-			"input/redump/3d0/Panasonic - 3DO*.dat"
+			"input/redump/Panasonic - 3DO*.dat"
 		]
 	},
 	"libretro-database/metadat/no-intro/Atari - 2600": {
