@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE datafile PUBLIC "-//Logiqx//DTD ROM Management Datafile//EN" "http://www.logiqx.com/Dats/datafile.dtd">
 
@@ -7,8 +6,8 @@
 		<name>Nintendo - Super Famicom [T-En] Collection</name>
 		<description>Nintendo - Super Famicom [T-En] Collection</description>
 		<category>Standard DatFile</category>
-		<version>2017-09-26</version>
-		<date>2017-09-26</date>
+		<version>2017-10-25</version>
+		<date>2017-10-25</date>
 		<author>Retroplay</author>
 		<email>-insert email-</email>
 		<homepage>-insert homepage-</homepage>
@@ -205,8 +204,10 @@
 		<rom name="Star Fox 2 (Japan) (Proto) (Alt 1) [T-En by Aeon Genesis v1.00] [Add by ManuLoewe v20.07.2010].txt" size="5646" crc="3073b599" md5="504d3f9e9e942c0fa5bcbe0b9102dd87" sha1="cb43373781ed6966798139d1fcf62878440da8c3"/>
 		<rom name="Star Fox 2 (Japan) (Proto) (Alt 1) [T-En by Aeon Genesis v1.00].txt" size="6198" crc="91a04295" md5="83ab634e7a472cf4e0a957a2d547e3df" sha1="a616183515aee7273dce9e7da826a599a7b8ce1d"/>
 		<rom name="Star Ocean (Japan) [T-En by DeJap v1.0].txt" size="15200" crc="99f9faf4" md5="402d747798251d1bb0ea6a96cbb04ca6" sha1="c3f0d58545fcb728e7c51554e7b33a328664bfb0"/>
+		<rom name="Starwing 2 (Japan) [T-En by Aeon Genesis v1.00] [Add by ManuLoewe v20.07.2010] [Add by josete2k v1.0] [n].txt" size="97" crc="4c51ba79" md5="e1a56532c83f09ff415e1e0513e52c91" sha1="29a00c7646251ef971cbbd34a09b9d531f3c98d6"/>
 		<rom name="Super Back to the Future Part II (Japan) [T-En by mteam v1.00].txt" size="664" crc="280c4b4f" md5="7992423e9feb27ee28673ab390441296" sha1="d87adff301fc529eab76cccbe60953bd5de89e66"/>
 		<rom name="Super Bomber Man 4 (Japan) [T-En by Svambo v1.0].txt" size="1527" crc="8382d78b" md5="e493ce346bf50fd4e16ab21bbdf4becf" sha1="b7d700ce5b5dc80433dc6fbfd3ef3a916f6612ce"/>
+		<rom name="Super Fire Pro Wrestling X Premium (Japan) [T-En by Brian v1.0].txt" size="5286" crc="72385cec" md5="737d9a9b2740183d25fc78579b16da95" sha1="48a7f0f5c7e388defc509bf03f420f740ff23400"/>
 		<rom name="Super Fire Pro Wrestling X Premium (Japan) [T-En by Sydra v7].txt" size="6535" crc="b5667f38" md5="db2125b8569b418453a3a22e70be1698" sha1="478a22f5406958ff7974735dc8fe8deb03c0a1a6"/>
 		<rom name="Super Gachapon World - SD Gundam X (Japan) [T-En by Serin9X v1.51] [i].txt" size="1715" crc="116dabb1" md5="0c165a34ff9a1c1de8f19bf3d10241d7" sha1="0d32f7aff2a8cb83cadb72dd74892973849ebe50"/>
 		<rom name="Super Genjin 2 (Japan) [T-En by Gaijin Productions v1.00].txt" size="2217" crc="e4b3b7d2" md5="8844765c97ea11fb042ccaa35f948ce7" sha1="7057f1bd82e6a4c03080413aeb1210d1206d397a"/>
@@ -222,6 +223,7 @@
 		<rom name="Tales of Phantasia (Japan) [T-En by DeJap v1.2] [Ad by Spinner 8 and friends v1.0].txt" size="942" crc="ad561c85" md5="6cd1cffa004de13a0f9886efcf5d140f" sha1="d20d69cf5742c9fec3597cb230577ac3a69cac80"/>
 		<rom name="Tales of Phantasia (Japan) [T-En by DeJap v1.2].txt" size="18843" crc="7e106abc" md5="f982421fd79a4029d541610abbdaf484" sha1="65696b38c342399bc8ffaca288d4bf4fc9d4f0d6"/>
 		<rom name="Tenchi Muyou! - The Game (Japan) [T-En by LNF v0.98] [n].txt" size="5833" crc="900b3779" md5="793cb672765731d98465aff56e63f23a" sha1="e6923e992681ba1cdda98bcb901fe8286b45ea13"/>
+		<rom name="Tengai Makyou Zero (Japan) [T-En by Tom v1.0].txt" size="9930" crc="f32e3b64" md5="62c105d4ad7230be438d18dfbd9c575c" sha1="de9505b0daa3b8fc65b81841659a3359bc1cc45e"/>
 		<rom name="Tomorrow's Joe (Japan) [T-En by Vice Translations v0.99] [n].txt" size="4421" crc="278aa206" md5="d5ad2b58d018663ab5d9d13a43f47e4a" sha1="22cdc9599ea316e1b2ab9d058547e593e2200841"/>
 		<rom name="Torneco no Daibouken - Fushigi no Dungeon (Japan) [T-En by Dynamic Designs v0.99].txt" size="4711" crc="71597e23" md5="471603fe10894a617d14e22d4c19da7e" sha1="2b1f96be4b172d21b43f363b50c7c1237cc09d67"/>
 		<rom name="Treasure of the Rudras (Japan) [T-En by Aeon Genesis v2.10] [n].txt" size="9274" crc="2c3b687a" md5="8eb74c7bf075816fd3898711e989666a" sha1="2e59126a698983f7035bacb2fa9e93096c58078c"/>
@@ -621,6 +623,10 @@
 		<description>Gekitou Burning Pro Wres (Japan) [T-En by Phil v1.0]</description>
 		<rom name="Gekitou Burning Pro Wres (Japan) [T-En by Phil v1.0].sfc" size="2621440" crc="91a36831" md5="b2e3fb5f44d0d2778698df7891004ee9" sha1="f7288a4aea2d1e427031f526ab7914f1a49bb2c0"/>
 	</machine>
+	<machine name="Genjuu Ryodan (Japan) (NP) [T-En by gc8tech v82] [i]">
+		<description>Genjuu Ryodan (Japan) (NP) [T-En by gc8tech v82] [i]</description>
+		<rom name="Genjuu Ryodan (Japan) (NP) [T-En by gc8tech v82] [i].sfc" size="4194304" crc="dee67f34" md5="e3f19d2f609f6bc58169bdc48a7b8d78" sha1="996eaf90fb68384c72c541bc74bba5a617a3691d"/>
+	</machine>
 	<machine name="Ghost Chaser Densei (Japan) [T-En by MrRichard999+AgentOrange+rainponcho v1.0]">
 		<description>Ghost Chaser Densei (Japan) [T-En by MrRichard999+AgentOrange+rainponcho v1.0]</description>
 		<rom name="Ghost Chaser Densei (Japan) [T-En by MrRichard999+AgentOrange+rainponcho v1.0].sfc" size="4194304" crc="47d8a6e1" md5="0a0740f28ccc4cd3e21c6e4ac4d3b8d9" sha1="a878e75c3481c6b802a46d61fabb8284422ebe0b"/>
@@ -989,6 +995,14 @@
 		<description>Star Ocean (Japan) [T-En by DeJap v1.0]</description>
 		<rom name="Star Ocean (Japan) [T-En by DeJap v1.0].sfc" size="6291456" crc="6ba9e08d" md5="217a97e694fb916ad26c8a471f6c0e84" sha1="8574f0c49b0e823f21763331c2d66225b95c1653"/>
 	</machine>
+	<machine name="Starwing 2 (Japan) [T-En by Aeon Genesis v1.00] [Add by ManuLoewe v20.07.2010] [Add by josete2k v1.0] [n]">
+		<description>Starwing 2 (Japan) [T-En by Aeon Genesis v1.00] [Add by ManuLoewe v20.07.2010] [Add by josete2k v1.0] [n]</description>
+		<rom name="Starwing 2 (Japan) [T-En by Aeon Genesis v1.00] [Add by ManuLoewe v20.07.2010] [Add by josete2k v1.0] [n].sfc" size="1048576" crc="88c69a3b" md5="aaee2d703c5187cc26ac59fb187dd338" sha1="41f5b2d871015f70112bc3057b639a23a663babd"/>
+	</machine>
+	<machine name="Starwing 2 (USA) [SNES Mini] [Add by josete2k] [n]">
+		<description>Starwing 2 (USA) [SNES Mini] [Add by josete2k] [n]</description>
+		<rom name="Starwing 2 (USA) [SNES Mini] [Add by josete2k] [n].sfc" size="1048576" crc="9425860b" md5="1ddf3cdff7694422b67f123c17db8c76" sha1="a972f5acafcc6217b7940204603fb154bb94cc82"/>
+	</machine>
 	<machine name="Super Back to the Future Part II (Japan) [T-En by mteam v1.00]">
 		<description>Super Back to the Future Part II (Japan) [T-En by mteam v1.00]</description>
 		<rom name="Super Back to the Future Part II (Japan) [T-En by mteam v1.00].sfc" size="1048576" crc="a070febd" md5="442f5cefd72c20be79d278d57c61fe1d" sha1="97845cd1e781a1418bd66f6fe4e46e22109facc9"/>
@@ -1004,6 +1018,10 @@
 	<machine name="Super Fire Pro Wrestling - Queen's Special (Japan) [T-En by Phil v1.0]">
 		<description>Super Fire Pro Wrestling - Queen's Special (Japan) [T-En by Phil v1.0]</description>
 		<rom name="Super Fire Pro Wrestling - Queen's Special (Japan) [T-En by Phil v1.0].sfc" size="3145728" crc="45855ff9" md5="351224d02c33f418851afcc6c88aa117" sha1="932df7aef955264013e27c61850d46c809ef4000"/>
+	</machine>
+	<machine name="Super Fire Pro Wrestling X Premium (Japan) [T-En by Brian v1.0]">
+		<description>Super Fire Pro Wrestling X Premium (Japan) [T-En by Brian v1.0]</description>
+		<rom name="Super Fire Pro Wrestling X Premium (Japan) [T-En by Brian v1.0].sfc" size="4194304" crc="2fc8605a" md5="b856d0b046c11b187b77d1974178658c" sha1="32c98c1efc479d8d5e28fd1215d1b5538a72d0d1"/>
 	</machine>
 	<machine name="Super Fire Pro Wrestling X Premium (Japan) [T-En by Sydra v7]">
 		<description>Super Fire Pro Wrestling X Premium (Japan) [T-En by Sydra v7]</description>
@@ -1056,6 +1074,13 @@
 	<machine name="Tenchi Muyou! - The Game (Japan) [T-En by borderLine+LNF v1.1] [n]">
 		<description>Tenchi Muyou! - The Game (Japan) [T-En by borderLine+LNF v1.1] [n]</description>
 		<rom name="Tenchi Muyou! - The Game (Japan) [T-En by borderLine+LNF v1.1] [n].sfc" size="3145728" crc="76020159" md5="66836fdf6ab04377f8f904996fc70e42" sha1="8a8cc5f57aa649a24d81737c4bd7491dfb723cbd"/>
+	</machine>
+	<machine name="Tengai Makyou Zero (Japan) [T-En by Tom v1.0]">
+		<description>Tengai Makyou Zero (Japan) [T-En by Tom v1.0]</description>
+		<rom name="Tengai Makyou Zero (Japan) [T-En by Tom v1.0].rtc" size="20" crc="db6349de" md5="e0257cc41f09e8931c8e8b0db8f672fb" sha1="e1bd4ff0358fd92ae0831859e12a856002d59186"/>
+		<rom name="Tengai Makyou Zero (Japan) [T-En by Tom v1.0].sfc" size="7340032" crc="0e589fb4" md5="ffa84aaa108d4627b0208a9d2148c83c" sha1="fd92dd90b125252cbe4d75ffabd46a9a16f06fd5"/>
+		<rom name="Tengai Makyou Zero (Japan) [T-En by Tom v1.0].srm" size="8192" crc="88e9ac99" md5="0b7772080895f2fc4969fe7389f72198" sha1="f611e6d10efe50cb21060ddb4f3aa6d380848d5e"/>
+		<rom name="Tengai Makyou Zero (Japan) [T-En by Tom v1.0].xml" size="867" crc="188e3c73" md5="e022ff9307aa9563c35dbaae267f6567" sha1="3104237c64c4a47272a7b4fecf589a3512b6eb91"/>
 	</machine>
 	<machine name="Tomorrow's Joe (Japan) [T-En by Vice Translations v0.99] [n]">
 		<description>Tomorrow's Joe (Japan) [T-En by Vice Translations v0.99] [n]</description>
@@ -1116,6 +1141,10 @@
 	<machine name="Wonder Project J - Mechanical Boy Pino (Japan) [T-En by WakdHacks v1.04] [n]">
 		<description>Wonder Project J - Mechanical Boy Pino (Japan) [T-En by WakdHacks v1.04] [n]</description>
 		<rom name="Wonder Project J - Mechanical Boy Pino (Japan) [T-En by WakdHacks v1.04] [n].sfc" size="3203072" crc="36079184" md5="26b66c57f9ede1ba1485da4ae283f409" sha1="cf6e5503ba6ea23163e7c4274c931b159e93f8fc"/>
+	</machine>
+	<machine name="Wrecking Crew '98 (Japan) [T-En by ShadowOne333 v1.0]">
+		<description>Wrecking Crew '98 (Japan) [T-En by ShadowOne333 v1.0]</description>
+		<rom name="Wrecking Crew '98 (Japan) [T-En by ShadowOne333 v1.0].sfc" size="2097152" crc="f8571b4d" md5="b2901854bf9d134a7eacc63e9cd0286f" sha1="2df6222b44eba17810587636875574c863172277"/>
 	</machine>
 	<machine name="Xak - The Art of Visual Stage (Japan) [T-En by Dynamic Designs v1.10]">
 		<description>Xak - The Art of Visual Stage (Japan) [T-En by Dynamic Designs v1.10]</description>
