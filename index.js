@@ -81,6 +81,14 @@ function getHeader(name, pkg) {
 function getGameEntry(game, rom) {
 	// Replace Unicode characters, and trim the title.
 	let gameName = unidecode(game).trim();
+
+	// Clean the name some more.
+	gameName = gameName
+		.replace('Games (Europe)\\', '')
+		.replace('Games\\', '')
+		.replace('Games (USA)\\', '')
+		.replace('Games (Japan)\\', '')
+
 	// The filename must be a valid filename.
 	let gameFile = sanitizeFilename(path.basename(unidecode(rom.name)))
 
