@@ -1,13 +1,13 @@
-TOSEC_URL=		https://www.tosecdev.org/downloads/category/40-2017-08-01?download=79:tosec-dat-pack-complete-2480-tosec-v2017-08-01
+TOSEC_URL=		https://www.tosecdev.org/downloads/category/41-2017-11-01?download=81:tosec-dat-pack-complete-2561-tosec-v2017-11-01
 
 REDUMP_URL=		http://redump.org/datfile
 REDUMP_CUES_URL=	http://redump.org/cues
 REDUMP_GDI_URL=	http://redump.org/gdi
 
-REDUMP_SYSTEMS+=	xbox-bios
-REDUMP_SYSTEMS+=	gc-bios
-REDUMP_SYSTEMS+=	psx-bios
-REDUMP_SYSTEMS+=	ps2-bios
+#REDUMP_SYSTEMS+=	xbox-bios
+#REDUMP_SYSTEMS+=	gc-bios
+#REDUMP_SYSTEMS+=	psx-bios
+#REDUMP_SYSTEMS+=	ps2-bios
 REDUMP_SYSTEMS+=	mac
 REDUMP_SYSTEMS+=	playdia
 REDUMP_SYSTEMS+=	pippin
