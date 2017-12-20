@@ -6,8 +6,8 @@
 		<name>Nintendo - Super Famicom [T-En] Collection</name>
 		<description>Nintendo - Super Famicom [T-En] Collection</description>
 		<category>Standard DatFile</category>
-		<version>2017-10-25</version>
-		<date>2017-10-25</date>
+		<version>2017-12-05</version>
+		<date>2017-12-05</date>
 		<author>Retroplay</author>
 		<email>-insert email-</email>
 		<homepage>-insert homepage-</homepage>
@@ -219,6 +219,7 @@
 		<rom name="Super Ultra Baseball 2 (Japan) [T-En by VX v1.00] - Manual.pdf" size="485435" crc="b9c99b43" md5="ce9b005d3320225d098cac952e809133" sha1="1bafd9d0492f1536818bf6c23012e2af195f5554"/>
 		<rom name="Super Ultra Baseball 2 (Japan) [T-En by VX v1.00] - Manual.txt" size="28407" crc="4a8e3e6b" md5="f5d566ce28d795f86f87adb4a30fcc69" sha1="42b994684bb4f471b8de626c68e5c4e26e25c95a"/>
 		<rom name="Super Ultra Baseball 2 (Japan) [T-En by VX v1.00].txt" size="5960" crc="0c393823" md5="c1f7d6afb719100964594bde3fa47e45" sha1="7cc3268feed3e63e992439987648a1813ca3d0bb"/>
+		<rom name="Sutte Hakkun (Japan) [T-En by Raccoon Sam v1.0] [n].txt" size="5180" crc="984bdd43" md5="923585da51db3ada4d0be182adf5c82b" sha1="4a405af072c299d2371872585d2e3351af6728e1"/>
 		<rom name="Tactics Ogre - Let Us Cling Together (Japan) (Rev 2) [T-En by Aeon Genesis v1.00b].txt" size="3651" crc="cf2e50a8" md5="f478a9cf4b4f48cc2169c75d32193c3e" sha1="6d304c7e69d80a7cb849828cfbe2c9ac21343376"/>
 		<rom name="Tales of Phantasia (Japan) [T-En by DeJap v1.2] [Ad by Spinner 8 and friends v1.0].txt" size="942" crc="ad561c85" md5="6cd1cffa004de13a0f9886efcf5d140f" sha1="d20d69cf5742c9fec3597cb230577ac3a69cac80"/>
 		<rom name="Tales of Phantasia (Japan) [T-En by DeJap v1.2].txt" size="18843" crc="7e106abc" md5="f982421fd79a4029d541610abbdaf484" sha1="65696b38c342399bc8ffaca288d4bf4fc9d4f0d6"/>
@@ -422,6 +423,14 @@
 	<machine name="Dezaemon (Japan) [T-En by Aeon Genesis v1.00] [n]">
 		<description>Dezaemon (Japan) [T-En by Aeon Genesis v1.00] [n]</description>
 		<rom name="Dezaemon (Japan) [T-En by Aeon Genesis v1.00] [n].sfc" size="524288" crc="df3c62dd" md5="80bd4d60886e4730c1f5ca3d6c1cff3e" sha1="1d0c1a691ddcaeb228b252c214171bc30175cc43"/>
+	</machine>
+	<machine name="Digital Devil Story - Megami Tensei (Japan) [T-En by DDSTranslation v1.1] [Add by Dushbadge v1.0] [n]">
+		<description>Digital Devil Story - Megami Tensei (Japan) [T-En by DDSTranslation v1.1] [Add by Dushbadge v1.0] [n]</description>
+		<rom name="Digital Devil Story - Megami Tensei (Japan) [T-En by DDSTranslation v1.1] [Add by Dushbadge v1.0] [n].sfc" size="2359296" crc="992825e4" md5="1b09f1047826fa498745ca47598e1854" sha1="62907dce13bd638366851ed162645615e228ce8f"/>
+	</machine>
+	<machine name="Digital Devil Story - Megami Tensei II (Japan) [T-En by DDSTranslation v1.1] [Add by Dushbadge v1.0] [n]">
+		<description>Digital Devil Story - Megami Tensei II (Japan) [T-En by DDSTranslation v1.1] [Add by Dushbadge v1.0] [n]</description>
+		<rom name="Digital Devil Story - Megami Tensei II (Japan) [T-En by DDSTranslation v1.1] [Add by Dushbadge v1.0] [n].sfc" size="2359296" crc="c0e9b3b0" md5="dea84d629057c066b5c96020c4ac6b28" sha1="0e07bb9cdd2ee19e59cd43a0f50a12f4a8fcf73e"/>
 	</machine>
 	<machine name="Do-Re-Mi Fantasy - Milon's Quest (Japan) [T-En by Gaijin Productions+RPGOne v1.0] [n]">
 		<description>Do-Re-Mi Fantasy - Milon's Quest (Japan) [T-En by Gaijin Productions+RPGOne v1.0] [n]</description>
@@ -1051,9 +1060,17 @@
 		<description>Super Shell Monsters Story (Japan) [T-En by Dynamic-Designs v1.00] [n]</description>
 		<rom name="Super Shell Monsters Story (Japan) [T-En by Dynamic-Designs v1.00] [n].sfc" size="4194304" crc="461240fb" md5="dbbcbb723aa84e371c5b228be4e5a42d" sha1="9d6517973001918d4fe08e6832c92420fe3028d2"/>
 	</machine>
+	<machine name="Super Soukoban (Japan) [T-En by MrRichard999 &amp; Krom v0.5] [i]">
+		<description>Super Soukoban (Japan) [T-En by MrRichard999 &amp; Krom v0.5] [i]</description>
+		<rom name="Super Soukoban (Japan) [T-En by MrRichard999 &amp; Krom v0.5] [i].sfc" size="1048576" crc="3f6222b0" md5="3dc96a2e4b81a78dd2a05386c9de7ff2" sha1="bf7d6b61791e25d9ec02aec8679167711417ce27"/>
+	</machine>
 	<machine name="Super Ultra Baseball 2 (Japan) [T-En by VX v1.00]">
 		<description>Super Ultra Baseball 2 (Japan) [T-En by VX v1.00]</description>
 		<rom name="Super Ultra Baseball 2 (Japan) [T-En by VX v1.00].sfc" size="1048576" crc="344d4076" md5="1fb48376b209dc3276fc46c7640b778c" sha1="da9ed774974ff2c988b74aa7c498e92dab49318e"/>
+	</machine>
+	<machine name="Sutte Hakkun (Japan) [T-En by Raccoon Sam v1.0] [n]">
+		<description>Sutte Hakkun (Japan) [T-En by Raccoon Sam v1.0] [n]</description>
+		<rom name="Sutte Hakkun (Japan) [T-En by Raccoon Sam v1.0] [n].sfc" size="3145728" crc="9c4e07a4" md5="47a7e4dd19c55da717105e1acdd2d4a1" sha1="8240e01a3713e57fc099758b8915d1199b36a54a"/>
 	</machine>
 	<machine name="Tactics Ogre - Let Us Cling Together (Japan) (Rev 2) [T-En by Aeon Genesis v1.00b]">
 		<description>Tactics Ogre - Let Us Cling Together (Japan) (Rev 2) [T-En by Aeon Genesis v1.00b]</description>
