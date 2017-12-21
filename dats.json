@@ -391,7 +391,12 @@
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo Wii (DLC)": {
 		"files": [
-			"input/no-intro/Nintendo - Nintendo Wii (DLC) (2*"
+			"input/no-intro/Nintendo - Nintendo Wii (DLC) (Decrypted) (2*"
+		]
+	},
+	"libretro-database/metadat/no-intro/Nintendo - Nintendo Wii U (DLC)": {
+		"files": [
+			"input/no-intro/WIP Nintendo - Nintendo Wii U (DLC)*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Pokemon Mini": {
@@ -519,19 +524,19 @@
 			"input/no-intro/Watara - Supervision*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sony - PlayStation 3 (DL)": {
+	"libretro-database/metadat/no-intro/Sony - PlayStation 3 (PSN)": {
 		"files": [
-			"input/no-intro/WIP Sony - PlayStation 3 (DL)*"
+			"input/no-intro/Sony - PlayStation 3 (PSN) (Decrypted)*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sony - PlayStation Portable (DL)": {
+	"libretro-database/metadat/no-intro/Sony - PlayStation Portable (PSN)": {
 		"files": [
-			"input/no-intro/WIP Sony - PlayStation Portable (DL)*"
+			"input/no-intro/Sony - PlayStation Portable (PSN) (Decrypted)*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sony - PlayStation Vita (DL)": {
+	"libretro-database/metadat/no-intro/Sony - PlayStation Vita (PSN)": {
 		"files": [
-			"input/no-intro/WIP Sony - PlayStation Vita (DL)*"
+			"input/no-intro/Sony - PlayStation Vita (PSN) (Decrypted)*"
 		]
 	}
 }

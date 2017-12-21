@@ -140,6 +140,7 @@ function processXml(filepath, done) {
 		}
 
 		// Convert the string to a JSON object.
+		console.log(filepath)
 		xml.parseString(data, (error, dat) => {
 			if (error) {
 				return done(error)
