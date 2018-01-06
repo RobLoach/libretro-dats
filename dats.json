@@ -1,4 +1,9 @@
 {
+	"libretro-database/metadat/libretro-dats/Amstrad - CPC": {
+		"files": [
+			"input/tosec/TOSEC/Amstrad CPC - Games*"
+		]
+	},
 	"libretro-database/metadat/libretro-dats/Nintendo - Super Nintendo Entertainment System Hacks": {
 		"files": [
 			"static/Nintendo - Super Nintendo Entertainment System/**"
