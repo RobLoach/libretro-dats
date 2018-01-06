@@ -42,6 +42,11 @@
 			"input/redump/SNK - Neo Geo CD - D*.dat"
 		]
 	},
+	"libretro-database/metadat/libretro-dats/Mattel - Intellivision": {
+		"files": [
+			"input/tosec/TOSEC/Mattel Intellivision - Games*"
+		]
+	},
 	"libretro-database/metadat/libretro-dats/Nintendo - GameCube": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Nintendo GameCube - Games*",
