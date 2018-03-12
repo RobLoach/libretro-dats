@@ -453,7 +453,7 @@
 		"files": [
 			"input/no-intro/Nintendo - Virtual Boy (2*"
 		]
-	},,
+	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo Wii (DLC)": {
 		"files": [
 			"input/no-intro/Nintendo - Nintendo Wii (DLC) (Decrypted) (2*"
@@ -535,11 +535,6 @@
 			"input/no-intro/Sony - PlayStation Portable (PSN) (Decrypted)*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sony - PlayStation Vita (PSN)": {
-		"files": [
-			"input/no-intro/Sony - PlayStation Vita (PSN) (Decrypted)*"
-		]
-	},
 	"libretro-database/metadat/no-intro/Sony - PlayStation Portable (PSX2PSP)": {
 		"files": [
 			"input/no-intro/Sony - PlayStation Portable (PSX2PSP)*"
@@ -562,7 +557,7 @@
 	},
 	"libretro-database/metadat/no-intro/Sony - PlayStation Vita (PSN)": {
 		"files": [
-			"input/no-intro/Sony - PlayStation Vita (PSN) (Encrypted)*"
+			"input/no-intro/Sony - PlayStation Vita (PSN) (Decrypted)*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Tiger - Game.com": {
