@@ -100,6 +100,7 @@ function getGameEntry(game, rom) {
 		.replace('Applications (elf)\\', '')
 		.replace('Demos (cdi)\\', '')
 		.replace('Demos (elf)\\', '')
+		.replace(' (United States)', ' (USA)')
 		.replace('Applications\\', '')
 
 	// The filename must be a valid filename.
