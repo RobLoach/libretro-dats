@@ -16,14 +16,24 @@
 			"input/trurip/NEC NEC - TurboGrafx-CD*"
 		]
 	},
-	"libretro-database/metadat/redump/NEC - PC Engine CD - TurboGrafx-CD": {
-		"files": [
-			"input/redump/NEC - PC Engine CD*.dat"
-		]
-	},
 	"libretro-database/metadat/redump/Microsoft - Xbox": {
 		"files": [
 			"input/redump/Microsoft - Xbox - Dat*.dat"
+		]
+	},
+	"libretro-database/metadat/redump/Microsoft - Xbox 360": {
+		"files": [
+			"input/redump/Microsoft - Xbox 360*.dat"
+		]
+	},
+	"libretro-database/metadat/redump/Microsoft - Xbox One": {
+		"files": [
+			"input/redump/Microsoft - Xbox One*.dat"
+		]
+	},
+	"libretro-database/metadat/redump/NEC - PC Engine CD - TurboGrafx-CD": {
+		"files": [
+			"input/redump/NEC - PC Engine CD*.dat"
 		]
 	},
 	"libretro-database/metadat/libretro-dats/NEC - PC-FX": {
@@ -63,9 +73,14 @@
 			"input/redump/Nintendo - Wii - *"
 		]
 	},
+	"libretro-database/metadat/redump/Nintendo - Wii U": {
+		"files": [
+			"input/redump/Nintendo - Wii U - *"
+		]
+	},
 	"libretro-database/metadat/libretro-dats/Sega - Dreamcast": {
 		"files": [
-			"input/tosec/TOSEC-ISO/Sega Dreamcast*",
+			"input/tosec/TOSEC-ISO/Sega Dreamcast - Games*",
 			"input/trurip/Sega Sega - Dreamcast*"
 		]
 	},
@@ -76,7 +91,7 @@
 	},
 	"libretro-database/metadat/libretro-dats/Sega - Mega-CD - Sega CD": {
 		"files": [
-			"input/tosec/TOSEC-ISO/Sega Mega-CD*",
+			"input/tosec/TOSEC-ISO/Sega Mega-CD & Sega CD - CD - Games*",
 			"input/trurip/Sega Sega - Mega-CD*",
 			"input/trurip/Sega Sega - Sega CD*"
 		]
@@ -88,7 +103,7 @@
 	},
 	"libretro-database/metadat/libretro-dats/Sega - Saturn": {
 		"files": [
-			"input/tosec/TOSEC-ISO/Sega Saturn*",
+			"input/tosec/TOSEC-ISO/Sega Saturn - Games*",
 			"input/trurip/Sega Sega - Saturn*",
 			"input/darkwater/Saturn*"
 		]
@@ -100,7 +115,7 @@
 	},
 	"libretro-database/metadat/libretro-dats/Sony - PlayStation": {
 		"files": [
-			"input/tosec/TOSEC-ISO/Sony PlayStation -*",
+			"input/tosec/TOSEC-ISO/Sony PlayStation - Games*",
 			"input/trurip/Sony Sony - PlayStation (*"
 		]
 	},
@@ -112,6 +127,16 @@
 	"libretro-database/metadat/redump/Sony - PlayStation 2": {
 		"files": [
 			"input/redump/Sony - PlayStation 2 - Dat*.dat"
+		]
+	},
+	"libretro-database/metadat/redump/Sony - PlayStation 3": {
+		"files": [
+			"input/redump/Sony - PlayStation 3 - Dat*.dat"
+		]
+	},
+	"libretro-database/metadat/redump/Sony - PlayStation 4": {
+		"files": [
+			"input/redump/Sony - PlayStation 4 - Dat*.dat"
 		]
 	},
 	"libretro-database/metadat/redump/Sony - PlayStation Portable": {
@@ -132,7 +157,7 @@
 	},
 	"libretro-database/metadat/libretro-dats/The 3DO Company - 3DO": {
 		"files": [
-			"input/tosec/TOSEC-ISO/3DO 3DO Interactive*",
+			"input/tosec/TOSEC-ISO/3DO 3DO Interactive Multiplayer - Games*",
 			"input/trurip/Panasonic*"
 		]
 	},
@@ -271,6 +296,11 @@
 			"input/no-intro/Hartung - Game Master*"
 		]
 	},
+	"libretro-database/metadat/no-intro/Konami - Picno": {
+		"files": [
+			"input/no-intro/Konami - Picno*"
+		]
+	},
 	"libretro-database/metadat/no-intro/LeapFrog - Leapster Learning Game System": {
 		"files": [
 			"input/no-intro/LeapFrog - Leapster Learning Game System*"
@@ -316,6 +346,11 @@
 			"input/no-intro/NEC - PC Engine - TurboGrafx 16*"
 		]
 	},
+	"libretro-database/metadat/no-intro/Nintendo - e-Reader": {
+		"files": [
+			"input/no-intro/Nintendo - e-Reader (*"
+		]
+	},
 	"libretro-database/metadat/no-intro/Nintendo - Family Computer Disk System": {
 		"files": [
 			"input/no-intro/Nintendo - Family Computer Disk System*"
@@ -329,11 +364,6 @@
 	"libretro-database/metadat/no-intro/Nintendo - Game Boy Advance": {
 		"files": [
 			"input/no-intro/Nintendo - Game Boy Advance (2*"
-		]
-	},
-	"libretro-database/metadat/no-intro/Nintendo - e-Reader": {
-		"files": [
-			"input/no-intro/Nintendo - e-Reader (*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Game Boy Color": {
@@ -354,13 +384,13 @@
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo 3DS": {
 		"files": [
-			"input/no-intro/Nintendo - Nintendo 3DS (2*",
 			"input/no-intro/Nintendo - Nintendo 3DS Decrypted *"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo 3DS (DLC)": {
 		"files": [
-			"input/no-intro/Nintendo - Nintendo 3DS (DLC) (2*"
+			"input/no-intro/Nintendo - Nintendo 3DS (DLC) (2*",
+			"input/no-intro/Nintendo - Nintendo 3DS (DLC) (C*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo 64": {
@@ -399,16 +429,6 @@
 			"input/no-intro/Nintendo - Nintendo Entertainment System (2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Nintendo Wii (DLC)": {
-		"files": [
-			"input/no-intro/Nintendo - Nintendo Wii (DLC) (Decrypted) (2*"
-		]
-	},
-	"libretro-database/metadat/no-intro/Nintendo - Nintendo Wii U (DLC)": {
-		"files": [
-			"input/no-intro/WIP Nintendo - Nintendo Wii U (DLC)*"
-		]
-	},
 	"libretro-database/metadat/no-intro/Nintendo - Pokemon Mini": {
 		"files": [
 			"input/no-intro/Nintendo - Pokemon Mini (2*"
@@ -432,6 +452,17 @@
 	"libretro-database/metadat/no-intro/Nintendo - Virtual Boy": {
 		"files": [
 			"input/no-intro/Nintendo - Virtual Boy (2*"
+		]
+	},,
+	"libretro-database/metadat/no-intro/Nintendo - Nintendo Wii (DLC)": {
+		"files": [
+			"input/no-intro/Nintendo - Nintendo Wii (DLC) (Decrypted) (2*"
+		]
+	},
+	"libretro-database/metadat/no-intro/Nintendo - Nintendo Wii U (DLC)": {
+		"files": [
+			"input/no-intro/WIP Nintendo - Nintendo Wii U (DLC)*",
+			"input/no-intro/Nintendo - Nintendo Wii U (DLC)*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Philips - Videopac+": {
@@ -489,9 +520,24 @@
 			"input/no-intro/SNK - Neo Geo Pocket Color*"
 		]
 	},
+	"libretro-database/metadat/no-intro/Sony - PlayStation 3 (PSN)": {
+		"files": [
+			"input/no-intro/Sony - PlayStation 3 (PSN) (Decrypted)*"
+		]
+	},
 	"libretro-database/metadat/no-intro/Sony - PlayStation Portable": {
 		"files": [
 			"input/no-intro/Sony - PlayStation Portable (2*"
+		]
+	},
+	"libretro-database/metadat/no-intro/Sony - PlayStation Portable (PSN)": {
+		"files": [
+			"input/no-intro/Sony - PlayStation Portable (PSN) (Decrypted)*"
+		]
+	},
+	"libretro-database/metadat/no-intro/Sony - PlayStation Vita (PSN)": {
+		"files": [
+			"input/no-intro/Sony - PlayStation Vita (PSN) (Decrypted)*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Sony - PlayStation Portable (PSX2PSP)": {
@@ -514,6 +560,11 @@
 			"input/no-intro/Sony - PlayStation Vita (2*"
 		]
 	},
+	"libretro-database/metadat/no-intro/Sony - PlayStation Vita (PSN)": {
+		"files": [
+			"input/no-intro/Sony - PlayStation Vita (PSN) (Encrypted)*"
+		]
+	},
 	"libretro-database/metadat/no-intro/Tiger - Game.com": {
 		"files": [
 			"input/no-intro/Tiger - Game*"
@@ -532,21 +583,6 @@
 	"libretro-database/metadat/no-intro/Watara - Supervision": {
 		"files": [
 			"input/no-intro/Watara - Supervision*"
-		]
-	},
-	"libretro-database/metadat/no-intro/Sony - PlayStation 3 (PSN)": {
-		"files": [
-			"input/no-intro/Sony - PlayStation 3 (PSN) (Decrypted)*"
-		]
-	},
-	"libretro-database/metadat/no-intro/Sony - PlayStation Portable (PSN)": {
-		"files": [
-			"input/no-intro/Sony - PlayStation Portable (PSN) (Decrypted)*"
-		]
-	},
-	"libretro-database/metadat/no-intro/Sony - PlayStation Vita (PSN)": {
-		"files": [
-			"input/no-intro/Sony - PlayStation Vita (PSN) (Decrypted)*"
 		]
 	}
 }
