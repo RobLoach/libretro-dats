@@ -4,7 +4,7 @@
 			"input/tosec/TOSEC/Amstrad CPC - Games*"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/Nintendo - Super Nintendo Entertainment System Hacks": {
+	"libretro-database/metadat/libretro-dats/Nintendo - Super Nintendo Entertainment System": {
 		"files": [
 			"static/Nintendo - Super Nintendo Entertainment System/**"
 		]
