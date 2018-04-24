@@ -6,8 +6,8 @@
 		<name>Nintendo - Super Famicom [T-En] Collection</name>
 		<description>Nintendo - Super Famicom [T-En] Collection</description>
 		<category>Standard DatFile</category>
-		<version>2018-04-04</version>
-		<date>2018-04-04</date>
+		<version>2018-04-19</version>
+		<date>2018-04-19</date>
 		<author>Retroplay</author>
 		<email>-insert email-</email>
 		<homepage>-insert homepage-</homepage>
@@ -55,7 +55,7 @@
 		<rom name="Chrono Trigger (USA) [T-En by Doctor L v1.01].txt" size="7689" crc="e694d6e1" md5="1d164c52778731c9061074b1ae0ec49c" sha1="5f9c61c0979cc071acb81fb51107b4304ee12fa6"/>
 		<rom name="Chrono Trigger - Music Library (Japan) (BS) [T-En by Terminus Traduction v1.00e].txt" size="3323" crc="d84a267a" md5="938219120bbda667b0c85dba77bdbfa2" sha1="5a2d5736ba7463cdbc2cbd5843e63e0e7f838932"/>
 		<rom name="Clock Tower (Japan) [T-En by Aeon Genesis v1.01].txt" size="4409" crc="ec8c70c7" md5="8a9af3eca3d9fe71ef2fbba4fae475ef" sha1="0f54095e54b27c3a18d7d2f437f3a778747844ed"/>
-		<rom name="Crystal Beans from Dungeon Explorer (Japan) [T-En by Hiei+Neige v1.0].txt" size="2876" crc="8619f45d" md5="6f5f6631db903d0117d169567ab16cc2" sha1="1b56adbddd5ec3e99c73be0b47fd18ca450a3a48"/>
+		<rom name="Crystal Beans from Dungeon Explorer (Japan) [T-En by Hiei+Neige v1.1].txt" size="2775" crc="40578bc8" md5="91689fcae1482ba1381522529ea76c0e" sha1="96ba1201d79b2e7c64295e15b378e532c29a00e3"/>
 		<rom name="Cu-On-Pa SFC (Japan) [T-En by Aeon Genesis v1.00].txt" size="1649" crc="041831e1" md5="bcac25d2831670e8ef173c956e600ff0" sha1="4b9cb0c01f0673a5004162f6cb99e28a0d3eefdd"/>
 		<rom name="Cyber Knight (Japan) [T-En by Aeon Genesis v1.01].txt" size="4168" crc="08d06ebb" md5="04a50063569138b8b7c6becbdda94bc5" sha1="6e46245dce983f93569e56b1a16d53ff08d0b71b"/>
 		<rom name="Cyber Knight II (Japan) [T-En by Aeon Genesis v1.00] - Manual.txt" size="32460" crc="0086f282" md5="89c479bf9c21a3dbb4d3c980b291db14" sha1="f2636a73d2b1658ac6c235df710af0ddc0d2f9b0"/>
@@ -139,13 +139,9 @@
 		<rom name="Kouryuu no Mimi (Japan) [T-En by RPGOne v1.0].txt" size="5034" crc="28fbcfae" md5="0c027eec9104188f7a8f6a2fac43cf2f" sha1="d129c3d92bc6b677dc421aee4e0d0b99798d9efd"/>
 		<rom name="Kunio's Dodge Ball (Japan) [T-En by Azelistic v1.0] [n].txt" size="33734" crc="a1fda7b6" md5="1108dc9346b251f35dc7afc6a3ce01fd" sha1="61f4a909e14407e0e6934f81a3dad97ee85309a8"/>
 		<rom name="La Wares (Japan) [T-En by Dynamic Designs v1.00].txt" size="12966" crc="a32af5b0" md5="474b179a36d9d673757a4425eb7fa565" sha1="118953f8a672d1f8818ea5acfc2262bedb653f19"/>
-		<rom name="Langrisser, Der (Japan) (Rev 1) [T-En by byuu+Derrick Sobodash v1.02] - Manual (Hi-Res).pdf" size="4718658" crc="909f5386" md5="f44b4166e063d803da58a18479f26c2d" sha1="d82db0fd8bd79711c6952d2dbb86bb0b494ccb1c"/>
-		<rom name="Langrisser, Der (Japan) (Rev 1) [T-En by byuu+Derrick Sobodash v1.02] - Manual (Printable).pdf" size="4731464" crc="a83d83c7" md5="bb9c70f3c2c4a7132986e1d34e981e4f" sha1="b9a8cecc32a7ebce4f84a9b35d85a8b2f26a838c"/>
-		<rom name="Langrisser, Der (Japan) (Rev 1) [T-En by byuu+Derrick Sobodash v1.02] - Manual.pdf" size="974687" crc="8b589105" md5="fa96d305f119f65e2023a038c15e78f2" sha1="819771787c94b620cdfb060d253dd2bc090c6fb1"/>
-		<rom name="Langrisser, Der (Japan) (Rev 1) [T-En by byuu+Derrick Sobodash v1.02].bsnes.cht" size="1711" crc="b8f6e0dd" md5="71ddd8cf785c484a507b9aee911134a6" sha1="7fa67ef4ec038c52e6b1c297978840712ddc4021"/>
-		<rom name="Langrisser, Der (Japan) (Rev 1) [T-En by byuu+Derrick Sobodash v1.02].txt" size="5766" crc="037d5721" md5="f3e69a52cb510ab43040b38efa435f07" sha1="7d5bf8d083831fcef53819680b346ea70fda1d59"/>
-		<rom name="Langrisser, Der (Japan) (Rev 1) [T-En by byuu+Derrick Sobodash v1.02].zsnes.cht" size="980" crc="8ee59db2" md5="5f0483a42c4c127477aaf6a1d757f2cf" sha1="6d6ab839a55250c133a48b87f360063506d3bce6"/>
+		<rom name="Langrisser, Der (Japan) (Rev 1) [T-En by byuu+Derrick Sobodash v1.3].txt" size="8646" crc="9506063f" md5="91dda3f9141e7afd61d47010005df334" sha1="dee52c93652fec51edf996f74cd7769d87f57f0a"/>
 		<rom name="Laplace no Ma (Japan) [T-En by Aeon Genesis v0.95b].txt" size="2863" crc="2c0b5309" md5="e9439d0cecd2b637641376881813eb80" sha1="22e1400b1f25d3c3bfed5df94813f94fcdf8a1b7"/>
+		<rom name="Last Bible III (Japan) [T-En by Tom v2.0].txt" size="2157" crc="7d7b9d8e" md5="b0b5884995163b566a00ef78c96ec947" sha1="074a17a1d1787db1a92d65d2efbe503e837d7486"/>
 		<rom name="Lennus II - The Apostles of the Seals (Japan) [T-En by Dynamic Designs v1.04] [n] - Spoiler Hints and Tips.doc" size="53760" crc="459b83de" md5="f816b71ddc4a5fbc2236a3162ee628b9" sha1="afa747d0a70073ab2a48cd979a986190b116194c"/>
 		<rom name="Lennus II - The Apostles of the Seals (Japan) [T-En by Dynamic Designs v1.04] [n].doc" size="86528" crc="b09aa2bd" md5="30b3e6ca8324cb47519f87d5d5a42fd1" sha1="62ed2de89f5b1de0185e80ea1946dd7ef4be8b1b"/>
 		<rom name="Little Magic (Japan) [T-En by Aeon Genesis v1.00b].txt" size="1936" crc="3b0a8358" md5="927d511823dc98f36714054baa0a2f1a" sha1="991ffdb583868e8a2b7bdcb22c88d51abcca54f4"/>
@@ -185,7 +181,7 @@
 		<rom name="Princess Minerva (Japan) [T-En by Dynamic Designs v1.02].txt" size="15040" crc="67d91ae2" md5="bc75ad5aa2412cd07a56d192cd17c479" sha1="c456540018dab866573e09f2856c927c1e3740b7"/>
 		<rom name="Radical Dreamers - Le Tresor Interdit (Japan) (BS) [T-En by Demiforce v1.4] [n] (1).txt" size="323" crc="d471322f" md5="aebc5476b0e73d3a80be42ac68b39be4" sha1="1ecd874e9027821fbbdcf95441510892e266f225"/>
 		<rom name="Radical Dreamers - Le Tresor Interdit (Japan) (BS) [T-En by Demiforce v1.4] [n].txt" size="51253" crc="3971fe5d" md5="aae21a148924354c3113dc39ce8dda17" sha1="faadca8628422d8af2eaed5723e6dabcb03d2b9e"/>
-		<rom name="Ranma 1-2 - Hard Battle II Super Move Hustle (Japan) [T-En by Dynamic Designs v1.01] [n].txt" size="7492" crc="e2b8b99e" md5="e6cfc2f6f643cfe5c64edb8c2a090fe1" sha1="521200575b80d06a341465c9b4131da6af26dd5e"/>
+		<rom name="Ranma 1-2 - Hard Battle II Super Move Hustle (Japan) [T-En by Dynamic Designs v1.03] [n].txt" size="7617" crc="9c2a7f28" md5="66e7f805a7abd94b157e5566b89cba94" sha1="0369e0f71f43009be321eb2f02343c0a89a3e64c"/>
 		<rom name="Ranma 1-2 - Treasure of the Red Cat Gang (Japan) [T-En by Dynamic Designs v0.99] (Manga Version) [n].txt" size="5643" crc="c33d2a8c" md5="e8e305332f4c36b2bd83ff008458c3fd" sha1="57589415d4930dfeaed7bfe84a4a1030c9716a74"/>
 		<rom name="Ranma 1-2 - Treasure of the Red Cat Gang (Japan) [T-En by Dynamic Designs v1.00] (Anime Version) [n].txt" size="5759" crc="9ce41d5e" md5="eb419be0a9081dba42ec269e916be4b8" sha1="958e7ae11baab03d7f4adcb6e4ad69286f4fdab4"/>
 		<rom name="Record of Lodoss War (Japan) [T-En by Dynamic Designs v1.0] [n].rtf" size="176119" crc="1497b7bf" md5="40778418da3bb48115d3c3d969069faa" sha1="1ea78510b164b5a65af0ad6ad0fe65f705553e3c"/>
@@ -251,7 +247,7 @@
 		<rom name="Wizardry Gaiden IV - Taima no Kodou (Japan) (Rev 1) [T-En by AgentOrange+DDS+Helly+MrRichard999 v1.01].txt" size="4311" crc="6018297e" md5="09abc605af788bb0142d0491a1cf27da" sha1="e13440c01092c0a45b9bccc84c642a30430296bd"/>
 		<rom name="Wizardry I-II-III - Story of Llylgamyn (Japan) (NP) [T-En by Aeon Genesis v1.00].txt" size="1745" crc="14ac37d6" md5="7f464475f4b8bfec0f80180203edd598" sha1="29b48908938e9ea9e7431c2929269ee96381a0d6"/>
 		<rom name="Wizardry V - Heart of the Maelstrom (Japan) [T-En by darkmoon2321 v1.0] [n].txt" size="4397" crc="2415afe6" md5="971158c6ffe1af0bef50fa696c9ffe64" sha1="e3bb007c3a3d1523f1f1d27c4ce0a8beb4cb2a83"/>
-		<rom name="Wizardry VI - Bane of the Cosmic Forge (Japan) [T-En by TiCo v0.99] [n].txt" size="1894" crc="7b8c148f" md5="07312d75aaf6f041dd874e37b31c4995" sha1="c6e34aece8106d5a38b54769b010d2c4e30d83e0"/>
+		<rom name="Wizardry VI - Bane of the Cosmic Forge (Japan) [T-En by TiCo v0.99] [Add by MrRichard999] [n].txt" size="2056" crc="46b1575c" md5="564c0f89c14e980c769b24f0588f664d" sha1="7557e9b1941760df7a20eb845efff2b6f512116d"/>
 		<rom name="Wonder Project J - Mechanical Boy Pino (Japan) [T-En by WakdHacks v1.04] [n].txt" size="3176" crc="f3d018b1" md5="8d102636b9e85c77648c1520c93bd260" sha1="b01acf0cbe305dec8ccf06892129765732940930"/>
 		<rom name="Xak - The Art of Visual Stage (Japan) [T-En by Dynamic Designs v1.10].txt" size="7433" crc="199cd5e6" md5="13e89485cb772cd85510719c075dae6e" sha1="1fdc1eaff152070921811ee0569e1db879eb5451"/>
 		<rom name="Ys IV - Mask of the Sun (Japan) [T-En by Aeon Genesis v2.10].txt" size="5162" crc="9d9de015" md5="7e822966da5fdf927dd0a9246fe5f9d8" sha1="5dedc356a286ceac8c34d71aa1103259437ac141"/>
@@ -275,15 +271,19 @@
 	</machine>
 	<machine name="Alcahest (Japan) [T-En by FH v1.0b] [Add by KingMike]">
 		<description>Alcahest (Japan) [T-En by FH v1.0b] [Add by KingMike]</description>
-		<rom name="Alcahest (Japan) [T-En by FH v1.0b] [Add by KingMike].sfc" size="1179648" crc="9cc9cc01" md5="c8e7c0f25ae51c9a6e5f092c3168d4d9" sha1="c558e75a176bdf226ad74eb5fa7ac33c30b99f69"/>
+		<rom name="Alcahest (Japan) [T-En by FH v1.0b] [Add by KingMike].sfc" size="1179648" crc="5caed89c" md5="a043912602dedcd97cf92c789b397c02" sha1="5fedff343226c1238698d5005ce78a16b817e025"/>
 	</machine>
 	<machine name="Amazing Spider-Man, The - Lethal Foes (Japan) [T-En by gorgyrip v1.0]">
 		<description>Amazing Spider-Man, The - Lethal Foes (Japan) [T-En by gorgyrip v1.0]</description>
-		<rom name="Amazing Spider-Man, The - Lethal Foes (Japan) [T-En by gorgyrip v1.0].sfc" size="2097152" crc="c41b318c" md5="dec146db904b48be8cd274d4f83b4ff6" sha1="06873f2b54d923ad9e0335e1345d703e5c960388"/>
+		<rom name="Amazing Spider-Man, The - Lethal Foes (Japan) [T-En by gorgyrip v1.0].sfc" size="2097152" crc="7dc5c418" md5="bbf905e1d38d96be953e499bbb9b9e49" sha1="70425d866cdcc061d4fe34c83c0daebca452da42"/>
+	</machine>
+	<machine name="Amazing Spider-Man, The - Lethal Foes (Japan) [T-En by gorgyrip v1.0] [Caps]">
+		<description>Amazing Spider-Man, The - Lethal Foes (Japan) [T-En by gorgyrip v1.0] [Caps]</description>
+		<rom name="Amazing Spider-Man, The - Lethal Foes (Japan) [T-En by gorgyrip v1.0] [Caps].sfc" size="2097152" crc="27e59025" md5="872d587e126efbcded62ac2aaf5a35dc" sha1="ab8cb1b5cf3870172b2de1d599c51fb95628e02a"/>
 	</machine>
 	<machine name="Amazing Spider-Man, The - Lethal Foes (Japan) [T-En by Kepeb v1.0]">
 		<description>Amazing Spider-Man, The - Lethal Foes (Japan) [T-En by Kepeb v1.0]</description>
-		<rom name="Amazing Spider-Man, The - Lethal Foes (Japan) [T-En by Kepeb v1.0].sfc" size="1572864" crc="0df67aa6" md5="7f69d7014a27c8f3b24f16c1e2777d65" sha1="c6d85af6993a3ee0b529bb654bbb007dadab5553"/>
+		<rom name="Amazing Spider-Man, The - Lethal Foes (Japan) [T-En by Kepeb v1.0].sfc" size="1572864" crc="d798a184" md5="a5a41386a4a6f3432801cfa60d02666c" sha1="6984e38af83bf77b3ac7336aa555cb7bea1a561d"/>
 	</machine>
 	<machine name="Ancient Magic - Bazoo! World of Magic (Japan) [T-En by Aeon Genesis v1.00] [n]">
 		<description>Ancient Magic - Bazoo! World of Magic (Japan) [T-En by Aeon Genesis v1.00] [n]</description>
@@ -376,7 +376,7 @@
 	</machine>
 	<machine name="Burning Heroes (Japan) [T-En by Dynamic Designs v1.00] [n]">
 		<description>Burning Heroes (Japan) [T-En by Dynamic Designs v1.00] [n]</description>
-		<rom name="Burning Heroes (Japan) [T-En by Dynamic Designs v1.00] [n].sfc" size="2621440" crc="a6998eab" md5="539a4a95e95fa890ee35b9988f0da888" sha1="10ce7f82dfa8a663cfda1c9246f96d7666126769"/>
+		<rom name="Burning Heroes (Japan) [T-En by Dynamic Designs v1.00] [n].sfc" size="2621440" crc="5a3c5ad3" md5="5825107df4d228cb9f1ea8c836306268" sha1="eaa666b40f1ef1a70845c6999e8e85fa0b76968c"/>
 	</machine>
 	<machine name="Chaos Seed - Feng Shui Chronicles (Japan) [T-En by Dynamic Designs v1.02] [n]">
 		<description>Chaos Seed - Feng Shui Chronicles (Japan) [T-En by Dynamic Designs v1.02] [n]</description>
@@ -404,11 +404,11 @@
 	</machine>
 	<machine name="Clockwerx (Japan) [T-En by MrRichard999 v0.75] [i]">
 		<description>Clockwerx (Japan) [T-En by MrRichard999 v0.75] [i]</description>
-		<rom name="Clockwerx (Japan) [T-En by MrRichard999 v0.75] [i].sfc" size="524288" crc="000d22b7" md5="f7e8af8f2c76aed3afe8f24d50bb4c0c" sha1="b6249586fcd5bbe0d7f68d20994cbfd7df4a0a21"/>
+		<rom name="Clockwerx (Japan) [T-En by MrRichard999 v0.75] [i].sfc" size="524288" crc="622315c1" md5="bd0974b488a97c1783c414a00defd1a8" sha1="431d1558e75c4556021c24a9435bb3307507152d"/>
 	</machine>
-	<machine name="Crystal Beans from Dungeon Explorer (Japan) [T-En by Hiei+Neige v1.0]">
-		<description>Crystal Beans from Dungeon Explorer (Japan) [T-En by Hiei+Neige v1.0]</description>
-		<rom name="Crystal Beans from Dungeon Explorer (Japan) [T-En by Hiei+Neige v1.0].sfc" size="1572864" crc="e77b7849" md5="1c78a1d64816f468c3175ec80fe464e1" sha1="26995a791ac986c4349bb8633e660d17b2f0ce57"/>
+	<machine name="Crystal Beans from Dungeon Explorer (Japan) [T-En by Hiei+Neige v1.1]">
+		<description>Crystal Beans from Dungeon Explorer (Japan) [T-En by Hiei+Neige v1.1]</description>
+		<rom name="Crystal Beans from Dungeon Explorer (Japan) [T-En by Hiei+Neige v1.1].sfc" size="2097152" crc="93c106fc" md5="74f34335137db3e374974c72c704d369" sha1="9e90aca5b1eecb7a68bea595532fb7d46f6ff621"/>
 	</machine>
 	<machine name="Cu-On-Pa SFC (Japan) [T-En by Aeon Genesis v1.00]">
 		<description>Cu-On-Pa SFC (Japan) [T-En by Aeon Genesis v1.00]</description>
@@ -460,7 +460,7 @@
 	</machine>
 	<machine name="Donald Duck and the Magical Hat (Japan) [T-En by gorgyrip v1.0] [n]">
 		<description>Donald Duck and the Magical Hat (Japan) [T-En by gorgyrip v1.0] [n]</description>
-		<rom name="Donald Duck and the Magical Hat (Japan) [T-En by gorgyrip v1.0] [n].sfc" size="2097152" crc="df450dd2" md5="0d3fd34ee739e4986bd0b1e1651a3038" sha1="0f95d2e4629737b39a686cd05fc931cddfc7fc8c"/>
+		<rom name="Donald Duck and the Magical Hat (Japan) [T-En by gorgyrip v1.0] [n].sfc" size="2097152" crc="7f456bbe" md5="50d1cdea58f8dfbdcd8ea2270e45a341" sha1="de493c3fa614714b2a42ad7910c9f7e62064129d"/>
 	</machine>
 	<machine name="Doraemon 4 - In the Moon Kingdom (Japan) [T-En by Sgt. Bowhack v0.94b] [n]">
 		<description>Doraemon 4 - In the Moon Kingdom (Japan) [T-En by Sgt. Bowhack v0.94b] [n]</description>
@@ -782,13 +782,17 @@
 		<description>La Wares (Japan) [T-En by Dynamic Designs v1.00]</description>
 		<rom name="La Wares (Japan) [T-En by Dynamic Designs v1.00].sfc" size="1572864" crc="2a250528" md5="219a323ce81a7af876a3c5fa93237e0f" sha1="bc077de87f196cbb40f01d154d379f849f46485e"/>
 	</machine>
-	<machine name="Langrisser, Der (Japan) (Rev 1) [T-En by byuu+Derrick Sobodash v1.02]">
-		<description>Langrisser, Der (Japan) (Rev 1) [T-En by byuu+Derrick Sobodash v1.02]</description>
-		<rom name="Langrisser, Der (Japan) (Rev 1) [T-En by byuu+Derrick Sobodash v1.02].sfc" size="3145728" crc="43c0caa9" md5="0e86c25835287e364bf7f3f6592f4c8f" sha1="532071e03ae92adc616de1ffbb07351b90a94e5e"/>
+	<machine name="Langrisser, Der (Japan) (Rev 1) [T-En by byuu+Derrick Sobodash v1.3]">
+		<description>Langrisser, Der (Japan) (Rev 1) [T-En by byuu+Derrick Sobodash v1.3]</description>
+		<rom name="Langrisser, Der (Japan) (Rev 1) [T-En by byuu+Derrick Sobodash v1.3].sfc" size="3145728" crc="ce97003b" md5="83a64475cb97fbe0a0ed5dccce34884d" sha1="a78509db86fe24686fe5d84d8d319227f706d8b4"/>
 	</machine>
 	<machine name="Laplace no Ma (Japan) [T-En by Aeon Genesis v0.95b]">
 		<description>Laplace no Ma (Japan) [T-En by Aeon Genesis v0.95b]</description>
 		<rom name="Laplace no Ma (Japan) [T-En by Aeon Genesis v0.95b].sfc" size="2097152" crc="6cdb0dae" md5="08a1495d62af1c0461f54f0354793fb7" sha1="b4cfebe7afa6d5fac1f46aa4cb88e2f13189d2b7"/>
+	</machine>
+	<machine name="Last Bible III (Japan) [T-En by Tom v2.0]">
+		<description>Last Bible III (Japan) [T-En by Tom v2.0]</description>
+		<rom name="Last Bible III (Japan) [T-En by Tom v2.0].sfc" size="4194304" crc="8168998f" md5="b1f6d11527f4e5cc3b3f66c6b8508022" sha1="33e38b81f04d6cd950f2f4464cabf14524a65336"/>
 	</machine>
 	<machine name="Lennus II - The Apostles of the Seals (Japan) [T-En by Dynamic Designs v1.04] [n]">
 		<description>Lennus II - The Apostles of the Seals (Japan) [T-En by Dynamic Designs v1.04] [n]</description>
@@ -958,9 +962,9 @@
 		<description>Radical Dreamers - Le Tresor Interdit (Japan) (BS) [T-En by Demiforce v1.4] [n]</description>
 		<rom name="Radical Dreamers - Le Tresor Interdit (Japan) (BS) [T-En by Demiforce v1.4] [n].sfc" size="2097152" crc="a2664b10" md5="55c5baaedffcf4fd022361c531c72178" sha1="d06a13524a907e5834a755e3a710fb30adb33c49"/>
 	</machine>
-	<machine name="Ranma 1-2 - Hard Battle II Super Move Hustle (Japan) [T-En by Dynamic Designs v1.01] [n]">
-		<description>Ranma 1-2 - Hard Battle II Super Move Hustle (Japan) [T-En by Dynamic Designs v1.01] [n]</description>
-		<rom name="Ranma 1-2 - Hard Battle II Super Move Hustle (Japan) [T-En by Dynamic Designs v1.01] [n].sfc" size="2686976" crc="7efc12be" md5="c840feb59c0dc9388bcca6c2fd93428e" sha1="541d92db6d90b3d5c38cf534e5e02e549c481ad5"/>
+	<machine name="Ranma 1-2 - Hard Battle II Super Move Hustle (Japan) [T-En by Dynamic Designs v1.03] [n]">
+		<description>Ranma 1-2 - Hard Battle II Super Move Hustle (Japan) [T-En by Dynamic Designs v1.03] [n]</description>
+		<rom name="Ranma 1-2 - Hard Battle II Super Move Hustle (Japan) [T-En by Dynamic Designs v1.03] [n].sfc" size="2686976" crc="fc0a54c5" md5="cd1ddb17a0dcbd4263ef569ff9148c85" sha1="7934ce639286d60ead435db2bec6f52ce7b993de"/>
 	</machine>
 	<machine name="Ranma 1-2 - Treasure of the Red Cat Gang (Japan) [T-En by Dynamic Designs v0.99] [Manga] [n]">
 		<description>Ranma 1-2 - Treasure of the Red Cat Gang (Japan) [T-En by Dynamic Designs v0.99] [Manga] [n]</description>
@@ -1174,6 +1178,16 @@
 		<description>Tengai Makyou Zero (Japan) [T-En by Tom v5.0]</description>
 		<rom name="Tengai Makyou Zero (Japan) [T-En by Tom v5.0].sfc" size="7340032" crc="2b2c76a1" md5="67f6724adc452e2096f08f01adc1491b" sha1="0d1700ef2fc0f8d25b76c3c47ed96c4b833a628a"/>
 	</machine>
+	<machine name="Tengai Makyou Zero (Japan) [T-En by Tom v5.0] [Higan split format]">
+		<description>Tengai Makyou Zero (Japan) [T-En by Tom v5.0] [Higan split format]</description>
+		<rom name="Tengai Makyou Zero (Japan) [T-En by Tom v5.0].sfc\data.rom" size="5242880" crc="d912d58b" md5="74e43ae27dddb8d67398ec7a42d3ea87" sha1="0018d6190bd07e84ce57df20253993685f4c6407"/>
+		<rom name="Tengai Makyou Zero (Japan) [T-En by Tom v5.0].sfc\expansion.rom" size="1048576" crc="73746868" md5="81c909242dfcd2666aad6c5a2ecd24ef" sha1="c4f30a82c3f3f93082f2bd23f94d8a14b8fdca1d"/>
+		<rom name="Tengai Makyou Zero (Japan) [T-En by Tom v5.0].sfc\manifest.bml" size="604" crc="996f0709" md5="3e6518cdc4f98adee5a254d79a9b4e2c" sha1="227b5a0095246e8f203da68f371ee2a74205cb44"/>
+		<rom name="Tengai Makyou Zero (Japan) [T-En by Tom v5.0].sfc\program.rom" size="1048576" crc="b5c2eaf3" md5="bdc43a756f50c07f5c762d9e56ed285b" sha1="f1be4efda5cf54e8801ba61cd57d8d1e56702e6f"/>
+		<rom name="Tengai Makyou Zero (Japan) [T-En by Tom v5.0].sfc\rtc.ram" size="16" crc="8e922fbc" md5="4e0feb34bd37b88476ea635cc8948eb2" sha1="8a3b15c857e23d1e1e39a41a8bf913900f339b04"/>
+		<rom name="Tengai Makyou Zero (Japan) [T-En by Tom v5.0].sfc\save.ram" size="8192" crc="54e74103" md5="371366990522fe19af78e22a14b7a4e3" sha1="9555e5806dec303117a0bd63f68e6b89955cd6a6"/>
+		<rom name="Tengai Makyou Zero (Japan) [T-En by Tom v5.0].sfc\Tengai Makyou Zero (Japan) [T-En by Tom v5.0].bml" size="604" crc="996f0709" md5="3e6518cdc4f98adee5a254d79a9b4e2c" sha1="227b5a0095246e8f203da68f371ee2a74205cb44"/>
+	</machine>
 	<machine name="Tomorrow's Joe (Japan) [T-En by Vice Translations v0.99] [n]">
 		<description>Tomorrow's Joe (Japan) [T-En by Vice Translations v0.99] [n]</description>
 		<rom name="Tomorrow's Joe (Japan) [T-En by Vice Translations v0.99] [n].sfc" size="1048576" crc="c3b18df7" md5="ff3e0f251293ce36bfe50da6242b1d5a" sha1="96f9b158c35ce3e2785545e7e73a75ab9fadc042"/>
@@ -1216,7 +1230,7 @@
 	</machine>
 	<machine name="Wizardry Gaiden IV - Taima no Kodou (Japan) (Rev 1) [T-En by AgentOrange+DDS+Helly+MrRichard999 v1.01]">
 		<description>Wizardry Gaiden IV - Taima no Kodou (Japan) (Rev 1) [T-En by AgentOrange+DDS+Helly+MrRichard999 v1.01]</description>
-		<rom name="Wizardry Gaiden IV - Taima no Kodou (Japan) (Rev 1) [T-En by AgentOrange+DDS+Helly+MrRichard999 v1.01].sfc" size="4194816" crc="badb3f0d" md5="539108e15f12f2f8f8f685545d57c27e" sha1="baf2a7f37e3ac83a6be711a87c82ec4f1e3cece7"/>
+		<rom name="Wizardry Gaiden IV - Taima no Kodou (Japan) (Rev 1) [T-En by AgentOrange+DDS+Helly+MrRichard999 v1.01].sfc" size="4194304" crc="109c4c4b" md5="c66f9720159ac6f3ad223fade764bcf2" sha1="0006de836f42d3b3ae2eb256c29957eb94139c52"/>
 	</machine>
 	<machine name="Wizardry I-II-III - Story of Llylgamyn (Japan) (NP) [T-En by Aeon Genesis v1.00]">
 		<description>Wizardry I-II-III - Story of Llylgamyn (Japan) (NP) [T-En by Aeon Genesis v1.00]</description>
@@ -1226,9 +1240,9 @@
 		<description>Wizardry V - Heart of the Maelstrom (Japan) [T-En by darkmoon2321 v1.0] [n]</description>
 		<rom name="Wizardry V - Heart of the Maelstrom (Japan) [T-En by darkmoon2321 v1.0] [n].sfc" size="1048576" crc="921eb734" md5="fd7e78ce846348c14043f06ed7ef7338" sha1="ae43ad72bfdc9071406383104135c1f171f77c1f"/>
 	</machine>
-	<machine name="Wizardry VI - Bane of the Cosmic Forge (Japan) [T-En by TiCo v0.99] [n]">
-		<description>Wizardry VI - Bane of the Cosmic Forge (Japan) [T-En by TiCo v0.99] [n]</description>
-		<rom name="Wizardry VI - Bane of the Cosmic Forge (Japan) [T-En by TiCo v0.99] [n].sfc" size="6291456" crc="bb9db65c" md5="8f59e44c601cd2719014638e5a84b12d" sha1="9c066c879a9b30b6a4b489ff0d298ccc1813827a"/>
+	<machine name="Wizardry VI - Bane of the Cosmic Forge (Japan) [T-En by TiCo v0.99] [Add by MrRichard999] [n]">
+		<description>Wizardry VI - Bane of the Cosmic Forge (Japan) [T-En by TiCo v0.99] [Add by MrRichard999] [n]</description>
+		<rom name="Wizardry VI - Bane of the Cosmic Forge (Japan) [T-En by TiCo v0.99] [Add by MrRichard999] [n].sfc" size="6291456" crc="9c0c7c6b" md5="79beab3732f99794a547984b6e986943" sha1="eb865c530fb7e045ac6f26463b370548491548d0"/>
 	</machine>
 	<machine name="Wonder Project J - Mechanical Boy Pino (Japan) [T-En by WakdHacks v1.04] [n]">
 		<description>Wonder Project J - Mechanical Boy Pino (Japan) [T-En by WakdHacks v1.04] [n]</description>
