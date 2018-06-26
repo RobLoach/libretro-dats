@@ -311,6 +311,11 @@
 			"input/no-intro/Magnavox - Odyssey2*"
 		]
 	},
+	"libretro-database/metadat/no-intro/Mattel - Intellivision": {
+		"files": [
+			"input/no-intro/Mattel - Intellivision*"
+		]
+	},
 	"libretro-database/metadat/no-intro/Microsoft - MSX": {
 		"files": [
 			"input/no-intro/Microsoft - MSX (*"
