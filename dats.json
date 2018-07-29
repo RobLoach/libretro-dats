@@ -1,21 +1,4 @@
 {
-	"libretro-database/metadat/libretro-dats/Amstrad - CPC": {
-		"files": [
-			"input/tosec/TOSEC/Amstrad CPC - Games*"
-		]
-	},
-	"libretro-database/metadat/libretro-dats/Nintendo - Super Nintendo Entertainment System": {
-		"files": [
-			"static/Nintendo - Super Nintendo Entertainment System/**"
-		]
-	},
-	"libretro-database/metadat/libretro-dats/NEC - PC Engine CD - TurboGrafx-CD": {
-		"files": [
-			"input/tosec/TOSEC-ISO/NEC PC-Engine CD*",
-			"input/trurip/NEC NEC - PC Engine CD*",
-			"input/trurip/NEC NEC - TurboGrafx-CD*"
-		]
-	},
 	"libretro-database/metadat/redump/Microsoft - Xbox": {
 		"files": [
 			"input/redump/Microsoft - Xbox - Dat*.dat"
@@ -36,12 +19,6 @@
 			"input/redump/NEC - PC Engine CD*.dat"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/NEC - PC-FX": {
-		"files": [
-			"input/tosec/TOSEC-ISO/NEC PC-FX - Games*",
-			"input/trurip/NEC NEC - PC-FX -*"
-		]
-	},
 	"libretro-database/metadat/redump/NEC - PC-FX": {
 		"files": [
 			"input/redump/NEC - PC-FX*.dat"
@@ -50,17 +27,6 @@
 	"libretro-database/metadat/redump/SNK - Neo Geo CD": {
 		"files": [
 			"input/redump/SNK - Neo Geo CD - D*.dat"
-		]
-	},
-	"libretro-database/metadat/libretro-dats/Mattel - Intellivision": {
-		"files": [
-			"input/tosec/TOSEC/Mattel Intellivision - Games*"
-		]
-	},
-	"libretro-database/metadat/libretro-dats/Nintendo - GameCube": {
-		"files": [
-			"input/tosec/TOSEC-ISO/Nintendo GameCube - Games*",
-			"input/trurip/Namco - Sega - Nintendo Namco, Sega, Nintendo - Triforce*"
 		]
 	},
 	"libretro-database/metadat/redump/Nintendo - GameCube": {
@@ -78,15 +44,44 @@
 			"input/redump/Nintendo - Wii U - *"
 		]
 	},
+	"libretro-database/metadat/libretro-dats/Amstrad - CPC": {
+		"files": [
+			"input/tosec/TOSEC/Amstrad CPC - Games*"
+		]
+	},
+	"libretro-database/metadat/libretro-dats/Nintendo - Super Nintendo Entertainment System": {
+		"files": [
+			"static/Nintendo - Super Nintendo Entertainment System/**"
+		]
+	},
+	"libretro-database/metadat/libretro-dats/NEC - PC Engine CD - TurboGrafx-CD": {
+		"files": [
+			"input/tosec/TOSEC-ISO/NEC PC-Engine CD*",
+			"input/trurip/NEC NEC - PC Engine CD*",
+			"input/trurip/NEC NEC - TurboGrafx-CD*"
+		]
+	},
+	"libretro-database/metadat/libretro-dats/NEC - PC-FX": {
+		"files": [
+			"input/tosec/TOSEC-ISO/NEC PC-FX - Games*",
+			"input/trurip/NEC NEC - PC-FX -*"
+		]
+	},
+	"libretro-database/metadat/libretro-dats/Mattel - Intellivision": {
+		"files": [
+			"input/tosec/TOSEC/Mattel Intellivision - Games*"
+		]
+	},
+	"libretro-database/metadat/libretro-dats/Nintendo - GameCube": {
+		"files": [
+			"input/tosec/TOSEC-ISO/Nintendo GameCube - Games*",
+			"input/trurip/Namco - Sega - Nintendo Namco, Sega, Nintendo - Triforce*"
+		]
+	},
 	"libretro-database/metadat/libretro-dats/Sega - Dreamcast": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Sega Dreamcast - Games*",
 			"input/trurip/Sega Sega - Dreamcast*"
-		]
-	},
-	"libretro-database/metadat/redump/Sega - Dreamcast": {
-		"files": [
-			"input/redump/Sega - Dreamcast*.dat"
 		]
 	},
 	"libretro-database/metadat/libretro-dats/Sega - Mega-CD - Sega CD": {
@@ -96,27 +91,19 @@
 			"input/trurip/Sega Sega - Sega CD*"
 		]
 	},
+	"libretro-database/metadat/redump/Sega - Dreamcast": {
+		"files": [
+			"input/redump/Sega - Dreamcast*.dat"
+		]
+	},
 	"libretro-database/metadat/redump/Sega - Mega-CD - Sega CD": {
 		"files": [
 			"input/redump/Sega - Mega-CD*.dat"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/Sega - Saturn": {
-		"files": [
-			"input/tosec/TOSEC-ISO/Sega Saturn - Games*",
-			"input/trurip/Sega Sega - Saturn*",
-			"input/darkwater/Saturn*"
-		]
-	},
 	"libretro-database/metadat/redump/Sega - Saturn": {
 		"files": [
 			"input/redump/Sega - Saturn*.dat"
-		]
-	},
-	"libretro-database/metadat/libretro-dats/Sony - PlayStation": {
-		"files": [
-			"input/tosec/TOSEC-ISO/Sony PlayStation - Games*",
-			"input/trurip/Sony Sony - PlayStation (*"
 		]
 	},
 	"libretro-database/metadat/redump/Sony - PlayStation": {
@@ -144,6 +131,24 @@
 			"input/redump/Sony - PlayStation Portable - Dat*"
 		]
 	},
+	"libretro-database/metadat/redump/The 3DO Company - 3DO": {
+		"files": [
+			"input/redump/Panasonic - 3DO*.dat"
+		]
+	},
+	"libretro-database/metadat/libretro-dats/Sega - Saturn": {
+		"files": [
+			"input/tosec/TOSEC-ISO/Sega Saturn - Games*",
+			"input/trurip/Sega Sega - Saturn*",
+			"input/darkwater/Saturn*"
+		]
+	},
+	"libretro-database/metadat/libretro-dats/Sony - PlayStation": {
+		"files": [
+			"input/tosec/TOSEC-ISO/Sony PlayStation - Games*",
+			"input/trurip/Sony Sony - PlayStation (*"
+		]
+	},
 	"libretro-database/metadat/libretro-dats/Sinclair - ZX Spectrum": {
 		"files": [
 			"input/tosec/TOSEC/Sinclair ZX Spectrum - Compilations - Games - *",
@@ -159,11 +164,6 @@
 		"files": [
 			"input/tosec/TOSEC-ISO/3DO 3DO Interactive Multiplayer - Games*",
 			"input/trurip/Panasonic*"
-		]
-	},
-	"libretro-database/metadat/redump/The 3DO Company - 3DO": {
-		"files": [
-			"input/redump/Panasonic - 3DO*.dat"
 		]
 	},
 	"libretro-database/metadat/no-intro/Atari - 2600": {
