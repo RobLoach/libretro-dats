@@ -44,6 +44,51 @@
 			"input/redump/Nintendo - Wii U - *"
 		]
 	},
+	"libretro-database/metadat/redump/Sega - Dreamcast": {
+		"files": [
+			"input/redump/Sega - Dreamcast*.dat"
+		]
+	},
+	"libretro-database/metadat/redump/Sega - Mega-CD - Sega CD": {
+		"files": [
+			"input/redump/Sega - Mega-CD*.dat"
+		]
+	},
+	"libretro-database/metadat/redump/Sega - Saturn": {
+		"files": [
+			"input/redump/Sega - Saturn*.dat"
+		]
+	},
+	"libretro-database/metadat/redump/Sony - PlayStation": {
+		"files": [
+			"input/redump/Sony - PlayStation - Dat*.dat"
+		]
+	},
+	"libretro-database/metadat/redump/Sony - PlayStation 2": {
+		"files": [
+			"input/redump/Sony - PlayStation 2 - Dat*.dat"
+		]
+	},
+	"libretro-database/metadat/redump/Sony - PlayStation 3": {
+		"files": [
+			"input/redump/Sony - PlayStation 3 - Dat*.dat"
+		]
+	},
+	"libretro-database/metadat/redump/Sony - PlayStation 4": {
+		"files": [
+			"input/redump/Sony - PlayStation 4 - Dat*.dat"
+		]
+	},
+	"libretro-database/metadat/redump/Sony - PlayStation Portable": {
+		"files": [
+			"input/redump/Sony - PlayStation Portable - Dat*"
+		]
+	},
+	"libretro-database/metadat/redump/The 3DO Company - 3DO": {
+		"files": [
+			"input/redump/Panasonic - 3DO*.dat"
+		]
+	},
 	"libretro-database/metadat/libretro-dats/Amstrad - CPC": {
 		"files": [
 			"input/tosec/TOSEC/Amstrad CPC - Games*"
@@ -89,51 +134,6 @@
 			"input/tosec/TOSEC-ISO/Sega Mega-CD & Sega CD - CD - Games*",
 			"input/trurip/Sega Sega - Mega-CD*",
 			"input/trurip/Sega Sega - Sega CD*"
-		]
-	},
-	"libretro-database/metadat/redump/Sega - Dreamcast": {
-		"files": [
-			"input/redump/Sega - Dreamcast*.dat"
-		]
-	},
-	"libretro-database/metadat/redump/Sega - Mega-CD - Sega CD": {
-		"files": [
-			"input/redump/Sega - Mega-CD*.dat"
-		]
-	},
-	"libretro-database/metadat/redump/Sega - Saturn": {
-		"files": [
-			"input/redump/Sega - Saturn*.dat"
-		]
-	},
-	"libretro-database/metadat/redump/Sony - PlayStation": {
-		"files": [
-			"input/redump/Sony - PlayStation - Dat*.dat"
-		]
-	},
-	"libretro-database/metadat/redump/Sony - PlayStation 2": {
-		"files": [
-			"input/redump/Sony - PlayStation 2 - Dat*.dat"
-		]
-	},
-	"libretro-database/metadat/redump/Sony - PlayStation 3": {
-		"files": [
-			"input/redump/Sony - PlayStation 3 - Dat*.dat"
-		]
-	},
-	"libretro-database/metadat/redump/Sony - PlayStation 4": {
-		"files": [
-			"input/redump/Sony - PlayStation 4 - Dat*.dat"
-		]
-	},
-	"libretro-database/metadat/redump/Sony - PlayStation Portable": {
-		"files": [
-			"input/redump/Sony - PlayStation Portable - Dat*"
-		]
-	},
-	"libretro-database/metadat/redump/The 3DO Company - 3DO": {
-		"files": [
-			"input/redump/Panasonic - 3DO*.dat"
 		]
 	},
 	"libretro-database/metadat/libretro-dats/Sega - Saturn": {
