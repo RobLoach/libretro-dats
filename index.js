@@ -102,6 +102,7 @@ function getGameEntry(game, rom) {
 		.replace('Demos (elf)\\', '')
 		.replace(' (United States)', ' (USA)')
 		.replace('Applications\\', '')
+		.replace('&apos;', '\'')
 
 	// The filename must be a valid filename.
 	let gameFile = sanitizeFilename(path.basename(unidecode(rom.name)))

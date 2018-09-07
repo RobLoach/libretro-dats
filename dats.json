@@ -99,6 +99,16 @@
 			"static/Nintendo - Super Nintendo Entertainment System/**"
 		]
 	},
+	"libretro-database/metadat/libretro-dats/Nintendo - Nintendo Entertainment System": {
+		"files": [
+			"static/Headered/Nintendo - Nintendo*.dat"
+		]
+	},
+	"libretro-database/metadat/libretro-dats/Nintendo - Family Computer Disk System": {
+		"files": [
+			"static/Headered/Nintendo - Family*.dat"
+		]
+	},
 	"libretro-database/metadat/libretro-dats/NEC - PC Engine CD - TurboGrafx-CD": {
 		"files": [
 			"input/tosec/TOSEC-ISO/NEC PC-Engine CD*"
