@@ -6,8 +6,8 @@
 		<name>Nintendo - Super Famicom [T-En] Collection</name>
 		<description>Nintendo - Super Famicom [T-En] Collection</description>
 		<category>Standard DatFile</category>
-		<version>2018-07-24</version>
-		<date>2018-07-24</date>
+		<version>2018-09-06</version>
+		<date>2018-09-06</date>
 		<author>Retroplay</author>
 		<email>-insert email-</email>
 		<homepage>-insert homepage-</homepage>
@@ -155,7 +155,7 @@
 		<rom name="Magical Land of Wozz, The (Japan) [T-En by Translation Corporation v1.1] [n].txt" size="15397" crc="b3429da5" md5="deeaaddcf542276ecc7a04b974279475" sha1="60013032e1309c5144049cd7877b92b937d5323c"/>
 		<rom name="Magical Pop'n (Japan) [T-En by Aeon Genesis v1.01].txt" size="2307" crc="0da38558" md5="493b82c366bb5172fe1aedb1e9365976" sha1="32dda42e98e60236f649f46d3cdf5f58e5b89ab4"/>
 		<rom name="Magna Braban - The Wandering Hero (Japan) [T-En by KingMike Translations v2.0] [n].txt" size="3994" crc="7a4179ee" md5="9d4757ac7529b7e8825fe8e90aa880c2" sha1="f06af42733b000c2a794074f3dfbfa7980cc4dfc"/>
-		<rom name="Marvelous - Another Treasure Island (Japan) [T-En by Tashi] [Add by DackR v1.06] [n].txt" size="3684" crc="172ff6d9" md5="5a0525f807e46536709f1a352c61558f" sha1="ceefd9f406b454d2a2389a33775e7db65c3ac3b6"/>
+		<rom name="Marvelous - Another Treasure Island (Japan) [T-En by Tashi] [Add by DackR v1.07] [n].txt" size="3946" crc="cab037f5" md5="d97c8522fe9a3482fac0c74ddef7023f" sha1="045dd8d7a5fb6c5d4a7582abb62c731ba60e24ed"/>
 		<rom name="Megami Tensei - The Old Testament (Japan) [T-En by DDSTranslation v1.1] [n].txt" size="2332" crc="aa80310c" md5="a6c7bc64a93d51a5568548d42f1d8838" sha1="8b00104bbf73295fe4c838c530fcc4e11febca41"/>
 		<rom name="Metal Max Returns (Japan) [T-En by Aeon Genesis v1.00].txt" size="2851" crc="3e3ebaf7" md5="8de8e598460607d4035498f4129e62e4" sha1="ccc23832360a5f7bebb9d2d6b7556b22e4c244d9"/>
 		<rom name="Mickey &amp; Donald - Magical Adventure 3 (Japan) [T-En by RPGOne v1.1] [n].txt" size="4725" crc="c2b80bce" md5="e372db390ed156e2bac3e0dc9f4032fc" sha1="2c23cc7747f153727f7d21095c4d5975d252307e"/>
@@ -228,7 +228,7 @@
 		<rom name="Super Puyo Puyo 2 (Japan) [T-En by J2e Translations v1.1] [n].txt" size="3990" crc="7ad9a760" md5="deeeaf4bde39c16081d2e9602f699f9a" sha1="8879a1c70c16ce8248332e90a3e412c8bfebc51d"/>
 		<rom name="Super Robot Wars 3 (Japan) [T-En by Aeon Genesis v1.00] [n] - Manual.txt" size="16055" crc="d9ec1119" md5="acdf7d65bf497a0ffdf6a0ec8369450f" sha1="f8a9c727b3ae99c5470b3a5fcb428379f444dd9a"/>
 		<rom name="Super Robot Wars 3 (Japan) [T-En by Aeon Genesis v1.00] [n].txt" size="3818" crc="5c65fa77" md5="9d327e6639a1ded10e0313bf2600ee2f" sha1="e3f3bc9541e99548b3271a0479acc969802ddf46"/>
-		<rom name="Super Robot Wars Gaiden - The Elemental Lords (Japan) [T-En by Aeon Genesis v1.01] [n].txt" size="5684" crc="14e15073" md5="345848224e25c5c8798ee3cae3c2ddb6" sha1="ff3b2739b524598b42885b744d62fc2395d57486"/>
+		<rom name="Super Robot Wars Gaiden - The Elemental Lords (Japan) [T-En by Aeon Genesis v1.05] [n].txt" size="5866" crc="721bf394" md5="1d965f1d65f2970f3bd4793c00fac82c" sha1="b77891bc8a1a2bfec88619e2be51c75eaf82c408"/>
 		<rom name="Super Shell Monsters Story (Japan) [T-En by Dynamic-Designs v1.00][n].doc" size="37888" crc="80de2e72" md5="5f7662935270f9776f67f5f2469b1977" sha1="0f3e4f4f71f958d0ae7ce9b8e76162b39e4c587a"/>
 		<rom name="Super Ultra Baseball 2 (Japan) [T-En by VX v1.00] - Manual.pdf" size="485435" crc="b9c99b43" md5="ce9b005d3320225d098cac952e809133" sha1="1bafd9d0492f1536818bf6c23012e2af195f5554"/>
 		<rom name="Super Ultra Baseball 2 (Japan) [T-En by VX v1.00] - Manual.txt" size="28407" crc="4a8e3e6b" md5="f5d566ce28d795f86f87adb4a30fcc69" sha1="42b994684bb4f471b8de626c68e5c4e26e25c95a"/>
@@ -450,9 +450,9 @@
 		<description>Demon Child Zenki - Battle Raiden (Japan) [T-En by Dynamic Designs v1.00] [n]</description>
 		<rom name="Demon Child Zenki - Battle Raiden (Japan) [T-En by Dynamic Designs v1.00] [n].sfc" size="2097152" crc="0db880c8" md5="9c0e97741d4558578c57e3f79e0adb44" sha1="4adc0762176695742796765c4c12903e7197d9cf"/>
 	</machine>
-	<machine name="Dezaemon (Japan) [T-En by Aeon Genesis v1.00] [n]">
-		<description>Dezaemon (Japan) [T-En by Aeon Genesis v1.00] [n]</description>
-		<rom name="Dezaemon (Japan) [T-En by Aeon Genesis v1.00] [n].sfc" size="524288" crc="df3c62dd" md5="80bd4d60886e4730c1f5ca3d6c1cff3e" sha1="1d0c1a691ddcaeb228b252c214171bc30175cc43"/>
+	<machine name="Dezaemon (Japan) [T-En by Aeon Genesis v1.00] [Add by mwksoul v1.0] [n]">
+		<description>Dezaemon (Japan) [T-En by Aeon Genesis v1.00] [Add by mwksoul v1.0] [n]</description>
+		<rom name="Dezaemon (Japan) [T-En by Aeon Genesis v1.00] [Add by mwksoul v1.0] [n].sfc" size="524288" crc="32f9c958" md5="e577f1535189b2c3e730afa63ce6e787" sha1="3abca6dc1b7731f46ca27f07705294c7011a871b"/>
 	</machine>
 	<machine name="Digital Devil Story - Megami Tensei (Japan) [T-En by DDSTranslation v1.1] [Add by Dushbadge v1.0] [n]">
 		<description>Digital Devil Story - Megami Tensei (Japan) [T-En by DDSTranslation v1.1] [Add by Dushbadge v1.0] [n]</description>
@@ -862,9 +862,9 @@
 		<description>Magna Braban - The Wandering Hero (Japan) [T-En by KingMike Translations v2.0] [n]</description>
 		<rom name="Magna Braban - The Wandering Hero (Japan) [T-En by KingMike Translations v2.0] [n].sfc" size="1572864" crc="0b79f4fc" md5="2e816b2012d735e04a5a10d5eaccf8f0" sha1="23c7114d3b66dd7933dd562a602e6255d74efc61"/>
 	</machine>
-	<machine name="Marvelous - Another Treasure Island (Japan) [T-En by Tashi] [Add by DackR v1.06] [n]">
-		<description>Marvelous - Another Treasure Island (Japan) [T-En by Tashi] [Add by DackR v1.06] [n]</description>
-		<rom name="Marvelous - Another Treasure Island (Japan) [T-En by Tashi] [Add by DackR v1.06] [n].sfc" size="4194304" crc="a9449049" md5="928d2ee7d5df488ef968a8d3230fa178" sha1="83d99643440a23663e74384af9dc7f1af0244c85"/>
+	<machine name="Marvelous - Another Treasure Island (Japan) [T-En by Tashi] [Add by DackR v1.07] [n]">
+		<description>Marvelous - Another Treasure Island (Japan) [T-En by Tashi] [Add by DackR v1.07] [n]</description>
+		<rom name="Marvelous - Another Treasure Island (Japan) [T-En by Tashi] [Add by DackR v1.07] [n].sfc" size="4194304" crc="092a9db9" md5="d9ac315caf3cd20c7e5b638625b0fa4a" sha1="5ba071614dff1c0b131e56af625a7e5e3f60000c"/>
 	</machine>
 	<machine name="Mega Man &amp; Bass (Japan) [T-En by Aeon Genesis v1.00] [n]">
 		<description>Mega Man &amp; Bass (Japan) [T-En by Aeon Genesis v1.00] [n]</description>
@@ -1154,9 +1154,13 @@
 		<description>Super Robot Wars 3 (Japan) [T-En by Aeon Genesis v1.00] [n]</description>
 		<rom name="Super Robot Wars 3 (Japan) [T-En by Aeon Genesis v1.00] [n].sfc" size="2097152" crc="80980318" md5="bd16589d0737460e26af9ea2425410fc" sha1="ccde1c2657dec67e2cb1b2a7d97643b4fb2a54e6"/>
 	</machine>
-	<machine name="Super Robot Wars Gaiden - The Elemental Lords (Japan) [T-En by Aeon Genesis v1.01] [n]">
-		<description>Super Robot Wars Gaiden - The Elemental Lords (Japan) [T-En by Aeon Genesis v1.01] [n]</description>
-		<rom name="Super Robot Wars Gaiden - The Elemental Lords (Japan) [T-En by Aeon Genesis v1.01] [n].sfc" size="4194304" crc="c3f95bfb" md5="de0b6e738b6da90d9e8418dae06956fb" sha1="7625925e703acf8b76854e8ad896824568e4aa20"/>
+	<machine name="Super Robot Wars Gaiden - The Elemental Lords (Japan) [T-En by Aeon Genesis v1.05] [Music Persistence] [n]">
+		<description>Super Robot Wars Gaiden - The Elemental Lords (Japan) [T-En by Aeon Genesis v1.05] [Music Persistence] [n]</description>
+		<rom name="Super Robot Wars Gaiden - The Elemental Lords (Japan) [T-En by Aeon Genesis v1.05] [Music Persistence] [n].sfc" size="4194304" crc="720c5a37" md5="8bde62b744f3b6dc38e512d31d095982" sha1="d2e10b4b4f8d581a729a76d63a1700d823ccc87f"/>
+	</machine>
+	<machine name="Super Robot Wars Gaiden - The Elemental Lords (Japan) [T-En by Aeon Genesis v1.05] [n]">
+		<description>Super Robot Wars Gaiden - The Elemental Lords (Japan) [T-En by Aeon Genesis v1.05] [n]</description>
+		<rom name="Super Robot Wars Gaiden - The Elemental Lords (Japan) [T-En by Aeon Genesis v1.05] [n].sfc" size="4194304" crc="bd1924d2" md5="9b184312165df508f6eff140bb907f18" sha1="fe9e8bc14b2bc18b538c5735a80479bfea3e91a1"/>
 	</machine>
 	<machine name="Super Shell Monsters Story (Japan) [T-En by Dynamic-Designs v1.00] [n]">
 		<description>Super Shell Monsters Story (Japan) [T-En by Dynamic-Designs v1.00] [n]</description>
