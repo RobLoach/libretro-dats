@@ -6,7 +6,6 @@ Builds a set of DATs for [libretro-database](http://github.com/libretro/libretro
 
 - [No-Intro](http://datomatic.no-intro.org/)
 - [Redump](http://redump.org/)
-- [Trurip](http://trurip.org/)
 - [TOSEC](http://www.tosecdev.org/)
 - [Darkwater](http://darkwater.info)
 - [AdvanceSCENE](http://www.advanscene.com)
@@ -21,7 +20,6 @@ Builds a set of DATs for [libretro-database](http://github.com/libretro/libretro
     - wget
 
 2. Download the DATs
-    - [Trurip](http://database.trurip.org/index.php?page=mnu-Database-DAT-List&mode=normal), only Games
     - Redump
     - TOSEC
     - No-Intro
@@ -32,7 +30,6 @@ Builds a set of DATs for [libretro-database](http://github.com/libretro/libretro
     input/no-intro/*
     input/advancescene/*
     input/tosec/TOSEC-ISO/*
-    input/trurip/NEC - PC Engine CD*
     input/redump/dats/NEC - PC Engine CD
     input/b2071988/*
     ```

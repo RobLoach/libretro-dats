@@ -101,15 +101,12 @@
 	},
 	"libretro-database/metadat/libretro-dats/NEC - PC Engine CD - TurboGrafx-CD": {
 		"files": [
-			"input/tosec/TOSEC-ISO/NEC PC-Engine CD*",
-			"input/trurip/NEC NEC - PC Engine CD*",
-			"input/trurip/NEC NEC - TurboGrafx-CD*"
+			"input/tosec/TOSEC-ISO/NEC PC-Engine CD*"
 		]
 	},
 	"libretro-database/metadat/libretro-dats/NEC - PC-FX": {
 		"files": [
-			"input/tosec/TOSEC-ISO/NEC PC-FX - Games*",
-			"input/trurip/NEC NEC - PC-FX -*"
+			"input/tosec/TOSEC-ISO/NEC PC-FX - Games*"
 		]
 	},
 	"libretro-database/metadat/libretro-dats/Mattel - Intellivision": {
@@ -119,34 +116,28 @@
 	},
 	"libretro-database/metadat/libretro-dats/Nintendo - GameCube": {
 		"files": [
-			"input/tosec/TOSEC-ISO/Nintendo GameCube - Games*",
-			"input/trurip/Namco - Sega - Nintendo Namco, Sega, Nintendo - Triforce*"
+			"input/tosec/TOSEC-ISO/Nintendo GameCube - Games*"
 		]
 	},
 	"libretro-database/metadat/libretro-dats/Sega - Dreamcast": {
 		"files": [
-			"input/tosec/TOSEC-ISO/Sega Dreamcast - Games*",
-			"input/trurip/Sega Sega - Dreamcast*"
+			"input/tosec/TOSEC-ISO/Sega Dreamcast - Games*"
 		]
 	},
 	"libretro-database/metadat/libretro-dats/Sega - Mega-CD - Sega CD": {
 		"files": [
-			"input/tosec/TOSEC-ISO/Sega Mega-CD & Sega CD - CD - Games*",
-			"input/trurip/Sega Sega - Mega-CD*",
-			"input/trurip/Sega Sega - Sega CD*"
+			"input/tosec/TOSEC-ISO/Sega Mega-CD & Sega CD - CD - Games*"
 		]
 	},
 	"libretro-database/metadat/libretro-dats/Sega - Saturn": {
 		"files": [
-			"input/tosec/TOSEC-ISO/Sega Saturn - Games*",
-			"input/trurip/Sega Sega - Saturn*",
+			"input/tosec/TOSEC-ISO/Sega Saturn - Games*"
 			"input/darkwater/Saturn*"
 		]
 	},
 	"libretro-database/metadat/libretro-dats/Sony - PlayStation": {
 		"files": [
-			"input/tosec/TOSEC-ISO/Sony PlayStation - Games*",
-			"input/trurip/Sony Sony - PlayStation (*"
+			"input/tosec/TOSEC-ISO/Sony PlayStation - Games*"
 		]
 	},
 	"libretro-database/metadat/libretro-dats/Sinclair - ZX Spectrum": {
@@ -162,8 +153,7 @@
 	},
 	"libretro-database/metadat/libretro-dats/The 3DO Company - 3DO": {
 		"files": [
-			"input/tosec/TOSEC-ISO/3DO 3DO Interactive Multiplayer - Games*",
-			"input/trurip/Panasonic*"
+			"input/tosec/TOSEC-ISO/3DO 3DO Interactive Multiplayer - Games*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Atari - 2600": {
