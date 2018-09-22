@@ -378,8 +378,8 @@
 	},
 	"libretro-database/metadat/no-intro/Nintendo - New Nintendo 3DS": {
 		"files": [
-			"input/no-intro/Nintendo - New Nintendo 3DS (2*",
-			"input/no-intro/Nintendo - New Nintendo 3DS Decrypted*"
+			"input/no-intro/Nintendo - New Nintendo 3DS (Decrypted*",
+			"input/no-intro/Nintendo - New Nintendo 3DS (Encrypted*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - New Nintendo 3DS (DLC)": {
@@ -389,7 +389,8 @@
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo 3DS": {
 		"files": [
-			"input/no-intro/Nintendo - Nintendo 3DS Decrypted *"
+			"input/no-intro/Nintendo - Nintendo 3DS (Decrypted*",
+			"input/no-intro/Nintendo - Nintendo 3DS (Encrypted*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo 3DS (DLC)": {
