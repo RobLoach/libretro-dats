@@ -151,7 +151,7 @@
 		]
 	},
 	"libretro-database/metadat/libretro-dats/Sinclair - ZX Spectrum": {
-		"files": [
+		"files-bak": [
 			"input/tosec/TOSEC/Sinclair ZX Spectrum - Compilations - Games - *",
 			"input/tosec/TOSEC/Sinclair ZX Spectrum - Games - *"
 		]
