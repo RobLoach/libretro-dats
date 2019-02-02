@@ -141,7 +141,7 @@
 	},
 	"libretro-database/metadat/libretro-dats/Sega - Saturn": {
 		"files": [
-			"input/tosec/TOSEC-ISO/Sega Saturn - Games*",
+			"input/tosec/TOSEC-ISO/Sega Saturn - Ga*",
 			"input/darkwater/Saturn*"
 		]
 	},
