@@ -326,7 +326,7 @@
 			"input/no-intro/Microsoft - MSX2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Microsoft - XBOX 360 (DLC)": {
+	"libretro-database/metadat/no-intro/Microsoft - XBOX 360 (Digital)": {
 		"files": [
 			"input/no-intro/Microsoft - XBOX 360 (Digital)*"
 		]
@@ -378,22 +378,20 @@
 	},
 	"libretro-database/metadat/no-intro/Nintendo - New Nintendo 3DS": {
 		"files": [
-			"input/no-intro/Nintendo - New Nintendo 3DS (Decrypted*",
-			"input/no-intro/Nintendo - New Nintendo 3DS (Encrypted*"
+			"input/no-intro/Nintendo - New Nintendo 3DS (Decrypted*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - New Nintendo 3DS (DLC)": {
+	"libretro-database/metadat/no-intro/Nintendo - New Nintendo 3DS (Digital)": {
 		"files": [
 			"input/no-intro/Nintendo - New Nintendo 3DS (Digital)*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo 3DS": {
 		"files": [
-			"input/no-intro/Nintendo - Nintendo 3DS (Decrypted*",
-			"input/no-intro/Nintendo - Nintendo 3DS (Encrypted*"
+			"input/no-intro/Nintendo - Nintendo 3DS (Decrypted*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Nintendo 3DS (DLC)": {
+	"libretro-database/metadat/no-intro/Nintendo - Nintendo 3DS (Digital)": {
 		"files": [
 			"input/no-intro/Nintendo - Nintendo 3DS (Digital) (2*",
 			"input/no-intro/Nintendo - Nintendo 3DS (Digital) (C*"
@@ -425,7 +423,7 @@
 			"input/no-intro/Nintendo - Nintendo DSi (2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Nintendo DSi (DLC)": {
+	"libretro-database/metadat/no-intro/Nintendo - Nintendo DSi (Digital)": {
 		"files": [
 			"input/no-intro/Nintendo - Nintendo DSi (Digital) (2*"
 		]
@@ -460,15 +458,14 @@
 			"input/no-intro/Nintendo - Virtual Boy (2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Nintendo Wii (DLC)": {
+	"libretro-database/metadat/no-intro/Nintendo - Wii (Digital)": {
 		"files": [
-			"input/no-intro/Nintendo - Nintendo Wii (Digital) (2*"
+			"input/no-intro/Nintendo - Wii (Digital) (W*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Nintendo Wii U (DLC)": {
+	"libretro-database/metadat/no-intro/Nintendo - Wii U (Digital)": {
 		"files": [
-			"input/no-intro/WIP Nintendo - Nintendo Wii U (Digital)*",
-			"input/no-intro/Nintendo - Nintendo Wii U (Digital)*"
+			"input/no-intro/Nintendo - Wii U (Digital) (2*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Philips - Videopac+": {
