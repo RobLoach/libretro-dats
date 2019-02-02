@@ -328,7 +328,7 @@
 	},
 	"libretro-database/metadat/no-intro/Microsoft - XBOX 360 (DLC)": {
 		"files": [
-			"input/no-intro/Microsoft - XBOX 360 (DLC)*"
+			"input/no-intro/Microsoft - XBOX 360 (Digital)*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Microsoft - XBOX 360 (Games on Demand)": {
@@ -384,7 +384,7 @@
 	},
 	"libretro-database/metadat/no-intro/Nintendo - New Nintendo 3DS (DLC)": {
 		"files": [
-			"input/no-intro/Nintendo - New Nintendo 3DS (DLC)*"
+			"input/no-intro/Nintendo - New Nintendo 3DS (Digital)*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo 3DS": {
@@ -395,8 +395,8 @@
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo 3DS (DLC)": {
 		"files": [
-			"input/no-intro/Nintendo - Nintendo 3DS (DLC) (2*",
-			"input/no-intro/Nintendo - Nintendo 3DS (DLC) (C*"
+			"input/no-intro/Nintendo - Nintendo 3DS (Digital) (2*",
+			"input/no-intro/Nintendo - Nintendo 3DS (Digital) (C*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo 64": {
@@ -427,7 +427,7 @@
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo DSi (DLC)": {
 		"files": [
-			"input/no-intro/Nintendo - Nintendo DSi (DLC) (2*"
+			"input/no-intro/Nintendo - Nintendo DSi (Digital) (2*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo Entertainment System": {
@@ -462,13 +462,13 @@
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo Wii (DLC)": {
 		"files": [
-			"input/no-intro/Nintendo - Nintendo Wii (DLC) (2*"
+			"input/no-intro/Nintendo - Nintendo Wii (Digital) (2*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo Wii U (DLC)": {
 		"files": [
-			"input/no-intro/WIP Nintendo - Nintendo Wii U (DLC)*",
-			"input/no-intro/Nintendo - Nintendo Wii U (DLC)*"
+			"input/no-intro/WIP Nintendo - Nintendo Wii U (Digital)*",
+			"input/no-intro/Nintendo - Nintendo Wii U (Digital)*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Philips - Videopac+": {
