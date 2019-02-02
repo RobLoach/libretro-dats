@@ -141,7 +141,7 @@
 	},
 	"libretro-database/metadat/libretro-dats/Sega - Saturn": {
 		"files": [
-			"input/tosec/TOSEC-ISO/Sega Saturn - Games*"
+			"input/tosec/TOSEC-ISO/Sega Saturn - Games*",
 			"input/darkwater/Saturn*"
 		]
 	},
@@ -452,7 +452,7 @@
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Super Nintendo Entertainment System": {
 		"files": [
-			"input/no-intro/Nintendo - Super Nintendo Entertainment System (2*"
+			"input/no-intro/Nintendo - Super Nintendo Entertainment System (C*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Virtual Boy": {
@@ -558,7 +558,7 @@
 	},
 	"libretro-database/metadat/no-intro/Sony - PlayStation Vita": {
 		"files": [
-			"input/no-intro/Sony - PlayStation Vita (2*"
+			"input/no-intro/Sony - PlayStation Vita (V*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Sony - PlayStation Vita (PSN)": {
