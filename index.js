@@ -93,6 +93,14 @@ function getGameEntry(game, rom) {
 		.replace('MISSING\\', '')
 		.replace('Samplers\\', '')
 		.replace('Multimedia\\', '')
+		.replace('(Sony Imagesoft)', '')
+		.replace('(Sony)', '')
+		.replace('(Riot)', '')
+		.replace('(JVC)', '')
+		.replace('(Wolf Team)', '')
+		.replace('(Polydor K.K.)', '')
+		.replace('(NTSC)', '')
+		.replace(' (Mega Power)', '')
 		.replace(' (SMW Hack)', '')
 		.replace('Games - Unlicensed\\', '')
 		.replace('Magazines\\', '')
@@ -101,8 +109,18 @@ function getGameEntry(game, rom) {
 		.replace('Demos (cdi)\\', '')
 		.replace('Demos (elf)\\', '')
 		.replace(' (United States)', ' (USA)')
+		.replace('(PAL)', '(Europe)')
+		.replace('(EU)', '(Europe)')
+		.replace('(en)', '')
+		.replace('(JP)', '(Japan)')
+		.replace('(US)', '(USA)')
+		.replace('[!]', '')
 		.replace('Applications\\', '')
 		.replace('&apos;', '\'')
+
+	for (var yearnum = 1984; yearnum <= 2020; yearnum++) {
+		gameName = gameName.replace('(' + yearnum + ')', '')
+	}
 
 	// The filename must be a valid filename.
 	let gameFile = sanitizeFilename(path.basename(unidecode(rom.name)))
