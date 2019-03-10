@@ -51,7 +51,7 @@
 	},
 	"libretro-database/metadat/redump/Sega - Mega-CD - Sega CD": {
 		"files": [
-			"input/redump/Sega - Mega-CD*.dat"
+			"input/redump/Sega - Mega*.dat"
 		]
 	},
 	"libretro-database/metadat/redump/Sega - Saturn": {
