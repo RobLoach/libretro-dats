@@ -398,8 +398,7 @@
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo 64": {
 		"files": [
-			"input/no-intro/Nintendo - Nintendo 64 (2*",
-			"input/no-intro/Nintendo - Nintendo 64 Byte Swapped *"
+			"input/no-intro/Nintendo - Nintendo 64 (*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo 64DD": {
