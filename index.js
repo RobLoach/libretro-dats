@@ -121,6 +121,8 @@ function getGameEntry(game, rom) {
 		.replace('(GoldStar)', '')
 		.replace('(Human)', '')
 		.replace('(Bandai)', '')
+		.replace('(RE)', '')
+		.replace('(Data East - Sega)', '')
 		.replace('(ReadySoft)', '')
 		.replace('(Virgin)', '')
 		.replace('(EA Sports)', '')
