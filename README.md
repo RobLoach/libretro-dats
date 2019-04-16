@@ -14,15 +14,12 @@ Builds a set of DATs for [libretro-database](http://github.com/libretro/libretro
     - Redump
     - TOSEC
     - No-Intro
-    - Advance Scene
 
 3. Verify the DATs are in the correct place
     ```
     input/no-intro/*
-    input/advancescene/*
     input/tosec/TOSEC-ISO/*
     input/redump/dats/NEC - PC Engine CD
-    input/b2071988/*
     ```
 
 2. Build the DATs by running:
