@@ -238,7 +238,9 @@ function getGamesFromXml(filepath, dat) {
 		var finalBin = null
 		var finalIso = null
 		var finalImg = null
+		var finalCue = null
 		var finalEntry = null
+
 
 		// Find all the entries.
 		if (game.rom) {
@@ -261,28 +263,9 @@ function getGamesFromXml(filepath, dat) {
 			}
 			for (var x in game.rom) {
 				var rom = game.rom[x]['$']
-                                if (rom.name.endsWith('.cue')) {
-                                        dataTracks = cueDataTracks(path.join(dir, rom.name))
+				if (rom.name.endsWith('.cue') && !finalCue) {
+                                        finalCue = rom
                                 }
-                                else if (rom.name.endsWith('.gdi')) {
-                                        dataTracks = gdiDataTracks(path.join(dir, rom.name))
-                                }
-                                else if (dataTracks.includes(rom.name) && Number(rom.size) > largestData) {
-                                        finalPrimary = rom
-                                        largestData = Number(rom.size)
-                                }
-				else if (rom.name.endsWith('.bin') && !finalBin) {
-                                        finalBin = rom
-                                }
-				else if (rom.name.endsWith('.iso') && !finalIso) {
-					finalIso = rom
-				}
-				else if (rom.name.endsWith('.img') && !finalImg) {
-					finalImg = rom
-				}
-				else {
-					finalEntry = rom
-				}
 			}
 		}
 		else if (!game.trurip) {
@@ -318,6 +301,9 @@ function getGamesFromXml(filepath, dat) {
 		}
 		else if (finalImg) {
 			final = finalImg
+		}
+		else if (finalCue) {
+			final = finalCue
 		}
 		else if (finalEntry) {
 			final = finalEntry
