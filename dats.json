@@ -481,6 +481,11 @@
 			"input/no-intro/Sega - 32X*"
 		]
 	},
+	"libretro-database/metadat/no-intro/Sega - Beena": {
+		"files": [
+			"input/no-intro/Sega - Beena*"
+		]
+	},
 	"libretro-database/metadat/no-intro/Sega - Game Gear": {
 		"files": [
 			"input/no-intro/Sega - Game Gear*"
