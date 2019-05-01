@@ -151,8 +151,8 @@
 		]
 	},
 	"libretro-database/metadat/libretro-dats/Sinclair - ZX Spectrum": {
-		"files-bak": [
-			"input/tosec/TOSEC/Sinclair ZX Spectrum - Compilations - Games - *",
+		"files": [
+			"input/tosec/TOSEC/Sinclair ZX Spectrum - Compilations - Games *",
 			"input/tosec/TOSEC/Sinclair ZX Spectrum - Games - *"
 		]
 	},
@@ -301,6 +301,11 @@
 			"input/no-intro/Konami - Picno*"
 		]
 	},
+	"libretro-database/metadat/no-intro/LeapFrog - LeapPad": {
+		"files": [
+			"input/no-intro/LeapFrog - LeapPad *"
+		]
+	},
 	"libretro-database/metadat/no-intro/LeapFrog - Leapster Learning Game System": {
 		"files": [
 			"input/no-intro/LeapFrog - Leapster Learning Game System*"
@@ -331,14 +336,29 @@
 			"input/no-intro/Microsoft - XBOX 360 (Digital)*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Microsoft - XBOX 360 (Games on Demand)": {
-		"files": [
-			"input/no-intro/Microsoft - XBOX 360 (Games on Demand)*"
-		]
-	},
 	"libretro-database/metadat/no-intro/Microsoft - XBOX 360 (Title Updates)": {
 		"files": [
 			"input/no-intro/Microsoft - XBOX 360 (Title Updates)*"
+		]
+	},
+	"libretro-database/metadat/no-intro/Mobile - J2ME": {
+		"files": [
+			"input/no-intro/Mobile - J2ME *"
+		]
+	},
+	"libretro-database/metadat/no-intro/Mobile - Palm OS": {
+		"files": [
+			"input/no-intro/Mobile - Palm OS *"
+		]
+	},
+	"libretro-database/metadat/no-intro/Mobile - Symbian": {
+		"files": [
+			"input/no-intro/Mobile - Symbian *"
+		]
+	},
+	"libretro-database/metadat/no-intro/Mobile - Zeebo": {
+		"files": [
+			"input/no-intro/Mobile - Zeebo *"
 		]
 	},
 	"libretro-database/metadat/no-intro/NEC - PC Engine SuperGrafx": {
@@ -418,12 +438,12 @@
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo DSi": {
 		"files": [
-			"input/no-intro/Nintendo - Nintendo DSi (2*"
+			"input/no-intro/Nintendo - Nintendo DSi (Decrypt*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo DSi (Digital)": {
 		"files": [
-			"input/no-intro/Nintendo - Nintendo DSi (Digital) (2*"
+			"input/no-intro/Nintendo - Nintendo DSi (Digi*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Nintendo - Nintendo Entertainment System": {

@@ -22,6 +22,9 @@ async.mapValues(dats, processDat, function (err, results) {
 function processDat(datsInfo, name, done) {
 	// Retrieve all associated files for the DAT.
 	glob(datsInfo.files, function (err, files) {
+		if (!files) {
+			console.log('EMPTY', name)
+		}
 		// Output the files to the user.
 		//console.log(name, files)
 		// Loop through each given XML file associated with the DAT.
