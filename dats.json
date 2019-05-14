@@ -161,6 +161,12 @@
 			"input/tosec/TOSEC/Sharp X68000 - Games*"
 		]
 	},
+	"libretro-database/metadat/libretro-dats/NEC - PC-8001 - PC-8801": {
+		"files": [
+			"input/tosec/TOSEC/NEC PC-8801 - Applications *",
+			"input/tosec/TOSEC/NEC PC-8801 - Games *"
+		]
+	},
 	"libretro-database/metadat/libretro-dats/The 3DO Company - 3DO": {
 		"files": [
 			"input/tosec/TOSEC-ISO/3DO 3DO Interactive Multiplayer - Games*"
