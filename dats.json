@@ -327,14 +327,14 @@
 			"input/no-intro/Mattel - Intellivision*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Microsoft - MSX": {
-		"files": [
-			"input/no-intro/Microsoft - MSX (*"
-		]
-	},
 	"libretro-database/metadat/no-intro/Microsoft - MSX2": {
 		"files": [
 			"input/no-intro/Microsoft - MSX2*"
+		]
+	},
+	"libretro-database/metadat/no-intro/Microsoft - MSX": {
+		"files": [
+			"input/no-intro/Microsoft - MSX (*"
 		]
 	},
 	"libretro-database/metadat/no-intro/Microsoft - XBOX 360 (Digital)": {
