@@ -8,13 +8,19 @@ const sort = require('sort-object')
 const unidecode = require('unidecode')
 const sanitizeFilename = require('sanitize-filename')
 const dats = require('./dats.json')
+const request = require('request')
+const download = require('./download')
 
-// Process all the dats.
-async.mapValues(dats, processDat, function (err, results) {
-	if (err) {
-		throw err
-	}
-})
+async function start() {
+	await download()
+	async.mapValues(dats, processDat, function (err, results) {
+		if (err) {
+			throw err
+		}
+	})
+}
+
+start()
 
 /**
  * Act on a DAT file.
@@ -49,6 +55,9 @@ function processDat(datsInfo, name, done) {
 				}
 			}
 
+			if (Object.entries(games).length === 0) {
+				return
+			}
 			var output = getHeader(name, pkg)
 
 			// Loop through the sorted games database, and output the rom.
