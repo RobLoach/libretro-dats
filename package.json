@@ -1,10 +1,9 @@
 {
   "name": "libretro-dats",
-  "version": "2019.2.1",
+  "version": "2019.8.31",
   "description": "Assembled from Redump, Trurip, TOSEC, Darkwater and AdvanceSCENE, for libretro-database.",
   "main": "index.js",
   "scripts": {
-    "pretest": "make",
     "test": "node ."
   },
   "author": "Rob Loach (http://robloach.net)",
@@ -12,8 +11,11 @@
   "homepage": "http://github.com/robloach/libretro-dats",
   "dependencies": {
     "async": "^3.1.0",
-    "multi-glob": "^1.0.1",
-    "sanitize-filename": "^1.6.1",
+    "extract-zip": "^1.6.7",
+    "mkdirp": "^0.5.1",
+    "multi-glob": "^1.0.2",
+    "request": "^2.88.0",
+    "sanitize-filename": "^1.6.3",
     "sort-object": "^3.0.2",
     "unidecode": "^0.1.8",
     "xml2js": "^0.4.19"
