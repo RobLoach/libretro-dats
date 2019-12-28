@@ -16,7 +16,7 @@ function tosec() {
 			extractFile('tosec.zip', 'input/tosec').then(resolve, reject).catch(reject)
 		} else {
 			console.log('Downloading TOSEC')
-			request.post('https://www.tosecdev.org/downloads/category/46-2019-05-10?download=91:tosec-dat-pack-complete-2974-tosec-v2019-05-10-zip')
+			request.post('https://www.tosecdev.org/downloads/category/48-2019-12-24?download=95:tosec-dat-pack-complete-3012-tosec-v2019-12-24')
 			.on('error', function(err) {
 				reject(err)
 			})
@@ -127,8 +127,8 @@ async function redump() {
 
 	systems.forEach(async (system) => {
 		console.log(system)
-		await downloadFile(`http://redump.org/datfile/${system}/`, `input/redump/${system}.zip`)
-		await extractFile(`input/redump/${system}.zip`, 'input/redump')
+		//await downloadFile(`http://redump.org/datfile/${system}/`, `input/redump/${system}.zip`)
+		//await extractFile(`input/redump/${system}.zip`, 'input/redump')
 		
 	})
 

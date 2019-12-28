@@ -211,9 +211,17 @@ function getGameEntry(game, rom) {
 		gameParams += ` sha1 ${rom.sha1}`
 	}
 
+	let extraParams = ''
+	let countries = require('./countries')
+	for (let country of countries) {
+		if (game.includes('(' + country + ')')) {
+			extraParams += `\n\torigin "${country}"`
+		}
+	}
+
 	return `\ngame (
 	name "${gameName}"
-	description "${gameName}"
+	description "${gameName}"${extraParams}
 	rom ( ${gameParams} )
 )\n`
 }
