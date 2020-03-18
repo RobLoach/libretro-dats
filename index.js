@@ -220,7 +220,7 @@ function getGameEntry(game, rom) {
 	}
 
 	// Handle when there's a serial.
-	if (rom.serial && rom.serial != '1') {
+	if (rom.serial && rom.serial != '1' && rom.serial != 1) {
 		// Multiple serial split into multiple games.
 		let serials = rom.serial.split(', ')
 		let output = ''
