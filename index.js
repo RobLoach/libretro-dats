@@ -219,8 +219,21 @@ function getGameEntry(game, rom) {
 		}
 	}
 
+	// Handle when there's a serial.
 	if (rom.serial) {
-		extraParams += `\n\tserial "${rom.serial}"`
+		// Multiple serial split into multiple games.
+		let serials = rom.serial.split(', ')
+		let output = ''
+		for (let serial of serials) {
+			let ogParams = extraParams
+			ogParams += `\n\tserial "${serial}"`
+			output += `\ngame (
+	name "${gameName}"
+	description "${gameName}"${ogParams}
+	rom ( ${gameParams} )
+)\n`
+		}
+		return output
 	}
 
 	return `\ngame (
