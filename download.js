@@ -49,7 +49,11 @@ function nointro() {
 				resolve();
 			}
 		} else {
-			console.log('Downloading No-Intro')
+			reject('Download nointro.zip from https://datomatic.no-intro.org/?page=download&fun=daily');
+			return
+
+			// TODO: Fix No-Intro downloading
+			/*console.log('Downloading No-Intro')
 			request.post('https://datomatic.no-intro.org/?page=download&fun=daily', {
 				form: {
 					dat_type: 'standard',
@@ -69,6 +73,7 @@ function nointro() {
 				}
 			})
 			.pipe(fs.createWriteStream('nointro.zip'))
+			*/
 		}
 	})
 }
@@ -121,6 +126,7 @@ async function redump() {
 		'psp',
 		'gc',
 		'palm',
+		'mcd',
 		'3do',
 		'cdi',
 		'photo-cd',
