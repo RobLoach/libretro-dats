@@ -219,6 +219,10 @@ function getGameEntry(game, rom) {
 		}
 	}
 
+	if (rom.serial) {
+		extraParams += `\n\tserial "${rom.serial}"`
+	}
+
 	return `\ngame (
 	name "${gameName}"
 	description "${gameName}"${extraParams}
@@ -259,7 +263,7 @@ function processXml(filepath, done) {
  * Convert an XML dat object to a games array.
  */
 function getGamesFromXml(filepath, dat) {
-        var dir = path.dirname(filepath)
+    var dir = path.dirname(filepath)
 	var out = {}
 	var header = dat.datafile || dat.dat
 	var games = header.machine || header.game || null
@@ -276,11 +280,12 @@ function getGamesFromXml(filepath, dat) {
 
 	// Loop through each game.
 	games.forEach(function (game, i) {
+
 		// Set up the entries to watch for.
 		var title = null
-                var largestData = 0
-                var dataTracks = []
-                var finalPrimary = null
+        var largestData = 0
+        var dataTracks = []
+        var finalPrimary = null
 		var finalBin = null
 		var finalIso = null
 		var finalImg = null
@@ -307,19 +312,19 @@ function getGamesFromXml(filepath, dat) {
 			}
 			for (var x in game.rom) {
 				var rom = game.rom[x]['$']
-                                if (rom.name.endsWith('.cue')) {
-                                        dataTracks = cueDataTracks(path.join(dir, rom.name))
-                                }
-                                else if (rom.name.endsWith('.gdi')) {
-                                        dataTracks = gdiDataTracks(path.join(dir, rom.name))
-                                }
-                                else if (dataTracks.includes(rom.name) && Number(rom.size) > largestData) {
-                                        finalPrimary = rom
-                                        largestData = Number(rom.size)
-                                }
+                if (rom.name.endsWith('.cue')) {
+                    dataTracks = cueDataTracks(path.join(dir, rom.name))
+                }
+                else if (rom.name.endsWith('.gdi')) {
+                    dataTracks = gdiDataTracks(path.join(dir, rom.name))
+                }
+                else if (dataTracks.includes(rom.name) && Number(rom.size) > largestData) {
+                    finalPrimary = rom
+                    largestData = Number(rom.size)
+                }
 				else if (rom.name.endsWith('.bin') && !finalBin) {
-                                        finalBin = rom
-                                }
+                    finalBin = rom
+	            }
 				else if (rom.name.endsWith('.iso') && !finalIso) {
 					finalIso = rom
 				}
@@ -337,6 +342,7 @@ function getGamesFromXml(filepath, dat) {
 			finalIso = {
 				name: game.title + '.iso',
 				size: game.romSize,
+				serial: game.serial,
 				crc: game.files[0].romCRC[0]['_']
 			}
 		}
@@ -353,9 +359,9 @@ function getGamesFromXml(filepath, dat) {
 
 		// Choose which entry to use.
 		var final = null
-                if (finalPrimary) {
-                        final = finalPrimary
-                }
+        if (finalPrimary) {
+            final = finalPrimary
+        }
 		else if (finalBin) {
 			final = finalBin
 		}
@@ -370,6 +376,9 @@ function getGamesFromXml(filepath, dat) {
 		}
 		if (final) {
 			final.title = title
+			if (game.serial) {
+				final.serial = game.serial[0]
+			}
 			if (final.crc) {
 				out[final.crc] = final
 			}
@@ -384,7 +393,6 @@ function getGamesFromXml(filepath, dat) {
 			}
 		}
 	})
-
 	return out
 }
 
