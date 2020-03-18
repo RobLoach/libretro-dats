@@ -1,613 +1,613 @@
 {
-	"libretro-database/metadat/redump/Microsoft - Xbox": {
+	"database/metadat/redump/Microsoft - Xbox": {
 		"files": [
 			"input/redump/Microsoft - Xbox - Dat*.dat"
 		]
 	},
-	"libretro-database/metadat/redump/Microsoft - Xbox 360": {
+	"database/metadat/redump/Microsoft - Xbox 360": {
 		"files": [
 			"input/redump/Microsoft - Xbox 360*.dat"
 		]
 	},
-	"libretro-database/metadat/redump/Microsoft - Xbox One": {
+	"database/metadat/redump/Microsoft - Xbox One": {
 		"files": [
 			"input/redump/Microsoft - Xbox One*.dat"
 		]
 	},
-	"libretro-database/metadat/redump/NEC - PC Engine CD - TurboGrafx-CD": {
+	"database/metadat/redump/NEC - PC Engine CD - TurboGrafx-CD": {
 		"files": [
 			"input/redump/NEC - PC Engine CD*.dat"
 		]
 	},
-	"libretro-database/metadat/redump/NEC - PC-FX": {
+	"database/metadat/redump/NEC - PC-FX": {
 		"files": [
 			"input/redump/NEC - PC-FX*.dat"
 		]
 	},
-	"libretro-database/metadat/redump/SNK - Neo Geo CD": {
+	"database/metadat/redump/SNK - Neo Geo CD": {
 		"files": [
 			"input/redump/SNK - Neo Geo CD - D*.dat"
 		]
 	},
-	"libretro-database/metadat/redump/Nintendo - GameCube": {
+	"database/metadat/redump/Nintendo - GameCube": {
 		"files": [
 			"input/redump/Nintendo - GameCube - D*.dat"
 		]
 	},
-	"libretro-database/metadat/redump/Nintendo - Wii": {
+	"database/metadat/redump/Nintendo - Wii": {
 		"files": [
 			"input/redump/Nintendo - Wii - *"
 		]
 	},
-	"libretro-database/metadat/redump/Nintendo - Wii U": {
+	"database/metadat/redump/Nintendo - Wii U": {
 		"files": [
 			"input/redump/Nintendo - Wii U - *"
 		]
 	},
-	"libretro-database/metadat/redump/Sega - Dreamcast": {
+	"database/metadat/redump/Sega - Dreamcast": {
 		"files": [
 			"input/redump/Sega - Dreamcast*.dat"
 		]
 	},
-	"libretro-database/metadat/redump/Sega - Mega-CD - Sega CD": {
+	"database/metadat/redump/Sega - Mega-CD - Sega CD": {
 		"files": [
 			"input/redump/Sega - Mega*.dat"
 		]
 	},
-	"libretro-database/metadat/redump/Sega - Saturn": {
+	"database/metadat/redump/Sega - Saturn": {
 		"files": [
 			"input/redump/Sega - Saturn*.dat"
 		]
 	},
-	"libretro-database/metadat/redump/Sony - PlayStation": {
+	"database/metadat/redump/Sony - PlayStation": {
 		"files": [
 			"input/redump/Sony - PlayStation - Dat*.dat"
 		]
 	},
-	"libretro-database/metadat/redump/Sony - PlayStation 2": {
+	"database/metadat/redump/Sony - PlayStation 2": {
 		"files": [
 			"input/redump/Sony - PlayStation 2 - Dat*.dat"
 		]
 	},
-	"libretro-database/metadat/redump/Sony - PlayStation 3": {
+	"database/metadat/redump/Sony - PlayStation 3": {
 		"files": [
 			"input/redump/Sony - PlayStation 3 - Dat*.dat"
 		]
 	},
-	"libretro-database/metadat/redump/Sony - PlayStation 4": {
+	"database/metadat/redump/Sony - PlayStation 4": {
 		"files": [
 			"input/redump/Sony - PlayStation 4 - Dat*.dat"
 		]
 	},
-	"libretro-database/metadat/redump/Sony - PlayStation Portable": {
+	"database/metadat/redump/Sony - PlayStation Portable": {
 		"files": [
 			"input/redump/Sony - PlayStation Portable - Dat*"
 		]
 	},
-	"libretro-database/metadat/redump/The 3DO Company - 3DO": {
+	"database/metadat/redump/The 3DO Company - 3DO": {
 		"files": [
 			"input/redump/Panasonic - 3DO*.dat"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/Amstrad - CPC": {
+	"database/metadat/libretro-dats/Amstrad - CPC": {
 		"files": [
 			"input/tosec/TOSEC/Amstrad CPC - Games*"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/Nintendo - Super Nintendo Entertainment System": {
+	"database/metadat/libretro-dats/Nintendo - Super Nintendo Entertainment System": {
 		"files": [
 			"static/Nintendo - Super Nintendo Entertainment System/**"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/Nintendo - Nintendo Entertainment System": {
+	"database/metadat/libretro-dats/Nintendo - Nintendo Entertainment System": {
 		"files": [
 			"static/Headered/Nintendo - Nintendo*.dat"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/Nintendo - Family Computer Disk System": {
+	"database/metadat/libretro-dats/Nintendo - Family Computer Disk System": {
 		"files": [
 			"static/Headered/Nintendo - Family*.dat"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/NEC - PC Engine CD - TurboGrafx-CD": {
+	"database/metadat/libretro-dats/NEC - PC Engine CD - TurboGrafx-CD": {
 		"files": [
 			"input/tosec/TOSEC-ISO/NEC PC-Engine CD*"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/NEC - PC-FX": {
+	"database/metadat/libretro-dats/NEC - PC-FX": {
 		"files": [
 			"input/tosec/TOSEC-ISO/NEC PC-FX - Games*"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/Mattel - Intellivision": {
+	"database/metadat/libretro-dats/Mattel - Intellivision": {
 		"files": [
 			"input/tosec/TOSEC/Mattel Intellivision - Games*"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/Nintendo - GameCube": {
+	"database/metadat/libretro-dats/Nintendo - GameCube": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Nintendo GameCube - Games*"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/Sega - Dreamcast": {
+	"database/metadat/libretro-dats/Sega - Dreamcast": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Sega Dreamcast - Games*"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/Sega - Mega-CD - Sega CD": {
+	"database/metadat/libretro-dats/Sega - Mega-CD - Sega CD": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Sega Mega-CD & Sega CD - CD - Games*"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/Sega - Saturn": {
+	"database/metadat/libretro-dats/Sega - Saturn": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Sega Saturn - Ga*",
 			"input/darkwater/Saturn*"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/Sony - PlayStation": {
+	"database/metadat/libretro-dats/Sony - PlayStation": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Sony PlayStation - Games*"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/Sinclair - ZX Spectrum": {
+	"database/metadat/libretro-dats/Sinclair - ZX Spectrum": {
 		"files": [
 			"input/tosec/TOSEC/Sinclair ZX Spectrum - Compilations - Games *",
 			"input/tosec/TOSEC/Sinclair ZX Spectrum - Games - *"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/Sharp - X68000": {
+	"database/metadat/libretro-dats/Sharp - X68000": {
 		"files": [
 			"input/tosec/TOSEC/Sharp X68000 - Games*"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/NEC - PC-8001 - PC-8801": {
+	"database/metadat/libretro-dats/NEC - PC-8001 - PC-8801": {
 		"files": [
 			"input/tosec/TOSEC/NEC PC-8801 - Applications *",
 			"input/tosec/TOSEC/NEC PC-8801 - Games *"
 		]
 	},
-	"libretro-database/metadat/libretro-dats/The 3DO Company - 3DO": {
+	"database/metadat/libretro-dats/The 3DO Company - 3DO": {
 		"files": [
 			"input/tosec/TOSEC-ISO/3DO 3DO Interactive Multiplayer - Games*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Atari - 2600": {
+	"database/metadat/no-intro/Atari - 2600": {
 		"files": [
 			"input/no-intro/Atari - 2600*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Atari - 5200": {
+	"database/metadat/no-intro/Atari - 5200": {
 		"files": [
 			"input/no-intro/Atari - 5200*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Atari - 7800": {
+	"database/metadat/no-intro/Atari - 7800": {
 		"files": [
 			"input/no-intro/Atari - 7800*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Atari - Jaguar": {
+	"database/metadat/no-intro/Atari - Jaguar": {
 		"files": [
 			"input/no-intro/Atari - Jaguar*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Atari - Lynx": {
+	"database/metadat/no-intro/Atari - Lynx": {
 		"files": [
 			"input/no-intro/Atari - Lynx*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Atari - ST": {
+	"database/metadat/no-intro/Atari - ST": {
 		"files": [
 			"input/no-intro/Atari - ST*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Bandai - WonderSwan": {
+	"database/metadat/no-intro/Bandai - WonderSwan": {
 		"files": [
 			"input/no-intro/Bandai - WonderSwan (*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Bandai - WonderSwan Color": {
+	"database/metadat/no-intro/Bandai - WonderSwan Color": {
 		"files": [
 			"input/no-intro/Bandai - WonderSwan Color*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Benesse - Pocket Challenge V2": {
+	"database/metadat/no-intro/Benesse - Pocket Challenge V2": {
 		"files": [
 			"input/no-intro/Benesse - Pocket Challenge V2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Casio - Loopy": {
+	"database/metadat/no-intro/Casio - Loopy": {
 		"files": [
 			"input/no-intro/Casio - Loopy*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Casio - PV-1000": {
+	"database/metadat/no-intro/Casio - PV-1000": {
 		"files": [
 			"input/no-intro/Casio - PV-1000*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Coleco - ColecoVision": {
+	"database/metadat/no-intro/Coleco - ColecoVision": {
 		"files": [
 			"input/no-intro/Coleco - ColecoVision*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Commodore - 64": {
+	"database/metadat/no-intro/Commodore - 64": {
 		"files": [
 			"input/no-intro/Commodore - 64 (2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Commodore - 64 (PP)": {
+	"database/metadat/no-intro/Commodore - 64 (PP)": {
 		"files": [
 			"input/no-intro/Commodore - 64 (PP)*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Commodore - 64 (Tapes)": {
+	"database/metadat/no-intro/Commodore - 64 (Tapes)": {
 		"files": [
 			"input/no-intro/Commodore - 64 (Tapes) (*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Commodore - Amiga": {
+	"database/metadat/no-intro/Commodore - Amiga": {
 		"files": [
 			"input/no-intro/Commodore - Amiga*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Commodore - Plus-4": {
+	"database/metadat/no-intro/Commodore - Plus-4": {
 		"files": [
 			"input/no-intro/Commodore - Plus-4*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Commodore - VIC-20": {
+	"database/metadat/no-intro/Commodore - VIC-20": {
 		"files": [
 			"input/no-intro/Commodore - VIC-20*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Emerson - Arcadia 2001": {
+	"database/metadat/no-intro/Emerson - Arcadia 2001": {
 		"files": [
 			"input/no-intro/Emerson - Arcadia 2001*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Entex - Adventure Vision": {
+	"database/metadat/no-intro/Entex - Adventure Vision": {
 		"files": [
 			"input/no-intro/Entex - Adventure Vision*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Epoch - Super Cassette Vision": {
+	"database/metadat/no-intro/Epoch - Super Cassette Vision": {
 		"files": [
 			"input/no-intro/Epoch - Super Cassette Vision*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Fairchild - Channel F": {
+	"database/metadat/no-intro/Fairchild - Channel F": {
 		"files": [
 			"input/no-intro/Fairchild - Channel F*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Funtech - Super Acan": {
+	"database/metadat/no-intro/Funtech - Super Acan": {
 		"files": [
 			"input/no-intro/Funtech - Super Acan*"
 		]
 	},
-	"libretro-database/metadat/no-intro/GamePark - GP32": {
+	"database/metadat/no-intro/GamePark - GP32": {
 		"files": [
 			"input/no-intro/GamePark - GP32*"
 		]
 	},
-	"libretro-database/metadat/no-intro/GCE - Vectrex": {
+	"database/metadat/no-intro/GCE - Vectrex": {
 		"files": [
 			"input/no-intro/GCE - Vectrex*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Hartung - Game Master": {
+	"database/metadat/no-intro/Hartung - Game Master": {
 		"files": [
 			"input/no-intro/Hartung - Game Master*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Konami - Picno": {
+	"database/metadat/no-intro/Konami - Picno": {
 		"files": [
 			"input/no-intro/Konami - Picno*"
 		]
 	},
-	"libretro-database/metadat/no-intro/LeapFrog - LeapPad": {
+	"database/metadat/no-intro/LeapFrog - LeapPad": {
 		"files": [
 			"input/no-intro/LeapFrog - LeapPad *"
 		]
 	},
-	"libretro-database/metadat/no-intro/LeapFrog - Leapster Learning Game System": {
+	"database/metadat/no-intro/LeapFrog - Leapster Learning Game System": {
 		"files": [
 			"input/no-intro/LeapFrog - Leapster Learning Game System*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Magnavox - Odyssey2": {
+	"database/metadat/no-intro/Magnavox - Odyssey2": {
 		"files": [
 			"input/no-intro/Magnavox - Odyssey2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Mattel - Intellivision": {
+	"database/metadat/no-intro/Mattel - Intellivision": {
 		"files": [
 			"input/no-intro/Mattel - Intellivision*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Microsoft - MSX2": {
+	"database/metadat/no-intro/Microsoft - MSX2": {
 		"files": [
 			"input/no-intro/Microsoft - MSX2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Microsoft - MSX": {
+	"database/metadat/no-intro/Microsoft - MSX": {
 		"files": [
 			"input/no-intro/Microsoft - MSX (*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Microsoft - XBOX 360 (Digital)": {
+	"database/metadat/no-intro/Microsoft - XBOX 360 (Digital)": {
 		"files": [
 			"input/no-intro/Microsoft - XBOX 360 (Digital)*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Microsoft - XBOX 360 (Title Updates)": {
+	"database/metadat/no-intro/Microsoft - XBOX 360 (Title Updates)": {
 		"files": [
 			"input/no-intro/Microsoft - XBOX 360 (Title Updates)*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Mobile - J2ME": {
+	"database/metadat/no-intro/Mobile - J2ME": {
 		"files": [
 			"input/no-intro/Mobile - J2ME *"
 		]
 	},
-	"libretro-database/metadat/no-intro/Mobile - Palm OS": {
+	"database/metadat/no-intro/Mobile - Palm OS": {
 		"files": [
 			"input/no-intro/Mobile - Palm OS *"
 		]
 	},
-	"libretro-database/metadat/no-intro/Mobile - Symbian": {
+	"database/metadat/no-intro/Mobile - Symbian": {
 		"files": [
 			"input/no-intro/Mobile - Symbian *"
 		]
 	},
-	"libretro-database/metadat/no-intro/Mobile - Zeebo": {
+	"database/metadat/no-intro/Mobile - Zeebo": {
 		"files": [
 			"input/no-intro/Mobile - Zeebo *"
 		]
 	},
-	"libretro-database/metadat/no-intro/NEC - PC Engine SuperGrafx": {
+	"database/metadat/no-intro/NEC - PC Engine SuperGrafx": {
 		"files": [
 			"input/no-intro/NEC - PC Engine SuperGrafx*"
 		]
 	},
-	"libretro-database/metadat/no-intro/NEC - PC Engine - TurboGrafx 16": {
+	"database/metadat/no-intro/NEC - PC Engine - TurboGrafx 16": {
 		"files": [
 			"input/no-intro/NEC - PC Engine - TurboGrafx 16*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - e-Reader": {
+	"database/metadat/no-intro/Nintendo - e-Reader": {
 		"files": [
 			"input/no-intro/Nintendo - e-Reader (*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Family Computer Disk System": {
+	"database/metadat/no-intro/Nintendo - Family Computer Disk System": {
 		"files": [
 			"input/no-intro/Nintendo - Family Computer Disk System*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Game Boy": {
+	"database/metadat/no-intro/Nintendo - Game Boy": {
 		"files": [
 			"input/no-intro/Nintendo - Game Boy (*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Game Boy Advance": {
+	"database/metadat/no-intro/Nintendo - Game Boy Advance": {
 		"files": [
 			"input/no-intro/Nintendo - Game Boy Advance (2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Game Boy Color": {
+	"database/metadat/no-intro/Nintendo - Game Boy Color": {
 		"files": [
 			"input/no-intro/Nintendo - Game Boy Color (*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - New Nintendo 3DS": {
+	"database/metadat/no-intro/Nintendo - New Nintendo 3DS": {
 		"files": [
 			"input/no-intro/Nintendo - New Nintendo 3DS (Decry*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - New Nintendo 3DS (Digital)": {
+	"database/metadat/no-intro/Nintendo - New Nintendo 3DS (Digital)": {
 		"files": [
 			"input/no-intro/Nintendo - New Nintendo 3DS (Dig*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Nintendo 3DS": {
+	"database/metadat/no-intro/Nintendo - Nintendo 3DS": {
 		"files": [
 			"input/no-intro/Nintendo - Nintendo 3DS (Decrypted*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Nintendo 3DS (Digital)": {
+	"database/metadat/no-intro/Nintendo - Nintendo 3DS (Digital)": {
 		"files": [
 			"input/no-intro/Nintendo - Nintendo 3DS (Digital) (2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Nintendo 64": {
+	"database/metadat/no-intro/Nintendo - Nintendo 64": {
 		"files": [
 			"input/no-intro/Nintendo - Nintendo 64 (*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Nintendo 64DD": {
+	"database/metadat/no-intro/Nintendo - Nintendo 64DD": {
 		"files": [
 			"input/no-intro/Nintendo - Nintendo 64DD (2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Nintendo DS": {
+	"database/metadat/no-intro/Nintendo - Nintendo DS": {
 		"files": [
 			"input/no-intro/Nintendo - Nintendo DS (Decrypt*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Nintendo DS (Download Play)": {
+	"database/metadat/no-intro/Nintendo - Nintendo DS (Download Play)": {
 		"files": [
 			"input/no-intro/Nintendo - Nintendo DS (Download Play)*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Nintendo DSi": {
+	"database/metadat/no-intro/Nintendo - Nintendo DSi": {
 		"files": [
 			"input/no-intro/Nintendo - Nintendo DSi (Decrypt*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Nintendo DSi (Digital)": {
+	"database/metadat/no-intro/Nintendo - Nintendo DSi (Digital)": {
 		"files": [
 			"input/no-intro/Nintendo - Nintendo DSi (Digi*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Nintendo Entertainment System": {
+	"database/metadat/no-intro/Nintendo - Nintendo Entertainment System": {
 		"files": [
 			"input/no-intro/Nintendo - Nintendo Entertainment System (2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Pokemon Mini": {
+	"database/metadat/no-intro/Nintendo - Pokemon Mini": {
 		"files": [
 			"input/no-intro/Nintendo - Pokemon Mini (2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Satellaview": {
+	"database/metadat/no-intro/Nintendo - Satellaview": {
 		"files": [
 			"input/no-intro/Nintendo - Satellaview (2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Sufami Turbo": {
+	"database/metadat/no-intro/Nintendo - Sufami Turbo": {
 		"files": [
 			"input/no-intro/Nintendo - Sufami Turbo (2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Super Nintendo Entertainment System": {
+	"database/metadat/no-intro/Nintendo - Super Nintendo Entertainment System": {
 		"files": [
 			"input/no-intro/Nintendo - Super Nintendo Entertainment System (C*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Virtual Boy": {
+	"database/metadat/no-intro/Nintendo - Virtual Boy": {
 		"files": [
 			"input/no-intro/Nintendo - Virtual Boy (2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Wii (Digital)": {
+	"database/metadat/no-intro/Nintendo - Wii (Digital)": {
 		"files": [
 			"input/no-intro/Nintendo - Wii (Digital) (W*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Nintendo - Wii U (Digital)": {
+	"database/metadat/no-intro/Nintendo - Wii U (Digital)": {
 		"files": [
 			"input/no-intro/Nintendo - Wii U (Digital) (2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Philips - Videopac+": {
+	"database/metadat/no-intro/Philips - Videopac+": {
 		"files": [
 			"input/no-intro/Philips - Videopac+*"
 		]
 	},
-	"libretro-database/metadat/no-intro/RCA - Studio II": {
+	"database/metadat/no-intro/RCA - Studio II": {
 		"files": [
 			"input/no-intro/RCA - Studio II*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sega - 32X": {
+	"database/metadat/no-intro/Sega - 32X": {
 		"files": [
 			"input/no-intro/Sega - 32X*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sega - Beena": {
+	"database/metadat/no-intro/Sega - Beena": {
 		"files": [
 			"input/no-intro/Sega - Beena*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sega - Game Gear": {
+	"database/metadat/no-intro/Sega - Game Gear": {
 		"files": [
 			"input/no-intro/Sega - Game Gear*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sega - Master System - Mark III": {
+	"database/metadat/no-intro/Sega - Master System - Mark III": {
 		"files": [
 			"input/no-intro/Sega - Master System - Mark III*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sega - Mega Drive - Genesis": {
+	"database/metadat/no-intro/Sega - Mega Drive - Genesis": {
 		"files": [
 			"input/no-intro/Sega - Mega Drive - Genesis*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sega - PICO": {
+	"database/metadat/no-intro/Sega - PICO": {
 		"files": [
 			"input/no-intro/Sega - PICO*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sega - SG-1000": {
+	"database/metadat/no-intro/Sega - SG-1000": {
 		"files": [
 			"input/no-intro/Sega - SG-1000*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sinclair - ZX Spectrum +3": {
+	"database/metadat/no-intro/Sinclair - ZX Spectrum +3": {
 		"files": [
 			"input/no-intro/Sinclair - ZX Spectrum +3*"
 		]
 	},
-	"libretro-database/metadat/no-intro/SNK - Neo Geo Pocket": {
+	"database/metadat/no-intro/SNK - Neo Geo Pocket": {
 		"files": [
 			"input/no-intro/SNK - Neo Geo Pocket (2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/SNK - Neo Geo Pocket Color": {
+	"database/metadat/no-intro/SNK - Neo Geo Pocket Color": {
 		"files": [
 			"input/no-intro/SNK - Neo Geo Pocket Color*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sony - PlayStation 3 (PSN)": {
+	"database/metadat/no-intro/Sony - PlayStation 3 (PSN)": {
 		"files": [
 			"input/no-intro/Sony - PlayStation 3 (PSN) (Decrypted)*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sony - PlayStation Portable": {
+	"database/metadat/no-intro/Sony - PlayStation Portable": {
 		"files": [
 			"input/no-intro/Sony - PlayStation Portable (2*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sony - PlayStation Portable (PSN)": {
+	"database/metadat/no-intro/Sony - PlayStation Portable (PSN)": {
 		"files": [
 			"input/no-intro/Sony - PlayStation Portable (PSN) (Decrypted)*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sony - PlayStation Portable (PSX2PSP)": {
+	"database/metadat/no-intro/Sony - PlayStation Portable (PSX2PSP)": {
 		"files": [
 			"input/no-intro/Sony - PlayStation Portable (PSX2PSP)*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sony - PlayStation Portable (UMD Music)": {
+	"database/metadat/no-intro/Sony - PlayStation Portable (UMD Music)": {
 		"files": [
 			"input/no-intro/Sony - PlayStation Portable (UMD Music)*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sony - PlayStation Portable (UMD Video)": {
+	"database/metadat/no-intro/Sony - PlayStation Portable (UMD Video)": {
 		"files": [
 			"input/no-intro/Sony - PlayStation Portable (UMD Video)*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sony - PlayStation Vita": {
+	"database/metadat/no-intro/Sony - PlayStation Vita": {
 		"files": [
 			"input/no-intro/Sony - PlayStation Vita (V*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Sony - PlayStation Vita (PSN)": {
+	"database/metadat/no-intro/Sony - PlayStation Vita (PSN)": {
 		"files": [
 			"input/no-intro/Sony - PlayStation Vita (PSN) (Decrypted)*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Tiger - Game.com": {
+	"database/metadat/no-intro/Tiger - Game.com": {
 		"files": [
 			"input/no-intro/Tiger - Game*"
 		]
 	},
-	"libretro-database/metadat/no-intro/VTech - CreatiVision": {
+	"database/metadat/no-intro/VTech - CreatiVision": {
 		"files": [
 			"input/no-intro/VTech - CreatiVision*"
 		]
 	},
-	"libretro-database/metadat/no-intro/VTech - V.Smile": {
+	"database/metadat/no-intro/VTech - V.Smile": {
 		"files": [
 			"input/no-intro/VTech - V.Smile*"
 		]
 	},
-	"libretro-database/metadat/no-intro/Watara - Supervision": {
+	"database/metadat/no-intro/Watara - Supervision": {
 		"files": [
 			"input/no-intro/Watara - Supervision*"
 		]
