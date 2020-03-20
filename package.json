@@ -14,6 +14,7 @@
     "extract-zip": "^1.6.7",
     "mkdirp": "^0.5.1",
     "multi-glob": "^1.0.2",
+    "replace-string": "^3.0.0",
     "request": "^2.88.0",
     "sanitize-filename": "^1.6.3",
     "sort-keys": "*",

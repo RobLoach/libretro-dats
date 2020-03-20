@@ -10,6 +10,7 @@ const sanitizeFilename = require('sanitize-filename')
 const dats = require('./dats.json')
 const request = require('request')
 const download = require('./download')
+const replaceAll = require('replace-string')
 
 async function start() {
 	await download()
@@ -237,12 +238,15 @@ function getGameEntry(game, rom) {
 		let output = ''
 		for (let serial of serials) {
 			let ogParams = extraParams
-			ogParams += `\n\tserial "${serial.trim()}"`
-			output += `\ngame (
+			serial = cleanSerial(serial)
+			if (serial) {
+				ogParams += `\n\tserial "${serial}"`
+				output += `\ngame (
 	name "${gameName}"
 	description "${gameName}"${ogParams}
-	rom ( ${gameParams} serial "${serial.trim()}" )
+	rom ( ${gameParams} serial "${serial}" )
 )\n`
+			}
 		}
 		return output
 	}
@@ -252,6 +256,12 @@ function getGameEntry(game, rom) {
 	description "${gameName}"${extraParams}
 	rom ( ${gameParams} )
 )\n`
+}
+
+function cleanSerial(serial) {
+	let output = serial.trim()
+	output = replaceAll(output, ' ', '-')
+	return output.trim()
 }
 
 /**
