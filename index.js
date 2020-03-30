@@ -240,6 +240,18 @@ function getGameEntry(game, rom) {
 			let ogParams = extraParams
 			serial = cleanSerial(serial)
 			if (serial) {
+				let discNumber = grabDiscNumber(gameName)
+				if (discNumber !== false) {
+
+					output += `\ngame (
+	name "${gameName}"
+	description "${gameName}"${ogParams}
+	serial "${serial}"
+	rom ( ${gameParams} serial "${serial}" )
+)\n`
+
+					serial = serial + '-' + (discNumber - 1).toString()
+				}
 				ogParams += `\n\tserial "${serial}"`
 				output += `\ngame (
 	name "${gameName}"
@@ -256,6 +268,25 @@ function getGameEntry(game, rom) {
 	description "${gameName}"${extraParams}
 	rom ( ${gameParams} )
 )\n`
+}
+
+function grabDiscNumber(gameName) {
+	gameName = gameName.replace('(Disk ', '(Disc ')
+	const regex = /\(Disc (\d+)/gm;
+	let m;
+
+	while ((m = regex.exec(gameName)) !== null) {
+		// This is necessary to avoid infinite loops with zero-width matches
+		if (m.index === regex.lastIndex) {
+			regex.lastIndex++
+		}
+		let output = parseInt(m[1])
+		if (!Number.isNaN(output)) {
+			return output
+		}
+	}
+
+	return false
 }
 
 function cleanSerial(serial) {
@@ -297,7 +328,7 @@ function processXml(filepath, done) {
  * Convert an XML dat object to a games array.
  */
 function getGamesFromXml(filepath, dat) {
-    var dir = path.dirname(filepath)
+	var dir = path.dirname(filepath)
 	var out = {}
 	var header = dat.datafile || dat.dat
 	var games = header.machine || header.game || null
@@ -317,9 +348,9 @@ function getGamesFromXml(filepath, dat) {
 
 		// Set up the entries to watch for.
 		var title = null
-        var largestData = 0
-        var dataTracks = []
-        var finalPrimary = null
+		var largestData = 0
+		var dataTracks = []
+		var finalPrimary = null
 		var finalBin = null
 		var finalIso = null
 		var finalImg = null
@@ -346,19 +377,19 @@ function getGamesFromXml(filepath, dat) {
 			}
 			for (var x in game.rom) {
 				var rom = game.rom[x]['$']
-                if (rom.name.endsWith('.cue')) {
-                    dataTracks = cueDataTracks(path.join(dir, rom.name))
-                }
-                else if (rom.name.endsWith('.gdi')) {
-                    dataTracks = gdiDataTracks(path.join(dir, rom.name))
-                }
-                else if (dataTracks.includes(rom.name) && Number(rom.size) > largestData) {
-                    finalPrimary = rom
-                    largestData = Number(rom.size)
-                }
+				if (rom.name.endsWith('.cue')) {
+					dataTracks = cueDataTracks(path.join(dir, rom.name))
+				}
+				else if (rom.name.endsWith('.gdi')) {
+					dataTracks = gdiDataTracks(path.join(dir, rom.name))
+				}
+				else if (dataTracks.includes(rom.name) && Number(rom.size) > largestData) {
+					finalPrimary = rom
+					largestData = Number(rom.size)
+				}
 				else if (rom.name.endsWith('.bin') && !finalBin) {
-                    finalBin = rom
-	            }
+					finalBin = rom
+				}
 				else if (rom.name.endsWith('.iso') && !finalIso) {
 					finalIso = rom
 				}
@@ -393,9 +424,9 @@ function getGamesFromXml(filepath, dat) {
 
 		// Choose which entry to use.
 		var final = null
-        if (finalPrimary) {
-            final = finalPrimary
-        }
+		if (finalPrimary) {
+			final = finalPrimary
+		}
 		else if (finalBin) {
 			final = finalBin
 		}
@@ -431,61 +462,61 @@ function getGamesFromXml(filepath, dat) {
 }
 
 function cueDataTracks(filepath) {
-        var data
-        try {
-	        data = fs.readFileSync(filepath, {encoding: 'utf8'})
-        } catch (err) {
-                return []
-        }
+		var data
+		try {
+			data = fs.readFileSync(filepath, {encoding: 'utf8'})
+		} catch (err) {
+				return []
+		}
 
-        var fileStmt = /^\s*FILE\s+"([^"]+)"\s+(.*)$/
-        var trackStmt = /^\s*TRACK\s+(\d+)\s+(.*)$/
+		var fileStmt = /^\s*FILE\s+"([^"]+)"\s+(.*)$/
+		var trackStmt = /^\s*TRACK\s+(\d+)\s+(.*)$/
 
-        var tracks = []
-        var lastFile = null
+		var tracks = []
+		var lastFile = null
 
-        lines = data.split(/\r?\n/)
-        for (var line in lines) {
-                line = lines[line]
-                var match
-                match = line.match(fileStmt)
-                if (match) {
-                        lastFile = match[1]
-                        continue
-                }
-                match = line.match(trackStmt)
-                if (match && lastFile != null && match[2] != "AUDIO") {
-                        tracks.push(lastFile)
-                }
-        }
+		lines = data.split(/\r?\n/)
+		for (var line in lines) {
+				line = lines[line]
+				var match
+				match = line.match(fileStmt)
+				if (match) {
+						lastFile = match[1]
+						continue
+				}
+				match = line.match(trackStmt)
+				if (match && lastFile != null && match[2] != "AUDIO") {
+						tracks.push(lastFile)
+				}
+		}
 
-        return tracks
+		return tracks
 }
 
 function gdiDataTracks(filepath) {
-        var data
-        try {
-	        data = fs.readFileSync(filepath, {encoding: 'utf8'})
-        } catch (err) {
-                return []
-        }
+		var data
+		try {
+			data = fs.readFileSync(filepath, {encoding: 'utf8'})
+		} catch (err) {
+				return []
+		}
 
-        var stmt = /^\s*\d+\s+\d+\s+(\d+)\s+(\d+)\s+"([^"]+)"\s+\d+$/
+		var stmt = /^\s*\d+\s+\d+\s+(\d+)\s+(\d+)\s+"([^"]+)"\s+\d+$/
 
-        var tracks = []
+		var tracks = []
 
-        lines = data.split(/\r?\n/)
-        for (var line in lines) {
-                if (line == 0) {
-                        continue
-                }
-                line = lines[line]
-                var match
-                match = line.match(stmt)
-                if (match && !(match[1] == 0 && match[2] == 2352)) {
-                        tracks.push(match[3])
-                }
-        }
+		lines = data.split(/\r?\n/)
+		for (var line in lines) {
+				if (line == 0) {
+						continue
+				}
+				line = lines[line]
+				var match
+				match = line.match(stmt)
+				if (match && !(match[1] == 0 && match[2] == 2352)) {
+						tracks.push(match[3])
+				}
+		}
 
-        return tracks
+		return tracks
 }
