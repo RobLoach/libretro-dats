@@ -292,6 +292,7 @@ function grabDiscNumber(gameName) {
 function cleanSerial(serial) {
 	let output = serial.trim()
 	output = replaceAll(output, ' ', '-')
+	output = replaceAll(output, '#', '')
 	return output.trim()
 }
 
