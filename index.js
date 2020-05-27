@@ -290,9 +290,15 @@ function grabDiscNumber(gameName) {
 }
 
 function cleanSerial(serial) {
+	if (!serial) {
+		return ''
+	}
 	let output = serial.trim()
 	output = replaceAll(output, ' ', '-')
 	output = replaceAll(output, '#', '')
+	if (output.charAt(0) == '-') {
+		output = output.substr(1)
+	}
 	return output.trim()
 }
 
