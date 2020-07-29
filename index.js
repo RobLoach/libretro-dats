@@ -32,11 +32,6 @@ function validEntry(gameName) {
 		return false
 	}
 	
-	// Ignore Kid Dracula (USA, Europe) (Castlevania Anniversary Collection). It's a save file.
-	if (gameName.indexOf('Kid Dracula (USA, Europe) (Castlevania Anniversary Collection)') >= 0) {
-		return false
-	}
-	
 	return true
 }
 
@@ -78,8 +73,8 @@ function processDat(datsInfo, name, done) {
 			var output = getHeader(name, pkg)
 
 			// Loop through the sorted games database, and output the rom.
-			for (var game in sort(games)) {
-				var rom = games[game]
+			for (let game in sort(games)) {
+				let rom = games[game]
 				game = game.trim()
 				output += getGameEntry(game, rom)
 			}
@@ -213,6 +208,11 @@ function getGameEntry(game, rom) {
 
 	// The filename must be a valid filename.
 	let gameFile = sanitizeFilename(path.basename(unidecode(rom.name)))
+	
+	// Skip any .sav files.
+	if (gameFile.indexOf('.sav') >= 0) {
+		return ''
+	}
 
 	let gameParams = `name "${gameFile}"`
 	if (rom.size) {
