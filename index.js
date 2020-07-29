@@ -24,6 +24,23 @@ async function start() {
 start()
 
 /**
+ * Verifies whether or not the entry is valid to be added to the DAT.
+ */
+function validEntry(gameName) {
+	// Skip all BIOS files.
+	if (gameName.indexOf('[BIOS]') >= 0) {
+		return false
+	}
+	
+	// Ignore Kid Dracula (USA, Europe) (Castlevania Anniversary Collection). It's a save file.
+	if (gameName.indexOf('(Castlevania Anniversary Collection)') >= 0) {
+		return false
+	}
+	
+	return true
+}
+
+/**
  * Act on a DAT file.
  */
 function processDat(datsInfo, name, done) {
@@ -46,13 +63,12 @@ function processDat(datsInfo, name, done) {
 			for (var i in results) {
 				for (var game in results[i]) {
 					var gameName = results[i][game].title
-					// Do not add BIOS entries.
-					if (gameName.indexOf('[BIOS]') < 0) {
+					if (validEntry(gameName)) {
 						while (gameName in games) {
 							gameName = gameName + ' '
 						}
 						games[gameName] = results[i][game]
-					}
+				    	}
 				}
 			}
 
