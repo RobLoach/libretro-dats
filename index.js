@@ -33,7 +33,7 @@ function validEntry(gameName) {
 	}
 	
 	// Ignore Kid Dracula (USA, Europe) (Castlevania Anniversary Collection). It's a save file.
-	if (gameName.indexOf('(Castlevania Anniversary Collection)') >= 0) {
+	if (gameName.indexOf('Kid Dracula (USA, Europe) (Castlevania Anniversary Collection)') >= 0) {
 		return false
 	}
 	
