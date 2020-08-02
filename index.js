@@ -24,6 +24,18 @@ async function start() {
 start()
 
 /**
+ * Verifies whether or not the entry is valid to be added to the DAT.
+ */
+function validEntry(gameName) {
+	// Skip all BIOS files.
+	if (gameName.indexOf('[BIOS]') >= 0) {
+		return false
+	}
+	
+	return true
+}
+
+/**
  * Act on a DAT file.
  */
 function processDat(datsInfo, name, done) {
@@ -46,13 +58,12 @@ function processDat(datsInfo, name, done) {
 			for (var i in results) {
 				for (var game in results[i]) {
 					var gameName = results[i][game].title
-					// Do not add BIOS entries.
-					if (gameName.indexOf('[BIOS]') < 0) {
+					if (validEntry(gameName)) {
 						while (gameName in games) {
 							gameName = gameName + ' '
 						}
 						games[gameName] = results[i][game]
-					}
+				    	}
 				}
 			}
 
@@ -62,8 +73,8 @@ function processDat(datsInfo, name, done) {
 			var output = getHeader(name, pkg)
 
 			// Loop through the sorted games database, and output the rom.
-			for (var game in sort(games)) {
-				var rom = games[game]
+			for (let game in sort(games)) {
+				let rom = games[game]
 				game = game.trim()
 				output += getGameEntry(game, rom)
 			}
@@ -197,6 +208,11 @@ function getGameEntry(game, rom) {
 
 	// The filename must be a valid filename.
 	let gameFile = sanitizeFilename(path.basename(unidecode(rom.name)))
+	
+	// Skip any .sav files.
+	if (gameFile.indexOf('.sav') >= 0) {
+		return ''
+	}
 
 	let gameParams = `name "${gameFile}"`
 	if (rom.size) {
