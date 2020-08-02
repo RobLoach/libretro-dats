@@ -21,7 +21,7 @@ function tosec() {
 			}
 		} else {
 			console.log('Downloading TOSEC')
-			request.post('https://www.tosecdev.org/downloads/category/48-2019-12-24?download=95:tosec-dat-pack-complete-3012-tosec-v2019-12-24')
+			request.post('https://www.tosecdev.org/downloads/category/50-2020-07-29?download=99:tosec-dat-pack-complete-3036-tosec-v2020-07-29')
 			.on('error', function(err) {
 				reject(err)
 			})
@@ -158,7 +158,7 @@ async function redump() {
 		console.log(system)
 		//await downloadFile(`http://redump.org/datfile/${system}/`, `input/redump/${system}.zip`)
 		//await extractFile(`input/redump/${system}.zip`, 'input/redump')
-		
+
 	})*/
 
 
