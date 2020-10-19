@@ -302,6 +302,11 @@
 			"input/no-intro/Hartung - Game Master*"
 		]
 	},
+	"database/metadat/no-intro/iQue - iQue": {
+		"files": [
+			"input/no-intro/iQue - iQue (D*"
+		]
+	},
 	"database/metadat/no-intro/Konami - Picno": {
 		"files": [
 			"input/no-intro/Konami - Picno*"
@@ -337,14 +342,9 @@
 			"input/no-intro/Microsoft - MSX (*"
 		]
 	},
-	"database/metadat/no-intro/Microsoft - XBOX 360 (Digital)": {
+	"database/metadat/no-intro/Microsoft - Xbox 360 (Digital)": {
 		"files": [
 			"input/no-intro/Microsoft - XBOX 360 (Digital)*"
-		]
-	},
-	"database/metadat/no-intro/Microsoft - XBOX 360 (Title Updates)": {
-		"files": [
-			"input/no-intro/Microsoft - XBOX 360 (Title Updates)*"
 		]
 	},
 	"database/metadat/no-intro/Mobile - J2ME": {
