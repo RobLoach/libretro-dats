@@ -302,11 +302,6 @@
 			"input/no-intro/Hartung - Game Master*"
 		]
 	},
-	"database/metadat/no-intro/iQue - iQue": {
-		"files": [
-			"input/no-intro/iQue - iQue (D*"
-		]
-	},
 	"database/metadat/no-intro/Konami - Picno": {
 		"files": [
 			"input/no-intro/Konami - Picno*"
@@ -424,7 +419,8 @@
 	},
 	"database/metadat/no-intro/Nintendo - Nintendo 64": {
 		"files": [
-			"input/no-intro/Nintendo - Nintendo 64 (*"
+			"input/no-intro/Nintendo - Nintendo 64 (*",
+			"input/no-intro/iQue - iQue (D*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Nintendo 64DD": {
