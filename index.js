@@ -13,7 +13,7 @@ const download = require('./download')
 const replaceAll = require('replace-string')
 
 async function start() {
-	await download()
+	//await download()
 	async.mapValues(dats, processDat, function (err, results) {
 		if (err) {
 			throw err

@@ -14,6 +14,7 @@ function tosec() {
 	return new Promise(function(resolve, reject) {
 		if (fs.existsSync('tosec.zip')) {
 			if (!fs.existsSync('input/tosec')) {
+				mkdirp.sync('input/tosec')
 				extractFile('tosec.zip', 'input/tosec').then(resolve, reject).catch(reject)
 			}
 			else {
@@ -83,17 +84,12 @@ function extractFile(source, dest) {
 	return new Promise(function(resolve, reject) {
 		console.log('Extracting ' + source)
 		const destDir = __dirname + '/' + dest
-		mkdirp(destDir, function(err) {
+		mkdirp.sync(destDir)
+		extract(source, {dir: destDir}, function (err) {
 			if (err) {
 				reject(err)
 			} else {
-				extract(source, {dir: destDir}, function (err) {
-					if (err) {
-						reject(err)
-					} else {
-						resolve()
-					}
-				})
+				resolve()
 			}
 		})
 	})
@@ -108,6 +104,7 @@ async function redumpExtract(element) {
 
 async function redump() {
 	console.log('redump!')
+	mkdirp.sync('input/redump')
 	const systems = [
 		'mac',
 		'pippin',
@@ -136,7 +133,7 @@ async function redump() {
 		'psx',
 		'ps2',
 		'vflash',
-		'triforce',
+		'trf',
 		'chihiro',
 		'lindbergh',
 		'naomi'
