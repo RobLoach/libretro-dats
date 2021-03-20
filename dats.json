@@ -19,6 +19,11 @@
 			"input/redump/NEC - PC Engine CD*.dat"
 		]
 	},
+	"database/metadat/redump/NEC - PC-98": {
+		"files": [
+			"input/redump/NEC - PC-98*.dat"
+		]
+	},
 	"database/metadat/redump/NEC - PC-FX": {
 		"files": [
 			"input/redump/NEC - PC-FX*.dat"
