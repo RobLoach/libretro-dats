@@ -2,6 +2,8 @@ const mkdirp = require('mkdirp')
 const extract = require('extract-zip')
 const fs = require('fs')
 const request = require('request')
+const path = require('path')
+const download = require('download')
 
 module.exports = async function download() {
 	await nointro()
@@ -22,7 +24,7 @@ function tosec() {
 			}
 		} else {
 			console.log('Downloading TOSEC')
-			request.post('https://www.tosecdev.org/downloads/category/50-2020-07-29?download=99:tosec-dat-pack-complete-3036-tosec-v2020-07-29')
+			request.post('https://www.tosecdev.org/downloads/category/52-2021-02-14?download=103:tosec-dat-pack-complete-3096-tosec-v2021-02-14')
 			.on('error', function(err) {
 				reject(err)
 			})
@@ -98,9 +100,6 @@ function extractFile(source, dest) {
 async function redumpDownload(element) {
 	await downloadFile(`http://redump.org/datfile/${element}/serial,version`, `input/redump/${element}.zip`)
 }
-async function redumpExtract(element) {
-	await extractFile(`input/redump/${element}.zip`, 'input/redump')
-}
 
 async function redump() {
 	console.log('redump!')
@@ -144,12 +143,6 @@ async function redump() {
 		//await downloadFile(`http://redump.org/datfile/${system}/`, `input/redump/${system}.zip`)
 		//await extractFile(`input/redump/${system}.zip`, 'input/redump')
 	}
-
-	for (let element of systems) {
-		console.log('download ', element)
-		await redumpExtract(element)
-	}
-
 	/*
 	systems.forEach(async (system) => {
 		console.log(system)
@@ -178,12 +171,25 @@ async function redump() {
 	})*/
 }
 
-function downloadFile(url, dest) {
-	console.log(url)
+async function downloadFile(url, dest) {
+	const destDir = __dirname + '/' + dest
+	const finalDir = path.dirname(destDir)
+	if (!fs.existsSync(finalDir)) {
+		fs.mkdirSync(finalDir);
+	}
+	await download(url, finalDir, {
+		extract: true
+	})
+}
+
+function downloadFile2(url, dest) {
 	return new Promise(function (resolve, reject) {
 		const destDir = __dirname + '/' + dest
 		if (!fs.existsSync(destDir)) {
 			console.log('Downloading ' + url)
+
+			fetch(url)
+
 			request.get(url)
 			.on('error', function(err) {
 				console.error('Error on download ', url, dest)

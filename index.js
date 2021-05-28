@@ -13,7 +13,7 @@ const download = require('./download')
 const replaceAll = require('replace-string')
 
 async function start() {
-	//await download()
+	await download()
 	async.mapValues(dats, processDat, function (err, results) {
 		if (err) {
 			throw err
@@ -76,7 +76,17 @@ function processDat(datsInfo, name, done) {
 			for (let game in sort(games)) {
 				let rom = games[game]
 				game = game.trim()
-				output += getGameEntry(game, rom)
+				let gameOutput = getGameEntry(game, rom)
+
+				// Ignore Beta entries that have a serial associated with them
+				if (rom.serial && rom.serial.length > 0) {
+					if (!gameOutput.includes('(Beta)')) {
+						output += gameOutput
+					}
+				}
+				else {
+					output += gameOutput
+				}
 			}
 
 			// Save the new DAT file.
@@ -241,7 +251,8 @@ function getGameEntry(game, rom) {
 		'1',
 		1,
 		'n/a',
-		'N/A'
+		'N/A',
+		'!none'
 	]
 	if (rom.serial && !ignoreserials.includes(rom.serial.trim())) {
 		// Multiple serial split into multiple games.
@@ -368,7 +379,6 @@ function getGamesFromXml(filepath, dat) {
 
 	// Loop through each game.
 	games.forEach(function (game, i) {
-
 		// Set up the entries to watch for.
 		var title = null
 		var largestData = 0
