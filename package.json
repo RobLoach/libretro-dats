@@ -11,6 +11,8 @@
   "homepage": "http://github.com/robloach/libretro-dats",
   "dependencies": {
     "async": "^3.2.0",
+    "async-get-file": "^1.0.4",
+    "download": "^8.0.0",
     "extract-zip": "^2.0.1",
     "mkdirp": "^1.0.4",
     "multi-glob": "^1.0.2",
