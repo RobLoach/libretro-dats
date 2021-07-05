@@ -80,7 +80,7 @@ function processDat(datsInfo, name, done) {
 
 				// Ignore Beta entries that have a serial associated with them
 				if (rom.serial && rom.serial.length > 0) {
-					if (!gameOutput.includes('(Beta)')) {
+					if (!gameOutput.includes('(Beta')) {
 						output += gameOutput
 					}
 				}
