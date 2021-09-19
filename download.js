@@ -14,6 +14,7 @@ module.exports = async function download() {
 
 function tosec() {
 	return new Promise(function(resolve, reject) {
+		return resolve();
 		if (fs.existsSync('tosec.zip')) {
 			if (!fs.existsSync('input/tosec')) {
 				mkdirp.sync('input/tosec')
@@ -44,6 +45,7 @@ function tosec() {
 
 function nointro() {
 	return new Promise(function(resolve, reject) {
+		return resolve();
 		if (fs.existsSync('nointro.zip')) {
 			if (!fs.existsSync('input/no-intro')) {
 				extractFile('nointro.zip', 'input/no-intro').then(resolve, reject).catch(reject)
