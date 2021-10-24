@@ -31,7 +31,15 @@ function validEntry(gameName) {
 	if (gameName.indexOf('[BIOS]') >= 0) {
 		return false
 	}
-	
+
+	// Skip all programs.
+	if (gameName.indexOf('(Test Program)') >= 0) {
+		return false
+	}
+	if (gameName.indexOf('- Program -') >= 0) {
+		return false
+	}
+
 	return true
 }
 
@@ -63,7 +71,7 @@ function processDat(datsInfo, name, done) {
 							gameName = gameName + ' '
 						}
 						games[gameName] = results[i][game]
-				    	}
+					}
 				}
 			}
 
@@ -170,6 +178,10 @@ function getGameEntry(game, rom) {
 		.replace('[a5]', '(Alt 5)')
 		.replace('[a6]', '(Alt 6)')
 		.replace('[a7]', '(Alt 7)')
+		.replace('[a8]', '(Alt 8)')
+		.replace('[a9]', '(Alt 9)')
+		.replace('[a10]', '(Alt 10)')
+		.replace('[a11]', '(Alt 11)')
 		.replace('(EA Sports)', '')
 		.replace('(Electronic Arts)', '')
 		.replace('(Digital Pictures)', '')
@@ -196,7 +208,9 @@ function getGameEntry(game, rom) {
 		.replace('(es)', '(Spain)')
 		.replace('(JP)', '(Japan)')
 		.replace('(US)', '(USA)')
+		.replace('(proto)', '(Proto)')
 		.replace('[!]', '')
+		.replace('[joystick]', '')
 		.replace('Applications\\', '')
 		.replace('&apos;', '\'')
 
@@ -229,13 +243,13 @@ function getGameEntry(game, rom) {
 		gameParams += ` size ${rom.size}`
 	}
 	if (rom.crc) {
-		gameParams += ` crc ${rom.crc}`
+		gameParams += ` crc ${rom.crc.toUpperCase()}`
 	}
 	if (rom.md5) {
-		gameParams += ` md5 ${rom.md5}`
+		gameParams += ` md5 ${rom.md5.toUpperCase()}`
 	}
 	if (rom.sha1) {
-		gameParams += ` sha1 ${rom.sha1}`
+		gameParams += ` sha1 ${rom.sha1.toUpperCase()}`
 	}
 
 	let extraParams = ''
