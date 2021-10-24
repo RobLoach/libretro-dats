@@ -24,7 +24,7 @@ function tosec() {
 			}
 		} else {
 			console.log('Downloading TOSEC')
-			request.post('https://www.tosecdev.org/downloads/category/52-2021-02-14?download=103:tosec-dat-pack-complete-3096-tosec-v2021-02-14')
+			request.post('https://www.tosecdev.org/downloads/category/53-2021-08-08?download=105:tosec-dat-pack-complete-3246-tosec-v2021-08-08')
 			.on('error', function(err) {
 				reject(err)
 			})
@@ -52,12 +52,12 @@ function nointro() {
 				resolve();
 			}
 		} else {
-			reject('Download nointro.zip from https://datomatic.no-intro.org/?page=download&fun=daily');
+			reject('Download the standard No-Intro Love Pack from https://datomatic.no-intro.org/index.php?page=download&op=daily and rename it to nointro.zip');
 			return
 
 			// TODO: Fix No-Intro downloading
 			/*console.log('Downloading No-Intro')
-			request.post('https://datomatic.no-intro.org/?page=download&fun=daily', {
+			request.post('https://datomatic.no-intro.org/index.php?page=download&op=daily', {
 				form: {
 					dat_type: 'standard',
 					download: 'Download'
