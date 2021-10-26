@@ -36,6 +36,9 @@ function validEntry(gameName) {
 	if (gameName.indexOf('(Test Program)') >= 0) {
 		return false
 	}
+	if (gameName.indexOf('(Program)') >= 0) {
+		return false
+	}
 	if (gameName.indexOf('- Program -') >= 0) {
 		return false
 	}
