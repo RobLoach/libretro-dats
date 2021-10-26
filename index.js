@@ -31,6 +31,11 @@ function validEntry(gameName) {
 	if (gameName.indexOf('[BIOS]') >= 0) {
 		return false
 	}
+	
+	// Skip all bad dumps
+	if (gameName.indexOf('[b]') >= 0) {
+		return false
+	}
 
 	// Skip all programs.
 	if (gameName.indexOf('(Test Program)') >= 0) {
