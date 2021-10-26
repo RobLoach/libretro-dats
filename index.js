@@ -94,16 +94,7 @@ function processDat(datsInfo, name, done) {
 				let rom = games[game]
 				game = game.trim()
 				let gameOutput = getGameEntry(game, rom)
-
-				// Ignore Beta entries that have a serial associated with them
-				if (rom.serial && rom.serial.length > 0) {
-					if (!gameOutput.includes('(Beta')) {
-						output += gameOutput
-					}
-				}
-				else {
-					output += gameOutput
-				}
+				output += gameOutput
 			}
 
 			// Save the new DAT file.
