@@ -39,6 +39,12 @@ function validEntry(gameName) {
 	if (gameName.indexOf('- Program -') >= 0) {
 		return false
 	}
+	if (gameName.indexOf('Test Cartridge') >= 0) {
+		return false
+	}
+	if (gameName.indexOf('Super Nintendo Tester') >= 0) {
+		return false
+	}
 
 	return true
 }
