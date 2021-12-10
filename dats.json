@@ -187,6 +187,11 @@
 			"input/tosec/TOSEC-ISO/3DO 3DO Interactive Multiplayer - Games*"
 		]
 	},
+	"database/metadat/tosec/Apple - II": {
+		"files": [
+			"input/tosec/TOSEC/Apple II - Games*"
+		]
+	},
 	"database/metadat/no-intro/Atari - 2600": {
 		"files": [
 			"input/no-intro/Atari - 2600*"
