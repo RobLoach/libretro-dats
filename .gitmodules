@@ -2,3 +2,7 @@
 	path = database
 	url = https://github.com/libretro/libretro-database.git
 	ignore = dirty
+[submodule "static/CRoSG"]
+	path = static/CRoSG
+	url = https://github.com/pkos/CRoSG.git
+	ignore = dirty
