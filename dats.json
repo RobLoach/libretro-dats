@@ -16,7 +16,8 @@
 	},
 	"database/metadat/redump/NEC - PC Engine CD - TurboGrafx-CD": {
 		"files": [
-			"input/redump/NEC - PC Engine CD*.dat"
+			"input/redump/NEC - PC Engine CD*.dat",
+			"static/CRoSG/NEC - PC Engine CD - TurboGrafx-CD/NEC - PC Engine CD - TurboGrafx-CD*.dat"
 		]
 	},
 	"database/metadat/redump/NEC - PC-98": {
