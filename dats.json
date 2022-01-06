@@ -16,8 +16,7 @@
 	},
 	"database/metadat/redump/NEC - PC Engine CD - TurboGrafx-CD": {
 		"files": [
-			"input/redump/NEC - PC Engine CD*.dat",
-			"static/CRoSG/NEC - PC Engine CD - TurboGrafx-CD/NEC - PC Engine CD - TurboGrafx-CD*.dat"
+			"input/redump/NEC - PC Engine CD*.dat"
 		]
 	},
 	"database/metadat/redump/NEC - PC-98": {
@@ -110,6 +109,7 @@
 			"static/Headered/Nintendo - Family*.dat"
 		]
 	},
+
 	"database/metadat/libretro-dats/NEC - PC-FX": {
 		"files": [
 			"static/CRoSG/NEC - PC-FX/NEC - PC-FX & PC-FXGA *.dat"
@@ -125,6 +125,12 @@
 			"static/CRoSG/SNK - Neo Geo CD/SNK - Neo Geo CD *.dat"
 		]
 	},
+	"database/metadat/libretro-dats/NEC - PC Engine CD - TurboGrafx-CD": {
+		"files": [
+			"static/CRoSG/NEC - PC Engine CD - TurboGrafx-CD/NEC - PC Engine CD - TurboGrafx-CD*.dat"
+		]
+	},
+	
 	"database/metadat/libretro-dats/Sega - Saturn": {
 		"files": [
 			"input/darkwater/Saturn*"
