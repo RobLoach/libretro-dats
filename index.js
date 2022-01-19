@@ -294,7 +294,7 @@ function getGameEntry(game, rom) {
 	description "${gameName}"${ogParams}
 	serial "${serial}"
 	rom ( ${gameParams} serial "${serial}" )
-)\n`
+)`
 
 					serial = serial + '-' + (discNumber - 1).toString()
 				}
@@ -303,7 +303,7 @@ function getGameEntry(game, rom) {
 	name "${gameName}"
 	description "${gameName}"${ogParams}
 	rom ( ${gameParams} serial "${serial}" )
-)\n`
+)`
 			}
 		}
 		return output
@@ -313,7 +313,7 @@ function getGameEntry(game, rom) {
 	name "${gameName}"
 	description "${gameName}"${extraParams}
 	rom ( ${gameParams} )
-)\n`
+)`
 }
 
 function grabDiscNumber(gameName) {
