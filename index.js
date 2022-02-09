@@ -218,6 +218,13 @@ function getGameEntry(game, rom) {
 		.replace('[joystick]', '')
 		.replace('Applications\\', '')
 		.replace('&apos;', '\'')
+	
+	// Remove the " of y" in " (Disc x of y)"
+	for (let discX = 1; discX < 10; discX++) {
+	for (let discY = discX; discY < 10; distY++) {
+			gameName.replace(` (Disc ${discX} of ${discY})`, ` (Disc ${discX})`)
+		}
+	}
 
 	for (var yearnum = 1984; yearnum <= 2020; yearnum++) {
 		gameName = gameName.replace('(' + yearnum + ')', '')
