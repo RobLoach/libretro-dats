@@ -572,7 +572,11 @@
 	},
 	"database/metadat/no-intro/Sony - PlayStation Vita": {
 		"files": [
-			"input/no-intro/Sony - PlayStation Vita (V*",
+			"input/no-intro/Sony - PlayStation Vita (V*"
+		]
+	},
+	"database/metadat/no-intro/Sony - PlayStation Vita (PSN)": {
+		"files": [
 			"input/no-intro/Sony - PlayStation Vita (PSN) (Decrypted)*"
 		]
 	},
