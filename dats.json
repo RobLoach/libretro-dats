@@ -552,7 +552,7 @@
 			"input/no-intro/SNK - Neo Geo Pocket Color*"
 		]
 	},
-	"database/metadat/no-intro/Sony - PlayStation 3": {
+	"database/metadat/no-intro/Sony - PlayStation 3 (PSN)": {
 		"files": [
 			"input/no-intro/Sony - PlayStation 3 (PSN) (Decrypted)*"
 		]
@@ -560,10 +560,14 @@
 	"database/metadat/no-intro/Sony - PlayStation Portable": {
 		"files": [
 			"input/no-intro/Sony - PlayStation Portable (2*",
-			"input/no-intro/Sony - PlayStation Portable (PSN) (Decrypted)*",
 			"input/no-intro/Sony - PlayStation Portable (PSX2PSP)*",
 			"input/no-intro/Sony - PlayStation Portable (UMD Music)*",
 			"input/no-intro/Sony - PlayStation Portable (UMD Video)*"
+		]
+	},
+	"database/metadat/no-intro/Sony - PlayStation Portable (PSN)": {
+		"files": [
+			"input/no-intro/Sony - PlayStation Portable (PSN) (Decrypted)*"
 		]
 	},
 	"database/metadat/no-intro/Sony - PlayStation Vita": {
