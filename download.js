@@ -24,7 +24,7 @@ function tosec() {
 			}
 		} else {
 			console.log('Downloading TOSEC')
-			request.post('https://www.tosecdev.org/downloads/category/53-2021-08-08?download=105:tosec-dat-pack-complete-3246-tosec-v2021-08-08')
+			request.post('https://www.tosecdev.org/downloads/category/54-2021-12-31?download=107:tosec-dat-pack-complete-3312-tosec-v2021-12-31')
 			.on('error', function(err) {
 				reject(err)
 			})

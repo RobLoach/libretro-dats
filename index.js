@@ -221,7 +221,7 @@ function getGameEntry(game, rom) {
 	
 	// Remove the " of y" in " (Disc x of y)"
 	for (let discX = 1; discX < 10; discX++) {
-	for (let discY = discX; discY < 10; distY++) {
+		for (let discY = discX; discY < 10; discY++) {
 			gameName.replace(` (Disc ${discX} of ${discY})`, ` (Disc ${discX})`)
 		}
 	}
