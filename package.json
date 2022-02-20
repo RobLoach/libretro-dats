@@ -1,6 +1,7 @@
 {
   "name": "libretro-dats",
-  "version": "2021.10.24",
+  "version": "2022.2.20",
+  "private": true,
   "description": "Assembled from Redump, Trurip, TOSEC, Darkwater and AdvanceSCENE, for libretro-database.",
   "main": "index.js",
   "scripts": {
