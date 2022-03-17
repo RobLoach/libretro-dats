@@ -192,6 +192,11 @@
 			"input/tosec/TOSEC/Apple II - Games*"
 		]
 	},
+	"database/metadat/no-intro/Amstrad - CPC": {
+		"files": [
+			"input/no-intro/Amstrad - CPC*"
+		]
+	},
 	"database/metadat/no-intro/Atari - 2600": {
 		"files": [
 			"input/no-intro/Atari - 2600*"
