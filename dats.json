@@ -14,6 +14,11 @@
 			"input/redump/Microsoft - Xbox One*.dat"
 		]
 	},
+	"database/metadat/redump/Philips - CD-i": {
+		"files": [
+			"input/redump/Philips - CD-i*.dat"
+		]
+	},
 	"database/metadat/redump/NEC - PC Engine CD - TurboGrafx-CD": {
 		"files": [
 			"input/redump/NEC - PC Engine CD*.dat"
@@ -57,6 +62,16 @@
 	"database/metadat/redump/Sega - Mega-CD - Sega CD": {
 		"files": [
 			"input/redump/Sega - Mega*.dat"
+		]
+	},
+	"database/metadat/redump/Sega - Naomi": {
+		"files": [
+			"input/redump/Arcade - Sega - Naomi - D*.dat"
+		]
+	},
+	"database/metadat/redump/Sega - Naomi 2": {
+		"files": [
+			"input/redump/Arcade - Sega - Naomi 2 - D*.dat"
 		]
 	},
 	"database/metadat/redump/Sega - Saturn": {

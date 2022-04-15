@@ -105,6 +105,7 @@ async function redump() {
 	console.log('redump!')
 	mkdirp.sync('input/redump')
 	const systems = [
+		'cdi',
 		'mac',
 		'pippin',
 		'acd',
@@ -135,7 +136,8 @@ async function redump() {
 		'trf',
 		'chihiro',
 		'lindbergh',
-		'naomi'
+		'naomi',
+		'naomi2'
 	]
 	for (let element of systems) {
 		console.log(element)
