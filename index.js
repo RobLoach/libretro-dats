@@ -218,6 +218,7 @@ function getGameEntry(game, rom) {
 		.replace('[joystick]', '')
 		.replace('Applications\\', '')
 		.replace('&apos;', '\'')
+		.replace('[MIA] ', '')
 	
 	// Remove the " of y" in " (Disc x of y)"
 	for (let discX = 1; discX < 10; discX++) {
