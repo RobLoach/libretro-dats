@@ -98,52 +98,72 @@ function extractFile(source, dest) {
 }
 
 async function redumpDownload(element) {
-	await downloadFile(`http://redump.org/datfile/${element}/serial,version`, `input/redump/${element}.zip`)
+	await downloadFile(`http://redump.org/datfile/${element}/serial,version`, `input/redump/${element}/dat.zip`)
+	await downloadFile(`http://redump.org/cues/${element}/serial,version`, `input/redump/${element}/cue.zip`)
 }
 
 async function redump() {
 	console.log('redump!')
 	mkdirp.sync('input/redump')
 	const systems = [
-		'cdi',
+		'arch',
 		'mac',
+		'ajcd',
 		'pippin',
+		'qis',
 		'acd',
 		'cd32',
 		'cdtv',
 		'fmt',
-		'3do',
+		'fpp',
 		'pc',
+		'ite',
+		'kea',
+		'kfb',
+		'ksgv',
+		'ixl',
 		'hs',
+		'vis',
 		'xbox',
+		'xbox360',
+		'trf',
+		'ns246',
+		'pce',
 		'pc-88',
 		'pc-98',
 		'pc-fx',
-		'pce',
-		'psp',
+		'ngcd',
 		'gc',
+		'wii',
 		'palm',
-		'mcd',
 		'3do',
 		'cdi',
 		'photo-cd',
+		'psxgs',
+		'ppc',
+		'chihiro',
 		'dc',
+		'mcd',
+		'naomi',
+		'naomi2',
+		'sp21',
+		'sre',
+		'sre2',
 		'ss',
-		'ngcd',
+		'x68k',
 		'psx',
 		'ps2',
+		'ps3',
+		'psp',
+		'quizard',
+		'ksite',
+		'nuon',
 		'vflash',
-		'trf',
-		'chihiro',
-		'lindbergh',
-		'naomi',
-		'naomi2'
+		'gamewave'
 	]
 	for (let element of systems) {
 		console.log(element)
 		await redumpDownload(element)
-		//await downloadFile(`http://redump.org/datfile/${system}/`, `input/redump/${system}.zip`)
-		//await extractFile(`input/redump/${system}.zip`, 'input/redump')
 	}
 	/*
 	systems.forEach(async (system) => {
