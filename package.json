@@ -11,7 +11,7 @@
   "license": "MIT",
   "homepage": "http://github.com/robloach/libretro-dats",
   "dependencies": {
-    "async": "^3.2.3",
+    "async": "^3.2.4",
     "async-get-file": "^1.0.4",
     "download": "^8.0.0",
     "extract-zip": "^2.0.1",

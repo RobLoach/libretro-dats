@@ -242,6 +242,11 @@ function getGameEntry(game, rom) {
 		.replace(')(', ') (')
 		.replace(')(', ') (')
 		.trim()
+	
+	// Protect against #### - Game Name (Country) -- Remove the prefixing numbers.
+	if (/^[0-9][0-9][0-9][0-9] - /.test(gameName)) {
+		gameName = gameName.substring(7)
+	}
 
 	// The filename must be a valid filename.
 	let gameFile = sanitizeFilename(path.basename(unidecode(rom.name)))

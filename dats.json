@@ -219,7 +219,7 @@
 	},
 	"database/metadat/no-intro/Atari - ST": {
 		"files": [
-			"input/no-intro/Atari - ST*"
+			"input/no-intro/Atari - ST (20*"
 		]
 	},
 	"database/metadat/no-intro/Bandai - WonderSwan": {
@@ -269,7 +269,7 @@
 	},
 	"database/metadat/no-intro/Commodore - Amiga": {
 		"files": [
-			"input/no-intro/Commodore - Amiga*"
+			"input/no-intro/Commodore - Amiga (20*"
 		]
 	},
 	"database/metadat/no-intro/Commodore - Plus-4": {
@@ -419,14 +419,12 @@
 	},
 	"database/metadat/no-intro/Nintendo - New Nintendo 3DS": {
 		"files": [
-			"input/no-intro/Nintendo - New Nintendo 3DS (Decry*",
-			"input/no-intro/Nintendo - New Nintendo 3DS (Dig*"
+			"input/no-intro/Nintendo - New Nintendo 3DS (Decrypted) (2*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Nintendo 3DS": {
 		"files": [
-			"input/no-intro/Nintendo - Nintendo 3DS (Decrypted*",
-			"input/no-intro/Nintendo - Nintendo 3DS (Digital) (2*"
+			"input/no-intro/Nintendo - Nintendo 3DS (Decrypted) (2*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Nintendo 64": {
@@ -442,14 +440,15 @@
 	},
 	"database/metadat/no-intro/Nintendo - Nintendo DS": {
 		"files": [
-			"input/no-intro/Nintendo - Nintendo DS (Decrypt*",
+			"input/no-intro/Nintendo - Nintendo DS (Decrypted) (2*",
 			"input/no-intro/Nintendo - Nintendo DS (Download Play)*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Nintendo DSi": {
 		"files": [
-			"input/no-intro/Nintendo - Nintendo DSi (Decrypt*",
-			"input/no-intro/Nintendo - Nintendo DSi (Digital) (CDN) (Decryp*"
+			"input/no-intro/Nintendo - Nintendo DSi (Decrypted) (2*",
+			"input/no-intro/Nintendo - Nintendo DSi (Digital) (2*",
+			"input/no-intro/Nintendo - Nintendo DSi (Digital) (CDN) (Decrypted) (2*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Nintendo Entertainment System": {
@@ -539,7 +538,7 @@
 	},
 	"database/metadat/no-intro/Sinclair - ZX Spectrum +3": {
 		"files": [
-			"input/no-intro/Sinclair - ZX Spectrum +3*"
+			"input/no-intro/Sinclair - ZX Spectrum +3 (2*"
 		]
 	},
 	"database/metadat/no-intro/SNK - Neo Geo Pocket": {

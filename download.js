@@ -98,8 +98,16 @@ function extractFile(source, dest) {
 }
 
 async function redumpDownload(element) {
-	await downloadFile(`http://redump.org/datfile/${element}/serial,version`, `input/redump/${element}/dat.zip`)
-	await downloadFile(`http://redump.org/cues/${element}/serial,version`, `input/redump/${element}/cue.zip`)
+	const redumpDatDownload = `input/redump/${element}/dat.zip`
+
+	if (!fs.existsSync(redumpDatDownload)) {
+		await downloadFile(`http://redump.org/datfile/${element}/serial,version`, redumpDatDownload)
+	}
+
+	const cueDownload = `input/redump/${element}/cue.zip`
+	if (!fs.existsSync(cueDownload)) {
+		await downloadFile(`http://redump.org/cues/${element}/serial,version`, cueDownload)
+	}
 }
 
 async function redump() {
