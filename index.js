@@ -11,6 +11,7 @@ const dats = require('./dats.json')
 const request = require('request')
 const download = require('./download')
 const replaceAll = require('replace-string')
+const dateFormat = require('dateformat')
 
 async function start() {
 	await download()
@@ -114,10 +115,11 @@ function processDat(datsInfo, name, done) {
  * Construct a header for a DAT file.
  */
 function getHeader(name, pkg) {
+	const version = dateFormat(new Date(), "yyyy.mm.dd")
 	return `clrmamepro (
 	name "${path.basename(name)}"
 	description "${path.basename(name)}"
-	version "${pkg.version}"
+	version "${version}"
 	homepage "${pkg.homepage}"
 )\n`
 }

@@ -359,7 +359,8 @@
 	},
 	"database/metadat/no-intro/Microsoft - Xbox 360": {
 		"files": [
-			"input/no-intro/Microsoft - XBOX 360*"
+			"input/no-intro/Microsoft - XBOX 360*",
+			"input/no-intro/Unofficial - Microsoft - XBOX 360*"
 		]
 	},
 	"database/metadat/no-intro/Mobile - J2ME": {
@@ -424,7 +425,8 @@
 	},
 	"database/metadat/no-intro/Nintendo - Nintendo 3DS": {
 		"files": [
-			"input/no-intro/Nintendo - Nintendo 3DS (Decrypted) (2*"
+			"input/no-intro/Nintendo - Nintendo 3DS (Decrypted) (2*",
+			"input/no-intro/Unofficial - Nintendo - Nintendo 3DS (Digital) (Updates and DLC) (Decrypted) (2*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Nintendo 64": {
@@ -553,20 +555,13 @@
 	},
 	"database/metadat/no-intro/Sony - PlayStation 3 (PSN)": {
 		"files": [
-			"input/no-intro/Sony - PlayStation 3 (PSN) (Decrypted)*"
-		]
-	},
-	"database/metadat/no-intro/Sony - PlayStation Portable": {
-		"files": [
-			"input/no-intro/Sony - PlayStation Portable (2*"
+			"input/no-intro/Sony - PlayStation 3 (PSN) (Decrypted)*",
+			"input/no-intro/Unofficial - Sony - PlayStation 3 (PSN) (Decrypted) (2*"
 		]
 	},
 	"database/metadat/no-intro/Sony - PlayStation Portable (PSN)": {
 		"files": [
-			"input/no-intro/Sony - PlayStation Portable (PSN) (Decrypted)*",
-			"input/no-intro/Sony - PlayStation Portable (PSX2PSP)*",
-			"input/no-intro/Sony - PlayStation Portable (UMD Music)*",
-			"input/no-intro/Sony - PlayStation Portable (UMD Video)*"
+			"input/no-intro/Unofficial - Sony - PlayStation Portable (PSN) (Decrypted) (2*"
 		]
 	},
 	"database/metadat/no-intro/Sony - PlayStation Vita": {
@@ -576,7 +571,8 @@
 	},
 	"database/metadat/no-intro/Sony - PlayStation Vita (PSN)": {
 		"files": [
-			"input/no-intro/Sony - PlayStation Vita (PSN) (Decrypted)*"
+			"input/no-intro/Sony - PlayStation Vita (PSN) (Decrypted)*",
+			"input/no-intro/Unofficial - Sony - PlayStation Vita (PSN) (Decrypted)*"
 		]
 	},
 	"database/metadat/no-intro/Tiger - Game.com": {
