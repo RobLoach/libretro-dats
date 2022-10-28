@@ -99,7 +99,7 @@ function processDat(datsInfo, name, done) {
 			for (let game in sort(games)) {
 				let rom = games[game]
 				game = game.trim()
-				let gameOutput = getGameEntry(game, rom)
+				let gameOutput = getGameEntry(game, rom, name)
 				output += gameOutput
 			}
 
@@ -127,7 +127,7 @@ function getHeader(name, pkg) {
 /**
  * Construct a game entry for a DAT file.
  */
-function getGameEntry(game, rom) {
+function getGameEntry(game, rom, name) {
 	// Replace Unicode characters, and trim the title.
 	let gameName = unidecode(game).trim();
 
@@ -246,8 +246,11 @@ function getGameEntry(game, rom) {
 		.trim()
 	
 	// Protect against #### - Game Name (Country) -- Remove the prefixing numbers.
-	if (/^[0-9][0-9][0-9][0-9] - /.test(gameName)) {
-		gameName = gameName.substring(7)
+	// Game Boy Advance only does this numbering?
+	if (name.includes('Game Boy Advance')) {
+		if (/^[0-9][0-9][0-9][0-9] - /.test(gameName)) {
+			gameName = gameName.substring(7)
+		}
 	}
 
 	// The filename must be a valid filename.
