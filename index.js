@@ -447,24 +447,44 @@ function getGamesFromXml(filepath, dat) {
 			}
 			for (var x in game.rom) {
 				var rom = game.rom[x]['$']
-				if (rom.name.endsWith('.cue')) {
+				let lowerCaseName = rom.name.toLowerCase()
+				let extname = path.extname(lowerCaseName)
+				if (lowerCaseName.endsWith('.cue')) {
 					dataTracks = cueDataTracks(path.join(dir, rom.name))
 				}
-				else if (rom.name.endsWith('.gdi')) {
+				else if (lowerCaseName.endsWith('.gdi')) {
 					dataTracks = gdiDataTracks(path.join(dir, rom.name))
 				}
 				else if (dataTracks.includes(rom.name) && Number(rom.size) > largestData) {
 					finalPrimary = rom
 					largestData = Number(rom.size)
 				}
-				else if (rom.name.endsWith('.bin') && !finalBin) {
+				else if (lowerCaseName.endsWith('.bin') && !finalBin) {
 					finalBin = rom
 				}
-				else if (rom.name.endsWith('.iso') && !finalIso) {
+				else if (lowerCaseName.endsWith('.iso') && !finalIso) {
 					finalIso = rom
 				}
-				else if (rom.name.endsWith('.img') && !finalImg) {
+				else if (lowerCaseName.endsWith('.img') && !finalImg) {
 					finalImg = rom
+				}
+				else if (lowerCaseName.endsWith('.txt')) {
+					// Ignore text files
+				}
+				else if (extname == '.snd') {
+					// Ignore
+				}
+				else if (extname == '.cg1') {
+					// Ignore
+				}
+				else if (extname == '.eg1') {
+					// Ignore
+				}
+				else if (extname == '.mg1') {
+					// Ignore
+				}
+				else if (extname.length == 0) {
+					// Ignore zero extension
 				}
 				else {
 					finalEntry = rom

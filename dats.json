@@ -124,6 +124,11 @@
 			"input/tosec/TOSEC/Amstrad GX4000 - Games*"
 		]
 	},
+	"database/metadat/tosec/Infocom - Z-Machine": {
+		"files": [
+			"input/tosec/TOSEC/Infocom Z-Machine - *"
+		]
+	},
 	"database/metadat/tosec/NEC - PC Engine CD - TurboGrafx-CD": {
 		"files": [
 			"input/tosec/TOSEC-ISO/NEC PC-Engine CD*"
