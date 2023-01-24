@@ -18,6 +18,7 @@
     "extract-zip": "^2.0.1",
     "mkdirp": "^1.0.4",
     "multi-glob": "^1.0.2",
+    "puppeteer": "^19.6.0",
     "replace-string": "^3.0.0",
     "request": "^2.88.2",
     "sanitize-filename": "^1.6.3",
