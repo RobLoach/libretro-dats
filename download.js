@@ -4,6 +4,7 @@ const fs = require('fs')
 const request = require('request')
 const path = require('path')
 const download = require('download')
+const puppeteer = require('puppeteer')
 
 module.exports = async function download() {
 	await nointro()
@@ -43,7 +44,7 @@ function tosec() {
 }
 
 function nointro() {
-	return new Promise(function(resolve, reject) {
+	return new Promise(async function(resolve, reject) {
 		if (fs.existsSync('nointro.zip')) {
 			if (!fs.existsSync('input/no-intro')) {
 				extractFile('nointro.zip', 'input/no-intro').then(resolve, reject).catch(reject)
@@ -52,31 +53,34 @@ function nointro() {
 				resolve();
 			}
 		} else {
-			reject('Download the standard No-Intro Love Pack from https://datomatic.no-intro.org/index.php?page=download&op=daily and rename it to nointro.zip');
-			return
-
-			// TODO: Fix No-Intro downloading
-			/*console.log('Downloading No-Intro')
-			request.post('https://datomatic.no-intro.org/index.php?page=download&op=daily', {
-				form: {
-					dat_type: 'standard',
-					download: 'Download'
-				}
+			console.log('Downloading No-Intro')
+			const downloadPath = process.cwd()
+			const browser = await puppeteer.launch({
+				headless: true // change to false to show browser window while debugging
 			})
-			.on('error', function(err) {
-				reject(err)
+			const page = await browser.newPage()
+			const client = await page.target().createCDPSession()
+			await client.send('Page.setDownloadBehavior', {
+				behavior: 'allow',
+				downloadPath,
 			})
-			.on('finish', function(err) {
-				if (err) {
-					reject(err)
-				} else {
+			await page.goto('https://datomatic.no-intro.org/index.php?page=download&op=daily')
+			await page.waitForSelector('input[value="Request"]')
+			await page.click('input[value="Request"]')
+			await page.waitForSelector('input[value="Download"]')
+			await page.click('input[value="Download"]')
+			// Wait until zip download finish
+			const timer = setInterval(() => {
+				const content = fs.readdirSync(downloadPath)
+				const filePath = content.find((f) => f.startsWith('No-Intro') && f.endsWith('.zip'))
+				if (filePath) {
 					setTimeout(function() {
+						fs.renameSync(filePath, 'nointro.zip')
 						extractFile('nointro.zip', 'input/no-intro').then(resolve, reject).catch(reject)
 					}, 500)
+					clearInterval(timer)
 				}
-			})
-			.pipe(fs.createWriteStream('nointro.zip'))
-			*/
+			}, 1000)
 		}
 	})
 }
