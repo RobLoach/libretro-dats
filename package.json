@@ -24,6 +24,6 @@
     "sanitize-filename": "^1.6.3",
     "sort-keys": "*",
     "unidecode": "^0.1.8",
-    "xml2js": "^0.4.23"
+    "xml2js": "^0.5.0"
   }
 }
