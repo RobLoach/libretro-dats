@@ -247,7 +247,7 @@ function getGameEntry(game, rom, name) {
 	
 	// Protect against #### - Game Name (Country) -- Remove the prefixing numbers.
 	// Game Boy Advance only does this numbering?
-	if (name.includes('Game Boy Advance')) {
+	if (name.includes('Game Boy Advance') || name.includes('Nintendo DS')) {
 		if (/^[0-9xyz][0-9][0-9][0-9] - /.test(gameName)) {
 			gameName = gameName.substring(7)
 		}
