@@ -2,3 +2,4 @@ input*
 node_modules
 temp
 *.zip
+._*
