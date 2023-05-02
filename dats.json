@@ -114,6 +114,16 @@
 			"input/darkwater/Saturn*"
 		]
 	},
+	"database/metadat/tosec/Atari - 8-bit": {
+		"files": [
+			"input/tosec/TOSEC/Atari 8bit - Games*"
+		]
+	},
+	"database/metadat/tosec/Commodore - PET": {
+		"files": [
+			"input/tosec/TOSEC/Commodore PET - Games*"
+		]
+	},
 	"database/metadat/tosec/Amstrad - CPC": {
 		"files": [
 			"input/tosec/TOSEC/Amstrad CPC - Games*"
@@ -176,6 +186,11 @@
 			"input/tosec/TOSEC/Sinclair ZX Spectrum - Games - *"
 		]
 	},
+	"database/metadat/tosec/Sharp - X1": {
+		"files": [
+			"input/tosec/TOSEC/Sharp X1 - Games*"
+		]
+	},
 	"database/metadat/tosec/Sharp - X68000": {
 		"files": [
 			"input/tosec/TOSEC/Sharp X68000 - Games*"
@@ -195,6 +210,11 @@
 	"database/metadat/tosec/Apple - II": {
 		"files": [
 			"input/tosec/TOSEC/Apple II - Games*"
+		]
+	},
+	"database/metadat/no-intro/Atari - 8-bit": {
+		"files": [
+			"input/no-intro/Atari - 8-bit Family *"
 		]
 	},
 	"database/metadat/no-intro/Atari - 2600": {
@@ -541,6 +561,16 @@
 	"database/metadat/no-intro/Sega - SG-1000": {
 		"files": [
 			"input/no-intro/Sega - SG-1000*"
+		]
+	},
+	"database/metadat/no-intro/Sharp - X1": {
+		"files": [
+			"input/no-intro/Sharp - X1*"
+		]
+	},
+	"database/metadat/no-intro/Sharp - X68000": {
+		"files": [
+			"input/no-intro/Sharp - X68000*"
 		]
 	},
 	"database/metadat/no-intro/Sinclair - ZX Spectrum +3": {
