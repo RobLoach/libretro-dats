@@ -224,17 +224,17 @@
 	},
 	"database/metadat/tosec/Commodore - Amiga": {
 		"files": [
-			"input/tosec/TOSEC/Commodore Amiga*"
+			"input/tosec/TOSEC/Commodore Amiga - Games -*"
 		]
 	},
 	"database/metadat/tosec/Commodore - CD32": {
 		"files": [
-			"input/tosec/TOSEC-ISO/Commodore Amiga CD32*"
+			"input/tosec/TOSEC-ISO/Commodore Amiga CD32 - Games*"
 		]
 	},
 	"database/metadat/tosec/Commodore - CDTV": {
 		"files": [
-			"input/tosec/TOSEC-ISO/Commodore Amiga CDTV*"
+			"input/tosec/TOSEC-ISO/Commodore Amiga CDTV - Games *"
 		]
 	},
 	"database/metadat/no-intro/Atari - 8-bit": {
