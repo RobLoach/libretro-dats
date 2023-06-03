@@ -119,6 +119,28 @@
 			"static/Headered/Nintendo - Family*.dat"
 		]
 	},
+
+	"database/metadat/libretro-dats/NEC - PC-FX": {
+		"files": [
+			"static/CRoSG/NEC - PC-FX/NEC - PC-FX & PC-FXGA *.dat"
+		]
+	},
+	"database/metadat/libretro-dats/The 3DO Company - 3DO": {
+		"files": [
+			"static/CRoSG/Panasonic - 3DO/Panasonic - 3DO Interactive Multiplayer (*.dat"
+		]
+	},
+	"database/metadat/libretro-dats/SNK - Neo Geo CD": {
+		"files": [
+			"static/CRoSG/SNK - Neo Geo CD/SNK - Neo Geo CD *.dat"
+		]
+	},
+	"database/metadat/libretro-dats/NEC - PC Engine CD - TurboGrafx-CD": {
+		"files": [
+			"static/CRoSG/NEC - PC Engine CD - TurboGrafx-CD/NEC - PC Engine CD - TurboGrafx-CD*.dat"
+		]
+	},
+	
 	"database/metadat/libretro-dats/Sega - Saturn": {
 		"files": [
 			"input/darkwater/Saturn*"
