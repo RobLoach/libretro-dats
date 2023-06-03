@@ -94,6 +94,16 @@
 			"input/redump/3do/Panasonic - 3DO*.dat"
 		]
 	},
+	"database/metadat/redump/Commodore - CD32": {
+		"files": [
+			"input/redump/cd32/Commodore - Amiga CD32*.dat"
+		]
+	},
+	"database/metadat/redump/Commodore - CDTV": {
+		"files": [
+			"input/redump/cdtv/Commodore - Amiga CDTV*.dat"
+		]
+	},
 	"database/metadat/libretro-dats/Nintendo - Super Nintendo Entertainment System": {
 		"files": [
 			"static/Nintendo - Super Nintendo Entertainment System/**"
@@ -210,6 +220,21 @@
 	"database/metadat/tosec/Apple - II": {
 		"files": [
 			"input/tosec/TOSEC/Apple II - Games*"
+		]
+	},
+	"database/metadat/tosec/Commodore - Amiga": {
+		"files": [
+			"input/tosec/TOSEC/Commodore Amiga*"
+		]
+	},
+	"database/metadat/tosec/Commodore - CD32": {
+		"files": [
+			"input/tosec/TOSEC-ISO/Commodore Amiga CD32*"
+		]
+	},
+	"database/metadat/tosec/Commodore - CDTV": {
+		"files": [
+			"input/tosec/TOSEC-ISO/Commodore Amiga CDTV*"
 		]
 	},
 	"database/metadat/no-intro/Atari - 8-bit": {
