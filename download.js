@@ -103,7 +103,7 @@ function extractFile(source, dest) {
 
 async function redumpDownload(element) {
 	// Uncomment this to skip downloading Redump
-	return
+	//return
 	const redumpDatDownload = `input/redump/${element}/dat.zip`
 
 	if (!fs.existsSync(redumpDatDownload)) {
