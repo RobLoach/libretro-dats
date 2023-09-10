@@ -7,10 +7,10 @@ const download = require('download')
 const puppeteer = require('puppeteer')
 
 module.exports = async function download() {
-	await nointro()
-	await tosec()
+	//await nointro()
+	//await tosec()
 	mkdirp.sync('input/redump')
-	await redump()
+	//await redump()
 }
 
 function tosec() {
@@ -25,7 +25,7 @@ function tosec() {
 			}
 		} else {
 			console.log('Downloading TOSEC')
-			request.post('https://www.tosecdev.org/downloads/category/54-2021-12-31?download=107:tosec-dat-pack-complete-3312-tosec-v2021-12-31')
+			request.post('https://www.tosecdev.org/downloads/category/57-2023-07-10?download=112:tosec-dat-pack-complete-3983-tosec-v2023-07-10')
 			.on('error', function(err) {
 				reject(err)
 			})

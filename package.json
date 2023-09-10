@@ -1,6 +1,6 @@
 {
   "name": "libretro-dats",
-  "version": "2023.7.17",
+  "version": "2023.9.9",
   "private": true,
   "description": "Assembled from Redump, Trurip, TOSEC, Darkwater and AdvanceSCENE, for libretro-database.",
   "main": "index.js",
@@ -16,14 +16,14 @@
     "dateformat": "^4",
     "download": "^8.0.0",
     "extract-zip": "^2.0.1",
-    "mkdirp": "^1.0.4",
+    "mkdirp": "^3.0.1",
     "multi-glob": "^1.0.2",
-    "puppeteer": "^19.6.0",
+    "puppeteer": "^21.1.1",
     "replace-string": "^3.0.0",
     "request": "^2.88.2",
     "sanitize-filename": "^1.6.3",
     "sort-keys": "^4.2",
     "unidecode": "^0.1.8",
-    "xml2js": "^0.4.23"
+    "xml2js": "^0.6.2"
   }
 }
