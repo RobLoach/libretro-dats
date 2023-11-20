@@ -237,6 +237,11 @@
 			"input/tosec/TOSEC-ISO/Commodore Amiga CDTV - Games *"
 		]
 	},
+	"database/metadat/no-intro/Arduboy Inc - Arduboy": {
+		"files": [
+			"input/no-intro/Arduboy Inc - Arduboy*"
+		]
+	},
 	"database/metadat/no-intro/Atari - 8-bit": {
 		"files": [
 			"input/no-intro/Atari - 8-bit Family *"
