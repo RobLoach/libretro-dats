@@ -16,16 +16,21 @@ Builds the following sources...
 
 ## Usage
 
-To download and build the dats, use the following...
+1. Download the source dat files from...
+    - https://datomatic.no-intro.org/?page=download&op=daily
+    - https://www.tosecdev.org/downloads
 
-``` bash
-git clone https://github.com/RobLoach/libretro-dats.git
-cd libretro-dats
-git submodule update --init
-npm install
-npm test
-```
+1. Extract them and set up the .dat files to match...
+    ```
+    input/no-intro/Nintendo - Nintendo Entertainment System*.dat
+    input/tosec/TOSEC/Sony PlayStation*.dat
+    ```
 
-## Known Issues
-
-- `nointro.zip` doesn't download properly currently. You can get it from https://datomatic.no-intro.org/?page=download&op=daily .
+1. Run the script...
+    ``` bash
+    git clone https://github.com/RobLoach/libretro-dats.git
+    cd libretro-dats
+    git submodule update --init
+    npm install
+    npm test
+    ```
