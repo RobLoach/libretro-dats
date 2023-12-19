@@ -19,11 +19,6 @@
 			"input/redump/pce/NEC - PC Engine CD*.dat"
 		]
 	},
-	"database/metadat/redump/NEC - PC-98": {
-		"files": [
-			"input/redump/pc-98/NEC - PC-98*.dat"
-		]
-	},
 	"database/metadat/redump/NEC - PC-FX": {
 		"files": [
 			"input/redump/pc-fx/NEC - PC-FX*.dat"
@@ -152,6 +147,11 @@
 	"database/metadat/tosec/NEC - PC Engine CD - TurboGrafx-CD": {
 		"files": [
 			"input/tosec/TOSEC-ISO/NEC PC-Engine CD*"
+		]
+	},
+	"database/metadat/tosec/NEC - PC-98": {
+		"files": [
+			"input/tosec/TOSEC/NEC PC-9801 - Games*"
 		]
 	},
 	"database/metadat/tosec/NEC - PC-FX": {
@@ -596,11 +596,6 @@
 	"database/metadat/no-intro/Sega - SG-1000": {
 		"files": [
 			"input/no-intro/Sega - SG-1000*"
-		]
-	},
-	"database/metadat/no-intro/Sharp - X1": {
-		"files": [
-			"input/no-intro/Sharp - X1*"
 		]
 	},
 	"database/metadat/no-intro/Sharp - X68000": {
