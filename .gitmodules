@@ -3,3 +3,4 @@
 	url = https://github.com/libretro/libretro-database.git
 	ignore = dirty
 	branch = master
+	shallow = true
