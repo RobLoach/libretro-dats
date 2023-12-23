@@ -119,7 +119,7 @@
 			"input/darkwater/Saturn*"
 		]
 	},
-	"database/metadat/tosec/Atari - 8-bit Family": {
+	"database/metadat/tosec/Atari - 8-bit": {
 		"files": [
 			"input/tosec/TOSEC/Atari 8bit - Games*"
 		]
@@ -247,7 +247,7 @@
 			"input/no-intro/Arduboy Inc - Arduboy*"
 		]
 	},
-	"database/metadat/no-intro/Atari - 8-bit Family": {
+	"database/metadat/no-intro/Atari - 8-bit": {
 		"files": [
 			"input/no-intro/Atari - 8-bit Family *"
 		]
