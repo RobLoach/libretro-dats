@@ -211,7 +211,7 @@
 			"input/tosec/TOSEC/Spectravideo *"
 		]
 	},
-	"database/metadat/tosec/NEC - PC-8001 - PC-8801": {
+	"database/metadat/tosec/NEC - PC-88": {
 		"files": [
 			"input/tosec/TOSEC/NEC PC-8801 - Applications *",
 			"input/tosec/TOSEC/NEC PC-8801 - Games *"
