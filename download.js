@@ -10,7 +10,7 @@ module.exports = async function download() {
 	//await nointro()
 	//await tosec()
 	mkdirp.sync('input/redump')
-	//await redump()
+	await redump()
 }
 
 function tosec() {
