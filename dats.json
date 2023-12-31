@@ -206,12 +206,12 @@
 			"input/tosec/TOSEC/Sharp X68000 - Games*"
 		]
 	},
-	"database/metadat/tosec/Spectravideo - SV": {
+	"database/metadat/tosec/Spectravideo - SVI-318 - SVI-328": {
 		"files": [
 			"input/tosec/TOSEC/Spectravideo *"
 		]
 	},
-	"database/metadat/tosec/NEC - PC-88": {
+	"database/metadat/tosec/NEC - PC-8001 - PC-8801": {
 		"files": [
 			"input/tosec/TOSEC/NEC PC-8801 - Applications *",
 			"input/tosec/TOSEC/NEC PC-8801 - Games *"
