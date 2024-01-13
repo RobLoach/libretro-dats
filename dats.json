@@ -124,6 +124,36 @@
 			"input/tosec/TOSEC/Atari 8bit - Games*"
 		]
 	},
+	"database/metadat/tosec/Atari - 2600": {
+		"files": [
+			"input/tosec/TOSEC/Atari 2600 & VCS - Games*"
+		]
+	},
+	"database/metadat/tosec/Atari - 5200": {
+		"files": [
+			"input/tosec/TOSEC/Atari 5200 - Games*"
+		]
+	},
+	"database/metadat/tosec/Atari - 7800": {
+		"files": [
+			"input/tosec/TOSEC/Atari 7800 - Games*"
+		]
+	},
+	"database/metadat/tosec/Atari - ST": {
+		"files": [
+			"input/tosec/TOSEC/Atari ST - Games*"
+		]
+	},
+	"database/metadat/tosec/Atari - Lynx": {
+		"files": [
+			"input/tosec/TOSEC/Atari Lynx - Games*"
+		]
+	},
+	"database/metadat/tosec/Atari - Jaguar": {
+		"files": [
+			"input/tosec/TOSEC/Atari Jaguar - Games*"
+		]
+	},
 	"database/metadat/tosec/Commodore - PET": {
 		"files": [
 			"input/tosec/TOSEC/Commodore PET - Games*"
