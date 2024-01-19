@@ -199,6 +199,36 @@
 			"input/tosec/TOSEC-ISO/Nintendo GameCube - Games*"
 		]
 	},
+	"database/metadat/tosec/Sega - Mega Drive - Genesis": {
+		"files": [
+			"input/tosec/TOSEC/Sega Mega Drive & Genesis - Games*"
+		]
+	},
+	"database/metadat/tosec/Sega - Master System - Mark III": {
+		"files": [
+			"input/tosec/TOSEC/Sega Mark III & Master System - Games*"
+		]
+	},
+	"database/metadat/tosec/Sega - SG-1000": {
+		"files": [
+			"input/tosec/TOSEC/Sega Game 1000 - Games*"
+		]
+	},
+	"database/metadat/tosec/Sega - 32X": {
+		"files": [
+			"input/tosec/TOSEC/Sega 32X - Games*"
+		]
+	},
+	"database/metadat/tosec/Sega - PICO": {
+		"files": [
+			"input/tosec/TOSEC/Sega Pico - Educational*"
+		]
+	},
+	"database/metadat/tosec/Sega - Game Gear": {
+		"files": [
+			"input/tosec/TOSEC/Sega Game Gear - Games*"
+		]
+	},
 	"database/metadat/tosec/Sega - Dreamcast": {
 		"files": [
 			"input/tosec/TOSEC-ISO/Sega Dreamcast - Games*"
