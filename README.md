@@ -17,8 +17,8 @@ Builds the following sources...
 ## Usage
 
 1. Download the source dat files from...
-    - https://datomatic.no-intro.org/?page=download&op=daily
-    - https://www.tosecdev.org/downloads
+    1. Download https://datomatic.no-intro.org/?page=download&op=daily , toggling "Pirate, Homebrew, Aftermarket"
+    2. Download https://www.tosecdev.org/downloads
 
 1. Extract them and set up the .dat files to match...
     ```
