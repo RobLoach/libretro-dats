@@ -215,6 +215,74 @@ function getGameEntry(game, rom, name) {
 		.replace('(es)', '(Spain)')
 		.replace('(JP)', '(Japan)')
 		.replace('(US)', '(USA)')
+		.replace('(AE)', '(United Arab Emirates)')
+		.replace('(AL)', '(Albania)')
+		.replace('(AS)', '(Asia)')
+		.replace('(AT)', '(Austria)')
+		.replace('(AU)', '(Australia)')
+		.replace('(BA)', '(Bosnia and Herzegovina)')
+		.replace('(BE)', '(Belgium)')
+		.replace('(BG)', '(Bulgaria)')
+		.replace('(BR)', '(Brazil)')
+		.replace('(CA)', '(Canada)')
+		.replace('(CH)', '(Switzerland)')
+		.replace('(CL)', '(Chile)')
+		.replace('(CN)', '(China)')
+		.replace('(CS)', '(Serbia and Montenegro)')
+		.replace('(CY)', '(Cyprus)')
+		.replace('(CZ)', '(Czech Republic)')
+		.replace('(DE)', '(Germany)')
+		.replace('(DK)', '(Denmark)')
+		.replace('(EE)', '(Estonia)')
+		.replace('(EG)', '(Egypt)')
+		.replace('(ES)', '(Spain)')
+		.replace('(FI)', '(Finland)')
+		.replace('(FR)', '(France)')
+		.replace('(GB)', '(United Kingdom)')
+		.replace('(GR)', '(Greece)')
+		.replace('(HK)', '(Hong Kong)')
+		.replace('(HR)', '(Croatia)')
+		.replace('(HU)', '(Hungary)')
+		.replace('(ID)', '(Indonesia)')
+		.replace('(IE)', '(Ireland)')
+		.replace('(IL)', '(Israel)')
+		.replace('(IN)', '(India)')
+		.replace('(IR)', '(Iran)')
+		.replace('(IS)', '(Iceland)')
+		.replace('(IT)', '(Italy)')
+		.replace('(JO)', '(Jordan)')
+		.replace('(JP)', '(Japan)')
+		.replace('(KR)', '(Korea)')
+		.replace('(LT)', '(Lithuania)')
+		.replace('(LU)', '(Luxembourg)')
+		.replace('(LV)', '(Latvia)')
+		.replace('(MN)', '(Mongolia)')
+		.replace('(MX)', '(Mexico)')
+		.replace('(MY)', '(Malaysia)')
+		.replace('(NL)', '(Netherlands)')
+		.replace('(NO)', '(Norway)')
+// conflicts with (NP) flag		.replace('(NP)', '(Nepal)')
+		.replace('(NZ)', '(New Zealand)')
+		.replace('(OM)', '(Oman)')
+		.replace('(PE)', '(Peru)')
+		.replace('(PH)', '(Philippines)')
+		.replace('(PL)', '(Poland)')
+		.replace('(PT)', '(Portugal)')
+		.replace('(QA)', '(Qatar)')
+		.replace('(RO)', '(Romania)')
+		.replace('(RU)', '(Russia)')
+		.replace('(SE)', '(Sweden)')
+		.replace('(SG)', '(Singapore)')
+		.replace('(SI)', '(Slovenia)')
+		.replace('(SK)', '(Slovakia)')
+		.replace('(TH)', '(Thailand)')
+		.replace('(TR)', '(Turkey)')
+		.replace('(TW)', '(Taiwan)')
+		.replace('(VN)', '(Vietnam)')
+		.replace('(YU)', '(Yugoslavia)')
+		.replace('(ZA)', '(South Africa)')
+		.replace('(BY)', '(Belarus)')
+		.replace('(UA)', '(Ukraine)')
 		.replace('(proto)', '(Proto)')
 		.replace('[!]', '')
 		.replace('[joystick]', '')
@@ -223,15 +291,37 @@ function getGameEntry(game, rom, name) {
 		.replace('[MIA] ', '')
 	
 	// Remove the " of y" in " (Disc x of y)"
-	for (let discX = 1; discX < 10; discX++) {
-		for (let discY = discX; discY < 10; discY++) {
-			gameName.replace(` (Disc ${discX} of ${discY})`, ` (Disc ${discX})`)
-		}
-	}
+  const diskRegexp = /\(((Tape|Dis[ck]) \d{1,2}) of \d{1,2}\)/;
+  const diskArray = diskRegexp.exec(gameName);
+  if (diskArray !== null) {
+    gameName = gameName.replace(diskRegexp, "($1)")
+  }
 
-	for (var yearnum = 1984; yearnum <= 2020; yearnum++) {
-		gameName = gameName.replace('(' + yearnum + ')', '')
-	}
+  // Parse release date and remove from title
+  let extraParams = ''
+  const dateRegexp = /\((\d{4})-?(\d{0,2})-?(\d{0,2})\)/;
+  const dateArray = dateRegexp.exec(gameName);
+  if (dateArray !== null) {
+    if (dateArray[1] > 1950 && dateArray[1] < 2025) {
+      extraParams += `\n\treleaseyear "${dateArray[1]}"`
+      if (dateArray[2] !== '' && dateArray[2] > 0 && dateArray[2] < 13) {
+        extraParams += `\n\treleasemonth "${dateArray[2]}"`
+        if (dateArray[3] !== ''  && dateArray[3] > 0 && dateArray[3] < 32) {
+          extraParams += `\n\treleaseday "${dateArray[3]}"`
+        }
+      }
+    gameName = gameName.replace(dateRegexp, '')
+    }
+  }
+
+  // Remove unclear TOSEC date indications
+  gameName = gameName.replace('(19xx)', '')
+    .replace('(197x)', '')
+    .replace('(198x)', '')
+    .replace('(199x)', '')
+    .replace('(20xx)', '')
+    .replace('(200x)', '')
+    .replace('(201x)', '')
 	gameName = gameName.replace('  ', ' ')
 		.replace('(RE1)', '(Rev 1)')
 		.replace('(RE2)', '(Rev 2)')
@@ -275,7 +365,6 @@ function getGameEntry(game, rom, name) {
 		gameParams += ` sha1 ${rom.sha1.toUpperCase()}`
 	}
 
-	let extraParams = ''
 	let countries = require('./countries')
 	for (let country of countries) {
 		if (game.includes('(' + country + ')')) {
