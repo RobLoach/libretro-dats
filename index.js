@@ -207,7 +207,7 @@ function getGameEntry(game, rom, name) {
 		.replace('Demos (cdi)\\', '')
 		.replace('Demos (elf)\\', '')
 		.replace(' (United States)', ' (USA)')
-		.replace('(PAL)', '(Europe)')
+//does not seem to improve situation nowadays		.replace('(PAL)', '(Europe)')
 		.replace('(EU)', '(Europe)')
 		.replace('(en)', '')
 		.replace(')(beta)', ') (Beta)')
@@ -367,7 +367,7 @@ function getGameEntry(game, rom, name) {
 
 	let countries = require('./countries')
 	for (let country of countries) {
-		if (game.includes('(' + country + ')')) {
+		if (game.includes('(' + country + ')') || gameName.includes('(' + country + ')')) {
 			extraParams += `\n\tregion "${country}"`
 		}
 	}
