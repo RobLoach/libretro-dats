@@ -209,6 +209,21 @@
 			"input/tosec/TOSEC/Nintendo Super Famicom & Super Entertainment System - Games*"
 		]
 	},
+	"database/metadat/tosec/Nintendo - Game Boy": {
+		"files": [
+			"input/tosec/TOSEC/Nintendo Game Boy - Games*"
+		]
+	},
+	"database/metadat/tosec/Nintendo - Game Boy Color": {
+		"files": [
+			"input/tosec/TOSEC/Nintendo Game Boy Color - Games*"
+		]
+	},
+	"database/metadat/tosec/Nintendo - Game Boy Advance": {
+		"files": [
+			"input/tosec/TOSEC/Nintendo Game Boy Advance - Games*"
+		]
+	},
 	"database/metadat/tosec/Sega - Mega Drive - Genesis": {
 		"files": [
 			"input/tosec/TOSEC/Sega Mega Drive & Genesis - Games*"
