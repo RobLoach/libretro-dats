@@ -199,6 +199,16 @@
 			"input/tosec/TOSEC-ISO/Nintendo GameCube - Games*"
 		]
 	},
+	"database/metadat/tosec/Nintendo - Nintendo Entertainment System": {
+		"files": [
+			"input/tosec/TOSEC/Nintendo Famicom & Entertainment System - Games*"
+		]
+	},
+	"database/metadat/tosec/Nintendo - Super Nintendo Entertainment System": {
+		"files": [
+			"input/tosec/TOSEC/Nintendo Super Famicom & Super Entertainment System - Games*"
+		]
+	},
 	"database/metadat/tosec/Sega - Mega Drive - Genesis": {
 		"files": [
 			"input/tosec/TOSEC/Sega Mega Drive & Genesis - Games*"
