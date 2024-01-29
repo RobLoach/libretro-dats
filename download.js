@@ -117,7 +117,7 @@ async function redumpDownload(element) {
 }
 
 async function redump() {
-	console.log('redump!')
+	console.log('Downloading Redump')
 	mkdirp.sync('input/redump')
 	const systems = [
 		'arch',
@@ -176,7 +176,7 @@ async function redump() {
 		'gamewave'
 	]
 	for (let element of systems) {
-		console.log(element)
+		console.log(`Downloading: ${element}`)
 		await redumpDownload(element)
 	}
 	/*

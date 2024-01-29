@@ -3,3 +3,6 @@ node_modules
 temp
 *.zip
 ._*
+!input/no-intro/.gitkeep
+!input/tosec/.gitkeep
+!input/redump/.gitkeep

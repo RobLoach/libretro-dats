@@ -32,7 +32,7 @@ function validEntry(gameName) {
 	if (gameName.indexOf('[BIOS]') >= 0) {
 		return false
 	}
-	
+
 	// Skip all bad dumps
 	if (gameName.indexOf('[b]') >= 0) {
 		return false
@@ -289,7 +289,7 @@ function getGameEntry(game, rom, name) {
 		.replace('Applications\\', '')
 		.replace('&apos;', '\'')
 		.replace('[MIA] ', '')
-	
+
 	// Remove the " of y" in " (Disc x of y)"
   const diskRegexp = /\(((Tape|Dis[ck]) \d{1,2}) of \d{1,2}\)/;
   const diskArray = diskRegexp.exec(gameName);
@@ -314,14 +314,16 @@ function getGameEntry(game, rom, name) {
     }
   }
 
-  // Remove unclear TOSEC date indications
-  gameName = gameName.replace('(19xx)', '')
-    .replace('(197x)', '')
-    .replace('(198x)', '')
-    .replace('(199x)', '')
-    .replace('(20xx)', '')
-    .replace('(200x)', '')
-    .replace('(201x)', '')
+	// Remove unclear TOSEC date indications
+	gameName = gameName.replace('(19xx)', '')
+		.replace('(197x)', '')
+		.replace('(198x)', '')
+		.replace('(199x)', '')
+		.replace('(20xx)', '')
+		.replace('(200x)', '')
+		.replace('(201x)', '')
+		.replace('(202x)', '')
+
 	gameName = gameName.replace('  ', ' ')
 		.replace('(RE1)', '(Rev 1)')
 		.replace('(RE2)', '(Rev 2)')
@@ -334,7 +336,7 @@ function getGameEntry(game, rom, name) {
 		.replace(')(', ') (')
 		.replace(')(', ') (')
 		.trim()
-	
+
 	// Protect against #### - Game Name (Country) -- Remove the prefixing numbers.
 	// Game Boy Advance only does this numbering?
 	if (name.includes('Game Boy Advance') || name.includes('Nintendo DS')) {
@@ -345,7 +347,7 @@ function getGameEntry(game, rom, name) {
 
 	// The filename must be a valid filename.
 	let gameFile = sanitizeFilename(path.basename(unidecode(rom.name)))
-	
+
 	// Skip any .sav files.
 	if (gameFile.indexOf('.sav') >= 0) {
 		return ''
