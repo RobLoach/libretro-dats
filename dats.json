@@ -175,7 +175,7 @@
 		]
 	},
 	"database/metadat/tosec/NEC - PC Engine CD - TurboGrafx-CD": {
-		"files": [
+		"files-ignore-missing-serial": [
 			"input/tosec/TOSEC-ISO/NEC PC-Engine CD*"
 		]
 	},
@@ -185,7 +185,7 @@
 		]
 	},
 	"database/metadat/tosec/NEC - PC-FX": {
-		"files": [
+		"files-ignore-missing-serial": [
 			"input/tosec/TOSEC-ISO/NEC PC-FX - Games*"
 		]
 	},
@@ -195,7 +195,7 @@
 		]
 	},
 	"database/metadat/tosec/Nintendo - GameCube": {
-		"files": [
+		"files-ignore-missing-serial": [
 			"input/tosec/TOSEC-ISO/Nintendo GameCube - Games*"
 		]
 	},
@@ -255,23 +255,23 @@
 		]
 	},
 	"database/metadat/tosec/Sega - Dreamcast": {
-		"files": [
+		"files-ignore-missing-serial": [
 			"input/tosec/TOSEC-ISO/Sega Dreamcast - Games*"
 		]
 	},
 	"database/metadat/tosec/Sega - Mega-CD - Sega CD": {
-		"files": [
+		"files-ignore-missing-serial": [
 			"input/tosec/TOSEC-ISO/Sega Mega-CD & Sega CD - CD - Games*"
 		]
 	},
 	"database/metadat/tosec/Sega - Saturn": {
-		"files": [
+		"files-ignore-missing-serial": [
 			"input/tosec/TOSEC-ISO/Sega Saturn - Ga*",
 			"input/darkwater/Saturn*"
 		]
 	},
 	"database/metadat/tosec/Sony - PlayStation": {
-		"files": [
+		"files-ignore-missing-serial": [
 			"input/tosec/TOSEC-ISO/Sony PlayStation - Games*"
 		]
 	},
@@ -303,7 +303,7 @@
 		]
 	},
 	"database/metadat/tosec/The 3DO Company - 3DO": {
-		"files": [
+		"files-ignore-missing-serial": [
 			"input/tosec/TOSEC-ISO/3DO 3DO Interactive Multiplayer - Games*"
 		]
 	},
@@ -318,12 +318,12 @@
 		]
 	},
 	"database/metadat/tosec/Commodore - CD32": {
-		"files": [
+		"files-ignore-missing-serial": [
 			"input/tosec/TOSEC-ISO/Commodore Amiga CD32 - Games*"
 		]
 	},
 	"database/metadat/tosec/Commodore - CDTV": {
-		"files": [
+		"files-ignore-missing-serial": [
 			"input/tosec/TOSEC-ISO/Commodore Amiga CDTV - Games *"
 		]
 	},
