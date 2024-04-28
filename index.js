@@ -55,6 +55,12 @@ function validEntry(gameName) {
 		return false
 	}
 
+	// The serial conflicts with Sonic Adventure 2
+	// https://github.com/libretro/libretro-database/issues/1444
+	if (gameName.indexOf('Phantasy Star Online' >= 0) && gameName.indexOf('(Rev B)') >= 0) {
+		return false
+	}
+
 	return true
 }
 
