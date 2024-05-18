@@ -399,16 +399,8 @@
 	},
 	"database/metadat/no-intro/Commodore - 64": {
 		"files": [
-			"input/no-intro/Commodore - 64 (2*"
-		]
-	},
-	"database/metadat/no-intro/Commodore - 64 (PP)": {
-		"files": [
-			"input/no-intro/Commodore - 64 (PP)*"
-		]
-	},
-	"database/metadat/no-intro/Commodore - 64 (Tapes)": {
-		"files": [
+			"input/no-intro/Commodore - 64 (2*",
+			"input/no-intro/Commodore - 64 (PP)*",
 			"input/no-intro/Commodore - 64 (Tapes) (*"
 		]
 	},
