@@ -38,8 +38,11 @@ function validEntry(gameName) {
 		return false
 	}
 
-	// Skip all programs.
+	// Skip all demos and programs.
 	if (gameName.indexOf('(Test Program)') >= 0) {
+		return false
+	}
+	if (gameName.indexOf(' (Demo)') >= 0) {
 		return false
 	}
 	if (gameName.indexOf('(Program)') >= 0) {
