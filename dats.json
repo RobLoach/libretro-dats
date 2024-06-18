@@ -307,6 +307,14 @@
 			"input/tosec/TOSEC-ISO/3DO 3DO Interactive Multiplayer - Games*"
 		]
 	},
+	"database/metadat/tosec/Thomson - MOTO": {
+		"files": [
+			"input/tosec/TOSEC/Thomson MO5 - Games *",
+			"input/tosec/TOSEC/Thomson MO6 - Games *",
+			"input/tosec/TOSEC/Thomson TO7 - Games *",
+			"input/tosec/TOSEC/Thomson TO8, TO8D, TO9, TO9+ - Games *"
+		]
+	},
 	"database/metadat/tosec/Apple - II": {
 		"files": [
 			"input/tosec/TOSEC/Apple II - Games*"
