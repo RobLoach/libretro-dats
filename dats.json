@@ -101,7 +101,7 @@
 	},
 	"database/metadat/libretro-dats/Nintendo - Super Nintendo Entertainment System": {
 		"files": [
-			"static/Nintendo - Super Nintendo Entertainment System/**"
+			"static/English Translation ROMs/Nintendo - Super Famicom *.dat"
 		]
 	},
 	"database/metadat/libretro-dats/Nintendo - Nintendo Entertainment System": {
