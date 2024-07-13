@@ -1,4 +1,9 @@
 {
+	"database/metadat/redump/Atari - Jaguar CD": {
+		"files": [
+			"input/redump/ajcd/Atari - Jaguar CD*.dat"
+		]
+	},
 	"database/metadat/redump/Microsoft - Xbox": {
 		"files": [
 			"input/redump/xbox/Microsoft - Xbox - Dat*.dat"
