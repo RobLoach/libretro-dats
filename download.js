@@ -10,7 +10,7 @@ module.exports = async function download() {
 	//await nointro()
 	//await tosec()
 	mkdirp.sync('input/redump')
-	//await redump()
+	await redump()
 }
 
 function tosec() {
@@ -105,6 +105,10 @@ async function redumpDownload(element) {
 	// Uncomment this to skip downloading Redump
 	//return
 	const redumpDatDownload = `input/redump/${element}/dat.zip`
+
+	if (fs.existsSync(`input/redump/${element}`)) {
+		return;
+	}
 
 	if (!fs.existsSync(redumpDatDownload)) {
 		await downloadFile(`http://redump.org/datfile/${element}/serial,version`, redumpDatDownload)

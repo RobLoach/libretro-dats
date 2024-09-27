@@ -360,13 +360,13 @@
 	"database/metadat/no-intro/Atari - 5200": {
 		"files": [
 			"input/no-intro/No-Intro/Atari - 5200*",
-			"input/no-intro/Aftermarket/Atari - 5200 *"
+			"input/no-intro/Aftermarket/Atari - 5200*"
 		]
 	},
 	"database/metadat/no-intro/Atari - 7800": {
 		"files": [
 			"input/no-intro/No-Intro/Atari - 7800*",
-			"input/no-intro/Aftermarket/Atari - 7800 *"
+			"input/no-intro/Aftermarket/Atari - 7800*"
 		]
 	},
 	"database/metadat/no-intro/Atari - Jaguar": {
@@ -378,7 +378,7 @@
 	"database/metadat/no-intro/Atari - Lynx": {
 		"files": [
 			"input/no-intro/No-Intro/Atari - Lynx*",
-			"input/no-intro/Aftermarket/Atari - Lynx *"
+			"input/no-intro/Aftermarket/Atari - Lynx*"
 		]
 	},
 	"database/metadat/no-intro/Atari - ST": {
@@ -388,7 +388,8 @@
 	},
 	"database/metadat/no-intro/Bandai - WonderSwan": {
 		"files": [
-			"input/no-intro/No-Intro/Bandai - WonderSwan (*"
+			"input/no-intro/No-Intro/Bandai - WonderSwan (*",
+			"input/no-intro/Aftermarket/Bandai - WonderSwan (*"
 		]
 	},
 	"database/metadat/no-intro/Bandai - WonderSwan Color": {
