@@ -124,6 +124,72 @@
 			"input/darkwater/Saturn*"
 		]
 	},
+	"database/metadat/tosec/Philips - CD-i": {
+		"files": [
+			"input/tosec/TOSEC-ISO/Philips CD-i - Games*"
+		]
+	},
+	"database/metadat/tosec/Microsoft - MSX2": {
+		"files": [
+			"input/tosec/TOSEC/MSX MSX2 - Games*"
+		]
+	},
+	"database/metadat/tosec/Microsoft - MSX": {
+		"files": [
+			"input/tosec/TOSEC/MSX MSX - Games*"
+		]
+	},
+	"database/metadat/tosec/DOS": {
+		"files": [
+			"input/tosec/TOSEC/IBM PC Compatibles - Games*"
+			"input/tosec/TOSEC-ISO/IBM PC Compatibles - CD - Games*"
+		]
+	},
+	"database/metadat/tosec/Nintendo - Family Computer Disk System": {
+		"files": [
+			"input/tosec/TOSEC/Nintendo Famicom Disk System - Games*"
+		]
+	},
+	"database/metadat/tosec/Philips - Videopac+": {
+		"files": [
+			"input/tosec/TOSEC/Philips Videopac+ - Games*"
+		]
+	},
+	"database/metadat/tosec/Magnavox - Odyssey2": {
+		"files": [
+			"input/tosec/TOSEC/Magnavox Odyssey2 - Games*"
+		]
+	},
+	"database/metadat/tosec/GCE - Vectrex": {
+		"files": [
+			"input/tosec/TOSEC/GCE Vectrex - Games*"
+		]
+	},
+	"database/metadat/tosec/Fairchild - Channel F": {
+		"files": [
+			"input/tosec/TOSEC/Fairchild VES & Channel F - Games*"
+		]
+	},
+	"database/metadat/tosec/Watara - Supervision": {
+		"files": [
+			"input/tosec/TOSEC/Watara Supervision - Games*"
+		]
+	}
+	"database/metadat/tosec/Epoch - Super Cassette Vision": {
+		"files": [
+			"input/tosec/TOSEC/Epoch Super Cassette Vision - Games*"
+		]
+	},
+	"database/metadat/tosec/Bandai - WonderSwan": {
+		"files": [
+			"input/tosec/TOSEC/Bandai WonderSwan - Games*"
+		]
+	},
+	"database/metadat/tosec/Bandai - WonderSwan Color": {
+		"files": [
+			"input/tosec/TOSEC/Bandai WonderSwan Color - Games*"
+		]
+	},
 	"database/metadat/tosec/Atari - 8-bit": {
 		"files": [
 			"input/tosec/TOSEC/Atari 8bit - Games*"
@@ -169,6 +235,16 @@
 			"input/tosec/TOSEC/Amstrad CPC - Games*"
 		]
 	},
+	"database/metadat/tosec/Commodore - Plus-4": {
+		"files": [
+			"input/tosec/TOSEC/Commodore C16, C116 & Plus-4 - Games*"
+		]
+	},
+	"database/metadat/tosec/Commodore - VIC-20": {
+		"files": [
+			"input/tosec/TOSEC/Commodore VIC20 - Games*"
+		]
+	},
 	"database/metadat/tosec/Amstrad - GX4000": {
 		"files": [
 			"input/tosec/TOSEC/Amstrad GX4000 - Games*"
@@ -177,6 +253,16 @@
 	"database/metadat/tosec/Infocom - Z-Machine": {
 		"files": [
 			"input/tosec/TOSEC/Infocom Z-Machine - *"
+		]
+	},
+	"database/metadat/tosec/NEC - PC Engine SuperGrafx": {
+		"files": [
+			"input/tosec/TOSEC/NEC SuperGrafx - Games*"
+		]
+	},
+	"database/metadat/tosec/NEC - PC Engine - TurboGrafx 16": {
+		"files": [
+			"input/tosec/TOSEC/NEC PC-Engine & TurboGrafx-16 - Games*"
 		]
 	},
 	"database/metadat/tosec/NEC - PC Engine CD - TurboGrafx-CD": {
@@ -194,9 +280,24 @@
 			"input/tosec/TOSEC-ISO/NEC PC-FX - Games*"
 		]
 	},
+	"database/metadat/tosec/SNK - Neo Geo Pocket": {
+		"files": [
+			"input/tosec/TOSEC/SNK Neo-Geo Pocket - Games*"
+		]
+	},
+	"database/metadat/tosec/SNK - Neo Geo Pocket Color": {
+		"files": [
+			"input/tosec/TOSEC/SNK Neo-Geo Pocket Color - Games*"
+		]
+	},
 	"database/metadat/tosec/Mattel - Intellivision": {
 		"files": [
 			"input/tosec/TOSEC/Mattel Intellivision - Games*"
+		]
+	},
+	"database/metadat/tosec/Coleco - Colecovision": {
+		"files": [
+			"input/tosec/TOSEC/Coleco Colecovision - Games*"
 		]
 	},
 	"database/metadat/tosec/Nintendo - GameCube": {
@@ -227,6 +328,16 @@
 	"database/metadat/tosec/Nintendo - Game Boy Advance": {
 		"files": [
 			"input/tosec/TOSEC/Nintendo Game Boy Advance - Games*"
+		]
+	},
+	"database/metadat/tosec/Nintendo - Virtual Boy": {
+		"files": [
+			"input/tosec/TOSEC/Nintendo Virtual Boy - Games*"
+		]
+	},	
+	"database/metadat/tosec/Nintendo - Pokemon Mini": {
+		"files": [
+			"input/tosec/TOSEC/Nintendo Pokemon Mini - Games*"
 		]
 	},
 	"database/metadat/tosec/Sega - Mega Drive - Genesis": {
