@@ -378,7 +378,7 @@ function getGameEntry(game, rom, name) {
 
 	let countries = require('./countries')
 	for (let country of countries) {
-		if (game.includes('(' + country + ')') || gameName.includes('(' + country + ')')) {
+		if (game.includes('(' + country) || gameName.includes('(' + country)) {
 			extraParams += `\n\tregion "${country}"`
 		}
 	}

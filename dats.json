@@ -36,7 +36,7 @@
 	},
 	"database/metadat/redump/Nintendo - GameCube": {
 		"files": [
-			"input/redump/gc/Nintendo - GameCube - D*.dat"
+			"input/redump/gc/Nintendo - GameCube*.dat"
 		]
 	},
 	"database/metadat/redump/Nintendo - Wii": {

@@ -1,9 +1,9 @@
 [
 	"USA",
+	"Europe",
 	"Canada",
 	"South America",
-	"Europe",
-	"Asia",
+	"Japan",
 	"Albania",
 	"Austria",
 	"Belarus",
@@ -51,8 +51,6 @@
 	"Iran",
 	"Israel",
 	"Indonesia",
-	"Japan",
-	"Jordan",
 	"Korea",
 	"Malaysia",
 	"Mexico",
@@ -69,5 +67,6 @@
 	"Taiwan",
 	"Thailand",
 	"United Arab Emirates",
-	"Vietnam"
+	"Vietnam",
+	"Asia"
 ]
