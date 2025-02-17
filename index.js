@@ -57,6 +57,12 @@ function validEntry(gameName) {
 	if (gameName.indexOf('Super Nintendo Tester') >= 0) {
 		return false
 	}
+	if (gameName.indexOf('Version Data') >= 0) {
+		return false;
+	}
+	if (gameName.indexOf('(System)') >= 0) {
+		return false;
+	}
 
 	// The serial conflicts with Sonic Adventure 2
 	// https://github.com/libretro/libretro-database/issues/1444
