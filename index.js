@@ -304,6 +304,7 @@ function getGameEntry(game, rom, name) {
 		.replace('Applications\\', '')
 		.replace('&apos;', '\'')
 		.replace('[MIA] ', '')
+		.replace(' (Track 1)', '')
 
 	// Remove the " of y" in " (Disc x of y)"
   const diskRegexp = /\(((Tape|Dis[ck]) \d{1,2}) of \d{1,2}\)/;
