@@ -387,6 +387,11 @@ function getGameEntry(game, rom, name) {
 	for (let country of countries) {
 		if (game.includes('(' + country + ')') || gameName.includes('(' + country + ')')) {
 			extraParams += `\n\tregion "${country}"`
+			break;
+		}
+		if (game.includes('(' + country + ', ') || gameName.includes('(' + country + ', ')) {
+			extraParams += `\n\tregion "${country}"`
+			break;
 		}
 	}
 
