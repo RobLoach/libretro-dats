@@ -331,7 +331,7 @@
 		]
 	},
 	"database/metadat/tosec/Commodore - CD32": {
-		"files": [
+		"files-ignore-missing-serial": [
 			"input/tosec/TOSEC-ISO/Commodore Amiga CD32 - Games*"
 		]
 	},
