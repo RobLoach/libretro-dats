@@ -422,8 +422,7 @@ function getGameEntry(game, rom, name) {
 				if (discNumber !== false) {
 
 					output += `\ngame (
-	name "${gameName}"
-	description "${gameName}"${ogParams}
+	name "${gameName}"${ogParams}
 	serial "${serial}"
 	rom ( ${gameParams} serial "${serial}" )
 )`
@@ -432,8 +431,7 @@ function getGameEntry(game, rom, name) {
 				}
 				ogParams += `\n\tserial "${serial}"`
 				output += `\ngame (
-	name "${gameName}"
-	description "${gameName}"${ogParams}
+	name "${gameName}"${ogParams}
 	rom ( ${gameParams} serial "${serial}" )
 )`
 			}
@@ -442,8 +440,7 @@ function getGameEntry(game, rom, name) {
 	}
 
 	return `\ngame (
-	name "${gameName}"
-	description "${gameName}"${extraParams}
+	name "${gameName}"${extraParams}
 	rom ( ${gameParams} )
 )`
 }
