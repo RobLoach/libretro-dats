@@ -306,6 +306,8 @@ function getGameEntry(game, rom, name) {
 		.replace('[MIA] ', '')
 		.replace(' (Track 1)', '')
 		.replace(' (Made in Japan)', '')
+		.replace(' (Aftermarket)', '')
+		.replace(' (Unl)', '')
 
 	// Remove the " of y" in " (Disc x of y)"
   const diskRegexp = /\(((Tape|Dis[ck]) \d{1,2}) of \d{1,2}\)/;
@@ -327,7 +329,7 @@ function getGameEntry(game, rom, name) {
           extraParams += `\n\treleaseday "${dateArray[3]}"`
         }
       }
-    gameName = gameName.replace(dateRegexp, '')
+	  gameName = gameName.replace(dateRegexp, '')
     }
   }
 
@@ -352,6 +354,9 @@ function getGameEntry(game, rom, name) {
 		.replace(')(', ') (')
 		.replace(')(', ') (')
 		.replace(')(', ') (')
+		.replaceAll('  ', ' ')
+		.replaceAll('  ', ' ')
+		.replaceAll('  ', ' ')
 		.trim()
 
 	// Protect against #### - Game Name (Country) -- Remove the prefixing numbers.
