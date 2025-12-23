@@ -70,6 +70,10 @@ function validEntry(gameName) {
 		return false
 	}
 
+	if (gameName.indexOf('G. Darius (USA) (Beta)' >= 0)) {
+		return false
+	}
+
 	return true
 }
 
