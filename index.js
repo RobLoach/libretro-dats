@@ -66,11 +66,11 @@ function validEntry(gameName) {
 
 	// The serial conflicts with Sonic Adventure 2
 	// https://github.com/libretro/libretro-database/issues/1444
-	if (gameName.indexOf('Phantasy Star Online' >= 0) && gameName.indexOf('(Rev B)') >= 0) {
+	if (gameName.indexOf('Phantasy Star Online') >= 0 && gameName.indexOf('(Rev B)') >= 0) {
 		return false
 	}
 
-	if (gameName.indexOf('G. Darius (USA) (Beta)' >= 0)) {
+	if (gameName.indexOf('G. Darius (USA) (Beta)') >= 0) {
 		return false
 	}
 
