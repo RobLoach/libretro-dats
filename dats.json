@@ -174,6 +174,11 @@
 			"input/tosec/TOSEC/Amstrad GX4000 - Games*"
 		]
 	},
+	"database/metadat/tosec/Epoch - Cassette Vision": {
+		"files": [
+			"input/tosec/TOSEC/Epoch Cassette Vision - Games*"
+		]
+	},
 	"database/metadat/tosec/Infocom - Z-Machine": {
 		"files": [
 			"input/tosec/TOSEC/Infocom Z-Machine - *"
