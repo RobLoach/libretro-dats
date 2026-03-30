@@ -545,6 +545,7 @@ function getGamesFromXml(filepath, dat) {
 				console.log(game, i)
 				process.exit()
 			}
+
 			for (var x in game.rom) {
 				var rom = game.rom[x]['$']
 				let lowerCaseName = rom.name.toLowerCase()
@@ -586,9 +587,11 @@ function getGamesFromXml(filepath, dat) {
 				else if (extname == '.ptn777') {
 					// Ignore, Epoch Cassette Vision's bin777 is more important
 				}
+				/* We'll be adding the no-extensions for now.
 				else if (extname.length == 0) {
 					// Ignore zero extension
 				}
+				*/
 				else {
 					finalEntry = rom
 				}
