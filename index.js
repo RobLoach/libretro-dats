@@ -64,6 +64,7 @@ function processDat(datsInfo, name, done) {
 	glob(datsInfo.files, function (err, files) {
 		if (!files) {
 			console.log('EMPTY', name)
+			return done(null, {})
 		}
 		// Output the files to the user.
 		//console.log(name, files)
@@ -89,7 +90,7 @@ function processDat(datsInfo, name, done) {
 			}
 
 			if (Object.entries(games).length === 0) {
-				return
+				return done(null, {})
 			}
 			var output = getHeader(name, pkg)
 
@@ -305,11 +306,12 @@ function getGameEntry(game, rom, name) {
   const dateRegexp = /\((\d{4})-?(\d{0,2})-?(\d{0,2})\)/;
   const dateArray = dateRegexp.exec(gameName);
   if (dateArray !== null) {
-    if (dateArray[1] > 1950 && dateArray[1] < 2025) {
+    const year = parseInt(dateArray[1])
+    if (year > 1950 && year <= new Date().getFullYear()) {
       extraParams += `\n\treleaseyear "${dateArray[1]}"`
-      if (dateArray[2] !== '' && dateArray[2] > 0 && dateArray[2] < 13) {
+      if (dateArray[2] !== '' && parseInt(dateArray[2]) > 0 && parseInt(dateArray[2]) < 13) {
         extraParams += `\n\treleasemonth "${dateArray[2]}"`
-        if (dateArray[3] !== ''  && dateArray[3] > 0 && dateArray[3] < 32) {
+        if (dateArray[3] !== ''  && parseInt(dateArray[3]) > 0 && parseInt(dateArray[3]) < 32) {
           extraParams += `\n\treleaseday "${dateArray[3]}"`
         }
       }
@@ -671,7 +673,7 @@ function cueDataTracks(filepath) {
 		var tracks = []
 		var lastFile = null
 
-		lines = data.split(/\r?\n/)
+		const lines = data.split(/\r?\n/)
 		for (var line in lines) {
 				line = lines[line]
 				var match
@@ -701,7 +703,7 @@ function gdiDataTracks(filepath) {
 
 		var tracks = []
 
-		lines = data.split(/\r?\n/)
+		const lines = data.split(/\r?\n/)
 		for (var line in lines) {
 				if (line == 0) {
 						continue
