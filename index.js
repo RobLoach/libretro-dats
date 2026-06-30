@@ -79,12 +79,22 @@ function processDat(datsInfo, name, done) {
 			var games = {}
 			for (var i in results) {
 				for (var game in results[i]) {
-					var gameName = results[i][game].title
+					var entry = results[i][game]
+					var gameName = entry.title
 					if (validEntry(gameName)) {
+						// Find a unique key, but skip entries that are identical
+						// to one already added under the same name.
+						let duplicate = false
 						while (gameName in games) {
+							if (sameEntry(games[gameName], entry)) {
+								duplicate = true
+								break
+							}
 							gameName = gameName + ' '
 						}
-						games[gameName] = results[i][game]
+						if (!duplicate) {
+							games[gameName] = entry
+						}
 					}
 				}
 			}
@@ -433,6 +443,13 @@ function getGameEntry(game, rom, name) {
 	name "${gameName}"${extraParams}
 	rom ( ${gameParams} )
 )`
+}
+
+/**
+ * Determine whether two game entries describe the same ROM.
+ */
+function sameEntry(a, b) {
+	return a.crc === b.crc || a.serial === b.serial
 }
 
 function grabDiscNumber(gameName) {
