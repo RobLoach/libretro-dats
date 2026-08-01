@@ -29,6 +29,8 @@ const invalidSubstrings = [
 	'[b]',
 	'(Test Program)',
 	' (Demo)',
+	' (demo)',
+	' (demo-',
 	'(Program)',
 	'- Program -',
 	'Test Cartridge',
@@ -57,7 +59,6 @@ const titleReplacements = [
 	['(Riot)', ''],
 	['(Bignet - Micronet)', ''],
 	['(Bignet)', ''],
-	['(M4)', ''],
 	['(Acclaim - Domark)', ''],
 	['(Acclaim)', ''],
 	['(Gametek)', ''],
@@ -117,80 +118,7 @@ const titleReplacements = [
 	['Demos (elf)\\', ''],
 	[' (United States)', ' (USA)'],
 	//['(PAL)', '(Europe)'], // does not seem to improve situation nowadays
-	['(EU)', '(Europe)'],
-	['(en)', ''],
-	[')(beta)', ') (Beta)'],
-	['(fr)', '(France)'],
-	['(es)', '(Spain)'],
-	['(JP)', '(Japan)'],
-	['(US)', '(USA)'],
-	['(AE)', '(United Arab Emirates)'],
-	['(AL)', '(Albania)'],
-	['(AS)', '(Asia)'],
-	['(AT)', '(Austria)'],
-	['(AU)', '(Australia)'],
-	['(BA)', '(Bosnia and Herzegovina)'],
-	['(BE)', '(Belgium)'],
-	['(BG)', '(Bulgaria)'],
-	['(BR)', '(Brazil)'],
-	['(CA)', '(Canada)'],
-	['(CH)', '(Switzerland)'],
-	['(CL)', '(Chile)'],
-	['(CN)', '(China)'],
-	['(CS)', '(Serbia and Montenegro)'],
-	['(CY)', '(Cyprus)'],
-	['(CZ)', '(Czech Republic)'],
-	['(DE)', '(Germany)'],
-	['(DK)', '(Denmark)'],
-	['(EE)', '(Estonia)'],
-	['(EG)', '(Egypt)'],
-	['(ES)', '(Spain)'],
-	['(FI)', '(Finland)'],
-	['(FR)', '(France)'],
-	['(GB)', '(United Kingdom)'],
-	['(GR)', '(Greece)'],
-	['(HK)', '(Hong Kong)'],
-	['(HR)', '(Croatia)'],
-	['(HU)', '(Hungary)'],
-	['(ID)', '(Indonesia)'],
-	['(IE)', '(Ireland)'],
-	['(IL)', '(Israel)'],
-	['(IN)', '(India)'],
-	['(IR)', '(Iran)'],
-	['(IS)', '(Iceland)'],
-	['(IT)', '(Italy)'],
-	['(JO)', '(Jordan)'],
-	['(KR)', '(Korea)'],
-	['(LT)', '(Lithuania)'],
-	['(LU)', '(Luxembourg)'],
-	['(LV)', '(Latvia)'],
-	['(MN)', '(Mongolia)'],
-	['(MX)', '(Mexico)'],
-	['(MY)', '(Malaysia)'],
-	['(NL)', '(Netherlands)'],
-	['(NO)', '(Norway)'],
-	//['(NP)', '(Nepal)'], // conflicts with (NP) flag
-	['(NZ)', '(New Zealand)'],
-	['(OM)', '(Oman)'],
-	['(PE)', '(Peru)'],
-	['(PH)', '(Philippines)'],
-	['(PL)', '(Poland)'],
-	['(PT)', '(Portugal)'],
-	['(QA)', '(Qatar)'],
-	['(RO)', '(Romania)'],
-	['(RU)', '(Russia)'],
-	['(SE)', '(Sweden)'],
-	['(SG)', '(Singapore)'],
-	['(SI)', '(Slovenia)'],
-	['(SK)', '(Slovakia)'],
-	['(TH)', '(Thailand)'],
-	['(TR)', '(Turkey)'],
-	['(TW)', '(Taiwan)'],
-	['(VN)', '(Vietnam)'],
-	['(YU)', '(Yugoslavia)'],
-	['(ZA)', '(South Africa)'],
-	['(BY)', '(Belarus)'],
-	['(UA)', '(Ukraine)'],
+	['(beta)', '(Beta)'],
 	['(proto)', '(Proto)'],
 	['[!]', ''],
 	['[joystick]', ''],
@@ -204,18 +132,121 @@ const titleReplacements = [
 ]
 
 /**
- * Unclear TOSEC date indications to remove from titles.
+ * Unclear TOSEC date indications, with the optional publisher that follows.
  */
-const tosecDates = [
-	'(19xx)',
-	'(197x)',
-	'(198x)',
-	'(199x)',
-	'(20xx)',
-	'(200x)',
-	'(201x)',
-	'(202x)'
-]
+const tosecDateRegexp = /\((?:19|20)(?:xx|\dx)\)(?:\([^()]*\))?/g
+
+/**
+ * ISO country codes used by TOSEC, mapped to the region names No-Intro uses.
+ * (NP) is left out, as it conflicts with the (NP) flag.
+ */
+const countryNames = {
+	AE: 'United Arab Emirates',
+	AL: 'Albania',
+	AS: 'Asia',
+	AT: 'Austria',
+	AU: 'Australia',
+	BA: 'Bosnia and Herzegovina',
+	BE: 'Belgium',
+	BG: 'Bulgaria',
+	BR: 'Brazil',
+	BY: 'Belarus',
+	CA: 'Canada',
+	CH: 'Switzerland',
+	CL: 'Chile',
+	CN: 'China',
+	CS: 'Serbia and Montenegro',
+	CY: 'Cyprus',
+	CZ: 'Czech Republic',
+	DE: 'Germany',
+	DK: 'Denmark',
+	EE: 'Estonia',
+	EG: 'Egypt',
+	ES: 'Spain',
+	EU: 'Europe',
+	FI: 'Finland',
+	FR: 'France',
+	GB: 'United Kingdom',
+	GR: 'Greece',
+	HK: 'Hong Kong',
+	HR: 'Croatia',
+	HU: 'Hungary',
+	ID: 'Indonesia',
+	IE: 'Ireland',
+	IL: 'Israel',
+	IN: 'India',
+	IR: 'Iran',
+	IS: 'Iceland',
+	IT: 'Italy',
+	JO: 'Jordan',
+	JP: 'Japan',
+	KR: 'Korea',
+	LT: 'Lithuania',
+	LU: 'Luxembourg',
+	LV: 'Latvia',
+	MN: 'Mongolia',
+	MX: 'Mexico',
+	MY: 'Malaysia',
+	NL: 'Netherlands',
+	NO: 'Norway',
+	NZ: 'New Zealand',
+	OM: 'Oman',
+	PE: 'Peru',
+	PH: 'Philippines',
+	PL: 'Poland',
+	PT: 'Portugal',
+	QA: 'Qatar',
+	RO: 'Romania',
+	RU: 'Russia',
+	SE: 'Sweden',
+	SG: 'Singapore',
+	SI: 'Slovenia',
+	SK: 'Slovakia',
+	TH: 'Thailand',
+	TR: 'Turkey',
+	TW: 'Taiwan',
+	UA: 'Ukraine',
+	US: 'USA',
+	VN: 'Vietnam',
+	YU: 'Yugoslavia',
+	ZA: 'South Africa'
+}
+
+/**
+ * Regions No-Intro lists first, in order. Remaining regions sort alphabetically.
+ */
+const regionOrder = ['Japan', 'USA', 'Europe']
+
+/**
+ * TOSEC language codes, mapped to the region the language implies. English is
+ * simply dropped, like No-Intro does.
+ */
+const languageCountries = {
+	bg: 'Bulgaria',
+	cs: 'Czech Republic',
+	da: 'Denmark',
+	de: 'Germany',
+	el: 'Greece',
+	es: 'Spain',
+	fi: 'Finland',
+	fr: 'France',
+	hr: 'Croatia',
+	hu: 'Hungary',
+	it: 'Italy',
+	ja: 'Japan',
+	ko: 'Korea',
+	nl: 'Netherlands',
+	no: 'Norway',
+	pl: 'Poland',
+	pt: 'Portugal',
+	ro: 'Romania',
+	ru: 'Russia',
+	sk: 'Slovakia',
+	sl: 'Slovenia',
+	sv: 'Sweden',
+	tr: 'Turkey',
+	zh: 'China'
+}
 
 /**
  * Final title cleanups, applied after the date handling.
@@ -345,16 +376,50 @@ function getHeader(name, pkg) {
 }
 
 /**
+ * Convert TOSEC country codes to No-Intro region names, including combined
+ * codes: "(JP)" becomes "(Japan)", and "(EU-US)" becomes "(USA, Europe)".
+ */
+function normalizeCountries(gameName) {
+	return gameName.replace(/\(([A-Z]{2}(?:-[A-Z]{2})*)\)/g, function (match, combined) {
+		const codes = combined.split('-')
+		if (!codes.every((code) => code in countryNames)) {
+			return match
+		}
+		const rank = (region) => {
+			const index = regionOrder.indexOf(region)
+			return index === -1 ? regionOrder.length : index
+		}
+		const regions = codes.map((code) => countryNames[code])
+			.sort((a, b) => rank(a) - rank(b) || a.localeCompare(b))
+		return '(' + regions.join(', ') + ')'
+	})
+}
+
+/**
+ * Convert TOSEC language codes: plain English is dropped, a single language
+ * becomes the region it implies, and combined codes become No-Intro language
+ * lists: "(en)" is removed, "(de)" becomes "(Germany)", and "(en-ja)" becomes
+ * "(En,Ja)".
+ */
+function normalizeLanguages(gameName) {
+	return gameName.replace(/\(([a-z]{2}(?:-[a-z]{2})*)\)/g, function (match, combined) {
+		const codes = combined.split('-')
+		if (!codes.every((code) => code === 'en' || code in languageCountries)) {
+			return match
+		}
+		if (codes.length === 1) {
+			return codes[0] === 'en' ? '' : '(' + languageCountries[codes[0]] + ')'
+		}
+		return '(' + codes.map((code) => code.charAt(0).toUpperCase() + code.slice(1)).join(',') + ')'
+	})
+}
+
+/**
  * Construct a game entry for a DAT file.
  */
 function getGameEntry(game, rom, name) {
 	// Replace Unicode characters, and trim the title.
 	let gameName = unidecode(game).trim()
-
-	// Clean the name some more.
-	for (const [from, to] of titleReplacements) {
-		gameName = gameName.replaceAll(from, to)
-	}
 
 	// Remove the " of y" in " (Disc x of y)"
 	const diskRegexp = /\(((Tape|Dis[ck]) \d{1,2}) of \d{1,2}\)/
@@ -362,9 +427,11 @@ function getGameEntry(game, rom, name) {
 		gameName = gameName.replace(diskRegexp, '($1)')
 	}
 
-	// Parse release date and remove from title
+	// Parse release date and remove from title, along with the publisher that
+	// TOSEC places right after it: "Title (1991)(Ocean)(JP)" keeps the year
+	// and continues as "Title (JP)".
 	let extraParams = ''
-	const dateRegexp = /\((\d{4})-?(\d{0,2})-?(\d{0,2})\)/
+	const dateRegexp = /\((\d{4})-?(\d{0,2})-?(\d{0,2})\)(?:\([^()]*\))?/
 	const dateArray = dateRegexp.exec(gameName)
 	if (dateArray !== null) {
 		const year = parseInt(dateArray[1])
@@ -380,16 +447,28 @@ function getGameEntry(game, rom, name) {
 		}
 	}
 
-	// Remove unclear TOSEC date indications
-	for (const date of tosecDates) {
-		gameName = gameName.replaceAll(date, '')
+	// Remove unclear TOSEC date indications, and their publisher.
+	gameName = gameName.replace(tosecDateRegexp, '')
+
+	// Clean the name some more.
+	for (const [from, to] of titleReplacements) {
+		gameName = gameName.replaceAll(from, to)
 	}
+
+	// Turn TOSEC country and language codes into No-Intro style names.
+	gameName = normalizeCountries(gameName)
+	gameName = normalizeLanguages(gameName)
+
+	// Remove TOSEC multi-language counters like "(M3)".
+	gameName = gameName.replace(/\(M\d\)/g, '')
 
 	// Final cleanups: revisions, parenthesis spacing and whitespace collapsing.
 	for (const [from, to] of revisionReplacements) {
 		gameName = gameName.replaceAll(from, to)
 	}
-	gameName = gameName.replace(/ {2,}/g, ' ').trim()
+	gameName = gameName.replace(/ {2,}/g, ' ')
+		.replace(/\(([^()]+)\) \(\1\)/g, '($1)')
+		.trim()
 
 	// Protect against #### - Game Name (Country) -- Remove the prefixing numbers.
 	// Game Boy Advance only does this numbering?
