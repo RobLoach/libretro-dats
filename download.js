@@ -1,65 +1,44 @@
-const mkdirp = require('mkdirp')
 const extract = require('extract-zip')
 const fs = require('fs')
-const request = require('request')
 const path = require('path')
-const download = require('download')
 const puppeteer = require('puppeteer')
 
-module.exports = async function download() {
+// How many Redump downloads to run at once. Kept low to be polite to redump.org.
+const CONCURRENCY = 1
+
+module.exports = async function downloadAll() {
 	//await nointro()
 	//await tosec()
-	mkdirp.sync('input/redump')
 	await redump()
 }
 
-function tosec() {
-	return new Promise(function(resolve, reject) {
-		if (fs.existsSync('tosec.zip')) {
-			if (!fs.existsSync('input/tosec')) {
-				mkdirp.sync('input/tosec')
-				extractFile('tosec.zip', 'input/tosec').then(resolve, reject).catch(reject)
-			}
-			else {
-				resolve();
-			}
-		} else {
-			console.log('Downloading TOSEC')
-			request.post('https://www.tosecdev.org/downloads/category/57-2023-07-10?download=112:tosec-dat-pack-complete-3983-tosec-v2023-07-10')
-			.on('error', function(err) {
-				reject(err)
-			})
-			.on('finish', function(err) {
-				if (err) {
-					return reject(err)
-				} else {
-					setTimeout(function() {
-						extractFile('tosec.zip', 'input/tosec').then(resolve, reject).catch(reject)
-					}, 500)
-				}
-			})
-			.pipe(fs.createWriteStream('tosec.zip'))
-		}
-	})
+async function tosec() {
+	const zipFile = path.join(__dirname, 'tosec.zip')
+	const destDir = path.join(__dirname, 'input/tosec')
+
+	if (!fs.existsSync(zipFile)) {
+		console.log('Downloading TOSEC')
+		await downloadFile('https://www.tosecdev.org/downloads/category/59-2025-03-13?download=117:tosec-dat-pack-complete-4743-tosec-v2025-03-13', zipFile, {method: 'POST'})
+	}
+
+	if (!fs.existsSync(destDir)) {
+		await extractFile(zipFile, destDir)
+	}
 }
 
-function nointro() {
-	return new Promise(async function(resolve, reject) {
-		if (fs.existsSync('nointro.zip')) {
-			if (!fs.existsSync('input/no-intro')) {
-				extractFile('nointro.zip', 'input/no-intro').then(resolve, reject).catch(reject)
-			}
-			else {
-				resolve();
-			}
-		} else {
-			console.log('Downloading No-Intro')
-			const downloadPath = process.cwd()
-			const browser = await puppeteer.launch({
-				headless: true // change to false to show browser window while debugging
-			})
+async function nointro() {
+	const zipFile = path.join(__dirname, 'nointro.zip')
+	const destDir = path.join(__dirname, 'input/no-intro')
+
+	if (!fs.existsSync(zipFile)) {
+		console.log('Downloading No-Intro')
+		const downloadPath = __dirname
+		const browser = await puppeteer.launch({
+			headless: true // change to false to show browser window while debugging
+		})
+		try {
 			const page = await browser.newPage()
-			const client = await page.target().createCDPSession()
+			const client = await page.createCDPSession()
 			await client.send('Page.setDownloadBehavior', {
 				behavior: 'allow',
 				downloadPath,
@@ -69,60 +48,104 @@ function nointro() {
 			await page.click('input[value="Request"]')
 			await page.waitForSelector('input[value="Download"]')
 			await page.click('input[value="Download"]')
-			// Wait until zip download finish
-			const timer = setInterval(() => {
-				const content = fs.readdirSync(downloadPath)
-				const filePath = content.find((f) => f.startsWith('No-Intro') && f.endsWith('.zip'))
-				if (filePath) {
-					setTimeout(function() {
-						fs.renameSync(filePath, 'nointro.zip')
-						extractFile('nointro.zip', 'input/no-intro').then(resolve, reject).catch(reject)
-					}, 500)
-					clearInterval(timer)
-				}
-			}, 1000)
+
+			const downloaded = await waitForDownload(downloadPath)
+			fs.renameSync(downloaded, zipFile)
+		} finally {
+			await browser.close()
 		}
-	})
+	}
+
+	if (!fs.existsSync(destDir)) {
+		await extractFile(zipFile, destDir)
+	}
 }
 
-function extractFile(source, dest) {
-	console.log('extract ' + source)
-	return new Promise(function(resolve, reject) {
-		console.log('Extracting ' + source)
-		const destDir = __dirname + '/' + dest
-		mkdirp.sync(destDir)
-		extract(source, {dir: destDir}, function (err) {
-			if (err) {
-				reject(err)
-			} else {
-				resolve()
+/**
+ * Poll the given directory until a No-Intro zip download appears.
+ */
+function waitForDownload(dir, timeout = 5 * 60 * 1000) {
+	return new Promise(function (resolve, reject) {
+		let elapsed = 0
+		const interval = 1000
+		const timer = setInterval(function () {
+			const content = fs.readdirSync(dir)
+			const file = content.find((f) => f.startsWith('No-Intro') && f.endsWith('.zip'))
+			if (file) {
+				clearInterval(timer)
+				// Give the file a moment to finish writing to disk.
+				setTimeout(() => resolve(path.join(dir, file)), 500)
+			} else if ((elapsed += interval) >= timeout) {
+				clearInterval(timer)
+				reject(new Error('Timed out waiting for the No-Intro download to finish'))
 			}
-		})
+		}, interval)
 	})
 }
 
+/**
+ * Extract the given zip file to the destination directory.
+ */
+async function extractFile(source, dest) {
+	console.log('Extracting ' + source)
+	fs.mkdirSync(dest, {recursive: true})
+	await extract(source, {dir: dest})
+}
+
+/**
+ * Download and extract the DAT and cue sheets for a single Redump system.
+ */
 async function redumpDownload(element) {
-	// Uncomment this to skip downloading Redump
-	//return
-	const redumpDatDownload = `input/redump/${element}/dat.zip`
+	const destDir = path.join(__dirname, 'input/redump', element)
+	const downloads = [
+		// Cue sheets only exist for CD-based systems. For the others, redump
+		// responds with an HTML page instead of a zip, which is fine to skip.
+		{url: `http://redump.org/datfile/${element}/serial,version`, zipFile: path.join(destDir, 'dat.zip')},
+		{url: `http://redump.org/cues/${element}/serial,version`, zipFile: path.join(destDir, 'cue.zip'), optional: true},
+	]
 
-	if (fs.existsSync(`input/redump/${element}`)) {
-		return;
+	for (const {url, zipFile, optional} of downloads) {
+		// The zip is downloaded and extracted through a temporary file, so its
+		// final name only exists once both steps completed. That makes it safe
+		// to skip on re-runs after an interrupted download.
+		if (fs.existsSync(zipFile)) {
+			continue
+		}
+		const partFile = zipFile + '.part'
+		try {
+			await downloadFile(url, partFile)
+			if (!isZip(partFile)) {
+				if (optional) {
+					console.log(`No cue sheets for ${element}`)
+					continue
+				}
+				throw new Error(`Response is not a zip file for ${url}`)
+			}
+			await extractFile(partFile, destDir)
+			fs.renameSync(partFile, zipFile)
+		} finally {
+			fs.rmSync(partFile, {force: true})
+		}
 	}
+}
 
-	if (!fs.existsSync(redumpDatDownload)) {
-		await downloadFile(`http://redump.org/datfile/${element}/serial,version`, redumpDatDownload)
+/**
+ * Check whether the given file starts with the zip magic bytes.
+ */
+function isZip(file) {
+	const buffer = Buffer.alloc(2)
+	const fd = fs.openSync(file, 'r')
+	try {
+		fs.readSync(fd, buffer, 0, 2, 0)
+	} finally {
+		fs.closeSync(fd)
 	}
-
-	const cueDownload = `input/redump/${element}/cue.zip`
-	if (!fs.existsSync(cueDownload)) {
-		await downloadFile(`http://redump.org/cues/${element}/serial,version`, cueDownload)
-	}
+	return buffer.toString('latin1') === 'PK'
 }
 
 async function redump() {
 	console.log('Downloading Redump')
-	mkdirp.sync('input/redump')
+	fs.mkdirSync(path.join(__dirname, 'input/redump'), {recursive: true})
 	const systems = [
 		'arch',
 		'mac',
@@ -179,75 +202,37 @@ async function redump() {
 		'vflash',
 		'gamewave'
 	]
-	for (let element of systems) {
-		console.log(`Downloading: ${element}`)
-		await redumpDownload(element)
-	}
-	/*
-	systems.forEach(async (system) => {
-		console.log(system)
-		//await downloadFile(`http://redump.org/datfile/${system}/`, `input/redump/${system}.zip`)
-		//await extractFile(`input/redump/${system}.zip`, 'input/redump')
 
-	})*/
-
-
-		//
-
-	/*var promises = systems.map(redumpDownload)
-	await Promise.all(promises)
-	promises = systems.map(redumpExtract)
-	await Promise.all(promises)*/
-
-	/*
-	for (var element of systems) {
-		await downloadFile(`http://redump.org/datfile/${element}/`, `input/redump/${element}.zip`)
-		await extractFile(`input/redump/${element}.zip`, 'input/redump')
-	}*/
-	/*systems.forEach(async function (element) {
-		setTimeout(async function () {
-			await extractFile(`input/redump/${element}.zip`, 'input/redump')
-		}, 500)
-	})*/
-}
-
-async function downloadFile(url, dest) {
-	const destDir = __dirname + '/' + dest
-	const finalDir = path.dirname(destDir)
-	if (!fs.existsSync(finalDir)) {
-		fs.mkdirSync(finalDir);
-	}
-	await download(url, finalDir, {
-		extract: true
-	})
-}
-
-function downloadFile2(url, dest) {
-	return new Promise(function (resolve, reject) {
-		const destDir = __dirname + '/' + dest
-		if (!fs.existsSync(destDir)) {
-			console.log('Downloading ' + url)
-
-			fetch(url)
-
-			request.get(url)
-			.on('error', function(err) {
-				console.error('Error on download ', url, dest)
-				reject(err)
-			})
-			.on('finish', function(err) {
-				if (err) {
-					console.error('Failed finish to download ', url, dest)
-					reject(err)
-				} else {
-					console.log('finished ', dest)
-					resolve()
-				}
-			})
-			.pipe(fs.createWriteStream(destDir))
-			resolve();
-		} else {
-			resolve()
+	// Download a few systems at a time, and keep going when one fails.
+	const queue = [...systems]
+	const failures = []
+	async function worker() {
+		let element
+		while ((element = queue.shift()) !== undefined) {
+			console.log(`Downloading: ${element}`)
+			try {
+				await redumpDownload(element)
+			} catch (err) {
+				console.error(`Failed to download ${element}: ${err.message}`)
+				failures.push(element)
+			}
 		}
-	})
+	}
+	await Promise.all(Array.from({length: CONCURRENCY}, worker))
+
+	if (failures.length > 0) {
+		throw new Error('Failed to download from Redump: ' + failures.join(', '))
+	}
+}
+
+/**
+ * Download the given URL to the destination file.
+ */
+async function downloadFile(url, dest, options = {}) {
+	fs.mkdirSync(path.dirname(dest), {recursive: true})
+	const response = await fetch(url, options)
+	if (!response.ok) {
+		throw new Error(`HTTP ${response.status} ${response.statusText} for ${url}`)
+	}
+	fs.writeFileSync(dest, Buffer.from(await response.arrayBuffer()))
 }

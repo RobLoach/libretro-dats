@@ -1,55 +1,260 @@
 const fs = require('fs')
 const path = require('path')
 const pkg = require('./package')
-const async = require('async')
-const glob = require('multi-glob').glob
 const xml = require('xml2js').Parser()
 const sort = require('sort-keys')
 const unidecode = require('unidecode')
 const sanitizeFilename = require('sanitize-filename')
 const dats = require('./dats.json')
-const request = require('request')
+const countries = require('./countries.json')
 const download = require('./download')
 
 async function start() {
 	await download()
-	async.mapValues(dats, processDat, function (err, results) {
-		if (err) {
-			throw err
-		}
-	})
+	for (const [name, datsInfo] of Object.entries(dats)) {
+		await processDat(datsInfo, name)
+	}
 }
 
-start()
+start().catch(function (err) {
+	console.error(err)
+	process.exitCode = 1
+})
+
+/**
+ * Substrings that invalidate a game entry entirely.
+ */
+const invalidSubstrings = [
+	'[BIOS]',
+	'[b]',
+	'(Test Program)',
+	' (Demo)',
+	'(Program)',
+	'- Program -',
+	'Test Cartridge',
+	'Super Nintendo Tester',
+	'Version Data',
+	'(System)',
+	'G. Darius (USA) (Beta)'
+]
+
+/**
+ * Title replacements, applied in order. An empty string removes the match.
+ */
+const titleReplacements = [
+	['Games (Europe)\\', ''],
+	['Games\\', ''],
+	['Games (USA)\\', ''],
+	['Games (Japan)\\', ''],
+	['Games (cdi)\\', ''],
+	['Games (elf)\\', ''],
+	['MISSING\\', ''],
+	['Samplers\\', ''],
+	['Multimedia\\', ''],
+	['(Sony Imagesoft)', ''],
+	['(Sony)', ''],
+	['(Sega)', ''],
+	['(Riot)', ''],
+	['(Bignet - Micronet)', ''],
+	['(Bignet)', ''],
+	['(M4)', ''],
+	['(Acclaim - Domark)', ''],
+	['(Acclaim)', ''],
+	['(Gametek)', ''],
+	['(Good Deal Games)', ''],
+	['(Good Deal Games - Stargate Films)', ''],
+	['(Sega - Tec Toy)', ''],
+	['(SIMS)', ''],
+	['(Sims)', ''],
+	['(Tecmo)', ''],
+	['(Sensible Software - Sony)', ''],
+	['(Taito)', ''],
+	['(Infogrames)', ''],
+	['(Interplay)', ''],
+	['(Domark)', ''],
+	['(Pony Canyon)', ''],
+	['(Panasonic)', ''],
+	['(LG)', ''],
+	['(Yoshimoto Kogyo)', ''],
+	['(Studio 3DO)', ''],
+	['(GoldStar)', ''],
+	['(Human)', ''],
+	['(Bandai)', ''],
+	['(Activision)', ''],
+	['(Infomedia)', ''],
+	['(RE)', ''],
+	['(Data East - Sega)', ''],
+	['(ReadySoft)', ''],
+	['(Virgin)', ''],
+	['[a]', '(Alt 1)'],
+	['[a1]', '(Alt 1)'],
+	['[a2]', '(Alt 2)'],
+	['[a3]', '(Alt 3)'],
+	['[a4]', '(Alt 4)'],
+	['[a5]', '(Alt 5)'],
+	['[a6]', '(Alt 6)'],
+	['[a7]', '(Alt 7)'],
+	['[a8]', '(Alt 8)'],
+	['[a9]', '(Alt 9)'],
+	['[a10]', '(Alt 10)'],
+	['[a11]', '(Alt 11)'],
+	['(EA Sports)', ''],
+	['(Electronic Arts)', ''],
+	['(Digital Pictures)', ''],
+	['(Good Deal Games - Oldergames)', ''],
+	['(Victor)', ''],
+	['(JVC)', ''],
+	['(Wolf Team)', ''],
+	['(Polydor K.K.)', ''],
+	['(NTSC)', ''],
+	[' (Mega Power)', ''],
+	[' (SMW Hack)', ''],
+	['Games - Unlicensed\\', ''],
+	['Magazines\\', ''],
+	['Applications (cdi)\\', ''],
+	['Applications (elf)\\', ''],
+	['Demos (cdi)\\', ''],
+	['Demos (elf)\\', ''],
+	[' (United States)', ' (USA)'],
+	//['(PAL)', '(Europe)'], // does not seem to improve situation nowadays
+	['(EU)', '(Europe)'],
+	['(en)', ''],
+	[')(beta)', ') (Beta)'],
+	['(fr)', '(France)'],
+	['(es)', '(Spain)'],
+	['(JP)', '(Japan)'],
+	['(US)', '(USA)'],
+	['(AE)', '(United Arab Emirates)'],
+	['(AL)', '(Albania)'],
+	['(AS)', '(Asia)'],
+	['(AT)', '(Austria)'],
+	['(AU)', '(Australia)'],
+	['(BA)', '(Bosnia and Herzegovina)'],
+	['(BE)', '(Belgium)'],
+	['(BG)', '(Bulgaria)'],
+	['(BR)', '(Brazil)'],
+	['(CA)', '(Canada)'],
+	['(CH)', '(Switzerland)'],
+	['(CL)', '(Chile)'],
+	['(CN)', '(China)'],
+	['(CS)', '(Serbia and Montenegro)'],
+	['(CY)', '(Cyprus)'],
+	['(CZ)', '(Czech Republic)'],
+	['(DE)', '(Germany)'],
+	['(DK)', '(Denmark)'],
+	['(EE)', '(Estonia)'],
+	['(EG)', '(Egypt)'],
+	['(ES)', '(Spain)'],
+	['(FI)', '(Finland)'],
+	['(FR)', '(France)'],
+	['(GB)', '(United Kingdom)'],
+	['(GR)', '(Greece)'],
+	['(HK)', '(Hong Kong)'],
+	['(HR)', '(Croatia)'],
+	['(HU)', '(Hungary)'],
+	['(ID)', '(Indonesia)'],
+	['(IE)', '(Ireland)'],
+	['(IL)', '(Israel)'],
+	['(IN)', '(India)'],
+	['(IR)', '(Iran)'],
+	['(IS)', '(Iceland)'],
+	['(IT)', '(Italy)'],
+	['(JO)', '(Jordan)'],
+	['(KR)', '(Korea)'],
+	['(LT)', '(Lithuania)'],
+	['(LU)', '(Luxembourg)'],
+	['(LV)', '(Latvia)'],
+	['(MN)', '(Mongolia)'],
+	['(MX)', '(Mexico)'],
+	['(MY)', '(Malaysia)'],
+	['(NL)', '(Netherlands)'],
+	['(NO)', '(Norway)'],
+	//['(NP)', '(Nepal)'], // conflicts with (NP) flag
+	['(NZ)', '(New Zealand)'],
+	['(OM)', '(Oman)'],
+	['(PE)', '(Peru)'],
+	['(PH)', '(Philippines)'],
+	['(PL)', '(Poland)'],
+	['(PT)', '(Portugal)'],
+	['(QA)', '(Qatar)'],
+	['(RO)', '(Romania)'],
+	['(RU)', '(Russia)'],
+	['(SE)', '(Sweden)'],
+	['(SG)', '(Singapore)'],
+	['(SI)', '(Slovenia)'],
+	['(SK)', '(Slovakia)'],
+	['(TH)', '(Thailand)'],
+	['(TR)', '(Turkey)'],
+	['(TW)', '(Taiwan)'],
+	['(VN)', '(Vietnam)'],
+	['(YU)', '(Yugoslavia)'],
+	['(ZA)', '(South Africa)'],
+	['(BY)', '(Belarus)'],
+	['(UA)', '(Ukraine)'],
+	['(proto)', '(Proto)'],
+	['[!]', ''],
+	['[joystick]', ''],
+	['Applications\\', ''],
+	['&apos;', '\''],
+	['[MIA] ', ''],
+	[' (Track 1)', ''],
+	[' (Made in Japan)', ''],
+	[' (Aftermarket)', ''],
+	[' (Unl)', '']
+]
+
+/**
+ * Unclear TOSEC date indications to remove from titles.
+ */
+const tosecDates = [
+	'(19xx)',
+	'(197x)',
+	'(198x)',
+	'(199x)',
+	'(20xx)',
+	'(200x)',
+	'(201x)',
+	'(202x)'
+]
+
+/**
+ * Final title cleanups, applied after the date handling.
+ */
+const revisionReplacements = [
+	['(RE1)', '(Rev 1)'],
+	['(RE2)', '(Rev 2)'],
+	['(RE3)', '(Rev 3)'],
+	['(RE4)', '(Rev 4)'],
+	['(RE5)', '(Rev 5)'],
+	['(RE6)', '(Rev 6)'],
+	[')(', ') (']
+]
+
+/**
+ * Serials that should be treated as if there is no serial at all.
+ */
+const ignoreSerials = [
+	'1',
+	1,
+	'n/a',
+	'N/A',
+	'!none'
+]
 
 /**
  * Verifies whether or not the entry is valid to be added to the DAT.
  */
 function validEntry(gameName) {
 	// Invalidate some of the entries.
-	const invalidSubstrings = [
-		'[BIOS]',
-		'[b]',
-		'(Test Program)',
-		' (Demo)',
-		'(Program)',
-		'- Program -',
-		'Test Cartridge',
-		'Super Nintendo Tester',
-		'Version Data',
-		'(System)',
-		'G. Darius (USA) (Beta)'
-	];
-
 	for (const substr of invalidSubstrings) {
 		if (gameName.includes(substr)) {
-			return false;
+			return false
 		}
 	}
 
 	// The serial conflicts with Sonic Adventure 2
 	// https://github.com/libretro/libretro-database/issues/1444
-	if (gameName.indexOf('Phantasy Star Online') >= 0 && gameName.indexOf('(Rev B)') >= 0) {
+	if (gameName.includes('Phantasy Star Online') && gameName.includes('(Rev B)')) {
 		return false
 	}
 
@@ -57,67 +262,72 @@ function validEntry(gameName) {
 }
 
 /**
+ * Find all files matching the given glob patterns, in pattern order.
+ */
+async function globAll(patterns) {
+	const files = []
+	for (const pattern of patterns) {
+		const matches = await Array.fromAsync(fs.promises.glob(pattern))
+		files.push(...matches.sort())
+	}
+	return files
+}
+
+/**
  * Act on a DAT file.
  */
-function processDat(datsInfo, name, done) {
+async function processDat(datsInfo, name) {
 	// Retrieve all associated files for the DAT.
-	glob(datsInfo.files, function (err, files) {
-		if (!files) {
-			console.log('EMPTY', name)
-			return done(null, {})
-		}
-		// Output the files to the user.
-		//console.log(name, files)
-		// Loop through each given XML file associated with the DAT.
-		async.map(files, processXml, function (err, results) {
-			// Error handling.
-			if (err) {
-				return done(err)
-			}
+	const files = await globAll(datsInfo.files || [])
+	if (files.length === 0) {
+		console.log('EMPTY', name)
+		return
+	}
 
-			// Loop through the results and build a game database.
-			var games = {}
-			for (var i in results) {
-				for (var game in results[i]) {
-					var entry = results[i][game]
-					var gameName = entry.title
-					if (validEntry(gameName)) {
-						// Find a unique key, but skip entries that are identical
-						// to one already added under the same name.
-						let duplicate = false
-						while (gameName in games) {
-							if (sameEntry(games[gameName], entry)) {
-								duplicate = true
-								break
-							}
-							gameName = gameName + ' '
-						}
-						if (!duplicate) {
-							games[gameName] = entry
-						}
+	// Loop through each given XML file associated with the DAT.
+	const results = []
+	for (const file of files) {
+		results.push(await processXml(file))
+	}
+
+	// Loop through the results and build a game database.
+	const games = {}
+	for (const result of results) {
+		for (const game in result) {
+			const entry = result[game]
+			let gameName = entry.title
+			if (validEntry(gameName)) {
+				// Find a unique key, but skip entries that are identical
+				// to one already added under the same name.
+				let duplicate = false
+				while (gameName in games) {
+					if (sameEntry(games[gameName], entry)) {
+						duplicate = true
+						break
 					}
+					gameName = gameName + ' '
+				}
+				if (!duplicate) {
+					games[gameName] = entry
 				}
 			}
+		}
+	}
 
-			if (Object.entries(games).length === 0) {
-				return done(null, {})
-			}
-			var output = getHeader(name, pkg)
+	if (Object.entries(games).length === 0) {
+		return
+	}
+	let output = getHeader(name, pkg)
 
-			// Loop through the sorted games database, and output the rom.
-			for (let game in sort(games)) {
-				let rom = games[game]
-				game = game.trim()
-				let gameOutput = getGameEntry(game, rom, name)
-				output += gameOutput
-			}
+	// Loop through the sorted games database, and output the rom.
+	for (let game in sort(games)) {
+		const rom = games[game]
+		game = game.trim()
+		output += getGameEntry(game, rom, name)
+	}
 
-			// Save the new DAT file.
-			var outputFile = `${name}.dat`
-			//console.log(outputFile)
-			fs.writeFile(outputFile, output, done)
-		})
-	})
+	// Save the new DAT file.
+	await fs.promises.writeFile(`${name}.dat`, output)
 }
 
 /**
@@ -139,221 +349,47 @@ function getHeader(name, pkg) {
  */
 function getGameEntry(game, rom, name) {
 	// Replace Unicode characters, and trim the title.
-	let gameName = unidecode(game).trim();
+	let gameName = unidecode(game).trim()
 
 	// Clean the name some more.
-	gameName = gameName
-		.replace('Games (Europe)\\', '')
-		.replace('Games\\', '')
-		.replace('Games (USA)\\', '')
-		.replace('Games (Japan)\\', '')
-		.replace('Games (cdi)\\', '')
-		.replace('Games (elf)\\', '')
-		.replace('MISSING\\', '')
-		.replace('Samplers\\', '')
-		.replace('Multimedia\\', '')
-		.replace('(Sony Imagesoft)', '')
-		.replace('(Sony)', '')
-		.replace('(Sega)', '')
-		.replace('(Riot)', '')
-		.replace('(Bignet - Micronet)', '')
-		.replace('(Bignet)', '')
-		.replace('(M4)', '')
-		.replace('(Acclaim - Domark)', '')
-		.replace('(Acclaim)', '')
-		.replace('(Gametek)', '')
-		.replace('(Good Deal Games)', '')
-		.replace('(Good Deal Games - Stargate Films)', '')
-		.replace('(Sega - Tec Toy)', '')
-		.replace('(SIMS)', '')
-		.replace('(Sims)', '')
-		.replace('(Tecmo)', '')
-		.replace('(Sensible Software - Sony)', '')
-		.replace('(Taito)', '')
-		.replace('(Infogrames)', '')
-		.replace('(Interplay)', '')
-		.replace('(Domark)', '')
-		.replace('(Pony Canyon)', '')
-		.replace('(Panasonic)', '')
-		.replace('(LG)', '')
-		.replace('(Yoshimoto Kogyo)', '')
-		.replace('(Studio 3DO)', '')
-		.replace('(GoldStar)', '')
-		.replace('(Human)', '')
-		.replace('(Bandai)', '')
-		.replace('(Activision)', '')
-		.replace('(Infomedia)', '')
-		.replace('(RE)', '')
-		.replace('(Data East - Sega)', '')
-		.replace('(ReadySoft)', '')
-		.replace('(Virgin)', '')
-		.replace('[a]', '(Alt 1)')
-		.replace('[a1]', '(Alt 1)')
-		.replace('[a2]', '(Alt 2)')
-		.replace('[a3]', '(Alt 3)')
-		.replace('[a4]', '(Alt 4)')
-		.replace('[a5]', '(Alt 5)')
-		.replace('[a6]', '(Alt 6)')
-		.replace('[a7]', '(Alt 7)')
-		.replace('[a8]', '(Alt 8)')
-		.replace('[a9]', '(Alt 9)')
-		.replace('[a10]', '(Alt 10)')
-		.replace('[a11]', '(Alt 11)')
-		.replace('(EA Sports)', '')
-		.replace('(Electronic Arts)', '')
-		.replace('(Digital Pictures)', '')
-		.replace('(Good Deal Games - Oldergames)', '')
-		.replace('(Victor)', '')
-		.replace('(JVC)', '')
-		.replace('(Wolf Team)', '')
-		.replace('(Polydor K.K.)', '')
-		.replace('(NTSC)', '')
-		.replace(' (Mega Power)', '')
-		.replace(' (SMW Hack)', '')
-		.replace('Games - Unlicensed\\', '')
-		.replace('Magazines\\', '')
-		.replace('Applications (cdi)\\', '')
-		.replace('Applications (elf)\\', '')
-		.replace('Demos (cdi)\\', '')
-		.replace('Demos (elf)\\', '')
-		.replace(' (United States)', ' (USA)')
-//does not seem to improve situation nowadays		.replace('(PAL)', '(Europe)')
-		.replace('(EU)', '(Europe)')
-		.replace('(en)', '')
-		.replace(')(beta)', ') (Beta)')
-		.replace('(fr)', '(France)')
-		.replace('(es)', '(Spain)')
-		.replace('(JP)', '(Japan)')
-		.replace('(US)', '(USA)')
-		.replace('(AE)', '(United Arab Emirates)')
-		.replace('(AL)', '(Albania)')
-		.replace('(AS)', '(Asia)')
-		.replace('(AT)', '(Austria)')
-		.replace('(AU)', '(Australia)')
-		.replace('(BA)', '(Bosnia and Herzegovina)')
-		.replace('(BE)', '(Belgium)')
-		.replace('(BG)', '(Bulgaria)')
-		.replace('(BR)', '(Brazil)')
-		.replace('(CA)', '(Canada)')
-		.replace('(CH)', '(Switzerland)')
-		.replace('(CL)', '(Chile)')
-		.replace('(CN)', '(China)')
-		.replace('(CS)', '(Serbia and Montenegro)')
-		.replace('(CY)', '(Cyprus)')
-		.replace('(CZ)', '(Czech Republic)')
-		.replace('(DE)', '(Germany)')
-		.replace('(DK)', '(Denmark)')
-		.replace('(EE)', '(Estonia)')
-		.replace('(EG)', '(Egypt)')
-		.replace('(ES)', '(Spain)')
-		.replace('(FI)', '(Finland)')
-		.replace('(FR)', '(France)')
-		.replace('(GB)', '(United Kingdom)')
-		.replace('(GR)', '(Greece)')
-		.replace('(HK)', '(Hong Kong)')
-		.replace('(HR)', '(Croatia)')
-		.replace('(HU)', '(Hungary)')
-		.replace('(ID)', '(Indonesia)')
-		.replace('(IE)', '(Ireland)')
-		.replace('(IL)', '(Israel)')
-		.replace('(IN)', '(India)')
-		.replace('(IR)', '(Iran)')
-		.replace('(IS)', '(Iceland)')
-		.replace('(IT)', '(Italy)')
-		.replace('(JO)', '(Jordan)')
-		.replace('(JP)', '(Japan)')
-		.replace('(KR)', '(Korea)')
-		.replace('(LT)', '(Lithuania)')
-		.replace('(LU)', '(Luxembourg)')
-		.replace('(LV)', '(Latvia)')
-		.replace('(MN)', '(Mongolia)')
-		.replace('(MX)', '(Mexico)')
-		.replace('(MY)', '(Malaysia)')
-		.replace('(NL)', '(Netherlands)')
-		.replace('(NO)', '(Norway)')
-// conflicts with (NP) flag		.replace('(NP)', '(Nepal)')
-		.replace('(NZ)', '(New Zealand)')
-		.replace('(OM)', '(Oman)')
-		.replace('(PE)', '(Peru)')
-		.replace('(PH)', '(Philippines)')
-		.replace('(PL)', '(Poland)')
-		.replace('(PT)', '(Portugal)')
-		.replace('(QA)', '(Qatar)')
-		.replace('(RO)', '(Romania)')
-		.replace('(RU)', '(Russia)')
-		.replace('(SE)', '(Sweden)')
-		.replace('(SG)', '(Singapore)')
-		.replace('(SI)', '(Slovenia)')
-		.replace('(SK)', '(Slovakia)')
-		.replace('(TH)', '(Thailand)')
-		.replace('(TR)', '(Turkey)')
-		.replace('(TW)', '(Taiwan)')
-		.replace('(VN)', '(Vietnam)')
-		.replace('(YU)', '(Yugoslavia)')
-		.replace('(ZA)', '(South Africa)')
-		.replace('(BY)', '(Belarus)')
-		.replace('(UA)', '(Ukraine)')
-		.replace('(proto)', '(Proto)')
-		.replace('[!]', '')
-		.replace('[joystick]', '')
-		.replace('Applications\\', '')
-		.replace('&apos;', '\'')
-		.replace('[MIA] ', '')
-		.replace(' (Track 1)', '')
-		.replace(' (Made in Japan)', '')
-		.replace(' (Aftermarket)', '')
-		.replace(' (Unl)', '')
+	for (const [from, to] of titleReplacements) {
+		gameName = gameName.replaceAll(from, to)
+	}
 
 	// Remove the " of y" in " (Disc x of y)"
-  const diskRegexp = /\(((Tape|Dis[ck]) \d{1,2}) of \d{1,2}\)/;
-  const diskArray = diskRegexp.exec(gameName);
-  if (diskArray !== null) {
-    gameName = gameName.replace(diskRegexp, "($1)")
-  }
+	const diskRegexp = /\(((Tape|Dis[ck]) \d{1,2}) of \d{1,2}\)/
+	if (diskRegexp.test(gameName)) {
+		gameName = gameName.replace(diskRegexp, '($1)')
+	}
 
-  // Parse release date and remove from title
-  let extraParams = ''
-  const dateRegexp = /\((\d{4})-?(\d{0,2})-?(\d{0,2})\)/;
-  const dateArray = dateRegexp.exec(gameName);
-  if (dateArray !== null) {
-    const year = parseInt(dateArray[1])
-    if (year > 1950 && year <= new Date().getFullYear()) {
-      extraParams += `\n\treleaseyear "${dateArray[1]}"`
-      if (dateArray[2] !== '' && parseInt(dateArray[2]) > 0 && parseInt(dateArray[2]) < 13) {
-        extraParams += `\n\treleasemonth "${dateArray[2]}"`
-        if (dateArray[3] !== ''  && parseInt(dateArray[3]) > 0 && parseInt(dateArray[3]) < 32) {
-          extraParams += `\n\treleaseday "${dateArray[3]}"`
-        }
-      }
-	  gameName = gameName.replace(dateRegexp, '')
-    }
-  }
+	// Parse release date and remove from title
+	let extraParams = ''
+	const dateRegexp = /\((\d{4})-?(\d{0,2})-?(\d{0,2})\)/
+	const dateArray = dateRegexp.exec(gameName)
+	if (dateArray !== null) {
+		const year = parseInt(dateArray[1])
+		if (year > 1950 && year <= new Date().getFullYear()) {
+			extraParams += `\n\treleaseyear "${dateArray[1]}"`
+			if (dateArray[2] !== '' && parseInt(dateArray[2]) > 0 && parseInt(dateArray[2]) < 13) {
+				extraParams += `\n\treleasemonth "${dateArray[2]}"`
+				if (dateArray[3] !== '' && parseInt(dateArray[3]) > 0 && parseInt(dateArray[3]) < 32) {
+					extraParams += `\n\treleaseday "${dateArray[3]}"`
+				}
+			}
+			gameName = gameName.replace(dateRegexp, '')
+		}
+	}
 
 	// Remove unclear TOSEC date indications
-	gameName = gameName.replace('(19xx)', '')
-		.replace('(197x)', '')
-		.replace('(198x)', '')
-		.replace('(199x)', '')
-		.replace('(20xx)', '')
-		.replace('(200x)', '')
-		.replace('(201x)', '')
-		.replace('(202x)', '')
+	for (const date of tosecDates) {
+		gameName = gameName.replaceAll(date, '')
+	}
 
-	gameName = gameName.replace('  ', ' ')
-		.replace('(RE1)', '(Rev 1)')
-		.replace('(RE2)', '(Rev 2)')
-		.replace('(RE3)', '(Rev 3)')
-		.replace('(RE4)', '(Rev 4)')
-		.replace('(RE5)', '(Rev 5)')
-		.replace('(RE6)', '(Rev 6)')
-		.replace(')(', ') (')
-		.replace(')(', ') (')
-		.replace(')(', ') (')
-		.replace(')(', ') (')
-		.replaceAll('  ', ' ')
-		.replaceAll('  ', ' ')
-		.replaceAll('  ', ' ')
-		.trim()
+	// Final cleanups: revisions, parenthesis spacing and whitespace collapsing.
+	for (const [from, to] of revisionReplacements) {
+		gameName = gameName.replaceAll(from, to)
+	}
+	gameName = gameName.replace(/ {2,}/g, ' ').trim()
 
 	// Protect against #### - Game Name (Country) -- Remove the prefixing numbers.
 	// Game Boy Advance only does this numbering?
@@ -364,10 +400,10 @@ function getGameEntry(game, rom, name) {
 	}
 
 	// The filename must be a valid filename.
-	let gameFile = sanitizeFilename(path.basename(unidecode(rom.name)))
+	const gameFile = sanitizeFilename(path.basename(unidecode(rom.name)))
 
 	// Skip any .sav files.
-	if (gameFile.indexOf('.sav') >= 0) {
+	if (gameFile.includes('.sav')) {
 		return ''
 	}
 
@@ -385,40 +421,32 @@ function getGameEntry(game, rom, name) {
 		gameParams += ` sha1 ${rom.sha1.toUpperCase()}`
 	}
 
-	let countries = require('./countries')
-	for (let country of countries) {
+	for (const country of countries) {
 		if (game.includes('(' + country + ')') || gameName.includes('(' + country + ')')) {
 			extraParams += `\n\tregion "${country}"`
-			break;
+			break
 		}
 		if (game.includes('(' + country + ', ') || gameName.includes('(' + country + ', ')) {
 			extraParams += `\n\tregion "${country}"`
-			break;
+			break
 		}
 	}
 
 	// Handle when there's a serial.
-	let ignoreserials = [
-		'1',
-		1,
-		'n/a',
-		'N/A',
-		'!none'
-	]
-	if (rom.serial && !ignoreserials.includes(rom.serial.trim())) {
+	if (rom.serial && !ignoreSerials.includes(rom.serial.trim())) {
 		// Multiple serial split into multiple games.
-		let seperator = ' / '
+		let separator = ' / '
 		if (rom.serial.includes(', ')) {
-			seperator = ', '
+			separator = ', '
 		}
 
-		let serials = rom.serial.split(seperator)
+		const serials = rom.serial.split(separator)
 		let output = ''
 		for (let serial of serials) {
 			let ogParams = extraParams
 			serial = cleanSerial(serial)
 			if (serial) {
-				let discNumber = grabDiscNumber(gameName)
+				const discNumber = grabDiscNumber(gameName)
 				if (discNumber !== false) {
 
 					output += `\ngame (
@@ -449,28 +477,26 @@ function getGameEntry(game, rom, name) {
  * Determine whether two game entries describe the same ROM.
  */
 function sameEntry(a, b) {
-	return a.crc === b.crc || a.serial === b.serial
+	return (a.crc && a.crc === b.crc) || (a.serial && a.serial === b.serial)
 }
 
+/**
+ * Grab the disc number from a game name, or false when there is none.
+ */
 function grabDiscNumber(gameName) {
-	gameName = gameName.replace('(Disk ', '(Disc ')
-	const regex = /\(Disc (\d+)/gm;
-	let m;
-
-	while ((m = regex.exec(gameName)) !== null) {
-		// This is necessary to avoid infinite loops with zero-width matches
-		if (m.index === regex.lastIndex) {
-			regex.lastIndex++
-		}
-		let output = parseInt(m[1])
+	const match = gameName.replace('(Disk ', '(Disc ').match(/\(Disc (\d+)/)
+	if (match) {
+		const output = parseInt(match[1])
 		if (!Number.isNaN(output)) {
 			return output
 		}
 	}
-
 	return false
 }
 
+/**
+ * Clean up a serial number.
+ */
 function cleanSerial(serial) {
 	if (!serial) {
 		return ''
@@ -480,7 +506,7 @@ function cleanSerial(serial) {
 		.replaceAll(' ', '-')
 		.replaceAll('#', '')
 	if (output.charAt(0) == '-') {
-		output = output.substr(1)
+		output = output.substring(1)
 	}
 	return output.trim()
 }
@@ -488,40 +514,30 @@ function cleanSerial(serial) {
 /**
  * Process the given XML file.
  */
-function processXml(filepath, done) {
-	if (fs.lstatSync(filepath).isDirectory()) {
-		return done(null, [])
+async function processXml(filepath) {
+	if ((await fs.promises.lstat(filepath)).isDirectory()) {
+		return {}
 	}
+
 	// Read in the file asyncronously.
-	fs.readFile(filepath, {encoding: 'utf8'}, (err, data) => {
-		if (err) {
-			return done(err)
-		}
+	const data = await fs.promises.readFile(filepath, {encoding: 'utf8'})
 
-		// Convert the string to a JSON object.
-		console.log(filepath)
-		xml.parseString(data, (error, dat) => {
-			if (error) {
-				return done(error)
-			}
+	// Convert the string to a JSON object.
+	console.log(filepath)
+	const dat = await xml.parseStringPromise(data)
 
-			// Convert the JSON object to a Games array.
-			var result = getGamesFromXml(filepath, dat)
-
-			// We have the result, move to the next one.
-			done(null, result)
-		})
-	})
+	// Convert the JSON object to a Games array.
+	return getGamesFromXml(filepath, dat)
 }
 
 /**
  * Convert an XML dat object to a games array.
  */
 function getGamesFromXml(filepath, dat) {
-	var dir = path.dirname(filepath)
-	var out = {}
-	var header = dat.datafile || dat.dat
-	var games = header.machine || header.game || null
+	const dir = path.dirname(filepath)
+	const out = {}
+	const header = dat.datafile || dat.dat
+	let games = header.machine || header.game || null
 	// Find the games array.
 	if (!games) {
 		if (header.games && header.games[0] && header.games[0].game) {
@@ -536,14 +552,14 @@ function getGamesFromXml(filepath, dat) {
 	// Loop through each game.
 	games.forEach(function (game, i) {
 		// Set up the entries to watch for.
-		var title = null
-		var largestData = 0
-		var dataTracks = []
-		var finalPrimary = null
-		var finalBin = null
-		var finalIso = null
-		var finalImg = null
-		var finalEntry = null
+		let title = null
+		let largestData = 0
+		let dataTracks = []
+		let finalPrimary = null
+		let finalBin = null
+		let finalIso = null
+		let finalImg = null
+		let finalEntry = null
 
 		// Find all the entries.
 		if (game.rom) {
@@ -560,15 +576,13 @@ function getGamesFromXml(filepath, dat) {
 				title = path.basename(game.rom[0]['$'].name)
 			}
 			else {
-				console.log('Could not find title for....')
-				console.log(game, i)
-				process.exit()
+				throw new Error(`Could not find title in ${filepath} for game ${i}: ${JSON.stringify(game)}`)
 			}
 
-			for (var x in game.rom) {
-				var rom = game.rom[x]['$']
-				let lowerCaseName = rom.name.toLowerCase()
-				let extname = path.extname(lowerCaseName)
+			for (const entry of game.rom) {
+				const rom = entry['$']
+				const lowerCaseName = rom.name.toLowerCase()
+				const extname = path.extname(lowerCaseName)
 				if (lowerCaseName.endsWith('.cue')) {
 					dataTracks = cueDataTracks(path.join(dir, rom.name))
 				}
@@ -634,26 +648,11 @@ function getGamesFromXml(filepath, dat) {
 			else {
 				console.log(game, i)
 			}
-			return;
+			return
 		}
 
 		// Choose which entry to use.
-		var final = null
-		if (finalPrimary) {
-			final = finalPrimary
-		}
-		else if (finalBin) {
-			final = finalBin
-		}
-		else if (finalIso) {
-			final = finalIso
-		}
-		else if (finalImg) {
-			final = finalImg
-		}
-		else if (finalEntry) {
-			final = finalEntry
-		}
+		const final = finalPrimary || finalBin || finalIso || finalImg || finalEntry
 		if (final) {
 			final.title = title
 			if (game.serial) {
@@ -664,74 +663,71 @@ function getGamesFromXml(filepath, dat) {
 			}
 			else if (final.status == 'nodump') {
 				// Nothing.
-				console.log("No dump for " + final.title)
+				console.log('No dump for ' + final.title)
 			}
 			else {
 				console.log("Couldn't find key for....")
 				console.log(final)
-				//process.exit()
 			}
 		}
 	})
 	return out
 }
 
+/**
+ * Find the data tracks listed in a cue sheet.
+ */
 function cueDataTracks(filepath) {
-		var data
-		try {
-			data = fs.readFileSync(filepath, {encoding: 'utf8'})
-		} catch (err) {
-				return []
+	let data
+	try {
+		data = fs.readFileSync(filepath, {encoding: 'utf8'})
+	} catch (err) {
+		return []
+	}
+
+	const fileStmt = /^\s*FILE\s+"([^"]+)"\s+(.*)$/
+	const trackStmt = /^\s*TRACK\s+(\d+)\s+(.*)$/
+
+	const tracks = []
+	let lastFile = null
+
+	for (const line of data.split(/\r?\n/)) {
+		let match = line.match(fileStmt)
+		if (match) {
+			lastFile = match[1]
+			continue
 		}
-
-		var fileStmt = /^\s*FILE\s+"([^"]+)"\s+(.*)$/
-		var trackStmt = /^\s*TRACK\s+(\d+)\s+(.*)$/
-
-		var tracks = []
-		var lastFile = null
-
-		const lines = data.split(/\r?\n/)
-		for (var line in lines) {
-				line = lines[line]
-				var match
-				match = line.match(fileStmt)
-				if (match) {
-						lastFile = match[1]
-						continue
-				}
-				match = line.match(trackStmt)
-				if (match && lastFile != null && match[2] != "AUDIO") {
-						tracks.push(lastFile)
-				}
+		match = line.match(trackStmt)
+		if (match && lastFile != null && match[2] != 'AUDIO') {
+			tracks.push(lastFile)
 		}
+	}
 
-		return tracks
+	return tracks
 }
 
+/**
+ * Find the data tracks listed in a gdi file.
+ */
 function gdiDataTracks(filepath) {
-		var data
-		try {
-			data = fs.readFileSync(filepath, {encoding: 'utf8'})
-		} catch (err) {
-				return []
+	let data
+	try {
+		data = fs.readFileSync(filepath, {encoding: 'utf8'})
+	} catch (err) {
+		return []
+	}
+
+	const stmt = /^\s*\d+\s+\d+\s+(\d+)\s+(\d+)\s+"([^"]+)"\s+\d+$/
+
+	const tracks = []
+
+	// The first line only holds the track count.
+	for (const line of data.split(/\r?\n/).slice(1)) {
+		const match = line.match(stmt)
+		if (match && !(match[1] == 0 && match[2] == 2352)) {
+			tracks.push(match[3])
 		}
+	}
 
-		var stmt = /^\s*\d+\s+\d+\s+(\d+)\s+(\d+)\s+"([^"]+)"\s+\d+$/
-
-		var tracks = []
-
-		const lines = data.split(/\r?\n/)
-		for (var line in lines) {
-				if (line == 0) {
-						continue
-				}
-				line = lines[line]
-				var match
-				match = line.match(stmt)
-				if (match && !(match[1] == 0 && match[2] == 2352)) {
-						tracks.push(match[3])
-				}
-		}
-
-		return tracks
+	return tracks
 }

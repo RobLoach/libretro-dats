@@ -109,11 +109,6 @@
 			"static/English Translation ROMs/Nintendo - Super Famicom *.dat"
 		]
 	},
-	"database/metadat/libretro-dats/Nintendo - Nintendo Entertainment System": {
-		"files": [
-			"static/Headered/Nintendo - Nintendo*.dat"
-		]
-	},
 	"database/metadat/libretro-dats/Nintendo - Family Computer Disk System": {
 		"files": [
 			"static/Headered/Nintendo - Family*.dat"
@@ -353,54 +348,54 @@
 	"database/metadat/no-intro/Atari - 8-bit Family": {
 		"files": [
 			"input/no-intro/No-Intro/Atari - 8-bit Family *",
-			"input/no-intro/Aftermarket/Atari - 8-bit Family *"
+			"input/no-intro/No-Intro/Aftermarket/Atari - 8-bit Family *"
 		]
 	},
 	"database/metadat/no-intro/Atari - 2600": {
 		"files": [
-			"input/no-intro/No-Intro/Atari - 2600*",
-			"input/no-intro/Aftermarket/Atari - 2600 *"
+			"input/no-intro/No-Intro/Atari - Atari 2600*",
+			"input/no-intro/No-Intro/Aftermarket/Atari - Atari 2600 *"
 		]
 	},
 	"database/metadat/no-intro/Atari - 5200": {
 		"files": [
-			"input/no-intro/No-Intro/Atari - 5200*",
-			"input/no-intro/Aftermarket/Atari - 5200*"
+			"input/no-intro/No-Intro/Atari - Atari 5200*",
+			"input/no-intro/No-Intro/Aftermarket/Atari - Atari 5200*"
 		]
 	},
 	"database/metadat/no-intro/Atari - 7800": {
 		"files": [
-			"input/no-intro/No-Intro/Atari - 7800*",
-			"input/no-intro/Aftermarket/Atari - 7800*"
+			"input/no-intro/No-Intro/Atari - Atari 7800*",
+			"input/no-intro/No-Intro/Aftermarket/Atari - Atari 7800*"
 		]
 	},
 	"database/metadat/no-intro/Atari - Jaguar": {
 		"files": [
-			"input/no-intro/No-Intro/Atari - Jaguar*",
-			"input/no-intro/Aftermarket/Atari - Jaguar *"
+			"input/no-intro/No-Intro/Atari - Atari Jaguar*",
+			"input/no-intro/No-Intro/Aftermarket/Atari - Atari Jaguar *"
 		]
 	},
 	"database/metadat/no-intro/Atari - Lynx": {
 		"files": [
-			"input/no-intro/No-Intro/Atari - Lynx*",
-			"input/no-intro/Aftermarket/Atari - Lynx*"
+			"input/no-intro/No-Intro/Atari - Atari Lynx*",
+			"input/no-intro/No-Intro/Aftermarket/Atari - Atari Lynx*"
 		]
 	},
 	"database/metadat/no-intro/Atari - ST": {
 		"files": [
-			"input/no-intro/No-Intro/Atari - ST (20*"
+			"input/no-intro/No-Intro/Atari - Atari ST (20*"
 		]
 	},
 	"database/metadat/no-intro/Bandai - WonderSwan": {
 		"files": [
 			"input/no-intro/No-Intro/Bandai - WonderSwan (*",
-			"input/no-intro/Aftermarket/Bandai - WonderSwan (*"
+			"input/no-intro/No-Intro/Aftermarket/Bandai - WonderSwan (*"
 		]
 	},
 	"database/metadat/no-intro/Bandai - WonderSwan Color": {
 		"files": [
 			"input/no-intro/No-Intro/Bandai - WonderSwan Color*",
-			"input/no-intro/Aftermarket/Bandai - WonderSwan Color *"
+			"input/no-intro/No-Intro/Aftermarket/Bandai - WonderSwan Color *"
 		]
 	},
 	"database/metadat/no-intro/Benesse - Pocket Challenge V2": {
@@ -421,13 +416,13 @@
 	"database/metadat/no-intro/Coleco - ColecoVision": {
 		"files": [
 			"input/no-intro/No-Intro/Coleco - ColecoVision*",
-			"input/no-intro/Aftermarket/Coleco - ColecoVision *"
+			"input/no-intro/No-Intro/Aftermarket/Coleco - ColecoVision *"
 		]
 	},
 	"database/metadat/no-intro/Commodore - 64": {
 		"files": [
 			"input/no-intro/No-Intro/Commodore - Commodore 64 *",
-			"input/no-intro/Aftermarket/Commodore - Commodore 64 *"
+			"input/no-intro/No-Intro/Aftermarket/Commodore - Commodore 64 *"
 		]
 	},
 	"database/metadat/no-intro/Commodore - Amiga": {
@@ -483,7 +478,7 @@
 	"database/metadat/no-intro/GCE - Vectrex": {
 		"files": [
 			"input/no-intro/No-Intro/GCE - Vectrex*",
-			"input/no-intro/Aftermarket/GCE - Vectrex*"
+			"input/no-intro/No-Intro/Aftermarket/GCE - Vectrex*"
 		]
 	},
 	"database/metadat/no-intro/Hartung - Game Master": {
@@ -508,31 +503,31 @@
 	},
 	"database/metadat/no-intro/Magnavox - Odyssey2": {
 		"files": [
-			"input/no-intro/No-Intro/Magnavox - Odyssey2*"
+			"input/no-intro/No-Intro/Magnavox - Odyssey 2*"
 		]
 	},
 	"database/metadat/no-intro/Mattel - Intellivision": {
 		"files": [
 			"input/no-intro/No-Intro/Mattel - Intellivision*",
-			"input/no-intro/Aftermarket/Mattel - Intellivision*"
+			"input/no-intro/No-Intro/Aftermarket/Mattel - Intellivision*"
 		]
 	},
 	"database/metadat/no-intro/Microsoft - MSX2": {
 		"files": [
 			"input/no-intro/No-Intro/Microsoft - MSX2*",
-			"input/no-intro/Aftermarket/Microsoft - MSX2*"
+			"input/no-intro/No-Intro/Aftermarket/Microsoft - MSX2*"
 		]
 	},
 	"database/metadat/no-intro/Microsoft - MSX": {
 		"files": [
 			"input/no-intro/No-Intro/Microsoft - MSX (*",
-			"input/no-intro/Aftermarket/Microsoft - MSX (*"
+			"input/no-intro/No-Intro/Aftermarket/Microsoft - MSX (*"
 		]
 	},
 	"database/metadat/no-intro/Microsoft - Xbox 360": {
 		"files": [
-			"input/no-intro/No-Intro/Microsoft - XBOX 360*",
-			"input/no-intro/No-Intro/Unofficial - Microsoft - XBOX 360*"
+			"input/no-intro/No-Intro/Microsoft - Xbox 360 (Digital)*",
+			"input/no-intro/Unofficial/Unofficial - Microsoft - Xbox 360*"
 		]
 	},
 	"database/metadat/no-intro/Mobile - J2ME": {
@@ -552,48 +547,48 @@
 	},
 	"database/metadat/no-intro/Mobile - Zeebo": {
 		"files": [
-			"input/no-intro/No-Intro/Mobile - Zeebo *"
+			"input/no-intro/No-Intro/Zeebo - Zeebo *"
 		]
 	},
 	"database/metadat/no-intro/NEC - PC Engine SuperGrafx": {
 		"files": [
 			"input/no-intro/No-Intro/NEC - PC Engine SuperGrafx*",
-			"input/no-intro/Aftermarket/NEC - PC Engine SuperGrafx *"
+			"input/no-intro/No-Intro/Aftermarket/NEC - PC Engine SuperGrafx *"
 		]
 	},
 	"database/metadat/no-intro/NEC - PC Engine - TurboGrafx 16": {
 		"files": [
-			"input/no-intro/No-Intro/NEC - PC Engine - TurboGrafx 16*",
-			"input/no-intro/Aftermarket/NEC - PC Engine - TurboGrafx 16 *"
+			"input/no-intro/No-Intro/NEC - PC Engine - TurboGrafx-16*",
+			"input/no-intro/No-Intro/Aftermarket/NEC - PC Engine - TurboGrafx-16 *"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - e-Reader": {
 		"files": [
-			"input/no-intro/No-Intro/Nintendo - e-Reader (*"
+			"input/no-intro/No-Intro/Nintendo - Game Boy Advance (e-Reader)*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Family Computer Disk System": {
 		"files": [
 			"input/no-intro/No-Intro/Nintendo - Family Computer Disk System*",
-			"input/no-intro/Aftermarket/Nintendo - Family Computer Disk System *"
+			"input/no-intro/No-Intro/Aftermarket/Nintendo - Family Computer Disk System *"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Game Boy": {
 		"files": [
 			"input/no-intro/No-Intro/Nintendo - Game Boy (*",
-			"input/no-intro/Aftermarket/Nintendo - Game Boy (*"
+			"input/no-intro/No-Intro/Aftermarket/Nintendo - Game Boy (*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Game Boy Advance": {
 		"files": [
 			"input/no-intro/No-Intro/Nintendo - Game Boy Advance (2*",
-			"input/no-intro/Aftermarket/Nintendo - Game Boy Advance (A*"
+			"input/no-intro/No-Intro/Aftermarket/Nintendo - Game Boy Advance (A*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Game Boy Color": {
 		"files": [
 			"input/no-intro/No-Intro/Nintendo - Game Boy Color (*",
-			"input/no-intro/Aftermarket/Nintendo - Game Boy Color (*"
+			"input/no-intro/No-Intro/Aftermarket/Nintendo - Game Boy Color (*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - New Nintendo 3DS": {
@@ -604,14 +599,14 @@
 	"database/metadat/no-intro/Nintendo - Nintendo 3DS": {
 		"files": [
 			"input/no-intro/No-Intro/Nintendo - Nintendo 3DS (Decrypted) (2*",
-			"input/no-intro/No-Intro/Unofficial - Nintendo - Nintendo 3DS (Digital) (Updates and DLC) (Decrypted) (2*"
+			"input/no-intro/Unofficial/Unofficial - Nintendo - Nintendo 3DS (Digital) (Updates and DLC) (Decrypted) (2*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Nintendo 64": {
 		"files": [
 			"input/no-intro/No-Intro/Nintendo - Nintendo 64 (*",
 			"input/no-intro/No-Intro/iQue - iQue (D*",
-			"input/no-intro/Aftermarket/Nintendo - Nintendo 64 (*"
+			"input/no-intro/No-Intro/Aftermarket/Nintendo - Nintendo 64 (*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Nintendo 64DD": {
@@ -623,7 +618,7 @@
 		"files": [
 			"input/no-intro/No-Intro/Nintendo - Nintendo DS (Decrypted) (2*",
 			"input/no-intro/No-Intro/Nintendo - Nintendo DS (Download Play)*",
-			"input/no-intro/Aftermarket/Nintendo - Nintendo DS (*"
+			"input/no-intro/No-Intro/Aftermarket/Nintendo - Nintendo DS (*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Nintendo DSi": {
@@ -634,19 +629,19 @@
 	"database/metadat/no-intro/Nintendo - Nintendo Entertainment System": {
 		"files": [
 			"input/no-intro/No-Intro/Nintendo - Nintendo Entertainment System*",
-			"input/no-intro/Aftermarket/Nintendo - Nintendo Entertainment System*"
+			"input/no-intro/No-Intro/Aftermarket/Nintendo - Nintendo Entertainment System*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Pokemon Mini": {
 		"files": [
 			"input/no-intro/No-Intro/Nintendo - Pokemon Mini (2*",
-			"input/no-intro/Aftermarket/Nintendo - Pokemon Mini *"
+			"input/no-intro/No-Intro/Aftermarket/Nintendo - Pokemon Mini *"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Satellaview": {
 		"files": [
 			"input/no-intro/No-Intro/Nintendo - Satellaview (2*",
-			"input/no-intro/Aftermarket/Nintendo - Satellaview *"
+			"input/no-intro/No-Intro/Aftermarket/Nintendo - Satellaview *"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Sufami Turbo": {
@@ -657,23 +652,23 @@
 	"database/metadat/no-intro/Nintendo - Super Nintendo Entertainment System": {
 		"files": [
 			"input/no-intro/No-Intro/Nintendo - Super Nintendo Entertainment System *",
-			"input/no-intro/Aftermarket/Nintendo - Super Nintendo Entertainment System *"
+			"input/no-intro/No-Intro/Aftermarket/Nintendo - Super Nintendo Entertainment System *"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Virtual Boy": {
 		"files": [
 			"input/no-intro/No-Intro/Nintendo - Virtual Boy (2*",
-			"input/no-intro/Aftermarket/Nintendo - Virtual Boy *"
+			"input/no-intro/No-Intro/Aftermarket/Nintendo - Virtual Boy *"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Wii (Digital)": {
 		"files": [
-			"input/no-intro/No-Intro/Nintendo - Wii (Digital) (W*"
+			"input/no-intro/No-Intro/Nintendo - Wii (Digital) (CDN)*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Wii U (Digital)": {
 		"files": [
-			"input/no-intro/No-Intro/Nintendo - Wii U (Digital) (2*"
+			"input/no-intro/No-Intro/Nintendo - Wii U (Digital) (CDN) (2*"
 		]
 	},
 	"database/metadat/no-intro/Philips - Videopac+": {
@@ -699,19 +694,19 @@
 	"database/metadat/no-intro/Sega - Game Gear": {
 		"files": [
 			"input/no-intro/No-Intro/Sega - Game Gear*",
-			"input/no-intro/Aftermarket/Sega - Game Gear*"
+			"input/no-intro/No-Intro/Aftermarket/Sega - Game Gear*"
 		]
 	},
 	"database/metadat/no-intro/Sega - Master System - Mark III": {
 		"files": [
 			"input/no-intro/No-Intro/Sega - Master System - Mark III*",
-			"input/no-intro/Aftermarket/Sega - Master System - Mark III*"
+			"input/no-intro/No-Intro/Aftermarket/Sega - Master System - Mark III*"
 		]
 	},
 	"database/metadat/no-intro/Sega - Mega Drive - Genesis": {
 		"files": [
 			"input/no-intro/No-Intro/Sega - Mega Drive - Genesis*",
-			"input/no-intro/Aftermarket/Sega - Mega Drive - Genesis*"
+			"input/no-intro/No-Intro/Aftermarket/Sega - Mega Drive - Genesis*"
 		]
 	},
 	"database/metadat/no-intro/Sega - PICO": {
@@ -722,7 +717,7 @@
 	"database/metadat/no-intro/Sega - SG-1000": {
 		"files": [
 			"input/no-intro/No-Intro/Sega - SG-1000*",
-			"input/no-intro/Aftermarket/Sega - SG-1000*"
+			"input/no-intro/No-Intro/Aftermarket/Sega - SG-1000*"
 		]
 	},
 	"database/metadat/no-intro/Sharp - X68000": {
@@ -737,23 +732,24 @@
 	},
 	"database/metadat/no-intro/SNK - Neo Geo Pocket": {
 		"files": [
-			"input/no-intro/No-Intro/SNK - Neo Geo Pocket (2*"
+			"input/no-intro/No-Intro/SNK - NeoGeo Pocket (2*"
 		]
 	},
 	"database/metadat/no-intro/SNK - Neo Geo Pocket Color": {
 		"files": [
-			"input/no-intro/No-Intro/SNK - Neo Geo Pocket Color*"
+			"input/no-intro/No-Intro/SNK - NeoGeo Pocket Color*"
 		]
 	},
 	"database/metadat/no-intro/Sony - PlayStation 3 (PSN)": {
 		"files": [
-			"input/no-intro/No-Intro/Sony - PlayStation 3 (PSN) (Decrypted)*",
-			"input/no-intro/No-Intro/Unofficial - Sony - PlayStation 3 (PSN) (Decrypted) (2*"
+			"input/no-intro/No-Intro/Sony - PlayStation 3 (PSN) (Content)*",
+			"input/no-intro/Unofficial/Unofficial - Sony - PlayStation 3 (PSN) (Decrypted) (2*"
 		]
 	},
 	"database/metadat/no-intro/Sony - PlayStation Portable (PSN)": {
 		"files": [
-			"input/no-intro/No-Intro/Unofficial - Sony - PlayStation Portable (PSN) (Decrypted) (2*"
+			"input/no-intro/No-Intro/Sony - PlayStation Portable (PSN) (Decrypted) (2*",
+			"input/no-intro/Unofficial/Unofficial - Sony - PlayStation Portable (PSN) (Decrypted) (2*"
 		]
 	},
 	"database/metadat/no-intro/Sony - PlayStation Vita": {
@@ -763,8 +759,8 @@
 	},
 	"database/metadat/no-intro/Sony - PlayStation Vita (PSN)": {
 		"files": [
-			"input/no-intro/No-Intro/Sony - PlayStation Vita (PSN) (Decrypted)*",
-			"input/no-intro/No-Intro/Unofficial - Sony - PlayStation Vita (PSN) (Decrypted)*"
+			"input/no-intro/No-Intro/Sony - PlayStation Vita (PSN) (Content)*",
+			"input/no-intro/Unofficial/Unofficial - Sony - PlayStation Vita (PSN) (Decrypted)*"
 		]
 	},
 	"database/metadat/no-intro/Tiger - Game.com": {
@@ -785,7 +781,7 @@
 	"database/metadat/no-intro/Watara - Supervision": {
 		"files": [
 			"input/no-intro/No-Intro/Watara - Supervision*",
-			"input/no-intro/Aftermarket/Watara - Supervision*"
+			"input/no-intro/No-Intro/Aftermarket/Watara - Supervision*"
 		]
 	}
 }

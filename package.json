@@ -1,6 +1,6 @@
 {
   "name": "libretro-dats",
-  "version": "2026.2.22",
+  "version": "2026.8.1",
   "private": true,
   "description": "Assembled from Redump, Trurip, TOSEC, Darkwater and AdvanceSCENE, for libretro-database.",
   "main": "index.js",
@@ -12,13 +12,9 @@
   "homepage": "http://github.com/robloach/libretro-dats",
   "dependencies": {
     "async": "^3.2.6",
-    "async-get-file": "^1.0.4",
-    "download": "^8.0.0",
     "extract-zip": "^2.0.1",
-    "mkdirp": "^3.0.1",
     "multi-glob": "^1.0.2",
     "puppeteer": "^24.42.0",
-    "request": "^2.88.2",
     "sanitize-filename": "^1.6.4",
     "sort-keys": "^4.0",
     "unidecode": "^1.1.0",
