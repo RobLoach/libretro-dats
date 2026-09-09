@@ -3,7 +3,7 @@ const assert = require('node:assert')
 const fs = require('node:fs')
 const os = require('node:os')
 const path = require('node:path')
-const {cueDataTracks, gdiDataTracks, getGamesFromXml, getHeader, processDat, reportRun} = require('..')
+const {collectGames, cueDataTracks, gdiDataTracks, getExtensions, getGamesFromXml, getHeader, processDat, reportRun} = require('..')
 
 /**
  * Run reportRun(), and hand back everything it logged.
@@ -46,6 +46,50 @@ test('writes a header', function () {
 	assert.match(header, /\tdescription "Sony - PlayStation"\n/)
 	assert.match(header, /\tversion "\d{4}\.\d{2}\.\d{2}"\n/)
 	assert.match(header, /\thomepage "http:\/\/example\.com"\n\)\n$/)
+})
+
+// https://github.com/RobLoach/libretro-dats/issues/52
+test('lists the extensions in the header', function () {
+	const header = getHeader('Sony - PlayStation', {homepage: 'http://example.com'}, ['bin', 'cue'])
+	assert.match(header, /\tversion "\d{4}\.\d{2}\.\d{2}"\n\textensions "bin\|cue"\n\thomepage "/)
+})
+
+test('leaves the extensions out of the header when there are none', function () {
+	const header = getHeader('Sony - PlayStation', {homepage: 'http://example.com'}, [])
+	assert.doesNotMatch(header, /extensions/)
+	assert.match(header, /\tversion "\d{4}\.\d{2}\.\d{2}"\n\thomepage "/)
+})
+
+test('collects the distinct extensions a DAT uses', function () {
+	const games = collectGames([{
+		A: {title: 'A Game', name: 'a.iso', crc: 'A'},
+		B: {title: 'B Game', name: 'b.BIN', crc: 'B'},
+		C: {title: 'C Game', name: 'c.iso', crc: 'C'},
+		D: {title: 'D Game', name: 'd.cue', crc: 'D'}
+	}], 'Test')
+	// Sorted, lowercased and deduplicated.
+	assert.deepStrictEqual(getExtensions(games), ['bin', 'cue', 'iso'])
+})
+
+test('leaves extensionless entries out of the extension list', function () {
+	const games = collectGames([{
+		A: {title: 'A Game', name: 'a', crc: 'A'},
+		B: {title: 'B Game', name: 'b.iso', crc: 'B'}
+	}], 'Test')
+	assert.deepStrictEqual(getExtensions(games), ['iso'])
+})
+
+test('writes the extensions into a built DAT', async function () {
+	const dir = fixture({
+		'input/Test.dat': datFile([
+			game('Some Game (USA)', '<rom name="Some Game (USA).iso" size="100" crc="0000000A"/>'),
+			game('Other Game (USA)', '<rom name="Other Game (USA).chd" size="100" crc="0000000B"/>')
+		].join('\n'))
+	})
+	await processDat({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out'))
+
+	const output = fs.readFileSync(path.join(dir, 'out.dat'), 'utf8')
+	assert.match(output, /\textensions "chd\|iso"\n/)
 })
 
 test('builds a DAT file', async function () {
