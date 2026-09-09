@@ -11,15 +11,60 @@ const download = require('./download')
 
 async function start() {
 	await download()
+	const missing = []
+	const empty = []
+	let written = 0
 	for (const [name, datsInfo] of Object.entries(dats)) {
-		await processDat(datsInfo, name)
+		const result = await processDat(datsInfo, name)
+		if (result.files === 0) {
+			missing.push(name)
+		}
+		else if (result.games === 0) {
+			empty.push(name)
+		}
+		else {
+			written++
+		}
+	}
+	reportRun(written, missing, empty)
+}
+
+/**
+ * Summarize the run. Individual DATs are skipped quietly amongst thousands of
+ * lines of output, so a build with missing input otherwise looks just like a
+ * successful one.
+ */
+function reportRun(written, missing, empty) {
+	const total = written + missing.length + empty.length
+	console.log(`\nBuilt ${written} of ${total} DATs.`)
+
+	if (missing.length > 0) {
+		console.log(`\nNo input files found for ${missing.length} DATs:`)
+		for (const name of missing) {
+			console.log(`\t${name}`)
+		}
+	}
+
+	if (empty.length > 0) {
+		console.log(`\nNo valid games found for ${empty.length} DATs:`)
+		for (const name of empty) {
+			console.log(`\t${name}`)
+		}
+	}
+
+	// Nothing at all was built, so the input directory is missing rather than
+	// any individual source being unavailable.
+	if (written === 0) {
+		throw new Error('No DATs were built. Are the input files in place?')
 	}
 }
 
-start().catch(function (err) {
-	console.error(err)
-	process.exitCode = 1
-})
+if (require.main === module) {
+	start().catch(function (err) {
+		console.error(err)
+		process.exitCode = 1
+	})
+}
 
 /**
  * Substrings that invalidate a game entry entirely.
@@ -293,6 +338,21 @@ function validEntry(gameName) {
 }
 
 /**
+ * The filename the ROM is written out under, which must be a valid filename.
+ */
+function romFilename(rom) {
+	return sanitizeFilename(path.basename(unidecode(rom.name)))
+}
+
+/**
+ * Verifies whether or not the ROM itself belongs in the DAT.
+ */
+function validRom(rom) {
+	// Skip any .sav files.
+	return !romFilename(rom).includes('.sav')
+}
+
+/**
  * Find all files matching the given glob patterns, in pattern order.
  */
 async function globAll(patterns) {
@@ -312,7 +372,7 @@ async function processDat(datsInfo, name) {
 	const files = await globAll(datsInfo.files || [])
 	if (files.length === 0) {
 		console.log('EMPTY', name)
-		return
+		return {files: 0, games: 0}
 	}
 
 	// Loop through each given XML file associated with the DAT.
@@ -322,43 +382,62 @@ async function processDat(datsInfo, name) {
 	}
 
 	// Loop through the results and build a game database.
-	const games = {}
-	for (const result of results) {
-		for (const game in result) {
-			const entry = result[game]
-			let gameName = entry.title
-			if (validEntry(gameName)) {
-				// Find a unique key, but skip entries that are identical
-				// to one already added under the same name.
-				let duplicate = false
-				while (gameName in games) {
-					if (sameEntry(games[gameName], entry)) {
-						duplicate = true
-						break
-					}
-					gameName = gameName + ' '
-				}
-				if (!duplicate) {
-					games[gameName] = entry
-				}
-			}
-		}
+	const games = collectGames(results, name)
+	if (Object.keys(games).length === 0) {
+		return {files: files.length, games: 0}
 	}
 
-	if (Object.entries(games).length === 0) {
-		return
-	}
 	let output = getHeader(name, pkg)
 
 	// Loop through the sorted games database, and output the rom.
-	for (let game in sort(games)) {
-		const rom = games[game]
-		game = game.trim()
-		output += getGameEntry(game, rom, name)
+	for (const game of Object.keys(sort(games))) {
+		const {rom, clean} = games[game]
+		output += getGameEntry(game, clean, rom)
 	}
 
 	// Save the new DAT file.
 	await fs.promises.writeFile(`${name}.dat`, output)
+	return {files: files.length, games: Object.keys(games).length}
+}
+
+/**
+ * Build the game database for a DAT, keyed by the name each game is written
+ * out under.
+ *
+ * The titles are cleaned up before they are used as keys. Cleaning strips
+ * release dates and publishers, so entries that look distinct in the source
+ * ("Title (1991)(Ocean)" and "Title (1993)(Ocean)") can still collapse into
+ * the same name. Keying on the cleaned title is what catches that collision.
+ */
+function collectGames(results, name) {
+	const games = {}
+	for (const result of results) {
+		for (const game in result) {
+			const entry = result[game]
+			if (!validEntry(entry.title) || !validRom(entry)) {
+				continue
+			}
+
+			const clean = cleanGameName(entry.title, name)
+
+			// Distinguish games that share a name, but skip entries that are
+			// identical to one already added under the same name.
+			let gameName = clean.title
+			let duplicate = false
+			let alt = 1
+			while (gameName in games) {
+				if (sameEntry(games[gameName].rom, entry)) {
+					duplicate = true
+					break
+				}
+				gameName = `${clean.title} (Alt ${alt++})`
+			}
+			if (!duplicate) {
+				games[gameName] = {rom: entry, clean}
+			}
+		}
+	}
+	return games
 }
 
 /**
@@ -415,9 +494,12 @@ function normalizeLanguages(gameName) {
 }
 
 /**
- * Construct a game entry for a DAT file.
+ * Clean up a game title, and pull the release date out of it.
+ *
+ * Returns the cleaned title, the release parameters the date produced, and the
+ * original title, which the region detection still looks at.
  */
-function getGameEntry(game, rom, name) {
+function cleanGameName(game, name) {
 	// Replace Unicode characters, and trim the title.
 	let gameName = unidecode(game).trim()
 
@@ -430,17 +512,17 @@ function getGameEntry(game, rom, name) {
 	// Parse release date and remove from title, along with the publisher that
 	// TOSEC places right after it: "Title (1991)(Ocean)(JP)" keeps the year
 	// and continues as "Title (JP)".
-	let extraParams = ''
+	let releaseParams = ''
 	const dateRegexp = /\((\d{4})-?(\d{0,2})-?(\d{0,2})\)(?:\([^()]*\))?/
 	const dateArray = dateRegexp.exec(gameName)
 	if (dateArray !== null) {
 		const year = parseInt(dateArray[1])
 		if (year > 1950 && year <= new Date().getFullYear()) {
-			extraParams += `\n\treleaseyear "${dateArray[1]}"`
+			releaseParams += `\n\treleaseyear "${dateArray[1]}"`
 			if (dateArray[2] !== '' && parseInt(dateArray[2]) > 0 && parseInt(dateArray[2]) < 13) {
-				extraParams += `\n\treleasemonth "${dateArray[2]}"`
+				releaseParams += `\n\treleasemonth "${dateArray[2]}"`
 				if (dateArray[3] !== '' && parseInt(dateArray[3]) > 0 && parseInt(dateArray[3]) < 32) {
-					extraParams += `\n\treleaseday "${dateArray[3]}"`
+					releaseParams += `\n\treleaseday "${dateArray[3]}"`
 				}
 			}
 			gameName = gameName.replace(dateRegexp, '')
@@ -478,13 +560,15 @@ function getGameEntry(game, rom, name) {
 		}
 	}
 
-	// The filename must be a valid filename.
-	const gameFile = sanitizeFilename(path.basename(unidecode(rom.name)))
+	return {raw: game, title: gameName, releaseParams}
+}
 
-	// Skip any .sav files.
-	if (gameFile.includes('.sav')) {
-		return ''
-	}
+/**
+ * Construct a game entry for a DAT file, under the given name.
+ */
+function getGameEntry(gameName, clean, rom) {
+	let extraParams = clean.releaseParams
+	const gameFile = romFilename(rom)
 
 	let gameParams = `name "${gameFile}"`
 	if (rom.size) {
@@ -501,11 +585,11 @@ function getGameEntry(game, rom, name) {
 	}
 
 	for (const country of countries) {
-		if (game.includes('(' + country + ')') || gameName.includes('(' + country + ')')) {
+		if (clean.raw.includes('(' + country + ')') || gameName.includes('(' + country + ')')) {
 			extraParams += `\n\tregion "${country}"`
 			break
 		}
-		if (game.includes('(' + country + ', ') || gameName.includes('(' + country + ', ')) {
+		if (clean.raw.includes('(' + country + ', ') || gameName.includes('(' + country + ', ')) {
 			extraParams += `\n\tregion "${country}"`
 			break
 		}
@@ -556,7 +640,7 @@ function getGameEntry(game, rom, name) {
  * Determine whether two game entries describe the same ROM.
  */
 function sameEntry(a, b) {
-	return (a.crc && a.crc === b.crc) || (a.serial && a.serial === b.serial)
+	return Boolean((a.crc && a.crc === b.crc) || (a.serial && a.serial === b.serial))
 }
 
 /**
@@ -809,4 +893,24 @@ function gdiDataTracks(filepath) {
 	}
 
 	return tracks
+}
+
+module.exports = {
+	cleanGameName,
+	cleanSerial,
+	collectGames,
+	cueDataTracks,
+	gdiDataTracks,
+	getGameEntry,
+	getGamesFromXml,
+	getHeader,
+	grabDiscNumber,
+	normalizeCountries,
+	normalizeLanguages,
+	processDat,
+	reportRun,
+	romFilename,
+	sameEntry,
+	validEntry,
+	validRom
 }
