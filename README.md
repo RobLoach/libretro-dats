@@ -12,7 +12,7 @@ Builds the following sources...
 
 ## Dependencies
 
-- Node.js
+- Node.js 22 or newer
 
 ## Usage
 
@@ -32,5 +32,15 @@ Builds the following sources...
     cd libretro-dats
     git submodule update --init
     npm install
-    npm test
+    npm start
     ```
+
+    The built DATs are written into the `database` submodule, and a summary of
+    which ones were built, and which were skipped for want of input files, is
+    printed at the end of the run.
+
+## Tests
+
+``` bash
+npm test
+```
