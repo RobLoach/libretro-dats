@@ -387,7 +387,7 @@ async function processDat(datsInfo, name) {
 		return {files: files.length, games: 0}
 	}
 
-	let output = getHeader(name, pkg)
+	let output = getHeader(name, pkg, getExtensions(games))
 
 	// Loop through the sorted games database, and output the rom.
 	for (const game of Object.keys(sort(games))) {
@@ -441,17 +441,38 @@ function collectGames(results, name) {
 }
 
 /**
+ * The distinct file extensions the given games use, in alphabetical order.
+ *
+ * Entries without an extension are left out, rather than contributing an empty
+ * entry to the list.
+ */
+function getExtensions(games) {
+	const extensions = new Set()
+	for (const game of Object.values(games)) {
+		const extension = path.extname(romFilename(game.rom)).slice(1).toLowerCase()
+		if (extension) {
+			extensions.add(extension)
+		}
+	}
+	return [...extensions].sort()
+}
+
+/**
  * Construct a header for a DAT file.
  */
-function getHeader(name, pkg) {
+function getHeader(name, pkg, extensions = []) {
 	const now = new Date()
 	const version = `${now.getFullYear()}.${String(now.getMonth() + 1).padStart(2, '0')}.${String(now.getDate()).padStart(2, '0')}`
-	return `clrmamepro (
+	let header = `clrmamepro (
 	name "${path.basename(name)}"
 	description "${path.basename(name)}"
-	version "${version}"
-	homepage "${pkg.homepage}"
+	version "${version}"\n`
+	if (extensions.length > 0) {
+		header += `\textensions "${extensions.join('|')}"\n`
+	}
+	header += `	homepage "${pkg.homepage}"
 )\n`
+	return header
 }
 
 /**
@@ -901,6 +922,7 @@ module.exports = {
 	collectGames,
 	cueDataTracks,
 	gdiDataTracks,
+	getExtensions,
 	getGameEntry,
 	getGamesFromXml,
 	getHeader,
