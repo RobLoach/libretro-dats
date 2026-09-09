@@ -5,15 +5,17 @@
   "description": "Assembled from Redump, Trurip, TOSEC, Darkwater and AdvanceSCENE, for libretro-database.",
   "main": "index.js",
   "scripts": {
-    "test": "node ."
+    "start": "node .",
+    "test": "node --test"
   },
   "author": "Rob Loach (http://robloach.net)",
   "license": "MIT",
   "homepage": "http://github.com/robloach/libretro-dats",
+  "engines": {
+    "node": ">=22"
+  },
   "dependencies": {
-    "async": "^3.2.6",
     "extract-zip": "^2.0.1",
-    "multi-glob": "^1.0.2",
     "puppeteer": "^24.42.0",
     "sanitize-filename": "^1.6.4",
     "sort-keys": "^4.0",
