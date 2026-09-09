@@ -12,7 +12,7 @@ Builds the following sources...
 
 ## Dependencies
 
-- Node.js 22 or newer
+- Node.js 22.12 or newer
 
 ## Usage
 

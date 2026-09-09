@@ -2,7 +2,9 @@ const fs = require('fs')
 const path = require('path')
 const pkg = require('./package')
 const xml = require('xml2js').Parser()
-const sort = require('sort-keys')
+// sort-keys is ESM only, so require() hands back the module rather than the
+// function itself.
+const sort = require('sort-keys').default
 const unidecode = require('unidecode')
 const sanitizeFilename = require('sanitize-filename')
 const dats = require('./dats.json')

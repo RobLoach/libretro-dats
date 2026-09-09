@@ -12,13 +12,13 @@
   "license": "MIT",
   "homepage": "http://github.com/robloach/libretro-dats",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.12"
   },
   "dependencies": {
     "extract-zip": "^2.0.1",
-    "puppeteer": "^24.42.0",
+    "puppeteer": "^25.10.0",
     "sanitize-filename": "^1.6.4",
-    "sort-keys": "^4.0",
+    "sort-keys": "^6.0.1",
     "unidecode": "^1.1.0",
     "xml2js": "^0.6.2"
   }
