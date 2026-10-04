@@ -88,33 +88,20 @@ function reportRun(written, missing, empty, failed = [], disabled = []) {
 	const total = written + missing.length + empty.length + failed.length
 	console.log(`\nBuilt ${written} of ${total} DATs.`)
 
-	if (failed.length > 0) {
-		console.log(`\nFailed to build ${failed.length} DATs:`)
-		for (const name of failed) {
-			console.log(`\t${name}`)
-		}
-	}
-
-	if (missing.length > 0) {
-		console.log(`\nNo input files found for ${missing.length} DATs:`)
-		for (const name of missing) {
-			console.log(`\t${name}`)
-		}
-	}
-
-	if (empty.length > 0) {
-		console.log(`\nNo valid games found for ${empty.length} DATs:`)
-		for (const name of empty) {
-			console.log(`\t${name}`)
-		}
-	}
-
-	// Turned off on purpose, so these are listed apart from the DATs that were
-	// meant to build and did not.
-	if (disabled.length > 0) {
-		console.log(`\nSkipped ${disabled.length} disabled DATs:`)
-		for (const name of disabled) {
-			console.log(`\t${name}`)
+	// Disabled DATs are turned off on purpose, so they are listed last, apart
+	// from the ones that were meant to build and did not.
+	const lists = [
+		['Failed to build', failed],
+		['No input files found for', missing],
+		['No valid games found for', empty],
+		['Skipped', disabled, 'disabled DATs']
+	]
+	for (const [label, names, noun = 'DATs'] of lists) {
+		if (names.length > 0) {
+			console.log(`\n${label} ${names.length} ${noun}:`)
+			for (const name of names) {
+				console.log(`\t${name}`)
+			}
 		}
 	}
 
@@ -661,7 +648,8 @@ function cleanGameName(game, name) {
 					releaseParams += `\n\treleaseday "${dateArray[3]}"`
 				}
 			}
-			gameName = gameName.replace(dateRegexp, (match, y, m, d, trailing) => keepDatFlag(trailing))
+			// A function keeps the flag from being read as a $ replacement.
+			gameName = gameName.replace(dateRegexp, () => keepDatFlag(dateArray[4]))
 		}
 	}
 
@@ -876,8 +864,8 @@ function getGamesFromXml(filepath, dat) {
 	let games = header.machine || header.game || null
 	// Find the games array.
 	if (!games) {
-		if (header.games && header.games[0] && header.games[0].game) {
-			games = header.games[0].game
+		if (xmlValue(header.games)?.game) {
+			games = xmlValue(header.games).game
 		}
 		else {
 			console.log('No Games Found: ', datName(header, filepath))
@@ -905,11 +893,11 @@ function getGamesFromXml(filepath, dat) {
 			else if (game['$'] && game['$'].name) {
 				title = game['$'].name
 			}
-			else if (game.description && game.description[0]) {
-				title = game.description[0]
+			else if (xmlValue(game.description)) {
+				title = xmlValue(game.description)
 			}
-			else if (game.rom[0]['$']) {
-				title = path.basename(game.rom[0]['$'].name)
+			else if (xmlValue(game.rom)['$']) {
+				title = path.basename(xmlValue(game.rom)['$'].name)
 			}
 			else {
 				throw new Error(`Could not find title in ${filepath} for game ${i}: ${JSON.stringify(game)}`)

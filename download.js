@@ -1,7 +1,6 @@
 const extract = require('extract-zip')
 const fs = require('fs')
 const path = require('path')
-const puppeteer = require('puppeteer')
 const dats = require('./dats.json')
 
 // How many Redump downloads to run at once. Kept low to be polite to redump.org.
@@ -28,6 +27,9 @@ async function tosec() {
 }
 
 async function nointro() {
+	// Required here rather than up top, as it is the only thing that needs a
+	// browser, and loading one costs a fifth of a second.
+	const puppeteer = require('puppeteer')
 	const zipFile = path.join(__dirname, 'nointro.zip')
 	const destDir = path.join(__dirname, 'input/no-intro')
 

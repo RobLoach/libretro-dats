@@ -56,7 +56,20 @@ test('every disabled DAT says why', function () {
 test('every DAT is written into the database submodule', function () {
 	for (const name of Object.keys(dats)) {
 		assert.ok(name.startsWith('database/metadat/'), `${name} is not written into database/metadat`)
-		assert.strictEqual(fs.existsSync(path.dirname(name)), true, `${path.dirname(name)} does not exist to write ${name} into`)
+	}
+	// The 147 DATs share four directories, so there is no point stat-ing each.
+	for (const dir of new Set(Object.keys(dats).map((name) => path.dirname(name)))) {
+		assert.strictEqual(fs.existsSync(dir), true, `${dir} does not exist to write DATs into`)
+	}
+})
+
+test('every DAT that builds from TOSEC says so in its name', function () {
+	// cleanGameName() decides whether to translate two-letter country codes by
+	// looking for "/tosec/" in the DAT name, so the name has to agree with
+	// where the input actually comes from.
+	for (const [name, datsInfo] of Object.entries(dats)) {
+		const fromTosec = datsInfo.files.some((pattern) => pattern.startsWith('input/tosec/'))
+		assert.strictEqual(name.includes('/tosec/'), fromTosec, `${name} and its input patterns disagree about being TOSEC`)
 	}
 })
 
@@ -68,44 +81,44 @@ test('no DAT is configured twice', function () {
 	assert.strictEqual(keys.length, Object.keys(dats).length, 'dats.json has a repeated DAT name')
 })
 
-test('the Redump systems to download come from the DATs that use them', function () {
-	const systems = redumpSystems()
-	assert.ok(systems.length > 0)
+/**
+ * The Redump system each of the given DATs builds from.
+ */
+function systemsIn(entries) {
+	return new Set(entries
+		.flatMap((datsInfo) => datsInfo.files)
+		.filter((pattern) => pattern.startsWith('input/redump/'))
+		.map((pattern) => pattern.split('/')[2]))
+}
 
-	// Every system is one some DAT actually builds from, so the download can no
-	// longer drift into fetching systems nothing reads.
-	const patterns = Object.values(dats).flatMap((datsInfo) => datsInfo.files)
-	for (const system of systems) {
-		assert.ok(
-			patterns.some((pattern) => pattern.startsWith(`input/redump/${system}/`)),
-			`${system} is downloaded but no DAT builds from it`
-		)
-	}
-
-	// And every Redump system a DAT builds from gets downloaded.
-	for (const pattern of patterns) {
-		const match = /^input\/redump\/([^/]+)\//.exec(pattern)
-		if (match) {
-			assert.ok(systems.includes(match[1]), `${match[1]} is built from but never downloaded`)
+test('every Redump pattern names the system in the same place', function () {
+	// redumpSystems() reads the system out of the third path segment, so a
+	// pattern shaped any other way would silently download nothing.
+	for (const [name, datsInfo] of Object.entries(dats)) {
+		for (const pattern of datsInfo.files) {
+			if (pattern.startsWith('input/redump/')) {
+				assert.match(pattern, /^input\/redump\/[^/*?]+\//, `${name} builds from "${pattern}", which does not name a system`)
+			}
 		}
 	}
 })
 
-test('leaves disabled DATs out of the Redump download', function () {
-	const disabled = Object.entries(dats)
-		.filter(([, datsInfo]) => datsInfo.disabled)
-		.flatMap(([, datsInfo]) => datsInfo.files)
-		.map((pattern) => /^input\/redump\/([^/]+)\//.exec(pattern))
-		.filter(Boolean)
-		.map((match) => match[1])
+test('the Redump systems to download are exactly the ones the DATs use', function () {
+	const active = Object.values(dats).filter((datsInfo) => !datsInfo.disabled)
+	// Nothing is fetched that no DAT reads, and nothing a DAT reads is missed.
+	assert.deepStrictEqual(new Set(redumpSystems()), systemsIn(active))
+	assert.ok(redumpSystems().length > 0)
+})
 
-	const systems = redumpSystems()
-	for (const system of disabled) {
-		// Unless some other DAT that is still enabled needs it too.
-		const stillUsed = Object.values(dats).some((datsInfo) =>
-			!datsInfo.disabled && datsInfo.files.some((pattern) => pattern.startsWith(`input/redump/${system}/`)))
-		if (!stillUsed) {
-			assert.ok(!systems.includes(system), `${system} is only used by a disabled DAT, but is still downloaded`)
+test('leaves disabled DATs out of the Redump download', function () {
+	const disabled = Object.values(dats).filter((datsInfo) => datsInfo.disabled)
+	const active = Object.values(dats).filter((datsInfo) => !datsInfo.disabled)
+
+	// A disabled DAT only keeps its system out of the download when no DAT
+	// that is still on needs it too.
+	for (const system of systemsIn(disabled)) {
+		if (!systemsIn(active).has(system)) {
+			assert.ok(!redumpSystems().includes(system), `${system} is only used by a disabled DAT, but is still downloaded`)
 		}
 	}
 })
