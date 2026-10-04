@@ -2,6 +2,10 @@ const test = require('node:test')
 const assert = require('node:assert')
 const {cleanGameName, cleanSerial, collectGames, getGameEntry, grabDiscNumber, romFilename, sameEntry, validRom} = require('..')
 
+// A DAT name that marks the source as TOSEC, which is the only one whose
+// titles carry two-letter country codes.
+const TOSEC = 'database/metadat/tosec/Test'
+
 /**
  * Build the entry a single ROM produces, the way processDat() does.
  */
@@ -46,11 +50,11 @@ test('detects the region from a multi-region title', function () {
 })
 
 test('detects the region from a TOSEC country code', function () {
-	assert.match(entryFor({title: 'Some Game (1990)(Ocean)(DE)', name: 'c.iso', crc: '3'}), /region "Germany"/)
+	assert.match(entryFor({title: 'Some Game (1990)(Ocean)(DE)', name: 'c.iso', crc: '3'}, TOSEC), /region "Germany"/)
 })
 
 test('writes the release date alongside the region', function () {
-	const output = entryFor({title: 'Some Game (1990)(Ocean)(DE)', name: 'd.iso', crc: '4'})
+	const output = entryFor({title: 'Some Game (1990)(Ocean)(DE)', name: 'd.iso', crc: '4'}, TOSEC)
 	assert.match(output, /\treleaseyear "1990"\n\tregion "Germany"\n/)
 })
 

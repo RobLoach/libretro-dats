@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const {parseArgs} = require('util')
 const pkg = require('./package')
 const xml = require('xml2js').Parser()
 // sort-keys is ESM only, so require() hands back the module rather than the
@@ -11,14 +12,57 @@ const dats = require('./dats.json')
 const countries = require('./countries.json')
 const download = require('./download')
 
-async function start() {
-	await download()
+/**
+ * The command line options the build accepts.
+ */
+function getOptions(argv) {
+	const {values} = parseArgs({
+		args: argv,
+		options: {
+			// Build from the input files already on disk, without fetching any.
+			'skip-download': {type: 'boolean', default: false},
+			// Fetch the sources again, rather than reusing what was downloaded
+			// on an earlier run.
+			'force-download': {type: 'boolean', default: false}
+		}
+	})
+	// parseArgs hands back a null-prototype object, which is awkward to work
+	// with everywhere else.
+	return {...values}
+}
+
+async function start(argv = process.argv.slice(2)) {
+	const options = getOptions(argv)
+	if (options['skip-download']) {
+		console.log('Skipping the download, building from the input files on disk.')
+	}
+	else {
+		await download({force: options['force-download']})
+	}
+
 	const missing = []
 	const empty = []
+	const failed = []
+	const disabled = []
 	let written = 0
 	for (const [name, datsInfo] of Object.entries(dats)) {
-		const result = await processDat(datsInfo, name)
-		if (result.files === 0) {
+		let result
+		try {
+			result = await processDat(datsInfo, name)
+		}
+		catch (err) {
+			// A single unreadable or malformed source should not take the other
+			// DATs down with it, so the failure is recorded and the build
+			// carries on. The run still ends in a non-zero exit code.
+			console.error(`FAILED ${name}: ${err.message}`)
+			failed.push(name)
+			continue
+		}
+
+		if (result.disabled) {
+			disabled.push(name)
+		}
+		else if (result.files === 0) {
 			missing.push(name)
 		}
 		else if (result.games === 0) {
@@ -28,7 +72,11 @@ async function start() {
 			written++
 		}
 	}
-	reportRun(written, missing, empty)
+
+	reportRun(written, missing, empty, failed, disabled)
+	if (failed.length > 0) {
+		process.exitCode = 1
+	}
 }
 
 /**
@@ -36,9 +84,16 @@ async function start() {
  * lines of output, so a build with missing input otherwise looks just like a
  * successful one.
  */
-function reportRun(written, missing, empty) {
-	const total = written + missing.length + empty.length
+function reportRun(written, missing, empty, failed = [], disabled = []) {
+	const total = written + missing.length + empty.length + failed.length
 	console.log(`\nBuilt ${written} of ${total} DATs.`)
+
+	if (failed.length > 0) {
+		console.log(`\nFailed to build ${failed.length} DATs:`)
+		for (const name of failed) {
+			console.log(`\t${name}`)
+		}
+	}
 
 	if (missing.length > 0) {
 		console.log(`\nNo input files found for ${missing.length} DATs:`)
@@ -54,10 +109,21 @@ function reportRun(written, missing, empty) {
 		}
 	}
 
+	// Turned off on purpose, so these are listed apart from the DATs that were
+	// meant to build and did not.
+	if (disabled.length > 0) {
+		console.log(`\nSkipped ${disabled.length} disabled DATs:`)
+		for (const name of disabled) {
+			console.log(`\t${name}`)
+		}
+	}
+
 	// Nothing at all was built, so the input directory is missing rather than
 	// any individual source being unavailable.
 	if (written === 0) {
-		throw new Error('No DATs were built. Are the input files in place?')
+		throw new Error(failed.length > 0
+			? `No DATs were built, and ${failed.length} failed to build. Check the errors above.`
+			: 'No DATs were built. Are the input files in place?')
 	}
 }
 
@@ -185,7 +251,30 @@ const titleReplacements = [
 /**
  * Unclear TOSEC date indications, with the optional publisher that follows.
  */
-const tosecDateRegexp = /\((?:19|20)(?:xx|\dx)\)(?:\([^()]*\))?/g
+const tosecDateRegexp = /\((?:19|20)(?:xx|\dx)\)(\([^()]*\))?/g
+
+/**
+ * Parentheticals that sit where a TOSEC publisher would, but are a flag rather
+ * than a publisher.
+ *
+ * TOSEC puts the publisher directly after the release date, so that one is
+ * dropped along with the date. Plenty of titles put a flag in the same spot
+ * though, and dropping those loses real information: it collapses two
+ * revisions of a game into one name, which then come back as unrelated
+ * "(Alt n)" entries.
+ */
+const datFlagRegexp = /^(?:Rev [\w.]+|RE\d|Alt(?: \d+)?|Proto|Beta(?: \d+)?|Demo|Sample|Unl|Aftermarket|Pirate|Promo|M\d+|v[\w.]+|[A-Z]{2}(?:-[A-Z]{2})*|[a-z]{2}(?:-[a-z]{2})*|(?:Dis[ck]|Tape|Track|Side) \d+(?: of \d+)?)$/
+
+/**
+ * Drop the publisher TOSEC places right after a release date, keeping whatever
+ * is in that spot when it turns out to be a flag instead.
+ */
+function keepDatFlag(trailing) {
+	if (!trailing) {
+		return ''
+	}
+	return datFlagRegexp.test(trailing.slice(1, -1)) ? trailing : ''
+}
 
 /**
  * ISO country codes used by TOSEC, mapped to the region names No-Intro uses.
@@ -374,6 +463,13 @@ async function globAll(patterns) {
  * Act on a DAT file.
  */
 async function processDat(datsInfo, name) {
+	// Entries are turned off without losing their file patterns, so a disabled
+	// DAT reports as such rather than looking like its input went missing.
+	if (datsInfo.disabled) {
+		console.log('DISABLED', name, `(${datsInfo.disabled})`)
+		return {files: 0, games: 0, disabled: true}
+	}
+
 	// Retrieve all associated files for the DAT.
 	const files = await globAll(datsInfo.files || [])
 	if (files.length === 0) {
@@ -482,6 +578,18 @@ function getHeader(name, pkg, extensions = []) {
 }
 
 /**
+ * Whether the DAT is built from TOSEC, which is the only source that puts
+ * two-letter country and language codes in its titles.
+ *
+ * No-Intro and Redump use that same spot for platform and dumper tags, where
+ * "Donkey Kong (USA) (GB) (Virtual Console)" means Game Boy rather than the
+ * United Kingdom, so the codes are only translated for TOSEC.
+ */
+function isTosec(name) {
+	return name.includes('/tosec/')
+}
+
+/**
  * Convert TOSEC country codes to No-Intro region names, including combined
  * codes: "(JP)" becomes "(Japan)", and "(EU-US)" becomes "(USA, Europe)".
  */
@@ -540,7 +648,7 @@ function cleanGameName(game, name) {
 	// TOSEC places right after it: "Title (1991)(Ocean)(JP)" keeps the year
 	// and continues as "Title (JP)".
 	let releaseParams = ''
-	const dateRegexp = /\((\d{4})-?(\d{0,2})-?(\d{0,2})\)(?:\([^()]*\))?/
+	const dateRegexp = /\((\d{4})-?(\d{0,2})-?(\d{0,2})\)(\([^()]*\))?/
 	const dateArray = dateRegexp.exec(gameName)
 	if (dateArray !== null) {
 		const year = parseInt(dateArray[1])
@@ -552,12 +660,12 @@ function cleanGameName(game, name) {
 					releaseParams += `\n\treleaseday "${dateArray[3]}"`
 				}
 			}
-			gameName = gameName.replace(dateRegexp, '')
+			gameName = gameName.replace(dateRegexp, (match, y, m, d, trailing) => keepDatFlag(trailing))
 		}
 	}
 
 	// Remove unclear TOSEC date indications, and their publisher.
-	gameName = gameName.replace(tosecDateRegexp, '')
+	gameName = gameName.replace(tosecDateRegexp, (match, trailing) => keepDatFlag(trailing))
 
 	// Clean the name some more.
 	for (const [from, to] of titleReplacements) {
@@ -565,8 +673,10 @@ function cleanGameName(game, name) {
 	}
 
 	// Turn TOSEC country and language codes into No-Intro style names.
-	gameName = normalizeCountries(gameName)
-	gameName = normalizeLanguages(gameName)
+	if (isTosec(name)) {
+		gameName = normalizeCountries(gameName)
+		gameName = normalizeLanguages(gameName)
+	}
 
 	// Remove TOSEC multi-language counters like "(M3)".
 	gameName = gameName.replace(/\(M\d\)/g, '')
@@ -714,10 +824,33 @@ async function processXml(filepath) {
 
 	// Convert the string to a JSON object.
 	console.log(filepath)
-	const dat = await xml.parseStringPromise(data)
+	let dat
+	try {
+		dat = await xml.parseStringPromise(data)
+	}
+	catch (err) {
+		// The parser only reports where in the document it gave up, so the file
+		// it was reading is worth saying out loud.
+		throw new Error(`Could not parse ${filepath}: ${err.message}`)
+	}
 
 	// Convert the JSON object to a Games array.
 	return getGamesFromXml(filepath, dat)
+}
+
+/**
+ * The first value of an XML field. xml2js hands every one back as an array.
+ */
+function xmlValue(value) {
+	return Array.isArray(value) ? value[0] : value
+}
+
+/**
+ * The name a DAT gives itself in its header, for logging. The header is
+ * optional, so this falls back to the file path.
+ */
+function datName(header, filepath) {
+	return xmlValue(xmlValue(header.header)?.name) || filepath
 }
 
 /**
@@ -726,7 +859,19 @@ async function processXml(filepath) {
 function getGamesFromXml(filepath, dat) {
 	const dir = path.dirname(filepath)
 	const out = {}
-	const header = dat.datafile || dat.dat
+	const root = 'datafile' in dat ? dat.datafile : dat.dat
+	if (root === undefined) {
+		throw new Error(`Unrecognized DAT in ${filepath}: expected a <datafile> or <dat> root element, found <${Object.keys(dat).join('>, <')}>`)
+	}
+
+	// An empty <datafile/> parses to a string rather than an object, so there is
+	// nothing to read games out of.
+	const header = typeof root === 'object' && root !== null ? root : null
+	if (!header) {
+		console.log('No Games Found: ', filepath)
+		return {}
+	}
+
 	let games = header.machine || header.game || null
 	// Find the games array.
 	if (!games) {
@@ -734,7 +879,7 @@ function getGamesFromXml(filepath, dat) {
 			games = header.games[0].game
 		}
 		else {
-			console.log('No Games Found: ', header.header[0].name[0])
+			console.log('No Games Found: ', datName(header, filepath))
 			return {}
 		}
 	}
@@ -754,7 +899,7 @@ function getGamesFromXml(filepath, dat) {
 		// Find all the entries.
 		if (game.rom) {
 			if (game.title) {
-				title = game.title
+				title = xmlValue(game.title)
 			}
 			else if (game['$'] && game['$'].name) {
 				title = game['$'].name
@@ -820,24 +965,9 @@ function getGamesFromXml(filepath, dat) {
 				}
 			}
 		}
-		else if (!game.trurip) {
-			// AdvanceSCENE
-			title = game.title
-			finalIso = {
-				name: game.title + '.iso',
-				size: game.romSize,
-				serial: game.serial,
-				crc: game.files[0].romCRC[0]['_']
-			}
-		}
 		else {
-			console.log('Could not entry for....')
-			if (game['$']) {
-				console.log(game['$'], i)
-			}
-			else {
-				console.log(game, i)
-			}
+			// Nothing in the entry describes a ROM, so there is nothing to add.
+			console.log(`No ROM entries for game ${i} in ${filepath}:`, game['$'] || game)
 			return
 		}
 
@@ -846,7 +976,7 @@ function getGamesFromXml(filepath, dat) {
 		if (final) {
 			final.title = title
 			if (game.serial) {
-				final.serial = game.serial[0]
+				final.serial = xmlValue(game.serial)
 			}
 			if (final.crc) {
 				out[final.crc] = final
@@ -932,7 +1062,10 @@ module.exports = {
 	getGameEntry,
 	getGamesFromXml,
 	getHeader,
+	getOptions,
 	grabDiscNumber,
+	isTosec,
+	keepDatFlag,
 	normalizeCountries,
 	normalizeLanguages,
 	processDat,

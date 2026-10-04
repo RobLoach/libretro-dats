@@ -39,6 +39,46 @@ Builds the following sources...
     which ones were built, and which were skipped for want of input files, is
     printed at the end of the run.
 
+### Options
+
+- `--skip-download` builds from the input files already on disk, without
+  fetching anything. A source being unreachable no longer stops the DATs whose
+  input is already in place from rebuilding, so this is mostly for working
+  offline.
+- `--force-download` fetches the sources again, instead of reusing what an
+  earlier run downloaded.
+
+``` bash
+npm start -- --skip-download
+```
+
+## Configuration
+
+`dats.json` maps each DAT that gets built to the input files it is built from:
+
+``` json
+"database/metadat/redump/Atari - Jaguar CD": {
+    "files": [
+        "input/redump/ajcd/Atari - Jaguar CD*.dat"
+    ]
+}
+```
+
+Adding a `disabled` property turns an entry off without losing its file
+patterns, and the reason is printed in the run summary:
+
+``` json
+"database/metadat/tosec/Sega - Saturn": {
+    "files": [
+        "input/tosec/TOSEC-ISO/Sega Saturn - Ga*"
+    ],
+    "disabled": "TOSEC-ISO was dropped as a source"
+}
+```
+
+The Redump systems that get downloaded are taken from these patterns, so a new
+Redump DAT only needs an entry here.
+
 ## Tests
 
 ``` bash

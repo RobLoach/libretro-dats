@@ -1,6 +1,10 @@
 const test = require('node:test')
 const assert = require('node:assert')
-const {cleanGameName, normalizeCountries, normalizeLanguages, validEntry} = require('..')
+const {cleanGameName, isTosec, keepDatFlag, normalizeCountries, normalizeLanguages, validEntry} = require('..')
+
+// A DAT name that marks the source as TOSEC, which is the only one whose
+// titles carry two-letter country and language codes.
+const TOSEC = 'database/metadat/tosec/Test'
 
 test('leaves a No-Intro style title alone', function () {
 	assert.strictEqual(cleanGameName('Super Mario World (USA)', 'Test').title, 'Super Mario World (USA)')
@@ -25,14 +29,60 @@ test('ignores an out of range release date', function () {
 })
 
 test('drops the publisher that follows a TOSEC date', function () {
-	const clean = cleanGameName('Turrican (1990)(Rainbow Arts)(DE)', 'Test')
+	const clean = cleanGameName('Turrican (1990)(Rainbow Arts)(DE)', TOSEC)
 	assert.strictEqual(clean.title, 'Turrican (Germany)')
 	assert.strictEqual(clean.releaseParams, '\n\treleaseyear "1990"')
 })
 
 test('drops unclear TOSEC dates, and their publisher', function () {
-	assert.strictEqual(cleanGameName('Turrican (19xx)(Rainbow Arts)', 'Test').title, 'Turrican')
-	assert.strictEqual(cleanGameName('Turrican (198x)(Rainbow Arts)', 'Test').title, 'Turrican')
+	assert.strictEqual(cleanGameName('Turrican (19xx)(Rainbow Arts)', TOSEC).title, 'Turrican')
+	assert.strictEqual(cleanGameName('Turrican (198x)(Rainbow Arts)', TOSEC).title, 'Turrican')
+})
+
+test('keeps a flag that sits where a TOSEC publisher would', function () {
+	// The publisher is dropped along with the date, but a flag in the same
+	// spot is real information: without it both revisions collapse into
+	// "Boulder Dash" and come back as unrelated "(Alt n)" entries.
+	assert.strictEqual(cleanGameName('Boulder Dash (1984)(Rev 1)', TOSEC).title, 'Boulder Dash (Rev 1)')
+	assert.strictEqual(cleanGameName('Boulder Dash (1984)(Rev 2)', TOSEC).title, 'Boulder Dash (Rev 2)')
+	assert.strictEqual(cleanGameName('Some Game (1984)(Alt 1)', TOSEC).title, 'Some Game (Alt 1)')
+	assert.strictEqual(cleanGameName('Some Game (1984)(Proto)', TOSEC).title, 'Some Game (Proto)')
+	// The country code lands there too when there is no publisher at all.
+	assert.strictEqual(cleanGameName('Some Game (1984)(JP)', TOSEC).title, 'Some Game (Japan)')
+})
+
+test('keeps a flag that sits where a publisher would after an unclear date', function () {
+	assert.strictEqual(cleanGameName('Some Game (19xx)(Alt 1)', TOSEC).title, 'Some Game (Alt 1)')
+	assert.strictEqual(cleanGameName('Some Game (198x)(Rev 2)', TOSEC).title, 'Some Game (Rev 2)')
+})
+
+// https://github.com/RobLoach/libretro-dats/issues/27
+test('only translates two-letter codes for TOSEC', function () {
+	// No-Intro puts platform and dumper tags where TOSEC puts country codes,
+	// so "(GB)" is Game Boy on a Virtual Console entry, not the United Kingdom.
+	const nointro = 'database/metadat/no-intro/Nintendo - Nintendo 3DS (Digital)'
+	assert.strictEqual(cleanGameName('Donkey Kong (USA) (GB) (Virtual Console)', nointro).title, 'Donkey Kong (USA) (GB) (Virtual Console)')
+	assert.strictEqual(cleanGameName('Space Mutants (World) (DK)', nointro).title, 'Space Mutants (World) (DK)')
+	// The same codes in a TOSEC title really are countries.
+	assert.strictEqual(cleanGameName('Some Game (GB)', TOSEC).title, 'Some Game (United Kingdom)')
+})
+
+test('tells a TOSEC publisher apart from a flag', function () {
+	assert.strictEqual(keepDatFlag('(Rev 1)'), '(Rev 1)')
+	assert.strictEqual(keepDatFlag('(Alt 11)'), '(Alt 11)')
+	assert.strictEqual(keepDatFlag('(Disc 2 of 3)'), '(Disc 2 of 3)')
+	assert.strictEqual(keepDatFlag('(EU-US)'), '(EU-US)')
+	assert.strictEqual(keepDatFlag('(en-ja)'), '(en-ja)')
+	// Anything else in that spot is the publisher, which gets dropped.
+	assert.strictEqual(keepDatFlag('(Rainbow Arts)'), '')
+	assert.strictEqual(keepDatFlag('(Ocean)'), '')
+	assert.strictEqual(keepDatFlag(undefined), '')
+})
+
+test('recognizes which DATs come from TOSEC', function () {
+	assert.strictEqual(isTosec('database/metadat/tosec/Sega - Saturn'), true)
+	assert.strictEqual(isTosec('database/metadat/no-intro/Sega - Saturn'), false)
+	assert.strictEqual(isTosec('database/metadat/redump/Sega - Saturn'), false)
 })
 
 test('removes the " of y" from a disc number', function () {

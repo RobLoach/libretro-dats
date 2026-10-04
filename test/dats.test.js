@@ -8,16 +8,29 @@ const {collectGames, cueDataTracks, gdiDataTracks, getExtensions, getGamesFromXm
 /**
  * Run reportRun(), and hand back everything it logged.
  */
-function report(written, missing, empty) {
+function report(written, missing, empty, failed, disabled) {
 	const lines = []
 	const log = console.log
 	console.log = (line) => lines.push(line)
 	try {
-		reportRun(written, missing, empty)
+		reportRun(written, missing, empty, failed, disabled)
 	} finally {
 		console.log = log
 	}
 	return lines.join('\n')
+}
+
+/**
+ * Run processDat(), keeping the output it logs out of the test report.
+ */
+async function quietly(datsInfo, name) {
+	const log = console.log
+	console.log = () => {}
+	try {
+		return await processDat(datsInfo, name)
+	} finally {
+		console.log = log
+	}
 }
 
 /**
@@ -187,10 +200,92 @@ test('says nothing more when every DAT was built', function () {
 	assert.match(output, /Built 3 of 3 DATs\./)
 	assert.doesNotMatch(output, /No input files found/)
 	assert.doesNotMatch(output, /No valid games found/)
+	assert.doesNotMatch(output, /Failed to build/)
+	assert.doesNotMatch(output, /disabled/)
+})
+
+test('reports the DATs that failed to build', function () {
+	const output = report(2, [], [], ['Sega - Saturn'])
+	assert.match(output, /Built 2 of 3 DATs\./)
+	assert.match(output, /Failed to build 1 DATs:\n\tSega - Saturn/)
+})
+
+test('reports disabled DATs apart from the ones that should have built', function () {
+	const output = report(2, [], [], [], ['Sega - Saturn'])
+	// Disabled DATs were never meant to build, so they are left out of the
+	// total rather than counted as a shortfall.
+	assert.match(output, /Built 2 of 2 DATs\./)
+	assert.match(output, /Skipped 1 disabled DATs:\n\tSega - Saturn/)
+	assert.doesNotMatch(output, /No input files found/)
 })
 
 test('fails the run when nothing at all was built', function () {
-	assert.throws(() => report(0, ['Sega - Saturn'], []), /No DATs were built/)
+	assert.throws(() => report(0, ['Sega - Saturn'], []), /No DATs were built\. Are the input files in place\?/)
+})
+
+test('blames the failures when nothing was built and some failed', function () {
+	assert.throws(() => report(0, [], [], ['Sega - Saturn']), /No DATs were built, and 1 failed to build/)
+})
+
+test('skips a disabled DAT without building it', async function () {
+	const dir = fixture({
+		'input/Test.dat': datFile(game('Some Game (USA)', '<rom name="Some Game (USA).iso" size="100" crc="abcd1234"/>'))
+	})
+	const datsInfo = {files: [path.join(dir, 'input/*.dat')], disabled: 'the source went away'}
+	const result = await quietly(datsInfo, path.join(dir, 'out'))
+
+	assert.deepStrictEqual(result, {files: 0, games: 0, disabled: true})
+	// The patterns still match, so this is a deliberate skip rather than a DAT
+	// whose input went missing.
+	assert.strictEqual(fs.existsSync(path.join(dir, 'out.dat')), false)
+})
+
+test('fails a DAT with an unrecognized root element, naming the file', async function () {
+	const dir = fixture({'input/Test.dat': '<?xml version="1.0"?>\n<mame><machine name="x"/></mame>\n'})
+	await assert.rejects(
+		() => quietly({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out')),
+		/Unrecognized DAT in .*Test\.dat: expected a <datafile> or <dat> root element, found <mame>/
+	)
+})
+
+test('fails a DAT with malformed XML, naming the file', async function () {
+	const dir = fixture({'input/Test.dat': '<?xml version="1.0"?>\n<datafile><game></datafile>\n'})
+	await assert.rejects(
+		() => quietly({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out')),
+		/Could not parse .*Test\.dat:/
+	)
+})
+
+test('builds a DAT whose games use a title element', async function () {
+	// xml2js hands every field back as an array, so a <title> used to reach
+	// cleanGameName() as one and take the whole run down with it.
+	const dir = fixture({
+		'input/Test.dat': datFile('<game><title>Some Game (USA)</title><rom name="Some Game (USA).iso" size="100" crc="abcd1234"/></game>')
+	})
+	const result = await quietly({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out'))
+
+	assert.deepStrictEqual(result, {files: 1, games: 1})
+	assert.match(fs.readFileSync(path.join(dir, 'out.dat'), 'utf8'), /\tname "Some Game \(USA\)"\n/)
+})
+
+test('skips a game with no ROM entries, and keeps the rest', async function () {
+	const dir = fixture({
+		'input/Test.dat': datFile([
+			'<game name="Nothing Here"></game>',
+			game('Some Game (USA)', '<rom name="Some Game (USA).iso" size="100" crc="abcd1234"/>')
+		].join('\n'))
+	})
+	const result = await quietly({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out'))
+
+	assert.deepStrictEqual(result, {files: 1, games: 1})
+})
+
+test('falls back to the file path when a DAT has no games and no header', async function () {
+	const dir = fixture({'input/Test.dat': '<?xml version="1.0"?>\n<datafile></datafile>\n'})
+	// Reading the name out of a header that is not there used to throw.
+	const result = await quietly({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out'))
+
+	assert.deepStrictEqual(result, {files: 1, games: 0})
 })
 
 test('finds the data tracks in a cue sheet', function () {

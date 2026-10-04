@@ -2,7 +2,7 @@
   "name": "libretro-dats",
   "version": "2026.8.1",
   "private": true,
-  "description": "Assembled from Redump, Trurip, TOSEC, Darkwater and AdvanceSCENE, for libretro-database.",
+  "description": "Assembled from Redump, No-Intro and TOSEC, for libretro-database.",
   "main": "index.js",
   "scripts": {
     "start": "node .",

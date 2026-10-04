@@ -2,14 +2,15 @@ const extract = require('extract-zip')
 const fs = require('fs')
 const path = require('path')
 const puppeteer = require('puppeteer')
+const dats = require('./dats.json')
 
 // How many Redump downloads to run at once. Kept low to be polite to redump.org.
 const CONCURRENCY = 1
 
-module.exports = async function downloadAll() {
+module.exports = async function downloadAll(options = {}) {
 	//await nointro()
 	//await tosec()
-	await redump()
+	await redump(options)
 }
 
 async function tosec() {
@@ -95,7 +96,7 @@ async function extractFile(source, dest) {
 /**
  * Download and extract the DAT and cue sheets for a single Redump system.
  */
-async function redumpDownload(element) {
+async function redumpDownload(element, {force = false} = {}) {
 	const destDir = path.join(__dirname, 'input/redump', element)
 	const downloads = [
 		// Cue sheets only exist for CD-based systems. For the others, redump
@@ -107,8 +108,10 @@ async function redumpDownload(element) {
 	for (const {url, zipFile, optional} of downloads) {
 		// The zip is downloaded and extracted through a temporary file, so its
 		// final name only exists once both steps completed. That makes it safe
-		// to skip on re-runs after an interrupted download.
-		if (fs.existsSync(zipFile)) {
+		// to skip on re-runs after an interrupted download. A completed
+		// download is never stale enough to refetch on its own, so --force-
+		// download is the way to pick up a newer one.
+		if (!force && fs.existsSync(zipFile)) {
 			continue
 		}
 		const partFile = zipFile + '.part'
@@ -143,65 +146,31 @@ function isZip(file) {
 	return buffer.toString('latin1') === 'PK'
 }
 
-async function redump() {
-	console.log('Downloading Redump')
+/**
+ * The Redump systems the DATs are actually built from, taken from dats.json so
+ * that the download list cannot drift away from the build. A hand-kept list
+ * ended up fetching dozens of systems nothing ever read.
+ */
+function redumpSystems() {
+	const systems = new Set()
+	for (const datsInfo of Object.values(dats)) {
+		if (datsInfo.disabled) {
+			continue
+		}
+		for (const pattern of datsInfo.files || []) {
+			const match = /^input\/redump\/([^/]+)\//.exec(pattern)
+			if (match) {
+				systems.add(match[1])
+			}
+		}
+	}
+	return [...systems].sort()
+}
+
+async function redump(options = {}) {
+	const systems = redumpSystems()
+	console.log(`Downloading Redump for ${systems.length} systems`)
 	fs.mkdirSync(path.join(__dirname, 'input/redump'), {recursive: true})
-	const systems = [
-		'arch',
-		'mac',
-		'ajcd',
-		'pippin',
-		'qis',
-		'acd',
-		'cd32',
-		'cdtv',
-		'fmt',
-		'fpp',
-		'pc',
-		'ite',
-		'kea',
-		'kfb',
-		'ksgv',
-		'ixl',
-		'hs',
-		'vis',
-		'xbox',
-		'xbox360',
-		'trf',
-		'ns246',
-		'pce',
-		'pc-88',
-		'pc-98',
-		'pc-fx',
-		'ngcd',
-		'gc',
-		'wii',
-		'palm',
-		'3do',
-		'cdi',
-		'photo-cd',
-		'psxgs',
-		'ppc',
-		'chihiro',
-		'dc',
-		'mcd',
-		'naomi',
-		'naomi2',
-		'sp21',
-		'sre',
-		'sre2',
-		'ss',
-		'x68k',
-		'psx',
-		'ps2',
-		'ps3',
-		'psp',
-		'quizard',
-		'ksite',
-		'nuon',
-		'vflash',
-		'gamewave'
-	]
 
 	// Download a few systems at a time, and keep going when one fails.
 	const queue = [...systems]
@@ -211,7 +180,7 @@ async function redump() {
 		while ((element = queue.shift()) !== undefined) {
 			console.log(`Downloading: ${element}`)
 			try {
-				await redumpDownload(element)
+				await redumpDownload(element, options)
 			} catch (err) {
 				console.error(`Failed to download ${element}: ${err.message}`)
 				failures.push(element)
@@ -220,8 +189,11 @@ async function redump() {
 	}
 	await Promise.all(Array.from({length: CONCURRENCY}, worker))
 
+	// A source being unreachable should not stop the DATs whose input files are
+	// already on disk from rebuilding, so this is reported rather than thrown.
+	// Whatever ends up without input shows up in the run summary.
 	if (failures.length > 0) {
-		throw new Error('Failed to download from Redump: ' + failures.join(', '))
+		console.error(`Failed to download from Redump: ${failures.join(', ')}`)
 	}
 }
 
@@ -236,3 +208,5 @@ async function downloadFile(url, dest, options = {}) {
 	}
 	fs.writeFileSync(dest, Buffer.from(await response.arrayBuffer()))
 }
+
+module.exports.redumpSystems = redumpSystems
