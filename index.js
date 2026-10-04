@@ -245,7 +245,8 @@ const titleReplacements = [
 	[' (Track 1)', ''],
 	[' (Made in Japan)', ''],
 	[' (Aftermarket)', ''],
-	[' (Unl)', '']
+	[' (Unl)', ''],
+	['Battletech - A Game of Armored Combat', 'BattleTech - A Game of Armored Combat'] // https://github.com/libretro/libretro-database/pull/1735
 ]
 
 /**
