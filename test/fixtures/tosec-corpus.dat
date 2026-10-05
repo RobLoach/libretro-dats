@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!--
+	Real TOSEC titles covering the parts of cleanGameName() that are easy to
+	get wrong. The expected output is checked in alongside this file, so a
+	change in title handling shows up as a reviewable diff.
+-->
+<datafile>
+	<header>
+		<name>TOSEC Corpus</name>
+	</header>
+
+	<!-- The slot right after the date is TOSEC's publisher, not a country. -->
+	<game name="16K Superchess (1983)(CP)(16K)">
+		<description>16K Superchess (1983)(CP)(16K)</description>
+		<rom name="16K Superchess (1983)(CP)(16K).tzx" size="16384" crc="00000001"/>
+	</game>
+	<game name="Rockman 8 (19xx)(NT)(TW)">
+		<description>Rockman 8 (19xx)(NT)(TW)</description>
+		<rom name="Rockman 8 (19xx)(NT)(TW).gb" size="1048576" crc="00000002"/>
+	</game>
+	<game name="Turrican (1990)(Rainbow Arts)(DE)">
+		<description>Turrican (1990)(Rainbow Arts)(DE)</description>
+		<rom name="Turrican (1990)(Rainbow Arts)(DE).tzx" size="49152" crc="00000003"/>
+	</game>
+	<game name="Shadow of the Beast (1990)(EA)">
+		<description>Shadow of the Beast (1990)(EA)</description>
+		<rom name="Shadow of the Beast (1990)(EA).adf" size="901120" crc="00000004"/>
+	</game>
+	<game name="Elite (1990)(vtrdos.ru)">
+		<description>Elite (1990)(vtrdos.ru)</description>
+		<rom name="Elite (1990)(vtrdos.ru).trd" size="655360" crc="00000005"/>
+	</game>
+
+	<!-- A flag in the publisher slot is real information and has to survive. -->
+	<game name="Boulder Dash (1984)(Rev 1)">
+		<description>Boulder Dash (1984)(Rev 1)</description>
+		<rom name="Boulder Dash (1984)(Rev 1).tzx" size="40960" crc="00000006"/>
+	</game>
+	<game name="Lords of Midnight (19xx)(Disk 1 of 2)">
+		<description>Lords of Midnight (19xx)(Disk 1 of 2)</description>
+		<rom name="Lords of Midnight (19xx)(Disk 1 of 2).adf" size="901120" crc="00000007"/>
+	</game>
+	<game name="Alien Games (19xx)(US)(proto)">
+		<description>Alien Games (19xx)(US)(proto)</description>
+		<rom name="Alien Games (19xx)(US)(proto).gb" size="262144" crc="00000008"/>
+	</game>
+
+	<!-- Country and language codes, which only TOSEC uses. -->
+	<game name="Saboteur (1985)(Durell)(EU-US)">
+		<description>Saboteur (1985)(Durell)(EU-US)</description>
+		<rom name="Saboteur (1985)(Durell)(EU-US).tzx" size="49152" crc="00000009"/>
+	</game>
+	<game name="Dizzy (1987)(Codemasters)(en)">
+		<description>Dizzy (1987)(Codemasters)(en)</description>
+		<rom name="Dizzy (1987)(Codemasters)(en).tzx" size="49152" crc="0000000A"/>
+	</game>
+	<game name="Aventyr (1985)(MunkHammar)(SE)(sv)">
+		<description>Aventyr (1985)(MunkHammar)(SE)(sv)</description>
+		<rom name="Aventyr (1985)(MunkHammar)(SE)(sv).tzx" size="49152" crc="0000000B"/>
+	</game>
+
+	<!--
+		Alt numbering. The first two share a cleaned title and differ only by
+		format, so the second becomes an alt; the third already carries "[a]",
+		which used to collide and produce "(Alt 1) (Alt 1)".
+	-->
+	<game name="007 Multispy (1987)(ZX-Guaranteed)">
+		<description>007 Multispy (1987)(ZX-Guaranteed)</description>
+		<rom name="007 Multispy (1987)(ZX-Guaranteed).opd" size="184320" crc="0000000C"/>
+	</game>
+	<game name="007 Multispy (1987)(ZX-Guaranteed)">
+		<description>007 Multispy (1987)(ZX-Guaranteed)</description>
+		<rom name="007 Multispy (1987)(ZX-Guaranteed).tzx" size="13838" crc="0000000D"/>
+	</game>
+	<game name="007 Multispy (1987)(ZX-Guaranteed)[a]">
+		<description>007 Multispy (1987)(ZX-Guaranteed)[a]</description>
+		<rom name="007 Multispy (1987)(ZX-Guaranteed)[a].tzx" size="7235" crc="0000000E"/>
+	</game>
+	<!-- "[cr][a]" leaves the alt tag stuck to the flag in front of it. -->
+	<game name="Jet Set Willy (1984)(Software Projects)[cr][a]">
+		<description>Jet Set Willy (1984)(Software Projects)[cr][a]</description>
+		<rom name="Jet Set Willy (1984)(Software Projects)[cr][a].tzx" size="49152" crc="0000000F"/>
+	</game>
+	<game name="Jet Set Willy (1984)(Software Projects)[cr]">
+		<description>Jet Set Willy (1984)(Software Projects)[cr]</description>
+		<rom name="Jet Set Willy (1984)(Software Projects)[cr].tzx" size="49153" crc="00000010"/>
+	</game>
+
+	<!-- Entries that do not belong in a DAT at all. -->
+	<game name="Spectrum Diagnostics (1986)(Test Program)">
+		<description>Spectrum Diagnostics (1986)(Test Program)</description>
+		<rom name="Spectrum Diagnostics (1986)(Test Program).tzx" size="16384" crc="00000011"/>
+	</game>
+	<game name="Target Renegade (1988)(Imagine)(beta)">
+		<description>Target Renegade (1988)(Imagine)(beta)</description>
+		<rom name="Target Renegade (1988)(Imagine)(beta).tzx" size="49152" crc="00000012"/>
+	</game>
+
+	<!-- Unicode, and the serial handling. -->
+	<game name="Pokemon Ruby (2002)(Nintendo)(JP)">
+		<description>Pokémon Ruby (2002)(Nintendo)(JP)</description>
+		<rom name="Pokémon Ruby (2002)(Nintendo)(JP).gba" size="16777216" crc="00000013" serial="AGB-AXVJ-JPN"/>
+	</game>
+	<game name="Final Fantasy VII (1997)(Squaresoft)(US)(Disc 1 of 3)">
+		<description>Final Fantasy VII (1997)(Squaresoft)(US)(Disc 1 of 3)</description>
+		<rom name="Final Fantasy VII (1997)(Squaresoft)(US)(Disc 1 of 3).bin" size="700000000" crc="00000014" serial="SCUS-94163"/>
+	</game>
+</datafile>

@@ -1,0 +1,76 @@
+clrmamepro (
+	name "Corpus"
+	description "Corpus"
+	version "2026.10.05"
+	extensions "3ds|bin|gba|iso|nes|sfc|wad|wud"
+	homepage "http://github.com/robloach/libretro-dats"
+)
+
+game (
+	name "2020 Super Baseball (Europe) (NG) (Virtual Console)"
+	region "Europe"
+	rom ( name "2020 Super Baseball (Europe) (NG) (Virtual Console).wad" size 8388608 crc 10000008 )
+)
+game (
+	name "Bamse (Sweden)"
+	region "Sweden"
+	rom ( name "Bamse (Sweden).gba" size 4194304 crc 10000006 )
+)
+game (
+	name "Buzz! The Big Quiz (Switzerland) (Fr,De,It)"
+	region "Switzerland"
+	rom ( name "Buzz! The Big Quiz (Switzerland) (Fr,De,It).iso" size 4700000000 crc 10000007 )
+)
+game (
+	name "Donkey Kong (USA) (GB) (Virtual Console)"
+	region "USA"
+	rom ( name "Donkey Kong (USA) (GB) (Virtual Console).3ds" size 4194304 crc 10000001 )
+)
+game (
+	name "Final Fantasy VII (USA) (Disc 2)"
+	region "USA"
+	serial "SCUS-94164"
+	rom ( name "Final Fantasy VII (USA) (Disc 2 of 3).bin" size 700000000 crc 1000000A serial "SCUS-94164" )
+)
+game (
+	name "Final Fantasy VII (USA) (Disc 2)"
+	region "USA"
+	serial "SCUS-94164-1"
+	rom ( name "Final Fantasy VII (USA) (Disc 2 of 3).bin" size 700000000 crc 1000000A serial "SCUS-94164-1" )
+)
+game (
+	name "Gran Turismo (Europe) (En,Fr,De)"
+	region "Europe"
+	serial "SCES-00984"
+	rom ( name "Gran Turismo (Europe) (En,Fr,De).bin" size 700000000 crc 1000000B serial "SCES-00984" )
+)
+game (
+	name "Gran Turismo (Europe) (En,Fr,De)"
+	region "Europe"
+	serial "SCES-01234"
+	rom ( name "Gran Turismo (Europe) (En,Fr,De).bin" size 700000000 crc 1000000B serial "SCES-01234" )
+)
+game (
+	name "Half Life 2 - The Orange Box (Europe) (v3) (LV)"
+	region "Europe"
+	rom ( name "Half Life 2 - The Orange Box (Europe) (v3) (LV).iso" size 7000000000 crc 10000004 )
+)
+game (
+	name "Kirby no Kirakira Kids (Japan) (GB) (Virtual Console)"
+	region "Japan"
+	rom ( name "Kirby no Kirakira Kids (Japan) (GB) (Virtual Console).wud" size 4194304 crc 10000002 )
+)
+game (
+	name "Pokemon Ruby (USA)"
+	region "USA"
+	rom ( name "Pokemon Ruby (USA).gba" size 16777216 crc 10000009 )
+)
+game (
+	name "Space Mutants (World) (v1.03) (DK) (Retro Achievements)"
+	rom ( name "Space Mutants (World) (v1.03) (DK) (Retro Achievements).nes" size 524288 crc 10000003 )
+)
+game (
+	name "Super Mario World (USA)"
+	region "USA"
+	rom ( name "Super Mario World (USA).sfc" size 524288 crc 10000005 )
+)

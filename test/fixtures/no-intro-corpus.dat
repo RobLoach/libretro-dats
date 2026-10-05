@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!--
+	Real No-Intro titles covering the parts of cleanGameName() that are easy to
+	get wrong. No-Intro writes regions out in full, and uses the parentheses
+	TOSEC reserves for country codes to hold platform and dumper tags instead,
+	so none of the two-letter codes in here may be translated.
+
+	The expected output is checked in alongside this file, so a change in title
+	handling shows up as a reviewable diff.
+-->
+<datafile>
+	<header>
+		<name>No-Intro Corpus</name>
+	</header>
+
+	<!-- "(GB)" is Game Boy, "(DK)" and "(LV)" are dumper and label tags. -->
+	<game name="Donkey Kong (USA) (GB) (Virtual Console)">
+		<description>Donkey Kong (USA) (GB) (Virtual Console)</description>
+		<rom name="Donkey Kong (USA) (GB) (Virtual Console).3ds" size="4194304" crc="10000001"/>
+	</game>
+	<game name="Kirby no Kirakira Kids (Japan) (GB) (Virtual Console)">
+		<description>Kirby no Kirakira Kids (Japan) (GB) (Virtual Console)</description>
+		<rom name="Kirby no Kirakira Kids (Japan) (GB) (Virtual Console).wud" size="4194304" crc="10000002"/>
+	</game>
+	<game name="Space Mutants (World) (v1.03) (DK) (Retro Achievements)">
+		<description>Space Mutants (World) (v1.03) (DK) (Retro Achievements)</description>
+		<rom name="Space Mutants (World) (v1.03) (DK) (Retro Achievements).nes" size="524288" crc="10000003"/>
+	</game>
+	<game name="Half Life 2 - The Orange Box (Europe) (v3) (LV)">
+		<description>Half Life 2 - The Orange Box (Europe) (v3) (LV)</description>
+		<rom name="Half Life 2 - The Orange Box (Europe) (v3) (LV).iso" size="7000000000" crc="10000004"/>
+	</game>
+
+	<!-- Regions written out in full are what No-Intro actually uses. -->
+	<game name="Super Mario World (USA)">
+		<description>Super Mario World (USA)</description>
+		<rom name="Super Mario World (USA).sfc" size="524288" crc="10000005"/>
+	</game>
+	<game name="Bamse (Sweden)">
+		<description>Bamse (Sweden)</description>
+		<rom name="Bamse (Sweden).gba" size="4194304" crc="10000006"/>
+	</game>
+	<game name="Buzz! The Big Quiz (Switzerland) (Fr,De,It)">
+		<description>Buzz! The Big Quiz (Switzerland) (Fr,De,It)</description>
+		<rom name="Buzz! The Big Quiz (Switzerland) (Fr,De,It).iso" size="4700000000" crc="10000007"/>
+	</game>
+	<game name="2020 Super Baseball (Europe) (NG) (Virtual Console)">
+		<description>2020 Super Baseball (Europe) (NG) (Virtual Console)</description>
+		<rom name="2020 Super Baseball (Europe) (NG) (Virtual Console).wad" size="8388608" crc="10000008"/>
+	</game>
+
+	<!-- Unicode, multi-disc serials and the " of y" trim. -->
+	<game name="Pokemon Ruby (USA)">
+		<description>Pokémon Ruby (USA)</description>
+		<rom name="Pokémon Ruby (USA).gba" size="16777216" crc="10000009"/>
+	</game>
+	<game name="Final Fantasy VII (USA) (Disc 2 of 3)">
+		<description>Final Fantasy VII (USA) (Disc 2 of 3)</description>
+		<rom name="Final Fantasy VII (USA) (Disc 2 of 3).bin" size="700000000" crc="1000000A" serial="SCUS-94164"/>
+	</game>
+	<game name="Gran Turismo (Europe) (En,Fr,De)">
+		<description>Gran Turismo (Europe) (En,Fr,De)</description>
+		<rom name="Gran Turismo (Europe) (En,Fr,De).bin" size="700000000" crc="1000000B" serial="SCES-00984 / SCES-01234"/>
+	</game>
+
+	<!-- Entries that do not belong in a DAT at all. -->
+	<game name="Nintendo Super System BIOS [BIOS]">
+		<description>Nintendo Super System BIOS [BIOS]</description>
+		<rom name="Nintendo Super System BIOS [BIOS].sfc" size="131072" crc="1000000C"/>
+	</game>
+	<game name="Starfox 2 (Japan) (Beta)">
+		<description>Starfox 2 (Japan) (Beta)</description>
+		<rom name="Starfox 2 (Japan) (Beta).sfc" size="1048576" crc="1000000D"/>
+	</game>
+	<game name="Phantasy Star Online (USA) (Rev B)">
+		<description>Phantasy Star Online (USA) (Rev B)</description>
+		<rom name="Phantasy Star Online (USA) (Rev B).gdi" size="1198000000" crc="1000000E"/>
+	</game>
+	<!-- A .sav alongside the ROM is skipped, taking the game with it. -->
+	<game name="Kid Dracula (World) (Castlevania Anniversary Collection)">
+		<description>Kid Dracula (World) (Castlevania Anniversary Collection)</description>
+		<rom name="Kid Dracula (World) (Castlevania Anniversary Collection).sav" size="8192" crc="1000000F"/>
+	</game>
+</datafile>

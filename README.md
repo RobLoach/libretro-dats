@@ -84,3 +84,15 @@ Redump DAT only needs an entry here.
 ``` bash
 npm test
 ```
+
+`test/fixtures` holds a small corpus of real titles from each source, with the
+DAT each one is expected to build checked in beside it. Title handling is easy
+to get subtly wrong across the board while every hand-written case still
+passes, so a change there shows up as a diff against the expected output. When
+a change is meant to alter the output, rebuild the expected files and review
+the diff it leaves behind:
+
+``` bash
+UPDATE_GOLDEN=1 npm test
+git diff test/fixtures
+```
