@@ -95,6 +95,24 @@
 		<description>Target Renegade (1988)(Imagine)(beta)</description>
 		<rom name="Target Renegade (1988)(Imagine)(beta).tzx" size="49152" crc="00000012"/>
 	</game>
+	<game name="Chase HQ (1989)(Ocean)(Beta 12)">
+		<description>Chase HQ (1989)(Ocean)(Beta 12)</description>
+		<rom name="Chase HQ (1989)(Ocean)(Beta 12).tzx" size="49152" crc="00000015"/>
+	</game>
+	<game name="Head over Heels (1987)(Ocean)(Beta Demo)">
+		<description>Head over Heels (1987)(Ocean)(Beta Demo)</description>
+		<rom name="Head over Heels (1987)(Ocean)(Beta Demo).tzx" size="49152" crc="00000016"/>
+	</game>
+
+	<!-- Betasoft is a publisher, so these two have to survive. -->
+	<game name="Krakout (1987)(Betasoft)">
+		<description>Krakout (1987)(Betasoft)</description>
+		<rom name="Krakout (1987)(Betasoft).tzx" size="49152" crc="00000017"/>
+	</game>
+	<game name="Beta Bloc (1986)(Mastertronic)(EU)">
+		<description>Beta Bloc (1986)(Mastertronic)(EU)</description>
+		<rom name="Beta Bloc (1986)(Mastertronic)(EU).tzx" size="49152" crc="00000018"/>
+	</game>
 
 	<!-- Unicode, and the serial handling. -->
 	<game name="Pokemon Ruby (2002)(Nintendo)(JP)">

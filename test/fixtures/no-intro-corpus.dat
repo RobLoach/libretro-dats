@@ -72,6 +72,20 @@
 		<description>Starfox 2 (Japan) (Beta)</description>
 		<rom name="Starfox 2 (Japan) (Beta).sfc" size="1048576" crc="1000000D"/>
 	</game>
+	<game name="Adventures of Batman &amp; Robin, The (USA) (Beta 12)">
+		<description>Adventures of Batman &amp; Robin, The (USA) (Beta 12)</description>
+		<rom name="Adventures of Batman &amp; Robin, The (USA) (Beta 12).md" size="2097152" crc="10000010"/>
+	</game>
+
+	<!-- "Beta" in the real title, and a disc released as a beta, both stay. -->
+	<game name="Xbox Live Beta Starter Kit Disc (USA, Europe)">
+		<description>Xbox Live Beta Starter Kit Disc (USA, Europe)</description>
+		<rom name="Xbox Live Beta Starter Kit Disc (USA, Europe).iso" size="4700000000" crc="10000011"/>
+	</game>
+	<game name="Halo 2 (USA) (Multiplayer Beta)">
+		<description>Halo 2 (USA) (Multiplayer Beta)</description>
+		<rom name="Halo 2 (USA) (Multiplayer Beta).iso" size="4700000000" crc="10000012"/>
+	</game>
 	<game name="Phantasy Star Online (USA) (Rev B)">
 		<description>Phantasy Star Online (USA) (Rev B)</description>
 		<rom name="Phantasy Star Online (USA) (Rev B).gdi" size="1198000000" crc="1000000E"/>

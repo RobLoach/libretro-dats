@@ -37,6 +37,12 @@ game (
 	rom ( name "Aventyr (1985)(MunkHammar)(SE)(sv).tzx" size 49152 crc 0000000B )
 )
 game (
+	name "Beta Bloc (Europe)"
+	releaseyear "1986"
+	region "Europe"
+	rom ( name "Beta Bloc (1986)(Mastertronic)(EU).tzx" size 49152 crc 00000018 )
+)
+game (
 	name "Boulder Dash (Rev 1)"
 	releaseyear "1984"
 	rom ( name "Boulder Dash (1984)(Rev 1).tzx" size 40960 crc 00000006 )
@@ -74,6 +80,11 @@ game (
 	name "Jet Set Willy [cr] (Alt 1)"
 	releaseyear "1984"
 	rom ( name "Jet Set Willy (1984)(Software Projects)[cr][a].tzx" size 49152 crc 0000000F )
+)
+game (
+	name "Krakout"
+	releaseyear "1987"
+	rom ( name "Krakout (1987)(Betasoft).tzx" size 49152 crc 00000017 )
 )
 game (
 	name "Lords of Midnight (Disk 1)"

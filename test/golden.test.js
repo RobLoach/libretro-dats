@@ -120,15 +120,31 @@ test('leaves out entries that do not belong in a DAT', async function () {
 
 	// TOSEC writes "(beta)" lowercase, which only looks invalid once cleaned.
 	assert.doesNotMatch(tosec.output, /Target Renegade/)
-	assert.doesNotMatch(tosec.output, /Beta/)
+	assert.doesNotMatch(tosec.output, /Chase HQ/)
+	assert.doesNotMatch(tosec.output, /Head over Heels/)
 	assert.doesNotMatch(tosec.output, /Test Program/)
+	// No entry keeps a beta tag, whatever it was numbered or named.
+	assert.doesNotMatch(tosec.output, /\(Beta\b/)
+	assert.doesNotMatch(nointro.output, /\(Beta\b/)
 
 	assert.doesNotMatch(nointro.output, /BIOS/)
 	assert.doesNotMatch(nointro.output, /Starfox 2/)
+	assert.doesNotMatch(nointro.output, /Adventures of Batman/)
 	// Its serial conflicts with Sonic Adventure 2.
 	assert.doesNotMatch(nointro.output, /Phantasy Star Online/)
 	// Nothing but a .sav file to go on. https://github.com/RobLoach/libretro-dats/issues/47
 	assert.doesNotMatch(nointro.output, /Kid Dracula/)
+})
+
+test('keeps the entries that only look like a beta', async function () {
+	const tosec = await build('tosec-corpus', 'tosec')
+	// Betasoft is a publisher, and gets dropped as one.
+	assert.match(tosec.output, /\tname "Krakout"/)
+	assert.match(tosec.output, /\tname "Beta Bloc \(Europe\)"/)
+
+	const nointro = await build('no-intro-corpus', 'no-intro')
+	assert.match(nointro.output, /\tname "Xbox Live Beta Starter Kit Disc \(USA, Europe\)"/)
+	assert.match(nointro.output, /\tname "Halo 2 \(USA\) \(Multiplayer Beta\)"/)
 })
 
 test('writes nothing when the output has not changed', async function () {

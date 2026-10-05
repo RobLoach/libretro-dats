@@ -153,3 +153,23 @@ test('invalidates entries that do not belong in a DAT', function () {
 	assert.strictEqual(validEntry('Phantasy Star Online (USA) (Rev B)'), false)
 	assert.strictEqual(validEntry('Phantasy Star Online (USA)'), true)
 })
+
+test('invalidates a beta however it is numbered or named', function () {
+	assert.strictEqual(validEntry('Some Game (Beta)'), false)
+	assert.strictEqual(validEntry('Some Game (Beta 1)'), false)
+	assert.strictEqual(validEntry('Some Game (Beta 12)'), false)
+	assert.strictEqual(validEntry('Some Game (Beta 32)'), false)
+	assert.strictEqual(validEntry('Some Game (Beta Demo)'), false)
+	assert.strictEqual(validEntry('Some Game (Beta Phase 2)'), false)
+	assert.strictEqual(validEntry('Some Game (USA) (Beta 4)'), false)
+})
+
+test('keeps entries that only look like a beta', function () {
+	// Betasoft published for the ZX Spectrum, and these are all real titles.
+	assert.strictEqual(validEntry('Krakout (1987)(Betasoft)'), true)
+	assert.strictEqual(validEntry('Beta Bloc (Europe)'), true)
+	assert.strictEqual(validEntry('Xbox Live Beta Starter Kit Disc (USA, Europe)'), true)
+	assert.strictEqual(validEntry('PS2 Linux Beta Release 1 (Japan) (En,Ja)'), true)
+	assert.strictEqual(validEntry('Halo 2 (USA) (Multiplayer Beta)'), true)
+	assert.strictEqual(validEntry('Soul Blazer (USA) [T-En by SteppoBlazer Beta] [i]'), true)
+})

@@ -56,6 +56,11 @@ game (
 	rom ( name "Half Life 2 - The Orange Box (Europe) (v3) (LV).iso" size 7000000000 crc 10000004 )
 )
 game (
+	name "Halo 2 (USA) (Multiplayer Beta)"
+	region "USA"
+	rom ( name "Halo 2 (USA) (Multiplayer Beta).iso" size 4700000000 crc 10000012 )
+)
+game (
 	name "Kirby no Kirakira Kids (Japan) (GB) (Virtual Console)"
 	region "Japan"
 	rom ( name "Kirby no Kirakira Kids (Japan) (GB) (Virtual Console).wud" size 4194304 crc 10000002 )
@@ -73,4 +78,9 @@ game (
 	name "Super Mario World (USA)"
 	region "USA"
 	rom ( name "Super Mario World (USA).sfc" size 524288 crc 10000005 )
+)
+game (
+	name "Xbox Live Beta Starter Kit Disc (USA, Europe)"
+	region "USA"
+	rom ( name "Xbox Live Beta Starter Kit Disc (USA, Europe).iso" size 4700000000 crc 10000011 )
 )

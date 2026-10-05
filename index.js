@@ -141,15 +141,23 @@ const invalidSubstrings = [
 	' (demo-',
 	'(Program)',
 	'- Program -',
-	' (Beta)',
-	' (Beta 1)',
-	' (Beta 2)',
-	' (Beta 3)',
 	'Test Cartridge',
 	'Super Nintendo Tester',
 	'Version Data',
 	'(System)',
 	'G. Darius (USA) (Beta)'
+]
+
+/**
+ * Patterns that invalidate a game entry entirely, for what a plain substring
+ * cannot express.
+ */
+const invalidRegexps = [
+	// Any beta, however it is numbered or named: "(Beta)", "(Beta 12)",
+	// "(Beta Demo)". The parenthetical has to begin with it, which leaves the
+	// publisher "(Betasoft)" alone, along with games actually called things
+	// like "Beta Bloc" and discs released as "(Multiplayer Beta)".
+	/\(Beta\b[^)]*\)/
 ]
 
 /**
@@ -425,6 +433,12 @@ function validEntry(gameName) {
 	// Invalidate some of the entries.
 	for (const substr of invalidSubstrings) {
 		if (gameName.includes(substr)) {
+			return false
+		}
+	}
+
+	for (const regexp of invalidRegexps) {
+		if (regexp.test(gameName)) {
 			return false
 		}
 	}
