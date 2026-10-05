@@ -53,13 +53,23 @@ test('every disabled DAT says why', function () {
 	}
 })
 
-test('every DAT is written into the database submodule', function () {
+test('every DAT is written into the database submodule', function (t) {
 	for (const name of Object.keys(dats)) {
 		assert.ok(name.startsWith('database/metadat/'), `${name} is not written into database/metadat`)
 	}
+
+	// Checking that the directories exist only means something where the
+	// submodule is checked out, which CI does not bother with as it never
+	// runs a build.
+	const repo = path.join(__dirname, '..')
+	if (!fs.existsSync(path.join(repo, 'database', 'metadat'))) {
+		t.skip('the database submodule is not checked out')
+		return
+	}
+
 	// The 147 DATs share four directories, so there is no point stat-ing each.
 	for (const dir of new Set(Object.keys(dats).map((name) => path.dirname(name)))) {
-		assert.strictEqual(fs.existsSync(dir), true, `${dir} does not exist to write DATs into`)
+		assert.strictEqual(fs.existsSync(path.join(repo, dir)), true, `${dir} does not exist to write DATs into`)
 	}
 })
 
