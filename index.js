@@ -245,13 +245,18 @@ const tosecDateRegexp = /\((?:19|20)(?:xx|\dx)\)(\([^()]*\))?/g
  * Parentheticals that sit where a TOSEC publisher would, but are a flag rather
  * than a publisher.
  *
- * TOSEC puts the publisher directly after the release date, so that one is
- * dropped along with the date. Plenty of titles put a flag in the same spot
- * though, and dropping those loses real information: it collapses two
- * revisions of a game into one name, which then come back as unrelated
- * "(Alt n)" entries.
+ * TOSEC's publisher field is positional and mandatory, so whatever follows the
+ * release date is almost always the publisher and gets dropped with the date.
+ * A handful of titles put a flag there instead, and dropping those loses real
+ * information — a multi-disk set whose "(Disk 1 of 2)" is eaten collapses into
+ * one name and comes back as an unrelated "(Alt n)".
+ *
+ * This list stays deliberately narrow. Anything looser swallows the publisher
+ * abbreviations that fill the same slot: across the TOSEC and No-Intro inputs,
+ * matching any two-letter code here would keep "(CP)", "(EA)" and 3,000 other
+ * publishers in the titles to rescue 35 genuine flags.
  */
-const datFlagRegexp = /^(?:Rev [\w.]+|RE\d|Alt(?: \d+)?|Proto|Beta(?: \d+)?|Demo|Sample|Unl|Aftermarket|Pirate|Promo|M\d+|v[\w.]+|[A-Z]{2}(?:-[A-Z]{2})*|[a-z]{2}(?:-[a-z]{2})*|(?:Dis[ck]|Tape|Track|Side) \d+(?: of \d+)?)$/
+const datFlagRegexp = /^(?:Rev [\w.]+|RE\d|Alt(?: \d+)?|Proto|Beta(?: \d+)?|Demo|Sample|M\d+|(?:Dis[ck]|Tape|Track|Side) \d+(?: of \d+)?)$/
 
 /**
  * Drop the publisher TOSEC places right after a release date, keeping whatever

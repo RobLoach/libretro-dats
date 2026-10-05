@@ -47,8 +47,16 @@ test('keeps a flag that sits where a TOSEC publisher would', function () {
 	assert.strictEqual(cleanGameName('Boulder Dash (1984)(Rev 2)', TOSEC).title, 'Boulder Dash (Rev 2)')
 	assert.strictEqual(cleanGameName('Some Game (1984)(Alt 1)', TOSEC).title, 'Some Game (Alt 1)')
 	assert.strictEqual(cleanGameName('Some Game (1984)(Proto)', TOSEC).title, 'Some Game (Proto)')
-	// The country code lands there too when there is no publisher at all.
-	assert.strictEqual(cleanGameName('Some Game (1984)(JP)', TOSEC).title, 'Some Game (Japan)')
+	assert.strictEqual(cleanGameName('Some Game (1984)(Disk 1 of 2)', TOSEC).title, 'Some Game (Disk 1)')
+})
+
+test('still drops a two-letter publisher that follows a TOSEC date', function () {
+	// The slot after the date is TOSEC's positional publisher field, so a short
+	// code there is an abbreviated publisher, not a country: "(CP)" is Czech
+	// Paradise and "(EA)" is Electronic Arts.
+	assert.strictEqual(cleanGameName('16K Superchess (1983)(CP)(16K)', TOSEC).title, '16K Superchess (16K)')
+	assert.strictEqual(cleanGameName('Rockman 8 (19xx)(NT)(TW)', TOSEC).title, 'Rockman 8 (Taiwan)')
+	assert.strictEqual(cleanGameName('Some Game (1990)(EA)', TOSEC).title, 'Some Game')
 })
 
 test('keeps a flag that sits where a publisher would after an unclear date', function () {
@@ -71,11 +79,14 @@ test('tells a TOSEC publisher apart from a flag', function () {
 	assert.strictEqual(keepDatFlag('(Rev 1)'), '(Rev 1)')
 	assert.strictEqual(keepDatFlag('(Alt 11)'), '(Alt 11)')
 	assert.strictEqual(keepDatFlag('(Disc 2 of 3)'), '(Disc 2 of 3)')
-	assert.strictEqual(keepDatFlag('(EU-US)'), '(EU-US)')
-	assert.strictEqual(keepDatFlag('(en-ja)'), '(en-ja)')
-	// Anything else in that spot is the publisher, which gets dropped.
+	// Anything else in that spot is the publisher, which gets dropped. Short
+	// codes especially: they are abbreviated publishers, not country codes.
 	assert.strictEqual(keepDatFlag('(Rainbow Arts)'), '')
 	assert.strictEqual(keepDatFlag('(Ocean)'), '')
+	assert.strictEqual(keepDatFlag('(EU-US)'), '')
+	assert.strictEqual(keepDatFlag('(en-ja)'), '')
+	assert.strictEqual(keepDatFlag('(CP)'), '')
+	assert.strictEqual(keepDatFlag('(vtrdos.ru)'), '')
 	assert.strictEqual(keepDatFlag(undefined), '')
 })
 
