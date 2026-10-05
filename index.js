@@ -45,6 +45,7 @@ async function start(argv = process.argv.slice(2)) {
 	const failed = []
 	const disabled = []
 	let written = 0
+	let unchanged = 0
 	for (const [name, datsInfo] of Object.entries(dats)) {
 		let result
 		try {
@@ -70,10 +71,13 @@ async function start(argv = process.argv.slice(2)) {
 		}
 		else {
 			written++
+			if (!result.changed) {
+				unchanged++
+			}
 		}
 	}
 
-	reportRun(written, missing, empty, failed, disabled)
+	reportRun(written, missing, empty, failed, disabled, unchanged)
 	if (failed.length > 0) {
 		process.exitCode = 1
 	}
@@ -84,9 +88,13 @@ async function start(argv = process.argv.slice(2)) {
  * lines of output, so a build with missing input otherwise looks just like a
  * successful one.
  */
-function reportRun(written, missing, empty, failed = [], disabled = []) {
+function reportRun(written, missing, empty, failed = [], disabled = [], unchanged = 0) {
 	const total = written + missing.length + empty.length + failed.length
 	console.log(`\nBuilt ${written} of ${total} DATs.`)
+
+	if (unchanged > 0) {
+		console.log(`${written - unchanged} changed, ${unchanged} already up to date.`)
+	}
 
 	// Disabled DATs are turned off on purpose, so they are listed last, apart
 	// from the ones that were meant to build and did not.
@@ -395,6 +403,11 @@ const revisionReplacements = [
 ]
 
 /**
+ * An "(Alt n)" tag at the end of a title, however it got there.
+ */
+const altSuffixRegexp = / \(Alt(?: \d+)?\)$/
+
+/**
  * Serials that should be treated as if there is no serial at all.
  */
 const ignoreSerials = [
@@ -491,8 +504,41 @@ async function processDat(datsInfo, name) {
 	}
 
 	// Save the new DAT file.
-	await fs.promises.writeFile(`${name}.dat`, output)
-	return {files: files.length, games: Object.keys(games).length}
+	const changed = await writeDat(`${name}.dat`, output)
+	return {files: files.length, games: Object.keys(games).length, changed}
+}
+
+/**
+ * The DAT contents, without the header's version line.
+ */
+function withoutVersion(dat) {
+	return dat.replace(/^\tversion ".*"\n/m, '')
+}
+
+/**
+ * Write a built DAT, and report whether it actually changed anything.
+ *
+ * The header carries the date the DAT was built, so writing unconditionally
+ * rewrites all of them on any day the build is run, and the handful of real
+ * changes are lost among a hundred-odd version bumps in the review.
+ */
+async function writeDat(file, output) {
+	let existing
+	try {
+		existing = await fs.promises.readFile(file, {encoding: 'utf8'})
+	}
+	catch (err) {
+		if (err.code !== 'ENOENT') {
+			throw err
+		}
+	}
+
+	if (existing !== undefined && withoutVersion(existing) === withoutVersion(output)) {
+		return false
+	}
+
+	await fs.promises.writeFile(file, output)
+	return true
 }
 
 /**
@@ -515,8 +561,23 @@ function collectGames(results, name) {
 
 			const clean = cleanGameName(entry.title, name)
 
+			// The title is checked again once it has been cleaned. TOSEC writes
+			// "(beta)" lowercase and without the space the filter looks for, so
+			// those entries only become recognizable after normalizing, and 728
+			// of them were reaching the DATs.
+			if (!validEntry(clean.title)) {
+				continue
+			}
+
 			// Distinguish games that share a name, but skip entries that are
 			// identical to one already added under the same name.
+			//
+			// The "(Alt n)" series is continued from the base title rather than
+			// appended to it, because a title can already carry one: TOSEC's
+			// "[a]" becomes "(Alt 1)", and that name is often taken already by
+			// a game the same title collided with earlier. Appending produced
+			// "007 Multispy (Alt 1) (Alt 1)".
+			const base = clean.title.replace(altSuffixRegexp, '')
 			let gameName = clean.title
 			let duplicate = false
 			let alt = 1
@@ -525,7 +586,7 @@ function collectGames(results, name) {
 					duplicate = true
 					break
 				}
-				gameName = `${clean.title} (Alt ${alt++})`
+				gameName = `${base} (Alt ${alt++})`
 			}
 			if (!duplicate) {
 				games[gameName] = {rom: entry, clean}
@@ -681,6 +742,9 @@ function cleanGameName(game, name) {
 	}
 	gameName = gameName.replace(/ {2,}/g, ' ')
 		.replace(/\(([^()]+)\) \(\1\)/g, '($1)')
+		// "[cr][a]" leaves the alt tag stuck to the flag in front of it, which
+		// hides it from the alt numbering in collectGames().
+		.replace(/\](\(Alt)/g, '] $1')
 		.trim()
 
 	// Protect against #### - Game Name (Country) -- Remove the prefixing numbers.
@@ -1067,5 +1131,6 @@ module.exports = {
 	romFilename,
 	sameEntry,
 	validEntry,
-	validRom
+	validRom,
+	withoutVersion
 }

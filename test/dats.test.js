@@ -111,7 +111,7 @@ test('builds a DAT file', async function () {
 	})
 	const result = await processDat({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out'))
 
-	assert.deepStrictEqual(result, {files: 1, games: 1})
+	assert.deepStrictEqual(result, {files: 1, games: 1, changed: true})
 	const output = fs.readFileSync(path.join(dir, 'out.dat'), 'utf8')
 	assert.match(output, /^clrmamepro \(/)
 	assert.match(output, /\tname "Some Game \(USA\)"\n\tregion "USA"\n/)
@@ -264,7 +264,7 @@ test('builds a DAT whose games use a title element', async function () {
 	})
 	const result = await quietly({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out'))
 
-	assert.deepStrictEqual(result, {files: 1, games: 1})
+	assert.deepStrictEqual(result, {files: 1, games: 1, changed: true})
 	assert.match(fs.readFileSync(path.join(dir, 'out.dat'), 'utf8'), /\tname "Some Game \(USA\)"\n/)
 })
 
@@ -277,7 +277,7 @@ test('skips a game with no ROM entries, and keeps the rest', async function () {
 	})
 	const result = await quietly({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out'))
 
-	assert.deepStrictEqual(result, {files: 1, games: 1})
+	assert.deepStrictEqual(result, {files: 1, games: 1, changed: true})
 })
 
 test('falls back to the file path when a DAT has no games and no header', async function () {
