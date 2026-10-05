@@ -3,6 +3,10 @@ node_modules
 temp
 *.zip
 ._*
+# Checked in on purpose: a global ignore commonly excludes .claude
+!.claude/
+!.claude/**
+.claude/settings.local.json
 !input/no-intro/.gitkeep
 !input/tosec/.gitkeep
 !input/redump/.gitkeep
