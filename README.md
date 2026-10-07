@@ -27,23 +27,9 @@ Builds the following sources...
     npm install
     ```
 
-1. Download the No-Intro and TOSEC packs into `input/downloads/`...
-    ``` bash
-    bash .claude/skills/input-dats/scripts/download-input.sh
-    ```
+1. Download the No-Intro and TOSEC packs into `input/downloads/`.
 
-    This fetches the No-Intro daily pack, with Aftermarket included, from
-    https://datomatic.no-intro.org/?page=download&op=daily and the newest
-    complete DAT pack from https://www.tosecdev.org/downloads. Packs downloaded
-    by hand from those pages work just as well.
-
-1. Extract them, and check they landed where `dats.json` expects...
-    ``` bash
-    bash .claude/skills/input-dats/scripts/extract-input.sh input/downloads/*.zip
-    ```
-
-    The packs carry their own top-level folder, so the datfiles end up at
-    paths like these:
+1. Extract them, and check they landed where `dats.json` expects.
     ```
     input/no-intro/No-Intro/Nintendo - Nintendo Entertainment System*.dat
     input/tosec/TOSEC/Sony PlayStation*.dat
@@ -53,10 +39,6 @@ Builds the following sources...
     ``` bash
     npm start
     ```
-
-    The built DATs are written into the `database` submodule, and a summary of
-    which ones were built, and which were skipped for want of input files, is
-    printed at the end of the run.
 
 ### Options
 
@@ -95,23 +77,8 @@ patterns, and the reason is printed in the run summary:
 }
 ```
 
-The Redump systems that get downloaded are taken from these patterns, so a new
-Redump DAT only needs an entry here.
-
 ## Tests
 
 ``` bash
 npm test
-```
-
-`test/fixtures` holds a small corpus of real titles from each source, with the
-DAT each one is expected to build checked in beside it. Title handling is easy
-to get subtly wrong across the board while every hand-written case still
-passes, so a change there shows up as a diff against the expected output. When
-a change is meant to alter the output, rebuild the expected files and review
-the diff it leaves behind:
-
-``` bash
-UPDATE_GOLDEN=1 npm test
-git diff test/fixtures
 ```
