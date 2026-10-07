@@ -5,10 +5,12 @@ description: Download the No-Intro, TOSEC and Redump source datfiles and put the
 
 # Getting the source DATs in place
 
-`npm start` builds 137 DATs out of three upstream sources. Redump is fetched
-automatically; No-Intro and TOSEC have to be downloaded by hand, because
-No-Intro's download is a two-step browser form and TOSEC's link carries an
-attachment id that changes with every release.
+`npm start` builds 137 DATs out of three upstream sources. Redump is fetched by
+the build itself. No-Intro and TOSEC are fetched with
+[Playwright CLI](https://playwright.dev/agent-cli/introduction), because
+neither has a fixed URL: No-Intro prepares its pack on request through a
+two-step form, and TOSEC files every release under a new dated category with
+its own attachment id.
 
 Everything under `input/` is gitignored, so none of this is ever committed.
 
@@ -28,48 +30,76 @@ extracted into the *parent*:
 
 Note the doubled directory: the No-Intro pack goes into `input/no-intro/` and
 produces `input/no-intro/No-Intro/`. Dropping the datfiles straight into
-`input/no-intro/` matches **nothing** — the README's example path is wrong
-about this, so do not follow it.
+`input/no-intro/` matches **nothing**.
 
 ## Steps
 
 ### 1. Download the packs
 
-- **No-Intro** — <https://datomatic.no-intro.org/?page=download&op=daily>.
-  Toggle **Pirate, Homebrew, Aftermarket** on, then work through the two-step
-  form: **Request**, wait for it to be prepared, then **Download**. This cannot
-  be scripted reliably; the form has changed before and broke the automation
-  (issue #34), which is why `nointro()` is commented out in `download.js`.
-- **TOSEC** — <https://www.tosecdev.org/downloads>. Take the complete DAT pack
-  for the newest release. The URL in `download.js` pins a dated category and
-  attachment id and will be stale.
+```bash
+bash .claude/skills/input-dats/scripts/download-input.sh          # both packs
+bash .claude/skills/input-dats/scripts/download-input.sh tosec    # just one
+```
+
+Drives `playwright-cli` through both sites and saves the packs into
+`input/downloads/` under the names the sites give them, which carry the release
+date. Only the newest pack of each source is kept there. A run takes about 30
+seconds. It needs `playwright-cli` on the PATH:
+
+```bash
+npm install -g @playwright/cli@latest
+```
+
+What it does on each site, so a run that fails can be finished by hand:
+
+- **No-Intro** — opens
+  <https://datomatic.no-intro.org/index.php?page=download&op=daily>, ticks the
+  `set[1]` (No-Intro), `set[3]` (Unofficial), `include_standard` and
+  `include_aftermarket` boxes, clicks **Request**, then clicks **Download!!** on
+  the page that follows. That page carries several Download!! buttons, all but
+  one of them hidden to catch scripts. The script targets it with
+  `getByRole('button', { name: 'Download!!' })`, which only matches what is
+  visible and fails rather than guesses if that is ever more than one.
+- **TOSEC** — opens <https://www.tosecdev.org/downloads>, picks the newest dated
+  release (the menu is not in date order), and clicks its "DAT Pack - Complete"
+  link.
 - **Redump** — nothing to do. `npm start` fetches the 21 systems that
   `dats.json` actually reads, and skips any zip already on disk.
 
-Ask the user to download these rather than guessing at a URL; both sites gate
-downloads behind forms, and fetching the wrong artefact wastes a large
-download.
+If a site has changed, the script prints `FAILED <source>` with the
+playwright-cli error for the step that broke. Walk that site by hand and look
+at the page before changing anything:
+
+```bash
+playwright-cli -s=dats open 'https://datomatic.no-intro.org/index.php?page=download&op=daily'
+playwright-cli -s=dats snapshot
+playwright-cli -s=dats close
+```
+
+Then update `download-input.sh` to match. Packs downloaded by hand in a browser
+work too; pass their paths to the extract step instead.
 
 ### 2. Extract them
 
 ```bash
-bash .claude/skills/input-dats/scripts/extract-input.sh ~/Downloads/*.zip
+bash .claude/skills/input-dats/scripts/extract-input.sh input/downloads/*.zip
 ```
 
 Identifies each archive by what it carries at its top level, extracts it into
 the right parent, and verifies the result. Pass the packs in any order and
-under whatever name the browser saved them as.
+under any name.
 
 It uses the system `unzip` rather than the project's `extract-zip`, which fails
 on the TOSEC pack (issue #63).
 
-Re-extracting overwrites in place. That matters because datfiles carry their
-release date in the filename, so a stale copy left behind gets matched by the
-same glob as the new one and its entries silently overwrite the newer ones. If
-a pack has been replaced rather than updated, clear the directory first:
+Re-extracting overwrites in place, but removes nothing. Datfiles carry their
+release date in the filename, so the previous pack's copy would sit beside the
+new one and both would match the same glob. When refreshing, clear the old
+trees first:
 
 ```bash
-rm -rf input/tosec && bash .claude/skills/input-dats/scripts/extract-input.sh <zip>
+rm -rf input/no-intro input/tosec
+bash .claude/skills/input-dats/scripts/extract-input.sh input/downloads/*.zip
 ```
 
 ### 3. Verify before building
@@ -116,6 +146,13 @@ Built 135 of 137 DATs.
 
 ## Troubleshooting
 
+- **`download-input.sh` reports `FAILED No-Intro` or `FAILED TOSEC`** — the
+  site changed. Walk it by hand with `playwright-cli snapshot`, per step 1.
+- **`playwright-cli is required`** — install it with
+  `npm install -g @playwright/cli@latest`.
+- **unzip warns of a mismatching "local" filename** — one CUE file in the TOSEC
+  pack has its name encoded two ways. That is upstream and harmless; the
+  extract script carries on.
 - **"No DATs were built. Are the input files in place?"** — nothing matched at
   all. Run the verify script; the packs are almost certainly one level too
   high.
@@ -128,15 +165,18 @@ Built 135 of 137 DATs.
 - **A DAT reports `DISABLED`** — turned off on purpose in `dats.json`, with the
   reason printed beside it. The 10 TOSEC-ISO entries are off; extracting
   TOSEC-ISO will not switch them back on.
-- **`FAILED <name>`** — one source file is malformed. The build carries on and
-  exits non-zero; the message names the file.
+- **`FAILED <name>`** from the build — one source file is malformed. The build
+  carries on and exits non-zero; the message names the file.
 
 ## Rules
 
 - Never commit anything under `input/`. It is gitignored, and the packs are
   hundreds of megabytes.
-- Never guess a download URL for No-Intro or TOSEC. Both are behind forms, and
-  the hardcoded URLs in `download.js` are already stale.
+- Never hardcode a No-Intro or TOSEC download URL. The No-Intro pack only
+  exists once requested, and the TOSEC link changes with every release, so the
+  script finds both from the pages each time.
+- On No-Intro's download page, only ever click what is visible. The hidden
+  Download!! buttons are there to catch scripts.
 - Do not delete `static/`. Those two datfiles are checked in, hand-curated, and
   not downloadable from anywhere.
 - Re-run the verify script after extracting anything, before building.

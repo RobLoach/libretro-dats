@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "extract-zip": "^2.0.1",
-    "puppeteer": "^25.10.0",
     "sanitize-filename": "^1.6.4",
     "sort-keys": "^6.0.1",
     "unidecode": "^1.1.0",

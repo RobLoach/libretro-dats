@@ -13,25 +13,44 @@ Builds the following sources...
 ## Dependencies
 
 - Node.js 22.12 or newer
+- `unzip`
+- [Playwright CLI](https://playwright.dev/agent-cli/introduction), to download
+  No-Intro and TOSEC: `npm install -g @playwright/cli@latest`
 
 ## Usage
 
-1. Download the source dat files from...
-    1. Download https://datomatic.no-intro.org/?page=download&op=daily , toggling "Pirate, Homebrew, Aftermarket"
-    2. Download https://www.tosecdev.org/downloads
-
-1. Extract them and set up the .dat files to match...
-    ```
-    input/no-intro/Nintendo - Nintendo Entertainment System*.dat
-    input/tosec/TOSEC/Sony PlayStation*.dat
-    ```
-
-1. Run the script...
+1. Clone the repository...
     ``` bash
     git clone https://github.com/RobLoach/libretro-dats.git
     cd libretro-dats
     git submodule update --init
     npm install
+    ```
+
+1. Download the No-Intro and TOSEC packs into `input/downloads/`...
+    ``` bash
+    bash .claude/skills/input-dats/scripts/download-input.sh
+    ```
+
+    This fetches the No-Intro daily pack, with Aftermarket included, from
+    https://datomatic.no-intro.org/?page=download&op=daily and the newest
+    complete DAT pack from https://www.tosecdev.org/downloads. Packs downloaded
+    by hand from those pages work just as well.
+
+1. Extract them, and check they landed where `dats.json` expects...
+    ``` bash
+    bash .claude/skills/input-dats/scripts/extract-input.sh input/downloads/*.zip
+    ```
+
+    The packs carry their own top-level folder, so the datfiles end up at
+    paths like these:
+    ```
+    input/no-intro/No-Intro/Nintendo - Nintendo Entertainment System*.dat
+    input/tosec/TOSEC/Sony PlayStation*.dat
+    ```
+
+1. Run the script, which also fetches Redump...
+    ``` bash
     npm start
     ```
 

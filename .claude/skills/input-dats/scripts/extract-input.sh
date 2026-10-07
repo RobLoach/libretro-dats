@@ -69,7 +69,10 @@ for zip in "$@"; do
 	# -o overwrites, so re-extracting a newer pack refreshes in place. Datfiles
 	# are dated in their filenames, so stale ones would otherwise pile up and
 	# both get matched by the globs.
-	unzip -q -o "$zip" -d "$dest"
+	#
+	# unzip exits 1 on a warning it recovered from. The TOSEC pack carries one:
+	# a CUE file whose name is encoded differently in its two zip headers.
+	unzip -q -o "$zip" -d "$dest" || [ "$?" -eq 1 ]
 
 	count="$(find "$dest" -type f -name '*.dat' | wc -l)"
 	echo "      $count .dat files now under $(basename "$dest")/"

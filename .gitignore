@@ -1,6 +1,7 @@
 input*
 node_modules
 temp
+.playwright-cli
 *.zip
 ._*
 # Checked in on purpose: a global ignore commonly excludes .claude
