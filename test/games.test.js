@@ -12,7 +12,8 @@ const TOSEC = 'database/metadat/tosec/Test'
 function entryFor(rom, name = 'Test') {
 	const games = collectGames([{[rom.crc]: rom}], name)
 	const gameName = Object.keys(games)[0]
-	return getGameEntry(gameName, games[gameName].clean, games[gameName].rom)
+	const [{clean, rom: entry}] = games[gameName]
+	return getGameEntry(gameName, clean, entry)
 }
 
 /**
@@ -77,31 +78,32 @@ test('ignores placeholder serials', function () {
 })
 
 // https://github.com/RobLoach/libretro-dats/issues/3
-test('gives colliding titles distinct names', function () {
+test('keeps colliding titles under the one name', function () {
 	// Both titles clean up to "Cool Game", as the date and publisher are
 	// stripped. They are different dumps, so both belong in the DAT, under
-	// names that do not collide.
+	// the name of the game rather than a numbered alt.
 	const games = collectGames([{
 		AAAAAAAA: {title: 'Cool Game (1991)(Ocean)', name: 'a.iso', crc: 'AAAAAAAA'},
 		BBBBBBBB: {title: 'Cool Game (1993)(Ocean)', name: 'b.iso', crc: 'BBBBBBBB'}
 	}], 'Test')
 
-	assert.deepStrictEqual(Object.keys(games), ['Cool Game', 'Cool Game (Alt 1)'])
+	assert.deepStrictEqual(Object.keys(games), ['Cool Game'])
+	assert.deepStrictEqual(games['Cool Game'].map((game) => game.rom.crc), ['AAAAAAAA', 'BBBBBBBB'])
 
-	const output = Object.keys(games).map((game) => getGameEntry(game, games[game].clean, games[game].rom)).join('')
-	assert.deepStrictEqual(namesIn(output), ['Cool Game', 'Cool Game (Alt 1)'])
+	const output = games['Cool Game'].map((game) => getGameEntry('Cool Game', game.clean, game.rom)).join('')
+	assert.deepStrictEqual(namesIn(output), ['Cool Game', 'Cool Game'])
 	// The dates still tell the two apart.
 	assert.match(output, /releaseyear "1991"/)
 	assert.match(output, /releaseyear "1993"/)
 })
 
-test('keeps counting up when more than two titles collide', function () {
+test('keeps every title that collides, in the order found', function () {
 	const games = collectGames([{
 		A: {title: 'Cool Game (1991)', name: 'a.iso', crc: 'A'},
 		B: {title: 'Cool Game (1992)', name: 'b.iso', crc: 'B'},
 		C: {title: 'Cool Game (1993)', name: 'c.iso', crc: 'C'}
 	}], 'Test')
-	assert.deepStrictEqual(Object.keys(games), ['Cool Game', 'Cool Game (Alt 1)', 'Cool Game (Alt 2)'])
+	assert.deepStrictEqual(games['Cool Game'].map((game) => game.rom.crc), ['A', 'B', 'C'])
 })
 
 test('adds the same dump only once', function () {
@@ -109,6 +111,15 @@ test('adds the same dump only once', function () {
 	const rom = {title: 'Cool Game (1991)', name: 'a.iso', crc: 'AAAAAAAA'}
 	const games = collectGames([{AAAAAAAA: rom}, {AAAAAAAA: {...rom}}], 'Test')
 	assert.deepStrictEqual(Object.keys(games), ['Cool Game'])
+	assert.strictEqual(games['Cool Game'].length, 1)
+})
+
+test('keeps an alternate dump that shares a serial with the game', function () {
+	const games = collectGames([{
+		A: {title: 'Cool Game (USA)', name: 'a.bin', crc: 'A', serial: 'SLUS-1'},
+		B: {title: 'Cool Game (USA) (Alt)', name: 'b.bin', crc: 'B', serial: 'SLUS-1'}
+	}], 'Test')
+	assert.deepStrictEqual(games['Cool Game (USA)'].map((game) => game.rom.crc), ['A', 'B'])
 })
 
 test('leaves out invalid entries and .sav files', function () {
@@ -124,6 +135,9 @@ test('recognizes the same entry by crc or serial', function () {
 	assert.strictEqual(sameEntry({crc: 'A'}, {crc: 'A'}), true)
 	assert.strictEqual(sameEntry({crc: 'A'}, {crc: 'B'}), false)
 	assert.strictEqual(sameEntry({serial: 'SLUS-1'}, {serial: 'SLUS-1'}), true)
+	assert.strictEqual(sameEntry({crc: 'A', serial: 'SLUS-1'}, {serial: 'SLUS-1'}), true)
+	// An alternate dump of a disc shares its serial, but is its own entry.
+	assert.strictEqual(sameEntry({crc: 'A', serial: 'SLUS-1'}, {crc: 'B', serial: 'SLUS-1'}), false)
 	assert.strictEqual(sameEntry({}, {}), false)
 })
 

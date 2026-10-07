@@ -207,18 +207,18 @@ const titleReplacements = [
 	['(Data East - Sega)', ''],
 	['(ReadySoft)', ''],
 	['(Virgin)', ''],
-	['[a]', '(Alt 1)'],
-	['[a1]', '(Alt 1)'],
-	['[a2]', '(Alt 2)'],
-	['[a3]', '(Alt 3)'],
-	['[a4]', '(Alt 4)'],
-	['[a5]', '(Alt 5)'],
-	['[a6]', '(Alt 6)'],
-	['[a7]', '(Alt 7)'],
-	['[a8]', '(Alt 8)'],
-	['[a9]', '(Alt 9)'],
-	['[a10]', '(Alt 10)'],
-	['[a11]', '(Alt 11)'],
+	['[a]', ''],
+	['[a1]', ''],
+	['[a2]', ''],
+	['[a3]', ''],
+	['[a4]', ''],
+	['[a5]', ''],
+	['[a6]', ''],
+	['[a7]', ''],
+	['[a8]', ''],
+	['[a9]', ''],
+	['[a10]', ''],
+	['[a11]', ''],
 	['(EA Sports)', ''],
 	['(Electronic Arts)', ''],
 	['(Digital Pictures)', ''],
@@ -264,15 +264,15 @@ const tosecDateRegexp = /\((?:19|20)(?:xx|\dx)\)(\([^()]*\))?/g
  * TOSEC's publisher field is positional and mandatory, so whatever follows the
  * release date is almost always the publisher and gets dropped with the date.
  * A handful of titles put a flag there instead, and dropping those loses real
- * information — a multi-disk set whose "(Disk 1 of 2)" is eaten collapses into
- * one name and comes back as an unrelated "(Alt n)".
+ * information — a multi-disk set whose "(Disk 1 of 2)" is eaten has all its
+ * disks collapse into one name.
  *
  * This list stays deliberately narrow. Anything looser swallows the publisher
  * abbreviations that fill the same slot: across the TOSEC and No-Intro inputs,
  * matching any two-letter code here would keep "(CP)", "(EA)" and 3,000 other
  * publishers in the titles to rescue 35 genuine flags.
  */
-const datFlagRegexp = /^(?:Rev [\w.]+|RE\d|Alt(?: \d+)?|Proto|Beta(?: \d+)?|Demo|Sample|M\d+|(?:Dis[ck]|Tape|Track|Side) \d+(?: of \d+)?)$/
+const datFlagRegexp = /^(?:Rev [\w.]+|RE\d|Proto|Beta(?: \d+)?|Demo|Sample|M\d+|(?:Dis[ck]|Tape|Track|Side) \d+(?: of \d+)?)$/
 
 /**
  * Drop the publisher TOSEC places right after a release date, keeping whatever
@@ -411,9 +411,13 @@ const revisionReplacements = [
 ]
 
 /**
- * An "(Alt n)" tag at the end of a title, however it got there.
+ * An "(Alt)" or "(Alt n)" tag anywhere in a title.
+ *
+ * Alternate dumps of a game are named for the game itself. Matching goes by
+ * CRC and serial, so the tag only ever showed up in playlist labels, where it
+ * also kept the thumbnail lookup from finding the game.
  */
-const altSuffixRegexp = / \(Alt(?: \d+)?\)$/
+const altRegexp = / ?\(Alt(?: \d+)?\)/g
 
 /**
  * Serials that should be treated as if there is no serial at all.
@@ -505,7 +509,8 @@ async function processDat(datsInfo, name) {
 
 	// Loop through the results and build a game database.
 	const games = collectGames(results, name)
-	if (Object.keys(games).length === 0) {
+	const count = Object.values(games).reduce((total, entries) => total + entries.length, 0)
+	if (count === 0) {
 		return {files: files.length, games: 0}
 	}
 
@@ -513,13 +518,14 @@ async function processDat(datsInfo, name) {
 
 	// Loop through the sorted games database, and output the rom.
 	for (const game of Object.keys(sort(games))) {
-		const {rom, clean} = games[game]
-		output += getGameEntry(game, clean, rom)
+		for (const {rom, clean} of games[game]) {
+			output += getGameEntry(game, clean, rom)
+		}
 	}
 
 	// Save the new DAT file.
 	const changed = await writeDat(`${name}.dat`, output)
-	return {files: files.length, games: Object.keys(games).length, changed}
+	return {files: files.length, games: count, changed}
 }
 
 /**
@@ -556,13 +562,13 @@ async function writeDat(file, output) {
 }
 
 /**
- * Build the game database for a DAT, keyed by the name each game is written
- * out under.
+ * Build the game database for a DAT: the games written out under each name,
+ * in the order they were found.
  *
  * The titles are cleaned up before they are used as keys. Cleaning strips
  * release dates and publishers, so entries that look distinct in the source
  * ("Title (1991)(Ocean)" and "Title (1993)(Ocean)") can still collapse into
- * the same name. Keying on the cleaned title is what catches that collision.
+ * the same name, and both are written out under it.
  */
 function collectGames(results, name) {
 	const games = {}
@@ -583,27 +589,11 @@ function collectGames(results, name) {
 				continue
 			}
 
-			// Distinguish games that share a name, but skip entries that are
-			// identical to one already added under the same name.
-			//
-			// The "(Alt n)" series is continued from the base title rather than
-			// appended to it, because a title can already carry one: TOSEC's
-			// "[a]" becomes "(Alt 1)", and that name is often taken already by
-			// a game the same title collided with earlier. Appending produced
-			// "007 Multispy (Alt 1) (Alt 1)".
-			const base = clean.title.replace(altSuffixRegexp, '')
-			let gameName = clean.title
-			let duplicate = false
-			let alt = 1
-			while (gameName in games) {
-				if (sameEntry(games[gameName].rom, entry)) {
-					duplicate = true
-					break
-				}
-				gameName = `${base} (Alt ${alt++})`
-			}
-			if (!duplicate) {
-				games[gameName] = {rom: entry, clean}
+			// Games that share a name are all kept under it, other than entries
+			// identical to one already there.
+			const entries = games[clean.title] ??= []
+			if (!entries.some((game) => sameEntry(game.rom, entry))) {
+				entries.push({rom: entry, clean})
 			}
 		}
 	}
@@ -618,7 +608,7 @@ function collectGames(results, name) {
  */
 function getExtensions(games) {
 	const extensions = new Set()
-	for (const game of Object.values(games)) {
+	for (const game of Object.values(games).flat()) {
 		const extension = path.extname(romFilename(game.rom)).slice(1).toLowerCase()
 		if (extension) {
 			extensions.add(extension)
@@ -754,11 +744,9 @@ function cleanGameName(game, name) {
 	for (const [from, to] of revisionReplacements) {
 		gameName = gameName.replaceAll(from, to)
 	}
-	gameName = gameName.replace(/ {2,}/g, ' ')
+	gameName = gameName.replace(altRegexp, '')
+		.replace(/ {2,}/g, ' ')
 		.replace(/\(([^()]+)\) \(\1\)/g, '($1)')
-		// "[cr][a]" leaves the alt tag stuck to the flag in front of it, which
-		// hides it from the alt numbering in collectGames().
-		.replace(/\](\(Alt)/g, '] $1')
 		.trim()
 
 	// Protect against #### - Game Name (Country) -- Remove the prefixing numbers.
@@ -847,9 +835,15 @@ function getGameEntry(gameName, clean, rom) {
 
 /**
  * Determine whether two game entries describe the same ROM.
+ *
+ * The CRC decides when both have one. Alternate dumps of a disc share its
+ * serial but not its CRC, and each needs its own entry to be matched.
  */
 function sameEntry(a, b) {
-	return Boolean((a.crc && a.crc === b.crc) || (a.serial && a.serial === b.serial))
+	if (a.crc && b.crc) {
+		return a.crc === b.crc
+	}
+	return Boolean(a.serial && a.serial === b.serial)
 }
 
 /**

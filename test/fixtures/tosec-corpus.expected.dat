@@ -1,7 +1,7 @@
 clrmamepro (
 	name "Corpus"
 	description "Corpus"
-	version "2026.10.05"
+	version "2026.10.07"
 	extensions "adf|bin|gb|gba|opd|trd|tzx"
 	homepage "http://github.com/robloach/libretro-dats"
 )
@@ -12,12 +12,12 @@ game (
 	rom ( name "007 Multispy (1987)(ZX-Guaranteed).opd" size 184320 crc 0000000C )
 )
 game (
-	name "007 Multispy (Alt 1)"
+	name "007 Multispy"
 	releaseyear "1987"
 	rom ( name "007 Multispy (1987)(ZX-Guaranteed).tzx" size 13838 crc 0000000D )
 )
 game (
-	name "007 Multispy (Alt 2)"
+	name "007 Multispy"
 	releaseyear "1987"
 	rom ( name "007 Multispy (1987)(ZX-Guaranteed)[a].tzx" size 7235 crc 0000000E )
 )
@@ -74,12 +74,12 @@ game (
 game (
 	name "Jet Set Willy [cr]"
 	releaseyear "1984"
-	rom ( name "Jet Set Willy (1984)(Software Projects)[cr].tzx" size 49153 crc 00000010 )
+	rom ( name "Jet Set Willy (1984)(Software Projects)[cr][a].tzx" size 49152 crc 0000000F )
 )
 game (
-	name "Jet Set Willy [cr] (Alt 1)"
+	name "Jet Set Willy [cr]"
 	releaseyear "1984"
-	rom ( name "Jet Set Willy (1984)(Software Projects)[cr][a].tzx" size 49152 crc 0000000F )
+	rom ( name "Jet Set Willy (1984)(Software Projects)[cr].tzx" size 49153 crc 00000010 )
 )
 game (
 	name "Krakout"

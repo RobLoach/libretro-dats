@@ -88,17 +88,13 @@ test('translates TOSEC country and language codes', async function () {
 	assert.match(output, /\tname "Dizzy"/)
 })
 
-test('numbers alts in one series, however they got there', async function () {
+test('names alternate dumps for the game, without numbering them', async function () {
 	const {output} = await build('tosec-corpus', 'tosec')
-	// Two formats of one game plus a "[a]" variant, which used to collide into
-	// "007 Multispy (Alt 1) (Alt 1)".
-	assert.match(output, /\tname "007 Multispy"/)
-	assert.match(output, /\tname "007 Multispy \(Alt 1\)"/)
-	assert.match(output, /\tname "007 Multispy \(Alt 2\)"/)
-	assert.doesNotMatch(output, /\(Alt \d+\) \(Alt \d+\)/)
-	// "[cr][a]" leaves the alt tag stuck to the flag in front of it.
-	assert.match(output, /\tname "Jet Set Willy \[cr\]"/)
-	assert.match(output, /\tname "Jet Set Willy \[cr\] \(Alt 1\)"/)
+	assert.doesNotMatch(output, /\(Alt( \d+)?\)/)
+	// Two formats of one game plus a "[a]" variant all go under its name.
+	assert.strictEqual(output.match(/\tname "007 Multispy"/g).length, 3)
+	// As does a "[cr][a]" beside the crack it is an alternate of.
+	assert.strictEqual(output.match(/\tname "Jet Set Willy \[cr\]"/g).length, 2)
 })
 
 test('leaves No-Intro platform and dumper tags alone', async function () {

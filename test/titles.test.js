@@ -42,10 +42,9 @@ test('drops unclear TOSEC dates, and their publisher', function () {
 test('keeps a flag that sits where a TOSEC publisher would', function () {
 	// The publisher is dropped along with the date, but a flag in the same
 	// spot is real information: without it both revisions collapse into
-	// "Boulder Dash" and come back as unrelated "(Alt n)" entries.
+	// "Boulder Dash", with nothing left to tell them apart.
 	assert.strictEqual(cleanGameName('Boulder Dash (1984)(Rev 1)', TOSEC).title, 'Boulder Dash (Rev 1)')
 	assert.strictEqual(cleanGameName('Boulder Dash (1984)(Rev 2)', TOSEC).title, 'Boulder Dash (Rev 2)')
-	assert.strictEqual(cleanGameName('Some Game (1984)(Alt 1)', TOSEC).title, 'Some Game (Alt 1)')
 	assert.strictEqual(cleanGameName('Some Game (1984)(Proto)', TOSEC).title, 'Some Game (Proto)')
 	assert.strictEqual(cleanGameName('Some Game (1984)(Disk 1 of 2)', TOSEC).title, 'Some Game (Disk 1)')
 })
@@ -60,7 +59,6 @@ test('still drops a two-letter publisher that follows a TOSEC date', function ()
 })
 
 test('keeps a flag that sits where a publisher would after an unclear date', function () {
-	assert.strictEqual(cleanGameName('Some Game (19xx)(Alt 1)', TOSEC).title, 'Some Game (Alt 1)')
 	assert.strictEqual(cleanGameName('Some Game (198x)(Rev 2)', TOSEC).title, 'Some Game (Rev 2)')
 })
 
@@ -77,7 +75,6 @@ test('only translates two-letter codes for TOSEC', function () {
 
 test('tells a TOSEC publisher apart from a flag', function () {
 	assert.strictEqual(keepDatFlag('(Rev 1)'), '(Rev 1)')
-	assert.strictEqual(keepDatFlag('(Alt 11)'), '(Alt 11)')
 	assert.strictEqual(keepDatFlag('(Disc 2 of 3)'), '(Disc 2 of 3)')
 	// Anything else in that spot is the publisher, which gets dropped. Short
 	// codes especially: they are abbreviated publishers, not country codes.
@@ -101,8 +98,14 @@ test('removes the " of y" from a disc number', function () {
 	assert.strictEqual(cleanGameName('Some Game (Tape 2 of 2)', 'Test').title, 'Some Game (Tape 2)')
 })
 
-test('turns alt tags into alt names', function () {
-	assert.strictEqual(cleanGameName('Some Game [a2]', 'Test').title, 'Some Game (Alt 2)')
+test('names an alternate dump for the game itself', function () {
+	assert.strictEqual(cleanGameName('Some Game [a2]', 'Test').title, 'Some Game')
+	assert.strictEqual(cleanGameName('Some Game [cr][a]', 'Test').title, 'Some Game [cr]')
+	assert.strictEqual(cleanGameName('Some Game (Alt 1) (Disk 2)', 'Test').title, 'Some Game (Disk 2)')
+	assert.strictEqual(cleanGameName('Some Game (1984)(Alt 1)', TOSEC).title, 'Some Game')
+	assert.strictEqual(cleanGameName('Some Game (19xx)(Alt)', TOSEC).title, 'Some Game')
+	// Only the tag goes, not a title that happens to start the same way.
+	assert.strictEqual(cleanGameName('Death Mask (Alternative Software)', 'Test').title, 'Death Mask (Alternative Software)')
 })
 
 test('collapses repeated whitespace and duplicated parentheses', function () {
