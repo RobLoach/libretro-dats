@@ -101,6 +101,8 @@ test('removes the " of y" from a disc number', function () {
 test('names an alternate dump for the game itself', function () {
 	assert.strictEqual(cleanGameName('Some Game [a2]', 'Test').title, 'Some Game')
 	assert.strictEqual(cleanGameName('Some Game [cr][a]', 'Test').title, 'Some Game [cr]')
+	assert.strictEqual(cleanGameName('Some Game [a29]', 'Test').title, 'Some Game')
+	assert.strictEqual(cleanGameName('Some Game [a no cracktro]', 'Test').title, 'Some Game [a no cracktro]')
 	assert.strictEqual(cleanGameName('Some Game (Alt 1) (Disk 2)', 'Test').title, 'Some Game (Disk 2)')
 	assert.strictEqual(cleanGameName('Some Game (1984)(Alt 1)', TOSEC).title, 'Some Game')
 	assert.strictEqual(cleanGameName('Some Game (19xx)(Alt)', TOSEC).title, 'Some Game')

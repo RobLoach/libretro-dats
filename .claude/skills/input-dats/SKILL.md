@@ -64,7 +64,8 @@ What it does on each site, so a run that fails can be finished by hand:
   release (the menu is not in date order), and clicks its "DAT Pack - Complete"
   link.
 - **Redump** — nothing to do. `npm start` fetches the 21 systems that
-  `dats.json` actually reads, and skips any zip already on disk.
+  `dats.json` actually reads. A system downloaded less than a day ago is
+  reused; anything older is fetched again and replaces what was there.
 
 If a site has changed, the script prints `FAILED <source>` with the
 playwright-cli error for the step that broke. Walk that site by hand and look
@@ -92,15 +93,11 @@ under any name.
 It uses the system `unzip` rather than the project's `extract-zip`, which fails
 on the TOSEC pack (issue #63).
 
-Re-extracting overwrites in place, but removes nothing. Datfiles carry their
-release date in the filename, so the previous pack's copy would sit beside the
-new one and both would match the same glob. When refreshing, clear the old
-trees first:
-
-```bash
-rm -rf input/no-intro input/tosec
-bash .claude/skills/input-dats/scripts/extract-input.sh input/downloads/*.zip
-```
+Each pack replaces the directory an earlier one left, rather than landing on
+top of it. Datfiles carry their release date in the filename, so last
+release's copy would otherwise sit beside the new one and both would match the
+same glob. The pack is extracted aside first, so one that fails to extract
+leaves the previous tree in place.
 
 ### 3. Verify before building
 
@@ -130,8 +127,8 @@ them rather than failing.
 
 ```bash
 npm start -- --skip-download     # build from what is on disk, fetch nothing
-npm start                        # also fetch Redump
-npm start -- --force-download    # refetch Redump, ignoring cached zips
+npm start                        # also fetch Redump older than a day
+npm start -- --force-download    # refetch all of Redump, however recent
 ```
 
 A full build takes roughly 90 seconds and writes into the `database`

@@ -47,7 +47,8 @@ Builds the following sources...
   input is already in place from rebuilding, so this is mostly for working
   offline.
 - `--force-download` fetches the sources again, instead of reusing what an
-  earlier run downloaded.
+  earlier run downloaded. Without it, a Redump system is reused for a day,
+  then fetched again.
 
 ``` bash
 npm start -- --skip-download

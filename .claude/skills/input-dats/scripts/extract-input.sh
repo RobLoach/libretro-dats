@@ -33,6 +33,9 @@ fi
 
 status=0
 
+# The destinations already replaced by a pack in this run.
+declare -A replaced=()
+
 for zip in "$@"; do
 	if [ ! -f "$zip" ]; then
 		echo "SKIP  $zip: no such file" >&2
@@ -64,15 +67,36 @@ for zip in "$@"; do
 
 	echo "$source  $zip"
 	echo "      -> $dest"
-	mkdir -p "$dest"
 
-	# -o overwrites, so re-extracting a newer pack refreshes in place. Datfiles
-	# are dated in their filenames, so stale ones would otherwise pile up and
-	# both get matched by the globs.
-	#
+	# The pack replaces whatever an earlier one left, rather than landing on
+	# top of it. Datfiles carry their date in the filename, so last release's
+	# would otherwise sit beside the new one and both match the same pattern.
+	# It is extracted aside first, so a pack that fails leaves the old in place.
+	# A second pack for the same source in one run goes on top of the first.
+	if [ -n "${replaced[$dest]:-}" ]; then
+		target="$dest"
+	else
+		target="$dest.part"
+		rm -rf "$target"
+	fi
+	mkdir -p "$target"
+
 	# unzip exits 1 on a warning it recovered from. The TOSEC pack carries one:
 	# a CUE file whose name is encoded differently in its two zip headers.
-	unzip -q -o "$zip" -d "$dest" || [ "$?" -eq 1 ]
+	result=0
+	unzip -q -o "$zip" -d "$target" || result=$?
+	if [ "$result" -gt 1 ]; then
+		echo "FAILED $zip: unzip could not extract it, so $(basename "$dest")/ was left as it was" >&2
+		rm -rf "$dest.part"
+		status=1
+		continue
+	fi
+
+	if [ "$target" != "$dest" ]; then
+		rm -rf "$dest"
+		mv "$target" "$dest"
+		replaced[$dest]=1
+	fi
 
 	count="$(find "$dest" -type f -name '*.dat' | wc -l)"
 	echo "      $count .dat files now under $(basename "$dest")/"

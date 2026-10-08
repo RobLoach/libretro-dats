@@ -6,6 +6,11 @@ const dats = require('./dats.json')
 // How many Redump downloads to run at once. Kept low to be polite to redump.org.
 const CONCURRENCY = 1
 
+// How long a Redump download is reused before it is fetched again. Redump adds
+// dumps most days, so a day keeps repeated runs from refetching everything
+// while a refresh still picks up the newest datfiles.
+const MAX_AGE = 24 * 60 * 60 * 1000
+
 module.exports = async function downloadAll(options = {}) {
 	await redump(options)
 }
@@ -24,37 +29,55 @@ async function extractFile(source, dest) {
  */
 async function redumpDownload(element, {force = false} = {}) {
 	const destDir = path.join(__dirname, 'input/redump', element)
+	const partDir = destDir + '.part'
 	const downloads = [
 		// Cue sheets only exist for CD-based systems. For the others, redump
 		// responds with an HTML page instead of a zip, which is fine to skip.
-		{url: `http://redump.org/datfile/${element}/serial,version`, zipFile: path.join(destDir, 'dat.zip')},
-		{url: `http://redump.org/cues/${element}/serial,version`, zipFile: path.join(destDir, 'cue.zip'), optional: true},
+		{url: `http://redump.org/cues/${element}/serial,version`, zipFile: 'cue.zip', optional: true},
+		{url: `http://redump.org/datfile/${element}/serial,version`, zipFile: 'dat.zip'},
 	]
 
-	for (const {url, zipFile, optional} of downloads) {
-		// The zip is downloaded and extracted through a temporary file, so its
-		// final name only exists once both steps completed. That makes it safe
-		// to skip on re-runs after an interrupted download. A completed
-		// download is never stale enough to refetch on its own, so --force-
-		// download is the way to pick up a newer one.
-		if (!force && fs.existsSync(zipFile)) {
-			continue
-		}
-		const partFile = zipFile + '.part'
-		try {
-			await downloadFile(url, partFile)
-			if (!isZip(partFile)) {
+	if (!force && isFresh(path.join(destDir, 'dat.zip'))) {
+		return
+	}
+	console.log(`Downloading: ${element}`)
+
+	// The system is fetched into a directory of its own, which replaces the
+	// previous one only once everything arrived. Replacing it rather than
+	// extracting over it matters: datfiles carry their date in the filename,
+	// so the previous one would otherwise sit beside the new one, and both
+	// would match the same pattern. Fetching it aside keeps the previous one
+	// in place when Redump cannot be reached.
+	fs.rmSync(partDir, {recursive: true, force: true})
+	try {
+		for (const {url, zipFile, optional} of downloads) {
+			const file = path.join(partDir, zipFile)
+			await downloadFile(url, file)
+			if (!isZip(file)) {
 				if (optional) {
 					console.log(`No cue sheets for ${element}`)
+					fs.rmSync(file)
 					continue
 				}
 				throw new Error(`Response is not a zip file for ${url}`)
 			}
-			await extractFile(partFile, destDir)
-			fs.renameSync(partFile, zipFile)
-		} finally {
-			fs.rmSync(partFile, {force: true})
+			await extractFile(file, partDir)
 		}
+		fs.rmSync(destDir, {recursive: true, force: true})
+		fs.renameSync(partDir, destDir)
+	} finally {
+		fs.rmSync(partDir, {recursive: true, force: true})
+	}
+}
+
+/**
+ * Whether the given download exists, and is recent enough to reuse.
+ */
+function isFresh(file) {
+	try {
+		return Date.now() - fs.statSync(file).mtimeMs < MAX_AGE
+	} catch {
+		return false
 	}
 }
 
@@ -104,7 +127,6 @@ async function redump(options = {}) {
 	async function worker() {
 		let element
 		while ((element = queue.shift()) !== undefined) {
-			console.log(`Downloading: ${element}`)
 			try {
 				await redumpDownload(element, options)
 			} catch (err) {

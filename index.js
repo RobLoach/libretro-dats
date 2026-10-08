@@ -22,7 +22,7 @@ function getOptions(argv) {
 			// Build from the input files already on disk, without fetching any.
 			'skip-download': {type: 'boolean', default: false},
 			// Fetch the sources again, rather than reusing what was downloaded
-			// on an earlier run.
+			// on an earlier run within the last day.
 			'force-download': {type: 'boolean', default: false}
 		}
 	})
@@ -207,18 +207,6 @@ const titleReplacements = [
 	['(Data East - Sega)', ''],
 	['(ReadySoft)', ''],
 	['(Virgin)', ''],
-	['[a]', ''],
-	['[a1]', ''],
-	['[a2]', ''],
-	['[a3]', ''],
-	['[a4]', ''],
-	['[a5]', ''],
-	['[a6]', ''],
-	['[a7]', ''],
-	['[a8]', ''],
-	['[a9]', ''],
-	['[a10]', ''],
-	['[a11]', ''],
 	['(EA Sports)', ''],
 	['(Electronic Arts)', ''],
 	['(Digital Pictures)', ''],
@@ -418,6 +406,13 @@ const revisionReplacements = [
  * also kept the thumbnail lookup from finding the game.
  */
 const altRegexp = / ?\(Alt(?: \d+)?\)/g
+
+/**
+ * TOSEC's alternate dump flag, "[a]" or numbered like "[a12]", which is dropped
+ * for the same reason. Flags that describe the alternate, like "[a cracktro]",
+ * are kept.
+ */
+const tosecAltRegexp = /\[a\d*\]/g
 
 /**
  * Serials that should be treated as if there is no serial at all.
@@ -745,6 +740,7 @@ function cleanGameName(game, name) {
 		gameName = gameName.replaceAll(from, to)
 	}
 	gameName = gameName.replace(altRegexp, '')
+		.replace(tosecAltRegexp, '')
 		.replace(/ {2,}/g, ' ')
 		.replace(/\(([^()]+)\) \(\1\)/g, '($1)')
 		.trim()
