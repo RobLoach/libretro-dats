@@ -104,6 +104,11 @@
 			"input/redump/cdtv/Commodore - Amiga CDTV*.dat"
 		]
 	},
+	"database/metadat/redump/Fujitsu - FM Towns": {
+		"files": [
+			"input/redump/fmt/Fujitsu - FM-Towns*.dat"
+		]
+	},
 	"database/metadat/libretro-dats/Nintendo - Super Nintendo Entertainment System": {
 		"files": [
 			"static/English Translation ROMs/Nintendo - Super Famicom *.dat"
