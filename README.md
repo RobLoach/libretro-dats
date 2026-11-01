@@ -78,6 +78,15 @@ patterns, and the reason is printed in the run summary:
 }
 ```
 
+`serials.json` fixes serials the source has wrong. Each DAT maps a game's
+name, as written in the DAT, to the serial it gets instead:
+
+``` json
+"database/metadat/redump/Sony - PlayStation 2": {
+    "Arena Football - Road to Glory (USA)": "SLUS-21568"
+}
+```
+
 ## Tests
 
 ``` bash

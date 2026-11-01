@@ -122,6 +122,31 @@ test('keeps an alternate dump that shares a serial with the game', function () {
 	assert.deepStrictEqual(games['Cool Game (USA)'].map((game) => game.rom.crc), ['A', 'B'])
 })
 
+test('overrides the serial the source has wrong', function () {
+	const games = collectGames([{
+		A: {title: 'Cool Game (USA)', name: 'a.iso', crc: 'A', serial: 'SLUS12345'},
+		B: {title: 'Other Game (USA)', name: 'b.iso', crc: 'B', serial: 'SLUS12346'}
+	}], 'Test', {'Cool Game (USA)': 'SLUS-12345'})
+	assert.strictEqual(games['Cool Game (USA)'][0].rom.serial, 'SLUS-12345')
+	assert.strictEqual(games['Other Game (USA)'][0].rom.serial, 'SLUS12346')
+})
+
+test('fixes the PlayStation 2 serials Redump has wrong', function () {
+	const games = collectGames([{
+		A: {title: 'Arena Football - Road to Glory (USA)', name: 'a.iso', crc: 'A', serial: 'SLUS21568'},
+		B: {title: 'TOCA Race Driver 2 (USA)', name: 'b.iso', crc: 'B', serial: 'SLUS21039'},
+		C: {title: 'Need for Speed - Most Wanted (Europe) (En,Fr,De,Nl,Sv,Da,Fi,Pl)', name: 'c.iso', crc: 'C', serial: 'SLES-53558, SLES-53558/P, SLES53558/P'}
+	}], 'database/metadat/redump/Sony - PlayStation 2')
+	const serials = Object.values(games).flat().map(({rom, clean}) => getGameEntry(clean.title, clean, rom))
+		.join('').match(/^\tserial "[^"]*"$/gm)
+	assert.deepStrictEqual(serials, [
+		'\tserial "SLUS-21568"',
+		'\tserial "SLUS-21039"',
+		'\tserial "SLES-53558"',
+		'\tserial "SLES-53558/P"'
+	])
+})
+
 test('leaves out invalid entries and .sav files', function () {
 	const games = collectGames([{
 		A: {title: 'Cool Game [BIOS]', name: 'a.iso', crc: 'A'},
