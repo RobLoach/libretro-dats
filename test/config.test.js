@@ -5,6 +5,7 @@ const path = require('node:path')
 const {getOptions} = require('..')
 const {redumpSystems} = require('../download')
 const dats = require('../dats.json')
+const serials = require('../serials.json')
 
 // Everything an entry in dats.json is allowed to carry. A key outside this set
 // is almost always a typo, and a typo means the entry silently stops building:
@@ -141,4 +142,14 @@ test('reads the build options off the command line', function () {
 
 test('rejects an unknown build option', function () {
 	assert.throws(() => getOptions(['--nope']), /nope/)
+})
+
+test('every serial override is for a DAT that gets built', function () {
+	for (const [name, overrides] of Object.entries(serials)) {
+		assert.ok(name in dats, `serials.json has overrides for ${name}, which is not in dats.json`)
+		for (const [game, serial] of Object.entries(overrides)) {
+			assert.strictEqual(typeof serial, 'string', `${name} has a non-string serial for ${game}`)
+			assert.ok(serial.length > 0, `${name} has an empty serial for ${game}`)
+		}
+	}
 })

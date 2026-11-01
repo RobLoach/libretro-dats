@@ -10,6 +10,7 @@ const unidecode = require('unidecode')
 const sanitizeFilename = require('sanitize-filename')
 const dats = require('./dats.json')
 const countries = require('./countries.json')
+const serials = require('./serials.json')
 const download = require('./download')
 
 /**
@@ -564,17 +565,20 @@ async function writeDat(file, output) {
  * release dates and publishers, so entries that look distinct in the source
  * ("Title (1991)(Ocean)" and "Title (1993)(Ocean)") can still collapse into
  * the same name, and both are written out under it.
+ *
+ * Overrides map a cleaned title to the serial it should have instead, and
+ * default to the DAT's entry in serials.json.
  */
-function collectGames(results, name) {
+function collectGames(results, name, overrides = serials[name] || {}) {
 	const games = {}
 	for (const result of results) {
 		for (const game in result) {
-			const entry = result[game]
-			if (!validEntry(entry.title) || !validRom(entry)) {
+			const source = result[game]
+			if (!validEntry(source.title) || !validRom(source)) {
 				continue
 			}
 
-			const clean = cleanGameName(entry.title, name)
+			const clean = cleanGameName(source.title, name)
 
 			// The title is checked again once it has been cleaned. TOSEC writes
 			// "(beta)" lowercase and without the space the filter looks for, so
@@ -583,6 +587,12 @@ function collectGames(results, name) {
 			if (!validEntry(clean.title)) {
 				continue
 			}
+
+			// The source has the serial wrong for some games, so serials.json
+			// replaces it by the game's cleaned title.
+			const entry = Object.hasOwn(overrides, clean.title)
+				? {...source, serial: overrides[clean.title]}
+				: source
 
 			// Games that share a name are all kept under it, other than entries
 			// identical to one already there.
