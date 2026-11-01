@@ -1068,6 +1068,11 @@ function getGamesFromXml(filepath, dat) {
 
 /**
  * Find the data tracks listed in a cue sheet.
+ *
+ * Returns the FILE of every track that is not AUDIO. Multi-session discs
+ * whose tracks are all AUDIO (such as Atari Jaguar CD) keep their boot data
+ * in the first track of session 2, so when no data track is found and the
+ * sheet has a `REM SESSION 02` (or later), that track's FILE is returned.
  */
 function cueDataTracks(filepath) {
 	let data
@@ -1079,20 +1084,37 @@ function cueDataTracks(filepath) {
 
 	const fileStmt = /^\s*FILE\s+"([^"]+)"\s+(.*)$/
 	const trackStmt = /^\s*TRACK\s+(\d+)\s+(.*)$/
+	const sessionStmt = /^\s*REM\s+SESSION\s+(\d+)/i
 
 	const tracks = []
 	let lastFile = null
+	let session = 1
+	let sessionTwoTrack = null
 
 	for (const line of data.split(/\r?\n/)) {
-		let match = line.match(fileStmt)
+		let match = line.match(sessionStmt)
+		if (match) {
+			session = Number(match[1])
+			continue
+		}
+		match = line.match(fileStmt)
 		if (match) {
 			lastFile = match[1]
 			continue
 		}
 		match = line.match(trackStmt)
-		if (match && lastFile != null && match[2] != 'AUDIO') {
-			tracks.push(lastFile)
+		if (match && lastFile != null) {
+			if (match[2] != 'AUDIO') {
+				tracks.push(lastFile)
+			}
+			if (session >= 2 && sessionTwoTrack == null) {
+				sessionTwoTrack = lastFile
+			}
 		}
+	}
+
+	if (tracks.length == 0 && sessionTwoTrack != null) {
+		return [sessionTwoTrack]
 	}
 
 	return tracks
