@@ -304,6 +304,58 @@ test('finds the data tracks in a cue sheet', function () {
 	assert.deepStrictEqual(cueDataTracks(path.join(dir, 'game.cue')), ['game (Track 1).bin', 'game (Track 3).bin'])
 })
 
+test('uses the first session 2 track of an all-audio multi-session cue sheet', function () {
+	const dir = fixture({
+		'game.cue': [
+			'REM SESSION 01',
+			'FILE "game (Track 01).bin" BINARY',
+			'  TRACK 01 AUDIO',
+			'    INDEX 01 00:00:00',
+			'REM SESSION 02',
+			'FILE "game (Track 02).bin" BINARY',
+			'  TRACK 02 AUDIO',
+			'    INDEX 01 00:00:00',
+			'FILE "game (Track 03).bin" BINARY',
+			'  TRACK 03 AUDIO',
+			'    INDEX 01 00:00:00'
+		].join('\r\n')
+	})
+	assert.deepStrictEqual(cueDataTracks(path.join(dir, 'game.cue')), ['game (Track 02).bin'])
+})
+
+test('prefers data tracks over session 2 in a multi-session cue sheet', function () {
+	const dir = fixture({
+		'game.cue': [
+			'REM SESSION 01',
+			'FILE "game (Track 01).bin" BINARY',
+			'  TRACK 01 AUDIO',
+			'    INDEX 01 00:00:00',
+			'REM SESSION 02',
+			'FILE "game (Track 02).bin" BINARY',
+			'  TRACK 02 AUDIO',
+			'    INDEX 01 00:00:00',
+			'FILE "game (Track 03).bin" BINARY',
+			'  TRACK 03 MODE1/2352',
+			'    INDEX 01 00:00:00'
+		].join('\n')
+	})
+	assert.deepStrictEqual(cueDataTracks(path.join(dir, 'game.cue')), ['game (Track 03).bin'])
+})
+
+test('returns no cue tracks for an all-audio single-session cue sheet', function () {
+	const dir = fixture({
+		'game.cue': [
+			'FILE "game (Track 01).bin" BINARY',
+			'  TRACK 01 AUDIO',
+			'    INDEX 01 00:00:00',
+			'FILE "game (Track 02).bin" BINARY',
+			'  TRACK 02 AUDIO',
+			'    INDEX 01 00:00:00'
+		].join('\n')
+	})
+	assert.deepStrictEqual(cueDataTracks(path.join(dir, 'game.cue')), [])
+})
+
 test('returns no cue tracks when the cue sheet is missing', function () {
 	assert.deepStrictEqual(cueDataTracks('/nope/missing.cue'), [])
 })
