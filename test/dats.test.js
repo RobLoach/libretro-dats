@@ -1,0 +1,378 @@
+const test = require('node:test')
+const assert = require('node:assert')
+const fs = require('node:fs')
+const os = require('node:os')
+const path = require('node:path')
+const {collectGames, cueDataTracks, gdiDataTracks, getExtensions, getGamesFromXml, getHeader, processDat, reportRun} = require('..')
+
+/**
+ * Run reportRun(), and hand back everything it logged.
+ */
+function report(written, missing, empty, failed, disabled) {
+	const lines = []
+	const log = console.log
+	console.log = (line) => lines.push(line)
+	try {
+		reportRun(written, missing, empty, failed, disabled)
+	} finally {
+		console.log = log
+	}
+	return lines.join('\n')
+}
+
+/**
+ * Run processDat(), keeping the output it logs out of the test report.
+ */
+async function quietly(datsInfo, name) {
+	const log = console.log
+	console.log = () => {}
+	try {
+		return await processDat(datsInfo, name)
+	} finally {
+		console.log = log
+	}
+}
+
+/**
+ * Write the given files into a fresh temporary directory.
+ */
+function fixture(files) {
+	const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'libretro-dats-'))
+	for (const [name, contents] of Object.entries(files)) {
+		fs.mkdirSync(path.dirname(path.join(dir, name)), {recursive: true})
+		fs.writeFileSync(path.join(dir, name), contents)
+	}
+	return dir
+}
+
+function datFile(games) {
+	return `<?xml version="1.0"?>\n<datafile>\n<header><name>Test</name></header>\n${games}\n</datafile>\n`
+}
+
+function game(title, roms) {
+	return `<game name="${title}"><description>${title}</description>${roms}</game>`
+}
+
+test('writes a header', function () {
+	const header = getHeader('database/metadat/redump/Sony - PlayStation', {homepage: 'http://example.com'})
+	assert.match(header, /^clrmamepro \(\n\tname "Sony - PlayStation"\n/)
+	assert.match(header, /\tdescription "Sony - PlayStation"\n/)
+	assert.match(header, /\tversion "\d{4}\.\d{2}\.\d{2}"\n/)
+	assert.match(header, /\thomepage "http:\/\/example\.com"\n\)\n$/)
+})
+
+// https://github.com/RobLoach/libretro-dats/issues/52
+test('lists the extensions in the header', function () {
+	const header = getHeader('Sony - PlayStation', {homepage: 'http://example.com'}, ['bin', 'cue'])
+	assert.match(header, /\tversion "\d{4}\.\d{2}\.\d{2}"\n\textensions "bin\|cue"\n\thomepage "/)
+})
+
+test('leaves the extensions out of the header when there are none', function () {
+	const header = getHeader('Sony - PlayStation', {homepage: 'http://example.com'}, [])
+	assert.doesNotMatch(header, /extensions/)
+	assert.match(header, /\tversion "\d{4}\.\d{2}\.\d{2}"\n\thomepage "/)
+})
+
+test('collects the distinct extensions a DAT uses', function () {
+	const games = collectGames([{
+		A: {title: 'A Game', name: 'a.iso', crc: 'A'},
+		B: {title: 'B Game', name: 'b.BIN', crc: 'B'},
+		C: {title: 'C Game', name: 'c.iso', crc: 'C'},
+		D: {title: 'D Game', name: 'd.cue', crc: 'D'}
+	}], 'Test')
+	// Sorted, lowercased and deduplicated.
+	assert.deepStrictEqual(getExtensions(games), ['bin', 'cue', 'iso'])
+})
+
+test('leaves extensionless entries out of the extension list', function () {
+	const games = collectGames([{
+		A: {title: 'A Game', name: 'a', crc: 'A'},
+		B: {title: 'B Game', name: 'b.iso', crc: 'B'}
+	}], 'Test')
+	assert.deepStrictEqual(getExtensions(games), ['iso'])
+})
+
+test('writes the extensions into a built DAT', async function () {
+	const dir = fixture({
+		'input/Test.dat': datFile([
+			game('Some Game (USA)', '<rom name="Some Game (USA).iso" size="100" crc="0000000A"/>'),
+			game('Other Game (USA)', '<rom name="Other Game (USA).chd" size="100" crc="0000000B"/>')
+		].join('\n'))
+	})
+	await processDat({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out'))
+
+	const output = fs.readFileSync(path.join(dir, 'out.dat'), 'utf8')
+	assert.match(output, /\textensions "chd\|iso"\n/)
+})
+
+test('builds a DAT file', async function () {
+	const dir = fixture({
+		'input/Test.dat': datFile(game('Some Game (USA)', '<rom name="Some Game (USA).iso" size="100" crc="abcd1234"/>'))
+	})
+	const result = await processDat({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out'))
+
+	assert.deepStrictEqual(result, {files: 1, games: 1, changed: true})
+	const output = fs.readFileSync(path.join(dir, 'out.dat'), 'utf8')
+	assert.match(output, /^clrmamepro \(/)
+	assert.match(output, /\tname "Some Game \(USA\)"\n\tregion "USA"\n/)
+	assert.match(output, /rom \( name "Some Game \(USA\)\.iso" size 100 crc ABCD1234 \)/)
+})
+
+test('reports when a DAT has no input files', async function () {
+	const dir = fixture({})
+	const result = await processDat({files: [path.join(dir, 'nothing/*.dat')]}, path.join(dir, 'out'))
+
+	assert.deepStrictEqual(result, {files: 0, games: 0})
+	assert.strictEqual(fs.existsSync(path.join(dir, 'out.dat')), false)
+})
+
+test('reports when a DAT has input files but no valid games', async function () {
+	const dir = fixture({
+		'input/Test.dat': datFile(game('Some Game [BIOS]', '<rom name="Some Game.iso" size="100" crc="abcd1234"/>'))
+	})
+	const result = await processDat({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out'))
+
+	assert.deepStrictEqual(result, {files: 1, games: 0})
+	assert.strictEqual(fs.existsSync(path.join(dir, 'out.dat')), false)
+})
+
+test('reports when a DAT is configured with no file patterns at all', async function () {
+	const dir = fixture({})
+	assert.deepStrictEqual(await processDat({}, path.join(dir, 'out')), {files: 0, games: 0})
+})
+
+test('sorts the games it writes out', async function () {
+	const dir = fixture({
+		'input/Test.dat': datFile([
+			game('Zebra Game', '<rom name="z.iso" size="1" crc="0000000C"/>'),
+			game('Alpha Game', '<rom name="a.iso" size="1" crc="0000000A"/>'),
+			game('Middle Game', '<rom name="m.iso" size="1" crc="0000000B"/>')
+		].join('\n'))
+	})
+	await processDat({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out'))
+
+	// Skip the header, which carries a name of its own.
+	const output = fs.readFileSync(path.join(dir, 'out.dat'), 'utf8').split('\ngame (').slice(1).join('\ngame (')
+	const names = [...output.matchAll(/^\tname "([^"]*)"$/gm)].map((match) => match[1])
+	assert.deepStrictEqual(names, ['Alpha Game', 'Middle Game', 'Zebra Game'])
+})
+
+test('picks the largest data track listed in a cue sheet', function () {
+	const dir = fixture({
+		'Some Game (USA).cue': [
+			'FILE "Some Game (USA) (Track 01).bin" BINARY',
+			'  TRACK 01 MODE2/2352',
+			'FILE "Some Game (USA) (Track 02).bin" BINARY',
+			'  TRACK 02 AUDIO'
+		].join('\n')
+	})
+	const dat = {
+		datafile: {
+			header: [{name: ['Test']}],
+			game: [{
+				'$': {name: 'Some Game (USA)'},
+				description: ['Some Game (USA)'],
+				rom: [
+					{'$': {name: 'Some Game (USA).cue', size: '10', crc: '1'}},
+					{'$': {name: 'Some Game (USA) (Track 01).bin', size: '900', crc: '2'}},
+					{'$': {name: 'Some Game (USA) (Track 02).bin', size: '100', crc: '3'}}
+				]
+			}]
+		}
+	}
+
+	const games = getGamesFromXml(path.join(dir, 'Some Game (USA).dat'), dat)
+	// Track 02 is audio, so the data track is the one that gets used.
+	assert.deepStrictEqual(Object.keys(games), ['2'])
+	assert.strictEqual(games['2'].name, 'Some Game (USA) (Track 01).bin')
+	assert.strictEqual(games['2'].title, 'Some Game (USA)')
+})
+
+test('summarizes a run', function () {
+	const output = report(2, ['Sega - Saturn'], ['Sony - PlayStation'])
+	assert.match(output, /Built 2 of 4 DATs\./)
+	assert.match(output, /No input files found for 1 DATs:\n\tSega - Saturn/)
+	assert.match(output, /No valid games found for 1 DATs:\n\tSony - PlayStation/)
+})
+
+test('says nothing more when every DAT was built', function () {
+	const output = report(3, [], [])
+	assert.match(output, /Built 3 of 3 DATs\./)
+	assert.doesNotMatch(output, /No input files found/)
+	assert.doesNotMatch(output, /No valid games found/)
+	assert.doesNotMatch(output, /Failed to build/)
+	assert.doesNotMatch(output, /disabled/)
+})
+
+test('reports the DATs that failed to build', function () {
+	const output = report(2, [], [], ['Sega - Saturn'])
+	assert.match(output, /Built 2 of 3 DATs\./)
+	assert.match(output, /Failed to build 1 DATs:\n\tSega - Saturn/)
+})
+
+test('reports disabled DATs apart from the ones that should have built', function () {
+	const output = report(2, [], [], [], ['Sega - Saturn'])
+	// Disabled DATs were never meant to build, so they are left out of the
+	// total rather than counted as a shortfall.
+	assert.match(output, /Built 2 of 2 DATs\./)
+	assert.match(output, /Skipped 1 disabled DATs:\n\tSega - Saturn/)
+	assert.doesNotMatch(output, /No input files found/)
+})
+
+test('fails the run when nothing at all was built', function () {
+	assert.throws(() => report(0, ['Sega - Saturn'], []), /No DATs were built\. Are the input files in place\?/)
+})
+
+test('blames the failures when nothing was built and some failed', function () {
+	assert.throws(() => report(0, [], [], ['Sega - Saturn']), /No DATs were built, and 1 failed to build/)
+})
+
+test('skips a disabled DAT without building it', async function () {
+	const dir = fixture({
+		'input/Test.dat': datFile(game('Some Game (USA)', '<rom name="Some Game (USA).iso" size="100" crc="abcd1234"/>'))
+	})
+	const datsInfo = {files: [path.join(dir, 'input/*.dat')], disabled: 'the source went away'}
+	const result = await quietly(datsInfo, path.join(dir, 'out'))
+
+	assert.deepStrictEqual(result, {files: 0, games: 0, disabled: true})
+	// The patterns still match, so this is a deliberate skip rather than a DAT
+	// whose input went missing.
+	assert.strictEqual(fs.existsSync(path.join(dir, 'out.dat')), false)
+})
+
+test('fails a DAT with an unrecognized root element, naming the file', async function () {
+	const dir = fixture({'input/Test.dat': '<?xml version="1.0"?>\n<mame><machine name="x"/></mame>\n'})
+	await assert.rejects(
+		() => quietly({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out')),
+		/Unrecognized DAT in .*Test\.dat: expected a <datafile> or <dat> root element, found <mame>/
+	)
+})
+
+test('fails a DAT with malformed XML, naming the file', async function () {
+	const dir = fixture({'input/Test.dat': '<?xml version="1.0"?>\n<datafile><game></datafile>\n'})
+	await assert.rejects(
+		() => quietly({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out')),
+		/Could not parse .*Test\.dat:/
+	)
+})
+
+test('builds a DAT whose games use a title element', async function () {
+	// xml2js hands every field back as an array, so a <title> used to reach
+	// cleanGameName() as one and take the whole run down with it.
+	const dir = fixture({
+		'input/Test.dat': datFile('<game><title>Some Game (USA)</title><rom name="Some Game (USA).iso" size="100" crc="abcd1234"/></game>')
+	})
+	const result = await quietly({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out'))
+
+	assert.deepStrictEqual(result, {files: 1, games: 1, changed: true})
+	assert.match(fs.readFileSync(path.join(dir, 'out.dat'), 'utf8'), /\tname "Some Game \(USA\)"\n/)
+})
+
+test('skips a game with no ROM entries, and keeps the rest', async function () {
+	const dir = fixture({
+		'input/Test.dat': datFile([
+			'<game name="Nothing Here"></game>',
+			game('Some Game (USA)', '<rom name="Some Game (USA).iso" size="100" crc="abcd1234"/>')
+		].join('\n'))
+	})
+	const result = await quietly({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out'))
+
+	assert.deepStrictEqual(result, {files: 1, games: 1, changed: true})
+})
+
+test('falls back to the file path when a DAT has no games and no header', async function () {
+	const dir = fixture({'input/Test.dat': '<?xml version="1.0"?>\n<datafile></datafile>\n'})
+	// Reading the name out of a header that is not there used to throw.
+	const result = await quietly({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out'))
+
+	assert.deepStrictEqual(result, {files: 1, games: 0})
+})
+
+test('finds the data tracks in a cue sheet', function () {
+	const dir = fixture({
+		'game.cue': [
+			'FILE "game (Track 1).bin" BINARY',
+			'  TRACK 01 MODE1/2352',
+			'    INDEX 01 00:00:00',
+			'FILE "game (Track 2).bin" BINARY',
+			'  TRACK 02 AUDIO',
+			'    INDEX 01 00:00:00',
+			'FILE "game (Track 3).bin" BINARY',
+			'  TRACK 03 MODE1/2352'
+		].join('\n')
+	})
+	assert.deepStrictEqual(cueDataTracks(path.join(dir, 'game.cue')), ['game (Track 1).bin', 'game (Track 3).bin'])
+})
+
+test('uses the first session 2 track of an all-audio multi-session cue sheet', function () {
+	const dir = fixture({
+		'game.cue': [
+			'REM SESSION 01',
+			'FILE "game (Track 01).bin" BINARY',
+			'  TRACK 01 AUDIO',
+			'    INDEX 01 00:00:00',
+			'REM SESSION 02',
+			'FILE "game (Track 02).bin" BINARY',
+			'  TRACK 02 AUDIO',
+			'    INDEX 01 00:00:00',
+			'FILE "game (Track 03).bin" BINARY',
+			'  TRACK 03 AUDIO',
+			'    INDEX 01 00:00:00'
+		].join('\r\n')
+	})
+	assert.deepStrictEqual(cueDataTracks(path.join(dir, 'game.cue')), ['game (Track 02).bin'])
+})
+
+test('prefers data tracks over session 2 in a multi-session cue sheet', function () {
+	const dir = fixture({
+		'game.cue': [
+			'REM SESSION 01',
+			'FILE "game (Track 01).bin" BINARY',
+			'  TRACK 01 AUDIO',
+			'    INDEX 01 00:00:00',
+			'REM SESSION 02',
+			'FILE "game (Track 02).bin" BINARY',
+			'  TRACK 02 AUDIO',
+			'    INDEX 01 00:00:00',
+			'FILE "game (Track 03).bin" BINARY',
+			'  TRACK 03 MODE1/2352',
+			'    INDEX 01 00:00:00'
+		].join('\n')
+	})
+	assert.deepStrictEqual(cueDataTracks(path.join(dir, 'game.cue')), ['game (Track 03).bin'])
+})
+
+test('returns no cue tracks for an all-audio single-session cue sheet', function () {
+	const dir = fixture({
+		'game.cue': [
+			'FILE "game (Track 01).bin" BINARY',
+			'  TRACK 01 AUDIO',
+			'    INDEX 01 00:00:00',
+			'FILE "game (Track 02).bin" BINARY',
+			'  TRACK 02 AUDIO',
+			'    INDEX 01 00:00:00'
+		].join('\n')
+	})
+	assert.deepStrictEqual(cueDataTracks(path.join(dir, 'game.cue')), [])
+})
+
+test('returns no cue tracks when the cue sheet is missing', function () {
+	assert.deepStrictEqual(cueDataTracks('/nope/missing.cue'), [])
+})
+
+test('finds the data tracks in a gdi file', function () {
+	const dir = fixture({
+		'game.gdi': [
+			'3',
+			'1 0 4 2352 "track01.bin" 0',
+			'2 600 0 2352 "track02.raw" 0',
+			'3 45000 4 2048 "track03.bin" 0'
+		].join('\n')
+	})
+	// Track 2 is the audio track, at type 0 and a 2352 sector size.
+	assert.deepStrictEqual(gdiDataTracks(path.join(dir, 'game.gdi')), ['track01.bin', 'track03.bin'])
+})
+
+test('returns no gdi tracks when the gdi file is missing', function () {
+	assert.deepStrictEqual(gdiDataTracks('/nope/missing.gdi'), [])
+})
