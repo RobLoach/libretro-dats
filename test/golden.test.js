@@ -81,7 +81,7 @@ test('drops the TOSEC publisher but keeps a flag in the same slot', async functi
 
 test('translates TOSEC country and language codes', async function () {
 	const {output} = await build('tosec-corpus', 'tosec')
-	assert.match(output, /\tname "Turrican \(Germany\)"\n\treleaseyear "1990"\n\tregion "Germany"/)
+	assert.match(output, /\tname "Turrican \(Germany\)"\n\treleaseyear "1990"\n\tpublisher "Rainbow Arts"\n\tregion "Germany"/)
 	assert.match(output, /\tname "Saboteur \(USA, Europe\)"/)
 	assert.match(output, /\tname "Aventyr \(Sweden\)"/)
 	// Plain English is dropped rather than named.
@@ -103,7 +103,7 @@ test('leaves No-Intro platform and dumper tags alone', async function () {
 	// "(Japan)" rather than from the platform tag.
 	assert.match(output, /\tname "Kirby no Kirakira Kids \(Japan\) \(GB\) \(Virtual Console\)"\n\tregion "Japan"/)
 	assert.match(output, /\tname "Donkey Kong \(USA\) \(GB\) \(Virtual Console\)"\n\tregion "USA"/)
-	assert.match(output, /\tname "Space Mutants \(World\) \(v1\.03\) \(DK\) \(Retro Achievements\)"\n\trom/)
+	assert.match(output, /\tname "Space Mutants \(World\) \(v1\.03\) \(DK\) \(Retro Achievements\)"\n\tregion "World"\n\trom/)
 	assert.match(output, /\tname "Half Life 2 - The Orange Box \(Europe\) \(v3\) \(LV\)"/)
 	assert.match(output, /\tname "2020 Super Baseball \(Europe\) \(NG\) \(Virtual Console\)"/)
 	// Regions No-Intro writes out in full still resolve.

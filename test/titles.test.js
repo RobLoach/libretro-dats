@@ -1,6 +1,6 @@
 const test = require('node:test')
 const assert = require('node:assert')
-const {cleanGameName, isTosec, keepDatFlag, normalizeCountries, normalizeLanguages, validEntry} = require('..')
+const {cleanGameName, datPublisher, getEnhancementHw, isTosec, keepDatFlag, normalizeCountries, normalizeLanguages, validEntry} = require('..')
 
 // A DAT name that marks the source as TOSEC, which is the only one whose
 // titles carry two-letter country and language codes.
@@ -28,15 +28,45 @@ test('ignores an out of range release date', function () {
 	assert.strictEqual(clean.releaseParams, '')
 })
 
-test('drops the publisher that follows a TOSEC date', function () {
+test('moves the publisher that follows a TOSEC date out of the title', function () {
 	const clean = cleanGameName('Turrican (1990)(Rainbow Arts)(DE)', TOSEC)
 	assert.strictEqual(clean.title, 'Turrican (Germany)')
-	assert.strictEqual(clean.releaseParams, '\n\treleaseyear "1990"')
+	assert.strictEqual(clean.releaseParams, '\n\treleaseyear "1990"\n\tpublisher "Rainbow Arts"')
 })
 
-test('drops unclear TOSEC dates, and their publisher', function () {
-	assert.strictEqual(cleanGameName('Turrican (19xx)(Rainbow Arts)', TOSEC).title, 'Turrican')
+test('drops unclear TOSEC dates, keeping their publisher', function () {
+	const clean = cleanGameName('Turrican (19xx)(Rainbow Arts)', TOSEC)
+	assert.strictEqual(clean.title, 'Turrican')
+	assert.strictEqual(clean.releaseParams, '\n\tpublisher "Rainbow Arts"')
 	assert.strictEqual(cleanGameName('Turrican (198x)(Rainbow Arts)', TOSEC).title, 'Turrican')
+})
+
+test('writes no publisher when the slot holds a flag', function () {
+	assert.strictEqual(cleanGameName('Boulder Dash (1984)(Rev 1)', TOSEC).releaseParams, '\n\treleaseyear "1984"')
+})
+
+test('reads the TOSEC publisher slot', function () {
+	assert.strictEqual(datPublisher('(Ocean)'), 'Ocean')
+	// Co-publishers stay together, as the curated publisher DATs write them.
+	assert.strictEqual(datPublisher('(Tengen - Domark)'), 'Tengen - Domark')
+	// "(-)" is TOSEC's unknown publisher, and a flag is not a publisher.
+	assert.strictEqual(datPublisher('(-)'), null)
+	assert.strictEqual(datPublisher('(Disk 1 of 2)'), null)
+	assert.strictEqual(datPublisher(undefined), null)
+	// A quote would end the DAT string early.
+	assert.strictEqual(datPublisher('(The "Best" Co)'), 'The \'Best\' Co')
+})
+
+test('reads enhancement hardware from the title tags', function () {
+	assert.strictEqual(getEnhancementHw('Azure Dreams (USA) (SGB Enhanced) (GB Compatible)'), 'Super Game Boy')
+	assert.strictEqual(getEnhancementHw('Balloon Fight GB (Japan) (SGB Enhanced, GB Compatible) (NP)'), 'Super Game Boy')
+	assert.strictEqual(getEnhancementHw('Pokemon Yellow (Spain) (CGB+SGB Enhanced)'), 'Super Game Boy')
+	assert.strictEqual(getEnhancementHw('Some Game (Europe) (En,Fr) (NDSi Enhanced)'), 'Nintendo DSi')
+	assert.strictEqual(getEnhancementHw('1869 (1993)(Flair)(AGA)(Disk 1 of 4)'), 'AGA')
+	// Running on every chipset, or on a Game Boy, is not an enhancement.
+	assert.strictEqual(getEnhancementHw('Ace Ball (1995)(TimSoft)(OCS-AGA)'), null)
+	assert.strictEqual(getEnhancementHw('Tetris DX (World) (GB Compatible)'), null)
+	assert.strictEqual(getEnhancementHw('Super Mario World (USA)'), null)
 })
 
 test('keeps a flag that sits where a TOSEC publisher would', function () {

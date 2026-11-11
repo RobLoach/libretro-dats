@@ -95,4 +95,21 @@
 		<description>Kid Dracula (World) (Castlevania Anniversary Collection)</description>
 		<rom name="Kid Dracula (World) (Castlevania Anniversary Collection).sav" size="8192" crc="1000000F"/>
 	</game>
+	<!-- Enhancement hardware comes from the tags, which stay in the name. -->
+	<game name="Azure Dreams (USA) (SGB Enhanced) (GB Compatible)">
+		<description>Azure Dreams (USA) (SGB Enhanced) (GB Compatible)</description>
+		<rom name="Azure Dreams (USA) (SGB Enhanced) (GB Compatible).gbc" size="1048576" crc="10000020"/>
+	</game>
+	<game name="Balloon Fight GB (Japan) (SGB Enhanced, GB Compatible) (NP)">
+		<description>Balloon Fight GB (Japan) (SGB Enhanced, GB Compatible) (NP)</description>
+		<rom name="Balloon Fight GB (Japan) (SGB Enhanced, GB Compatible) (NP).gbc" size="524288" crc="10000021"/>
+	</game>
+	<game name="Pokemon - Edicion Amarilla - Edicion Especial Pikachu (Spain) (CGB+SGB Enhanced)">
+		<description>Pokemon - Edicion Amarilla - Edicion Especial Pikachu (Spain) (CGB+SGB Enhanced)</description>
+		<rom name="Pokemon - Edicion Amarilla - Edicion Especial Pikachu (Spain) (CGB+SGB Enhanced).gb" size="1048576" crc="10000022"/>
+	</game>
+	<game name="1000 Cooking Recipes from Elle a Table (Europe) (En,Fr,De,Es,It) (NDSi Enhanced)">
+		<description>1000 Cooking Recipes from Elle a Table (Europe) (En,Fr,De,Es,It) (NDSi Enhanced)</description>
+		<rom name="1000 Cooking Recipes from Elle a Table (Europe) (En,Fr,De,Es,It) (NDSi Enhanced).nds" size="134217728" crc="10000023"/>
+	</game>
 </datafile>
