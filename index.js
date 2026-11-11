@@ -962,7 +962,10 @@ async function processXml(filepath) {
 	}
 
 	// Read in the file asyncronously.
-	const data = await fs.promises.readFile(filepath, {encoding: 'utf8'})
+	// Some DATs carry a bare "&" (CRoSG's PC Engine CD header), which the
+	// strict parser rejects, so escape any that do not start an entity.
+	const data = (await fs.promises.readFile(filepath, {encoding: 'utf8'}))
+		.replace(/&(?!(?:[a-zA-Z]+|#\d+|#x[0-9a-fA-F]+);)/g, '&amp;')
 
 	// Convert the string to a JSON object.
 	console.log(filepath)
