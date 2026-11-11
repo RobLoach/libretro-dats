@@ -90,7 +90,7 @@
 		<description>Phantasy Star Online (USA) (Rev B)</description>
 		<rom name="Phantasy Star Online (USA) (Rev B).gdi" size="1198000000" crc="1000000E"/>
 	</game>
-	<!-- A .sav alongside the ROM is skipped, leaving the ROM to be picked. -->
+	<!-- A .sav alongside the ROM takes the whole game out. -->
 	<game name="Kid Dracula (World) (Castlevania Anniversary Collection)">
 		<description>Kid Dracula (World) (Castlevania Anniversary Collection)</description>
 		<rom name="Kid Dracula (World) (Castlevania Anniversary Collection).nes" size="262144" crc="1000000F"/>

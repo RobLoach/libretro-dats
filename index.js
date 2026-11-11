@@ -1038,6 +1038,14 @@ function getGamesFromXml(filepath, dat) {
 		let finalImg = null
 		let finalEntry = null
 
+		// Leave out games that ship save data beside the ROM. The .sav is part
+		// of what the game needs, as Kid Dracula's extra ROM bank, and
+		// RetroArch only loads the ROM, so the game would scan but not play:
+		// https://github.com/RobLoach/libretro-dats/issues/47
+		if (game.rom?.some((entry) => path.extname(entry['$'].name.toLowerCase()) === '.sav')) {
+			return
+		}
+
 		// Find all the entries.
 		if (game.rom) {
 			if (game.title) {
@@ -1081,10 +1089,6 @@ function getGamesFromXml(filepath, dat) {
 				}
 				else if (lowerCaseName.endsWith('.txt')) {
 					// Ignore text files
-				}
-				else if (extname == '.sav') {
-					// Ignore save data shipped beside the ROM, so the ROM is the
-					// one picked: https://github.com/RobLoach/libretro-dats/issues/47
 				}
 				else if (extname == '.snd') {
 					// Ignore

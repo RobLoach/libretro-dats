@@ -133,10 +133,11 @@ test('leaves out entries that do not belong in a DAT', async function () {
 })
 
 // https://github.com/RobLoach/libretro-dats/issues/47
-test('picks the ROM over the save data shipped beside it', async function () {
+test('leaves out a game that ships save data beside its ROM', async function () {
 	const {output} = await build('no-intro-corpus', 'no-intro')
-	assert.match(output, /\trom \( name "Kid Dracula \(World\) \(Castlevania Anniversary Collection\)\.nes" size 262144 crc 1000000F \)/)
+	assert.doesNotMatch(output, /Kid Dracula/)
 	assert.doesNotMatch(output, /\.sav"/)
+	assert.doesNotMatch(output, /\|sav\b|"sav\|/)
 })
 
 test('keeps the entries that only look like a beta', async function () {
