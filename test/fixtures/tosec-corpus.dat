@@ -123,4 +123,22 @@
 		<description>Final Fantasy VII (1997)(Squaresoft)(US)(Disc 1 of 3)</description>
 		<rom name="Final Fantasy VII (1997)(Squaresoft)(US)(Disc 1 of 3).bin" size="700000000" crc="00000014" serial="SCUS-94163"/>
 	</game>
+	<!-- "(AGA)" needs the chipset; "(OCS-AGA)" runs on any of them. -->
+	<game name="1869 (1993)(Flair)(AGA)(Disk 1 of 4)(A)[cr FLT]">
+		<description>1869 (1993)(Flair)(AGA)(Disk 1 of 4)(A)[cr FLT]</description>
+		<rom name="1869 (1993)(Flair)(AGA)(Disk 1 of 4)(A)[cr FLT].adf" size="901120" crc="00000020"/>
+	</game>
+	<game name="Ace Ball (1995)(TimSoft)(OCS-AGA)[cr WT]">
+		<description>Ace Ball (1995)(TimSoft)(OCS-AGA)[cr WT]</description>
+		<rom name="Ace Ball (1995)(TimSoft)(OCS-AGA)[cr WT].adf" size="901120" crc="00000021"/>
+	</game>
+	<!-- "(-)" is TOSEC for an unknown publisher. -->
+	<game name="Animalier 1. (19xx)(-)(fr)">
+		<description>Animalier 1. (19xx)(-)(fr)</description>
+		<rom name="Animalier 1. (19xx)(-)(fr).dsk" size="194816" crc="00000022"/>
+	</game>
+	<game name="Adult One (19xx)(Simon Avery)">
+		<description>Adult One (19xx)(Simon Avery)</description>
+		<rom name="Adult One (19xx)(Simon Avery).dsk" size="194816" crc="00000023"/>
+	</game>
 </datafile>

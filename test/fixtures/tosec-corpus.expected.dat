@@ -2,43 +2,73 @@ clrmamepro (
 	name "Corpus"
 	description "Corpus"
 	version "2026.10.07"
-	extensions "adf|bin|gb|gba|opd|trd|tzx"
+	extensions "adf|bin|dsk|gb|gba|opd|trd|tzx"
 	homepage "http://github.com/robloach/libretro-dats"
 )
 
 game (
 	name "007 Multispy"
 	releaseyear "1987"
+	publisher "ZX-Guaranteed"
 	rom ( name "007 Multispy (1987)(ZX-Guaranteed).opd" size 184320 crc 0000000C )
 )
 game (
 	name "007 Multispy"
 	releaseyear "1987"
+	publisher "ZX-Guaranteed"
 	rom ( name "007 Multispy (1987)(ZX-Guaranteed).tzx" size 13838 crc 0000000D )
 )
 game (
 	name "007 Multispy"
 	releaseyear "1987"
+	publisher "ZX-Guaranteed"
 	rom ( name "007 Multispy (1987)(ZX-Guaranteed)[a].tzx" size 7235 crc 0000000E )
 )
 game (
 	name "16K Superchess (16K)"
 	releaseyear "1983"
+	publisher "CP"
 	rom ( name "16K Superchess (1983)(CP)(16K).tzx" size 16384 crc 00000001 )
 )
 game (
+	name "1869 (AGA) (Disk 1) (A)[cr FLT]"
+	releaseyear "1993"
+	publisher "Flair"
+	enhancement_hw "AGA"
+	rom ( name "1869 (1993)(Flair)(AGA)(Disk 1 of 4)(A)[cr FLT].adf" size 901120 crc 00000020 )
+)
+game (
+	name "Ace Ball (OCS-AGA)[cr WT]"
+	releaseyear "1995"
+	publisher "TimSoft"
+	rom ( name "Ace Ball (1995)(TimSoft)(OCS-AGA)[cr WT].adf" size 901120 crc 00000021 )
+)
+game (
+	name "Adult One"
+	publisher "Simon Avery"
+	rom ( name "Adult One (19xx)(Simon Avery).dsk" size 194816 crc 00000023 )
+)
+game (
 	name "Alien Games (Proto)"
+	publisher "US"
 	rom ( name "Alien Games (19xx)(US)(proto).gb" size 262144 crc 00000008 )
+)
+game (
+	name "Animalier 1. (France)"
+	region "France"
+	rom ( name "Animalier 1. (19xx)(-)(fr).dsk" size 194816 crc 00000022 )
 )
 game (
 	name "Aventyr (Sweden)"
 	releaseyear "1985"
+	publisher "MunkHammar"
 	region "Sweden"
 	rom ( name "Aventyr (1985)(MunkHammar)(SE)(sv).tzx" size 49152 crc 0000000B )
 )
 game (
 	name "Beta Bloc (Europe)"
 	releaseyear "1986"
+	publisher "Mastertronic"
 	region "Europe"
 	rom ( name "Beta Bloc (1986)(Mastertronic)(EU).tzx" size 49152 crc 00000018 )
 )
@@ -50,16 +80,19 @@ game (
 game (
 	name "Dizzy"
 	releaseyear "1987"
+	publisher "Codemasters"
 	rom ( name "Dizzy (1987)(Codemasters)(en).tzx" size 49152 crc 0000000A )
 )
 game (
 	name "Elite"
 	releaseyear "1990"
+	publisher "vtrdos.ru"
 	rom ( name "Elite (1990)(vtrdos.ru).trd" size 655360 crc 00000005 )
 )
 game (
 	name "Final Fantasy VII (USA) (Disc 1)"
 	releaseyear "1997"
+	publisher "Squaresoft"
 	region "USA"
 	serial "SCUS-94163"
 	rom ( name "Final Fantasy VII (1997)(Squaresoft)(US)(Disc 1 of 3).bin" size 700000000 crc 00000014 serial "SCUS-94163" )
@@ -67,6 +100,7 @@ game (
 game (
 	name "Final Fantasy VII (USA) (Disc 1)"
 	releaseyear "1997"
+	publisher "Squaresoft"
 	region "USA"
 	serial "SCUS-94163-0"
 	rom ( name "Final Fantasy VII (1997)(Squaresoft)(US)(Disc 1 of 3).bin" size 700000000 crc 00000014 serial "SCUS-94163-0" )
@@ -74,16 +108,19 @@ game (
 game (
 	name "Jet Set Willy [cr]"
 	releaseyear "1984"
+	publisher "Software Projects"
 	rom ( name "Jet Set Willy (1984)(Software Projects)[cr][a].tzx" size 49152 crc 0000000F )
 )
 game (
 	name "Jet Set Willy [cr]"
 	releaseyear "1984"
+	publisher "Software Projects"
 	rom ( name "Jet Set Willy (1984)(Software Projects)[cr].tzx" size 49153 crc 00000010 )
 )
 game (
 	name "Krakout"
 	releaseyear "1987"
+	publisher "Betasoft"
 	rom ( name "Krakout (1987)(Betasoft).tzx" size 49152 crc 00000017 )
 )
 game (
@@ -93,29 +130,34 @@ game (
 game (
 	name "Pokemon Ruby (Japan)"
 	releaseyear "2002"
+	publisher "Nintendo"
 	region "Japan"
 	serial "AGB-AXVJ-JPN"
 	rom ( name "Pokemon Ruby (2002)(Nintendo)(JP).gba" size 16777216 crc 00000013 serial "AGB-AXVJ-JPN" )
 )
 game (
 	name "Rockman 8 (Taiwan)"
+	publisher "NT"
 	region "Taiwan"
 	rom ( name "Rockman 8 (19xx)(NT)(TW).gb" size 1048576 crc 00000002 )
 )
 game (
 	name "Saboteur (USA, Europe)"
 	releaseyear "1985"
+	publisher "Durell"
 	region "USA"
 	rom ( name "Saboteur (1985)(Durell)(EU-US).tzx" size 49152 crc 00000009 )
 )
 game (
 	name "Shadow of the Beast"
 	releaseyear "1990"
+	publisher "EA"
 	rom ( name "Shadow of the Beast (1990)(EA).adf" size 901120 crc 00000004 )
 )
 game (
 	name "Turrican (Germany)"
 	releaseyear "1990"
+	publisher "Rainbow Arts"
 	region "Germany"
 	rom ( name "Turrican (1990)(Rainbow Arts)(DE).tzx" size 49152 crc 00000003 )
 )

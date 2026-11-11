@@ -56,7 +56,7 @@ test('detects the region from a TOSEC country code', function () {
 
 test('writes the release date alongside the region', function () {
 	const output = entryFor({title: 'Some Game (1990)(Ocean)(DE)', name: 'd.iso', crc: '4'}, TOSEC)
-	assert.match(output, /\treleaseyear "1990"\n\tregion "Germany"\n/)
+	assert.match(output, /\treleaseyear "1990"\n\tpublisher "Ocean"\n\tregion "Germany"\n/)
 })
 
 test('splits a multi-serial entry into one game per serial', function () {

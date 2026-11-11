@@ -2,14 +2,32 @@ clrmamepro (
 	name "Corpus"
 	description "Corpus"
 	version "2026.10.05"
-	extensions "3ds|bin|gba|iso|nes|sfc|wad|wud"
+	extensions "3ds|bin|gb|gba|gbc|iso|nds|nes|sfc|wad|wud"
 	homepage "http://github.com/robloach/libretro-dats"
 )
 
 game (
+	name "1000 Cooking Recipes from Elle a Table (Europe) (En,Fr,De,Es,It) (NDSi Enhanced)"
+	region "Europe"
+	enhancement_hw "Nintendo DSi"
+	rom ( name "1000 Cooking Recipes from Elle a Table (Europe) (En,Fr,De,Es,It) (NDSi Enhanced).nds" size 134217728 crc 10000023 )
+)
+game (
 	name "2020 Super Baseball (Europe) (NG) (Virtual Console)"
 	region "Europe"
 	rom ( name "2020 Super Baseball (Europe) (NG) (Virtual Console).wad" size 8388608 crc 10000008 )
+)
+game (
+	name "Azure Dreams (USA) (SGB Enhanced) (GB Compatible)"
+	region "USA"
+	enhancement_hw "Super Game Boy"
+	rom ( name "Azure Dreams (USA) (SGB Enhanced) (GB Compatible).gbc" size 1048576 crc 10000020 )
+)
+game (
+	name "Balloon Fight GB (Japan) (SGB Enhanced, GB Compatible) (NP)"
+	region "Japan"
+	enhancement_hw "Super Game Boy"
+	rom ( name "Balloon Fight GB (Japan) (SGB Enhanced, GB Compatible) (NP).gbc" size 524288 crc 10000021 )
 )
 game (
 	name "Bamse (Sweden)"
@@ -66,12 +84,19 @@ game (
 	rom ( name "Kirby no Kirakira Kids (Japan) (GB) (Virtual Console).wud" size 4194304 crc 10000002 )
 )
 game (
+	name "Pokemon - Edicion Amarilla - Edicion Especial Pikachu (Spain) (CGB+SGB Enhanced)"
+	region "Spain"
+	enhancement_hw "Super Game Boy"
+	rom ( name "Pokemon - Edicion Amarilla - Edicion Especial Pikachu (Spain) (CGB+SGB Enhanced).gb" size 1048576 crc 10000022 )
+)
+game (
 	name "Pokemon Ruby (USA)"
 	region "USA"
 	rom ( name "Pokemon Ruby (USA).gba" size 16777216 crc 10000009 )
 )
 game (
 	name "Space Mutants (World) (v1.03) (DK) (Retro Achievements)"
+	region "World"
 	rom ( name "Space Mutants (World) (v1.03) (DK) (Retro Achievements).nes" size 524288 crc 10000003 )
 )
 game (

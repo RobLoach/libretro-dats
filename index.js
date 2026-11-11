@@ -275,6 +275,21 @@ function keepDatFlag(trailing) {
 }
 
 /**
+ * The publisher TOSEC places right after a release date, or null when that
+ * spot is empty, holds a flag, or is TOSEC's "(-)" for an unknown publisher.
+ *
+ * Co-publishers stay together as TOSEC writes them, "Tengen - Domark", which
+ * is also how the curated publisher DATs list them.
+ */
+function datPublisher(trailing) {
+	if (!trailing || keepDatFlag(trailing)) {
+		return null
+	}
+	const publisher = trailing.slice(1, -1).replaceAll('"', '\'').trim()
+	return publisher && publisher !== '-' ? publisher : null
+}
+
+/**
  * ISO country codes used by TOSEC, mapped to the region names No-Intro uses.
  * (NP) is left out, as it conflicts with the (NP) flag.
  */
@@ -692,10 +707,11 @@ function normalizeLanguages(gameName) {
 }
 
 /**
- * Clean up a game title, and pull the release date out of it.
+ * Clean up a game title, and pull the release date and publisher out of it.
  *
- * Returns the cleaned title, the release parameters the date produced, and the
- * original title, which the region detection still looks at.
+ * Returns the cleaned title, the release parameters the date and TOSEC
+ * publisher produced, and the original title, which the region and
+ * enhancement detection still look at.
  */
 function cleanGameName(game, name) {
 	// Replace Unicode characters, and trim the title.
@@ -709,8 +725,9 @@ function cleanGameName(game, name) {
 
 	// Parse release date and remove from title, along with the publisher that
 	// TOSEC places right after it: "Title (1991)(Ocean)(JP)" keeps the year
-	// and continues as "Title (JP)".
+	// and publisher, and continues as "Title (JP)".
 	let releaseParams = ''
+	let publisher = null
 	const dateRegexp = /\((\d{4})-?(\d{0,2})-?(\d{0,2})\)(\([^()]*\))?/
 	const dateArray = dateRegexp.exec(gameName)
 	if (dateArray !== null) {
@@ -723,13 +740,20 @@ function cleanGameName(game, name) {
 					releaseParams += `\n\treleaseday "${dateArray[3]}"`
 				}
 			}
+			publisher = datPublisher(dateArray[4])
 			// A function keeps the flag from being read as a $ replacement.
 			gameName = gameName.replace(dateRegexp, () => keepDatFlag(dateArray[4]))
 		}
 	}
 
-	// Remove unclear TOSEC date indications, and their publisher.
-	gameName = gameName.replace(tosecDateRegexp, (match, trailing) => keepDatFlag(trailing))
+	// Remove unclear TOSEC date indications, and the publisher after them.
+	gameName = gameName.replace(tosecDateRegexp, function (match, trailing) {
+		publisher ??= datPublisher(trailing)
+		return keepDatFlag(trailing)
+	})
+	if (publisher) {
+		releaseParams += `\n\tpublisher "${publisher}"`
+	}
 
 	// Clean the name some more.
 	for (const [from, to] of titleReplacements) {
@@ -767,6 +791,36 @@ function cleanGameName(game, name) {
 }
 
 /**
+ * Title tags naming hardware a game is enhanced by or requires, and the
+ * enhancement_hw value each gives. A tag can list several, as in
+ * "(SGB Enhanced, GB Compatible)" or "(CGB+SGB Enhanced)".
+ *
+ * Amiga's "(AGA)" means the game needs the AGA chipset. "(OCS-AGA)" and the
+ * like mean it runs on any of them, so only the bare tag counts.
+ */
+const enhancementTags = [
+	[/^(?:\w+\+)?SGB Enhanced$/, 'Super Game Boy'],
+	[/^NDSi Enhanced$/, 'Nintendo DSi'],
+	[/^AGA$/, 'AGA']
+]
+
+/**
+ * The enhancement hardware a title's tags name, or null when there is none.
+ */
+function getEnhancementHw(title) {
+	for (const [, tag] of title.matchAll(/\(([^()]+)\)/g)) {
+		for (const part of tag.split(', ')) {
+			for (const [pattern, hardware] of enhancementTags) {
+				if (pattern.test(part)) {
+					return hardware
+				}
+			}
+		}
+	}
+	return null
+}
+
+/**
  * Construct a game entry for a DAT file, under the given name.
  */
 function getGameEntry(gameName, clean, rom) {
@@ -796,6 +850,11 @@ function getGameEntry(gameName, clean, rom) {
 			extraParams += `\n\tregion "${country}"`
 			break
 		}
+	}
+
+	const enhancementHw = getEnhancementHw(clean.raw)
+	if (enhancementHw) {
+		extraParams += `\n\tenhancement_hw "${enhancementHw}"`
 	}
 
 	// Handle when there's a serial.
@@ -1151,7 +1210,9 @@ module.exports = {
 	cleanSerial,
 	collectGames,
 	cueDataTracks,
+	datPublisher,
 	gdiDataTracks,
+	getEnhancementHw,
 	getExtensions,
 	getGameEntry,
 	getGamesFromXml,
