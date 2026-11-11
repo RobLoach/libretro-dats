@@ -872,7 +872,7 @@ function getGameEntry(gameName, clean, rom) {
 			serial = cleanSerial(serial)
 			if (serial) {
 				const discNumber = grabDiscNumber(gameName)
-				if (discNumber !== false) {
+				if (discNumber !== false && !hasDiscIndex(serial, discNumber)) {
 
 					output += `\ngame (
 	name "${gameName}"${ogParams}
@@ -923,6 +923,17 @@ function grabDiscNumber(gameName) {
 		}
 	}
 	return false
+}
+
+/**
+ * Whether a serial already carries the disc's index, the way Redump writes
+ * GameCube and Wii serials: "DL-DOL-G4BE-1-USA" and "RVL-S6TJ-0-JPN-B0" are
+ * second and first discs. Suffixing those again only makes a serial nothing
+ * would ever match.
+ */
+function hasDiscIndex(serial, discNumber) {
+	const match = /^(?:DL-DOL|RVL)-[A-Z0-9]{4}-(\d+)-[A-Z]{3}\b/.exec(serial)
+	return match !== null && parseInt(match[1]) === discNumber - 1
 }
 
 /**
@@ -1070,6 +1081,10 @@ function getGamesFromXml(filepath, dat) {
 				}
 				else if (lowerCaseName.endsWith('.txt')) {
 					// Ignore text files
+				}
+				else if (extname == '.sav') {
+					// Ignore save data shipped beside the ROM, so the ROM is the
+					// one picked: https://github.com/RobLoach/libretro-dats/issues/47
 				}
 				else if (extname == '.snd') {
 					// Ignore
@@ -1219,6 +1234,7 @@ module.exports = {
 	getHeader,
 	getOptions,
 	grabDiscNumber,
+	hasDiscIndex,
 	isTosec,
 	keepDatFlag,
 	normalizeCountries,
