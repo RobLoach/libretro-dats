@@ -90,10 +90,16 @@
 		<description>Phantasy Star Online (USA) (Rev B)</description>
 		<rom name="Phantasy Star Online (USA) (Rev B).gdi" size="1198000000" crc="1000000E"/>
 	</game>
-	<!-- A .sav alongside the ROM is skipped, taking the game with it. -->
+	<!-- A .sav alongside the ROM is skipped, leaving the ROM to be picked. -->
 	<game name="Kid Dracula (World) (Castlevania Anniversary Collection)">
 		<description>Kid Dracula (World) (Castlevania Anniversary Collection)</description>
-		<rom name="Kid Dracula (World) (Castlevania Anniversary Collection).sav" size="8192" crc="1000000F"/>
+		<rom name="Kid Dracula (World) (Castlevania Anniversary Collection).nes" size="262144" crc="1000000F"/>
+		<rom name="Kid Dracula (World) (Castlevania Anniversary Collection).sav" size="8192" crc="10000030"/>
+	</game>
+	<!-- A game that is nothing but save data has no ROM to write out. -->
+	<game name="Save Only (World)">
+		<description>Save Only (World)</description>
+		<rom name="Save Only (World).sav" size="8192" crc="10000031"/>
 	</game>
 	<!-- Enhancement hardware comes from the tags, which stay in the name. -->
 	<game name="Azure Dreams (USA) (SGB Enhanced) (GB Compatible)">

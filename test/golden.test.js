@@ -128,8 +128,15 @@ test('leaves out entries that do not belong in a DAT', async function () {
 	assert.doesNotMatch(nointro.output, /Adventures of Batman/)
 	// Its serial conflicts with Sonic Adventure 2.
 	assert.doesNotMatch(nointro.output, /Phantasy Star Online/)
-	// Nothing but a .sav file to go on. https://github.com/RobLoach/libretro-dats/issues/47
-	assert.doesNotMatch(nointro.output, /Kid Dracula/)
+	// Nothing but a .sav file to go on.
+	assert.doesNotMatch(nointro.output, /Save Only/)
+})
+
+// https://github.com/RobLoach/libretro-dats/issues/47
+test('picks the ROM over the save data shipped beside it', async function () {
+	const {output} = await build('no-intro-corpus', 'no-intro')
+	assert.match(output, /\trom \( name "Kid Dracula \(World\) \(Castlevania Anniversary Collection\)\.nes" size 262144 crc 1000000F \)/)
+	assert.doesNotMatch(output, /\.sav"/)
 })
 
 test('keeps the entries that only look like a beta', async function () {

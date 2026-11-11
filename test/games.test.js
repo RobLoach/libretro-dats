@@ -1,6 +1,6 @@
 const test = require('node:test')
 const assert = require('node:assert')
-const {cleanGameName, cleanSerial, collectGames, getGameEntry, grabDiscNumber, romFilename, sameEntry, validRom} = require('..')
+const {cleanGameName, cleanSerial, collectGames, getGameEntry, grabDiscNumber, hasDiscIndex, romFilename, sameEntry, validRom} = require('..')
 
 // A DAT name that marks the source as TOSEC, which is the only one whose
 // titles carry two-letter country codes.
@@ -70,6 +70,23 @@ test('writes a disc-suffixed serial alongside the plain one', function () {
 	const output = entryFor({title: 'Some Game (USA) (Disc 2)', name: 'f.iso', crc: '6', serial: 'SLUS-00001'})
 	assert.match(output, /serial "SLUS-00001"/)
 	assert.match(output, /serial "SLUS-00001-1"/)
+})
+
+// https://github.com/RobLoach/libretro-dats/issues/38
+test('does not suffix a serial that already carries the disc index', function () {
+	const output = entryFor({title: 'Resident Evil 4 (USA) (Disc 2)', name: 'h.iso', crc: '8', serial: 'DL-DOL-G4BE-1-USA'})
+	assert.deepStrictEqual([...output.matchAll(/^\tserial "([^"]*)"$/gm)].map((match) => match[1]), ['DL-DOL-G4BE-1-USA'])
+})
+
+test('tells a disc-indexed serial apart from one that is not', function () {
+	assert.strictEqual(hasDiscIndex('DL-DOL-G4BE-0-USA', 1), true)
+	assert.strictEqual(hasDiscIndex('DL-DOL-GU3X-1-FAH', 2), true)
+	assert.strictEqual(hasDiscIndex('RVL-S6TJ-0-JPN-B0', 1), true)
+	// The index has to be the disc's own, or the serial is suffixed as usual.
+	assert.strictEqual(hasDiscIndex('DL-DOL-G4BE-0-USA', 2), false)
+	// Wii discs that each have their own serial carry no index.
+	assert.strictEqual(hasDiscIndex('RVL-RB5E-USA', 2), false)
+	assert.strictEqual(hasDiscIndex('SLPS-01528', 2), false)
 })
 
 test('ignores placeholder serials', function () {

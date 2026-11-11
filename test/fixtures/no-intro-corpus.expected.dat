@@ -79,6 +79,11 @@ game (
 	rom ( name "Halo 2 (USA) (Multiplayer Beta).iso" size 4700000000 crc 10000012 )
 )
 game (
+	name "Kid Dracula (World) (Castlevania Anniversary Collection)"
+	region "World"
+	rom ( name "Kid Dracula (World) (Castlevania Anniversary Collection).nes" size 262144 crc 1000000F )
+)
+game (
 	name "Kirby no Kirakira Kids (Japan) (GB) (Virtual Console)"
 	region "Japan"
 	rom ( name "Kirby no Kirakira Kids (Japan) (GB) (Virtual Console).wud" size 4194304 crc 10000002 )
