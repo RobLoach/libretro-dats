@@ -1128,8 +1128,9 @@ function getGamesFromXml(filepath, dat) {
 		const final = finalPrimary || finalBin || finalIso || finalImg || finalEntry
 		if (final) {
 			final.title = title
-			if (game.serial) {
-				final.serial = xmlValue(game.serial)
+			const serial = game.serial ? xmlValue(game.serial) : contentIdSerial(game.rom)
+			if (serial) {
+				final.serial = serial
 			}
 			if (final.crc) {
 				// Games are keyed by CRC, so a later game with the same one
@@ -1152,6 +1153,22 @@ function getGamesFromXml(filepath, dat) {
 		}
 	})
 	return out
+}
+
+/**
+ * The serial in a PlayStation content ID, the name a PSN package or license
+ * goes by: "EP2696-PCSB00996_00-AIRRACESPEEDEURO.pkg" is "PCSB-00996". Such
+ * a DAT has no serial of its own, and a database matched by serial drops a
+ * game without one.
+ */
+function contentIdSerial(roms) {
+	for (const entry of roms) {
+		const match = /^[A-Z]{2}\d{4}-([A-Z]{4})(\d{5})_\d{2}-/.exec(path.basename(entry['$'].name))
+		if (match) {
+			return `${match[1]}-${match[2]}`
+		}
+	}
+	return undefined
 }
 
 /**
