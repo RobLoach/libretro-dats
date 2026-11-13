@@ -101,6 +101,25 @@
 		<description>Save Only (World)</description>
 		<rom name="Save Only (World).sav" size="8192" crc="10000031"/>
 	</game>
+	<!-- PlayStation license files are skipped, so a game that is nothing but
+	     one has no ROM to write out, and a package beside one is picked. -->
+	<game name="#Killallzombies (Europe)">
+		<description>#Killallzombies (Europe)</description>
+		<rom name="work.bin" size="512" crc="10000040"/>
+	</game>
+	<game name="#Killallzombies (USA)">
+		<description>#Killallzombies (USA)</description>
+		<rom name="UP4064-NPUB31234_00-KILLALLZOMBIESUS.rap" size="16" crc="10000041"/>
+	</game>
+	<game name="Air Race Speed (Europe)">
+		<description>Air Race Speed (Europe)</description>
+		<rom name="work.bin" size="512" crc="10000042"/>
+		<rom name="EP2696-PCSB00996_00-AIRRACESPEEDEURO.pkg" size="265092640" crc="10000043"/>
+	</game>
+	<game name="Azkend 2 - The World Beneath (USA) (PSN)">
+		<description>Azkend 2 - The World Beneath (USA) (PSN)</description>
+		<rom name="Azkend 2 - The World Beneath (USA) (PSN).vpk" size="63077443" crc="10000044"/>
+	</game>
 	<!-- Enhancement hardware comes from the tags, which stay in the name. -->
 	<game name="Azure Dreams (USA) (SGB Enhanced) (GB Compatible)">
 		<description>Azure Dreams (USA) (SGB Enhanced) (GB Compatible)</description>

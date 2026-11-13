@@ -1072,6 +1072,11 @@ function getGamesFromXml(filepath, dat) {
 					finalPrimary = rom
 					largestData = Number(rom.size)
 				}
+				else if (['work', 'work.bin'].includes(path.basename(lowerCaseName)) || extname == '.rap') {
+					// Ignore PlayStation license files. They identify the license
+					// rather than the game, so no file scanned can match them, and
+					// 15,688 of the 17,092 Vita PSN entries were a work.bin.
+				}
 				else if (lowerCaseName.endsWith('.bin') && !finalBin) {
 					finalBin = rom
 				}
