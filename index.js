@@ -714,8 +714,10 @@ function normalizeLanguages(gameName) {
  * enhancement detection still look at.
  */
 function cleanGameName(game, name) {
-	// Replace Unicode characters, and trim the title.
-	let gameName = unidecode(game).trim()
+	// Replace Unicode characters, and trim the title. A double quote would end
+	// the title early in the DAT, and unidecode turns curly quotes into them,
+	// so they become single quotes like they do in the publisher.
+	let gameName = unidecode(game).replaceAll('"', '\'').trim()
 
 	// Remove the " of y" in " (Disc x of y)"
 	const diskRegexp = /\(((Tape|Dis[ck]) \d{1,2}) of \d{1,2}\)/
@@ -1125,6 +1127,13 @@ function getGamesFromXml(filepath, dat) {
 				final.serial = xmlValue(game.serial)
 			}
 			if (final.crc) {
+				// Games are keyed by CRC, so a later game with the same one
+				// replaces the earlier. Discs that differ only in their audio
+				// tracks share a data track, so this does happen.
+				const previous = out[final.crc]
+				if (previous && previous.title !== title) {
+					console.log(`Dropped "${previous.title}", which shares CRC ${final.crc} with "${title}"`)
+				}
 				out[final.crc] = final
 			}
 			else if (final.status == 'nodump') {

@@ -188,6 +188,31 @@ test('picks the largest data track listed in a cue sheet', function () {
 	assert.strictEqual(games['2'].title, 'Some Game (USA)')
 })
 
+test('says which game is dropped when two share a CRC', function () {
+	const dat = {
+		datafile: {
+			game: [
+				{'$': {name: 'NBA Showtime (Europe)'}, rom: [{'$': {name: 'NBA Showtime (Europe).bin', size: '9', crc: 'abc'}}]},
+				{'$': {name: 'NBA Showtime (USA)'}, rom: [{'$': {name: 'NBA Showtime (USA).bin', size: '9', crc: 'abc'}}]}
+			]
+		}
+	}
+
+	const lines = []
+	const log = console.log
+	console.log = (line) => lines.push(line)
+	let games
+	try {
+		games = getGamesFromXml('Test.dat', dat)
+	} finally {
+		console.log = log
+	}
+
+	// The later game still wins, but the earlier one no longer goes quietly.
+	assert.strictEqual(games.abc.title, 'NBA Showtime (USA)')
+	assert.deepStrictEqual(lines, ['Dropped "NBA Showtime (Europe)", which shares CRC abc with "NBA Showtime (USA)"'])
+})
+
 test('summarizes a run', function () {
 	const output = report(2, ['Sega - Saturn'], ['Sony - PlayStation'])
 	assert.match(output, /Built 2 of 4 DATs\./)

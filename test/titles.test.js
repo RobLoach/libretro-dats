@@ -10,6 +10,11 @@ test('leaves a No-Intro style title alone', function () {
 	assert.strictEqual(cleanGameName('Super Mario World (USA)', 'Test').title, 'Super Mario World (USA)')
 })
 
+test('turns double quotes into single quotes, which the DAT cannot hold', function () {
+	assert.strictEqual(cleanGameName('Zool - Ninja of the "Nth" Dimension (Europe)', 'Test').title, 'Zool - Ninja of the \'Nth\' Dimension (Europe)')
+	assert.strictEqual(cleanGameName('Zool - Ninja of the \u201cNth\u201d Dimension (Europe)', 'Test').title, 'Zool - Ninja of the \'Nth\' Dimension (Europe)')
+})
+
 test('pulls the release date out of the title', function () {
 	const clean = cleanGameName('Turrican (1990)', 'Test')
 	assert.strictEqual(clean.title, 'Turrican')

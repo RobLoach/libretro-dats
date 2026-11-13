@@ -3,8 +3,11 @@ const fs = require('fs')
 const path = require('path')
 const dats = require('./dats.json')
 
-// How many Redump downloads to run at once. Kept low to be polite to redump.org.
+// How many Redump downloads to run at once. Kept low to be polite to Redump.
 const CONCURRENCY = 1
+
+// Where Redump serves its datfiles and cue sheets.
+const REDUMP_URL = 'https://redump.info'
 
 // How long a Redump download is reused before it is fetched again. Redump adds
 // dumps most days, so a day keeps repeated runs from refetching everything
@@ -31,10 +34,10 @@ async function redumpDownload(element, {force = false} = {}) {
 	const destDir = path.join(__dirname, 'input/redump', element)
 	const partDir = destDir + '.part'
 	const downloads = [
-		// Cue sheets only exist for CD-based systems. For the others, redump
-		// responds with an HTML page instead of a zip, which is fine to skip.
-		{url: `http://redump.org/cues/${element}/serial,version`, zipFile: 'cue.zip', optional: true},
-		{url: `http://redump.org/datfile/${element}/serial,version`, zipFile: 'dat.zip'},
+		// Cue sheets only exist for CD-based systems. For the others, Redump
+		// responds with a 404 instead of a zip, which is fine to skip.
+		{url: `${REDUMP_URL}/cues/${element}`, zipFile: 'cue.zip', optional: true},
+		{url: `${REDUMP_URL}/datfile/${element}/serial,version`, zipFile: 'dat.zip'},
 	]
 
 	if (!force && isFresh(path.join(destDir, 'dat.zip'))) {
@@ -52,11 +55,11 @@ async function redumpDownload(element, {force = false} = {}) {
 	try {
 		for (const {url, zipFile, optional} of downloads) {
 			const file = path.join(partDir, zipFile)
-			await downloadFile(url, file)
-			if (!isZip(file)) {
+			const found = await downloadFile(url, file, {optional})
+			if (!found || !isZip(file)) {
 				if (optional) {
 					console.log(`No cue sheets for ${element}`)
-					fs.rmSync(file)
+					fs.rmSync(file, {force: true})
 					continue
 				}
 				throw new Error(`Response is not a zip file for ${url}`)
@@ -147,14 +150,20 @@ async function redump(options = {}) {
 
 /**
  * Download the given URL to the destination file.
+ *
+ * Returns false when an optional file is not found, rather than throwing.
  */
-async function downloadFile(url, dest, options = {}) {
+async function downloadFile(url, dest, {optional = false} = {}) {
 	fs.mkdirSync(path.dirname(dest), {recursive: true})
-	const response = await fetch(url, options)
+	const response = await fetch(url)
+	if (optional && response.status === 404) {
+		return false
+	}
 	if (!response.ok) {
 		throw new Error(`HTTP ${response.status} ${response.statusText} for ${url}`)
 	}
 	fs.writeFileSync(dest, Buffer.from(await response.arrayBuffer()))
+	return true
 }
 
 module.exports.redumpSystems = redumpSystems

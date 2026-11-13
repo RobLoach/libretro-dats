@@ -1,0 +1,91 @@
+clrmamepro (
+	name "Corpus"
+	description "Corpus"
+	version "2026.11.13"
+	extensions "bin|iso"
+	homepage "http://github.com/robloach/libretro-dats"
+)
+
+game (
+	name "0 kara no Mahjong - Mahjong Youchien Tamago-gumi (Japan)"
+	region "Japan"
+	serial "SLPS-01311"
+	rom ( name "0 kara no Mahjong - Mahjong Youchien Tamago-gumi (Japan).bin" size 104247360 crc 20000042 serial "SLPS-01311" )
+)
+game (
+	name "0 kara no Mahjong - Mahjong Youchien Tamago-gumi (Japan)"
+	region "Japan"
+	serial "SLPS-02546"
+	rom ( name "0 kara no Mahjong - Mahjong Youchien Tamago-gumi (Japan).bin" size 104247360 crc 20000042 serial "SLPS-02546" )
+)
+game (
+	name "Battle Morph (USA)"
+	region "USA"
+	rom ( name "Battle Morph (USA) (Track 02).bin" size 2000000 crc 20000063 )
+)
+game (
+	name "Championship Soccer '94 (USA) (En,Fr,De,It)"
+	region "USA"
+	serial "T-93185"
+	rom ( name "Championship Soccer '94 (USA) (En,Fr,De,It) (Track 1).bin" size 70000000 crc 20000052 serial "T-93185" )
+)
+game (
+	name "Championship Soccer '94 (USA) (En,Fr,De,It)"
+	region "USA"
+	serial "T-93115"
+	rom ( name "Championship Soccer '94 (USA) (En,Fr,De,It) (Track 1).bin" size 70000000 crc 20000052 serial "T-93115" )
+)
+game (
+	name "Crazy Taxi (USA) (En,Ja)"
+	region "USA"
+	serial "51035"
+	rom ( name "Crazy Taxi (USA) (En,Ja) (Track 3).bin" size 1185760800 crc 20000074 serial "51035" )
+)
+game (
+	name "Final Fantasy VII (USA) (Disc 1)"
+	region "USA"
+	serial "SCUS-94163"
+	rom ( name "Final Fantasy VII (USA) (Disc 1).bin" size 747435024 crc 20000012 serial "SCUS-94163" )
+)
+game (
+	name "Final Fantasy VII (USA) (Disc 1)"
+	region "USA"
+	serial "SCUS-94163-0"
+	rom ( name "Final Fantasy VII (USA) (Disc 1).bin" size 747435024 crc 20000012 serial "SCUS-94163-0" )
+)
+game (
+	name "Final Fantasy VII (USA) (Disc 2)"
+	region "USA"
+	serial "SCUS-94163"
+	rom ( name "Final Fantasy VII (USA) (Disc 2).bin" size 732657408 crc 20000022 serial "SCUS-94163" )
+)
+game (
+	name "Final Fantasy VII (USA) (Disc 2)"
+	region "USA"
+	serial "SCUS-94163-1"
+	rom ( name "Final Fantasy VII (USA) (Disc 2).bin" size 732657408 crc 20000022 serial "SCUS-94163-1" )
+)
+game (
+	name "Resident Evil 4 (USA) (Disc 1)"
+	region "USA"
+	serial "DL-DOL-G4BE-0-USA"
+	rom ( name "Resident Evil 4 (USA) (Disc 1).iso" size 1459978240 crc 20000031 serial "DL-DOL-G4BE-0-USA" )
+)
+game (
+	name "Resident Evil 4 (USA) (Disc 2)"
+	region "USA"
+	serial "DL-DOL-G4BE-1-USA"
+	rom ( name "Resident Evil 4 (USA) (Disc 2).iso" size 1459978240 crc 20000032 serial "DL-DOL-G4BE-1-USA" )
+)
+game (
+	name "Ridge Racer (USA)"
+	region "USA"
+	serial "SCUS-94300"
+	rom ( name "Ridge Racer (USA) (Track 01).bin" size 20000000 crc 20000082 serial "SCUS-94300" )
+)
+game (
+	name "Wipeout (USA)"
+	region "USA"
+	serial "SCUS-94301"
+	rom ( name "Wipeout (USA) (Track 1).bin" size 58026192 crc 20000002 serial "SCUS-94301" )
+)
