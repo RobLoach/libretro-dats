@@ -2,7 +2,7 @@ clrmamepro (
 	name "Corpus"
 	description "Corpus"
 	version "2026.10.05"
-	extensions "3ds|bin|gb|gba|gbc|iso|nds|nes|sfc|wad|wud"
+	extensions "3ds|bin|gb|gba|gbc|iso|nds|nes|pkg|sfc|vpk|wad|wud"
 	homepage "http://github.com/robloach/libretro-dats"
 )
 
@@ -16,6 +16,16 @@ game (
 	name "2020 Super Baseball (Europe) (NG) (Virtual Console)"
 	region "Europe"
 	rom ( name "2020 Super Baseball (Europe) (NG) (Virtual Console).wad" size 8388608 crc 10000008 )
+)
+game (
+	name "Air Race Speed (Europe)"
+	region "Europe"
+	rom ( name "EP2696-PCSB00996_00-AIRRACESPEEDEURO.pkg" size 265092640 crc 10000043 )
+)
+game (
+	name "Azkend 2 - The World Beneath (USA) (PSN)"
+	region "USA"
+	rom ( name "Azkend 2 - The World Beneath (USA) (PSN).vpk" size 63077443 crc 10000044 )
 )
 game (
 	name "Azure Dreams (USA) (SGB Enhanced) (GB Compatible)"
