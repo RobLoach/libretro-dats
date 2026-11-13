@@ -184,8 +184,13 @@ test('skips PlayStation license files but keeps the packages', async function ()
 	assert.doesNotMatch(output, /work\.bin|\.rap"/)
 	assert.doesNotMatch(output, /Killallzombies/)
 	// The package is picked over the license beside it.
-	assert.match(output, /\tname "Air Race Speed \(Europe\)"\n\tregion "Europe"\n\trom \( name "EP2696-PCSB00996_00-AIRRACESPEEDEURO\.pkg"/)
+	assert.match(output, /\trom \( name "EP2696-PCSB00996_00-AIRRACESPEEDEURO\.pkg"/)
 	assert.match(output, /\trom \( name "Azkend 2 - The World Beneath \(USA\) \(PSN\)\.vpk"/)
+})
+
+test('takes the serial of a PSN package from its content ID', async function () {
+	const {output} = await build('no-intro-corpus', 'no-intro')
+	assert.match(output, /\tname "Air Race Speed \(Europe\)"\n\tregion "Europe"\n\tserial "PCSB-00996"\n\trom \( name "EP2696-PCSB00996_00-AIRRACESPEEDEURO\.pkg" .* serial "PCSB-00996" \)/)
 })
 
 test('keeps the entries that only look like a beta', async function () {

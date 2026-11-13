@@ -20,7 +20,8 @@ game (
 game (
 	name "Air Race Speed (Europe)"
 	region "Europe"
-	rom ( name "EP2696-PCSB00996_00-AIRRACESPEEDEURO.pkg" size 265092640 crc 10000043 )
+	serial "PCSB-00996"
+	rom ( name "EP2696-PCSB00996_00-AIRRACESPEEDEURO.pkg" size 265092640 crc 10000043 serial "PCSB-00996" )
 )
 game (
 	name "Azkend 2 - The World Beneath (USA) (PSN)"
