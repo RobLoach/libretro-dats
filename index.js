@@ -1127,6 +1127,13 @@ function getGamesFromXml(filepath, dat) {
 				final.serial = xmlValue(game.serial)
 			}
 			if (final.crc) {
+				// Games are keyed by CRC, so a later game with the same one
+				// replaces the earlier. Discs that differ only in their audio
+				// tracks share a data track, so this does happen.
+				const previous = out[final.crc]
+				if (previous && previous.title !== title) {
+					console.log(`Dropped "${previous.title}", which shares CRC ${final.crc} with "${title}"`)
+				}
 				out[final.crc] = final
 			}
 			else if (final.status == 'nodump') {
