@@ -2,7 +2,7 @@ clrmamepro (
 	name "Corpus"
 	description "Corpus"
 	version "2026.10.05"
-	extensions "3ds|bin|gb|gba|gbc|iso|nds|nes|pkg|sfc|vpk|wad|wud"
+	extensions "3ds|bin|edat|gb|gba|gbc|iso|nds|nes|pkg|sfc|vpk|wad|wud"
 	homepage "http://github.com/robloach/libretro-dats"
 )
 
@@ -11,6 +11,11 @@ game (
 	region "Europe"
 	enhancement_hw "Nintendo DSi"
 	rom ( name "1000 Cooking Recipes from Elle a Table (Europe) (En,Fr,De,Es,It) (NDSi Enhanced).nds" size 134217728 crc 10000023 )
+)
+game (
+	name "1001 Spikes (Japan)"
+	region "Japan"
+	rom ( name "00000001" size 11730944 crc 10000054 )
 )
 game (
 	name "2020 Super Baseball (Europe) (NG) (Virtual Console)"
@@ -43,6 +48,11 @@ game (
 	name "Bamse (Sweden)"
 	region "Sweden"
 	rom ( name "Bamse (Sweden).gba" size 4194304 crc 10000006 )
+)
+game (
+	name "Burnout - Dominator - Carnival City Level Pack (Europe) (DLC)"
+	region "Europe"
+	rom ( name "ULES00703DOWNLOAD-1DATA.EDAT" size 2097152 crc 10000058 )
 )
 game (
 	name "Buzz! The Big Quiz (Switzerland) (Fr,De,It)"
@@ -108,6 +118,11 @@ game (
 	name "Pokemon Ruby (USA)"
 	region "USA"
 	rom ( name "Pokemon Ruby (USA).gba" size 16777216 crc 10000009 )
+)
+game (
+	name "Rock Band 3 - Christopher J. - Dawn of Spring (World) (DLC)"
+	region "World"
+	rom ( name "4541091400000001Christopher_J. - Dawn of Spring" size 9228288 crc 1000005C )
 )
 game (
 	name "Space Mutants (World) (v1.03) (DK) (Retro Achievements)"

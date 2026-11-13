@@ -19,6 +19,12 @@ game (
 	rom ( name "0 kara no Mahjong - Mahjong Youchien Tamago-gumi (Japan).bin" size 104247360 crc 20000042 serial "SLPS-02546" )
 )
 game (
+	name "21 Card Games (Europe, Australia)"
+	region "Europe"
+	serial "SLES-53357"
+	rom ( name "21 Card Games (Europe, Australia).bin" size 61149648 crc 20000092 serial "SLES-53357" )
+)
+game (
 	name "Battle Morph (USA)"
 	region "USA"
 	rom ( name "Battle Morph (USA) (Track 02).bin" size 2000000 crc 20000063 )
@@ -34,6 +40,18 @@ game (
 	region "USA"
 	serial "T-93115"
 	rom ( name "Championship Soccer '94 (USA) (En,Fr,De,It) (Track 1).bin" size 70000000 crc 20000052 serial "T-93115" )
+)
+game (
+	name "Command & Conquer - Red Alert (Europe) (Disc 1) (Allies)"
+	region "Europe"
+	serial "SLES-00949"
+	rom ( name "Command & Conquer - Red Alert (Europe) (Disc 1) (Allies).bin" size 735569184 crc 200000B2 serial "SLES-00949" )
+)
+game (
+	name "Command & Conquer - Red Alert (Europe) (Disc 1) (Allies)"
+	region "Europe"
+	serial "SLES-00949-0"
+	rom ( name "Command & Conquer - Red Alert (Europe) (Disc 1) (Allies).bin" size 735569184 crc 200000B2 serial "SLES-00949-0" )
 )
 game (
 	name "Crazy Taxi (USA) (En,Ja)"
@@ -82,6 +100,12 @@ game (
 	region "USA"
 	serial "SCUS-94300"
 	rom ( name "Ridge Racer (USA) (Track 01).bin" size 20000000 crc 20000082 serial "SCUS-94300" )
+)
+game (
+	name "Thunderhawk - Operation Phoenix (Europe) (En,Fr,De,Es,It)"
+	region "Europe"
+	serial "SLES-50554"
+	rom ( name "Thunderhawk - Operation Phoenix (Europe) (En,Fr,De,Es,It).iso" size 1065877504 crc 200000A1 serial "SLES-50554" )
 )
 game (
 	name "Wipeout (USA)"

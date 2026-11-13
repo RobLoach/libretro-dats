@@ -14,6 +14,16 @@ const REDUMP_URL = 'https://redump.info'
 // while a refresh still picks up the newest datfiles.
 const MAX_AGE = 24 * 60 * 60 * 1000
 
+// How long a download may take, reading the body included. The largest of the
+// zips is a few megabytes, so this only gives up on a connection that stalled,
+// which would otherwise hang the run with no error at all.
+const TIMEOUT = 5 * 60 * 1000
+
+// How many times a failed download is tried again, waiting RETRY_DELAY before
+// the first retry and twice as long before each one after it.
+const RETRIES = 2
+const RETRY_DELAY = 10 * 1000
+
 module.exports = async function downloadAll(options = {}) {
 	await redump(options)
 }
@@ -151,19 +161,36 @@ async function redump(options = {}) {
 /**
  * Download the given URL to the destination file.
  *
- * Returns false when an optional file is not found, rather than throwing.
+ * Returns false when an optional file is not found, rather than throwing. A
+ * timeout, a dropped connection or a server error is tried again, while any
+ * other response the server gives would only come back the same.
  */
-async function downloadFile(url, dest, {optional = false} = {}) {
+async function downloadFile(url, dest, {optional = false, retries = RETRIES, retryDelay = RETRY_DELAY} = {}) {
 	fs.mkdirSync(path.dirname(dest), {recursive: true})
-	const response = await fetch(url)
-	if (optional && response.status === 404) {
-		return false
+	for (let attempt = 0; ; attempt++) {
+		try {
+			// The signal covers reading the body as well, which is where a large
+			// zip spends most of its time.
+			const response = await fetch(url, {signal: AbortSignal.timeout(TIMEOUT)})
+			if (optional && response.status === 404) {
+				return false
+			}
+			if (!response.ok) {
+				const err = new Error(`HTTP ${response.status} ${response.statusText} for ${url}`)
+				err.retry = response.status >= 500 || response.status === 429
+				throw err
+			}
+			fs.writeFileSync(dest, Buffer.from(await response.arrayBuffer()))
+			return true
+		} catch (err) {
+			if (attempt >= retries || err.retry === false) {
+				throw err
+			}
+			console.log(`Retrying ${url} after: ${err.message}`)
+			await new Promise((resolve) => setTimeout(resolve, retryDelay * 2 ** attempt))
+		}
 	}
-	if (!response.ok) {
-		throw new Error(`HTTP ${response.status} ${response.statusText} for ${url}`)
-	}
-	fs.writeFileSync(dest, Buffer.from(await response.arrayBuffer()))
-	return true
 }
 
+module.exports.downloadFile = downloadFile
 module.exports.redumpSystems = redumpSystems
