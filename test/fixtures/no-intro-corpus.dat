@@ -120,6 +120,36 @@
 		<description>Azkend 2 - The World Beneath (USA) (PSN)</description>
 		<rom name="Azkend 2 - The World Beneath (USA) (PSN).vpk" size="63077443" crc="10000044"/>
 	</game>
+	<!-- The hashes, title metadata, tickets, pictures and manuals shipped beside
+	     a game are skipped, and the largest of the files left is the one
+	     picked. A set that is nothing but a manual has no ROM to write out. -->
+	<game name="1001 Spikes (Japan)">
+		<description>1001 Spikes (Japan)</description>
+		<rom name="tmd.16" size="5236" crc="10000050"/>
+		<rom name="cetk.16" size="2560" crc="10000051"/>
+		<rom name="00000000" size="32768" crc="10000052"/>
+		<rom name="00000000.h3" size="20" crc="10000053"/>
+		<rom name="00000001" size="11730944" crc="10000054"/>
+		<rom name="00000001.h3" size="20" crc="10000055"/>
+		<rom name="00000002" size="196608" crc="10000056"/>
+		<rom name="00000002.h3" size="20" crc="10000057"/>
+	</game>
+	<game name="Burnout - Dominator - Carnival City Level Pack (Europe) (DLC)">
+		<description>Burnout - Dominator - Carnival City Level Pack (Europe) (DLC)</description>
+		<rom name="ULES00703DOWNLOAD-1DATA.EDAT" size="2097152" crc="10000058"/>
+		<rom name="ULES00703DOWNLOAD-1ICON0.PNG" size="9216" crc="10000059"/>
+		<rom name="ULES00703DOWNLOAD-1PARAM.sfo" size="4912" crc="1000005A"/>
+	</game>
+	<game name="_Nintendo Super Famicom [T-En] Docs">
+		<description>_Nintendo Super Famicom [T-En] Docs</description>
+		<rom name="Super Ultra Baseball 2 (Japan) [T-En by VX v1.00] [Manual].pdf" size="485435" crc="1000005B"/>
+	</game>
+	<!-- Nothing after the last dot is an extension, so it stays out of the
+	     header's list. -->
+	<game name="Rock Band 3 - Christopher J. - Dawn of Spring (World) (DLC)">
+		<description>Rock Band 3 - Christopher J. - Dawn of Spring (World) (DLC)</description>
+		<rom name="4541091400000001Christopher_J. - Dawn of Spring" size="9228288" crc="1000005C"/>
+	</game>
 	<!-- Enhancement hardware comes from the tags, which stay in the name. -->
 	<game name="Azure Dreams (USA) (SGB Enhanced) (GB Compatible)">
 		<description>Azure Dreams (USA) (SGB Enhanced) (GB Compatible)</description>

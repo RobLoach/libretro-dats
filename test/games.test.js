@@ -89,6 +89,15 @@ test('tells a disc-indexed serial apart from one that is not', function () {
 	assert.strictEqual(hasDiscIndex('SLPS-01528', 2), false)
 })
 
+test('writes serials that clean up the same only once', function () {
+	// Redump writes the same serial with and without a "#", or a space.
+	const serials = (title, serial) => [...entryFor({title, name: 'i.iso', crc: '9', serial}).matchAll(/^\tserial "([^"]*)"$/gm)]
+		.map((match) => match[1])
+	assert.deepStrictEqual(serials('21 Card Games (Europe, Australia)', 'SLES-53357, SLES-53357#'), ['SLES-53357'])
+	assert.deepStrictEqual(serials('Thunderhawk (Europe)', 'SLES 50554, SLES-50554'), ['SLES-50554'])
+	assert.deepStrictEqual(serials('Red Alert (Europe) (Disc 1)', 'SLES-00949, SLES-00949#'), ['SLES-00949', 'SLES-00949-0'])
+})
+
 test('ignores placeholder serials', function () {
 	const output = entryFor({title: 'Some Game', name: 'g.iso', crc: '7', serial: 'N/A'})
 	assert.doesNotMatch(output, /serial/)

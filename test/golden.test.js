@@ -188,6 +188,31 @@ test('skips PlayStation license files but keeps the packages', async function ()
 	assert.match(output, /\trom \( name "Azkend 2 - The World Beneath \(USA\) \(PSN\)\.vpk"/)
 })
 
+test('picks the game over the files shipped beside it', async function () {
+	const {output} = await build('no-intro-corpus', 'no-intro')
+	// The largest content, rather than the .h3 hash listed last.
+	assert.match(output, /\tname "1001 Spikes \(Japan\)"\n\tregion "Japan"\n\trom \( name "00000001" size 11730944 /)
+	assert.match(output, /\trom \( name "ULES00703DOWNLOAD-1DATA\.EDAT"/)
+	assert.doesNotMatch(output, /\.h3"|tmd\.16|cetk|\.PNG"|\.sfo"|\.pdf"/)
+	// A manual on its own is not a game.
+	assert.doesNotMatch(output, /Docs/)
+})
+
+test('lists only real extensions in the header', async function () {
+	const {output} = await build('no-intro-corpus', 'no-intro')
+	assert.match(output, /\textensions "[a-z0-9|]+"\n/)
+	assert.doesNotMatch(output, /dawn of spring"/)
+})
+
+test('writes each Redump serial once, however it was written', async function () {
+	const {output} = await build('redump-corpus', 'redump')
+	const entries = output.split('\ngame (').slice(1)
+	assert.strictEqual(new Set(entries).size, entries.length)
+	assert.strictEqual(output.match(/\tserial "SLES-53357"/g).length, 1)
+	assert.strictEqual(output.match(/\tserial "SLES-50554"/g).length, 1)
+	assert.strictEqual(output.match(/\tserial "SLES-00949-0"/g).length, 1)
+})
+
 test('keeps the entries that only look like a beta', async function () {
 	const tosec = await build('tosec-corpus', 'tosec')
 	// Betasoft is a publisher, and gets dropped as one.

@@ -624,13 +624,16 @@ function collectGames(results, name, overrides = serials[name] || {}) {
  * The distinct file extensions the given games use, in alphabetical order.
  *
  * Entries without an extension are left out, rather than contributing an empty
- * entry to the list.
+ * entry to the list. So is whatever follows the last dot of a name that has no
+ * real extension: "Christopher_J. - Dawn of Spring" put " - dawn of spring"
+ * in No-Intro's Xbox 360 header, and TOSEC's ZX Spectrum Hobeta files added
+ * "$!" and 24 others like it.
  */
 function getExtensions(games) {
 	const extensions = new Set()
 	for (const game of Object.values(games).flat()) {
 		const extension = path.extname(romFilename(game.rom)).slice(1).toLowerCase()
-		if (extension) {
+		if (/^[a-z0-9]{1,5}$/.test(extension)) {
 			extensions.add(extension)
 		}
 	}
@@ -867,31 +870,33 @@ function getGameEntry(gameName, clean, rom) {
 			separator = ', '
 		}
 
-		const serials = rom.serial.split(separator)
-		let output = ''
-		for (let serial of serials) {
+		// Cleaning can make two of the serials the same, and so two entries.
+		// Redump lists "SLES-53357, SLES-53357#" and "SLES 50554, SLES-50554",
+		// and 412 entries across its PlayStation DATs were written out twice.
+		const entries = new Set()
+		for (let serial of rom.serial.split(separator)) {
 			let ogParams = extraParams
 			serial = cleanSerial(serial)
 			if (serial) {
 				const discNumber = grabDiscNumber(gameName)
 				if (discNumber !== false && !hasDiscIndex(serial, discNumber)) {
 
-					output += `\ngame (
+					entries.add(`\ngame (
 	name "${gameName}"${ogParams}
 	serial "${serial}"
 	rom ( ${gameParams} serial "${serial}" )
-)`
+)`)
 
 					serial = serial + '-' + (discNumber - 1).toString()
 				}
 				ogParams += `\n\tserial "${serial}"`
-				output += `\ngame (
+				entries.add(`\ngame (
 	name "${gameName}"${ogParams}
 	rom ( ${gameParams} serial "${serial}" )
-)`
+)`)
 			}
 		}
-		return output
+		return [...entries].join('')
 	}
 
 	return `\ngame (
@@ -997,6 +1002,27 @@ function datName(header, filepath) {
 	return xmlValue(xmlValue(header.header)?.name) || filepath
 }
 
+// The extensions of files shipped beside a game that no emulator loads:
+// hashes, metadata, artwork and manuals. Picking one of them wrote a 20-byte
+// .h3 hash for 2,604 of the 3,366 Wii U (Digital) games, a PARAM.SFO or a
+// picture for 38 PSP (PSN) ones, and a manual or a scan for 21 TOSEC Amiga ones.
+// .mp3 is left out, since TOSEC's Amstrad CPC has a tape recorded as one, as
+// is .dat, which is the game itself for Infocom's Z-Machine.
+const nonGameExtensions = ['.h3', '.tmd', '.tik', '.cert', '.sfo', '.png', '.jpg', '.jpeg', '.gif', '.pdf', '.xml', '.cfg', '.nfo', '.diz', '.txt']
+
+/**
+ * Whether the given lowercase file name is something other than the game.
+ *
+ * Nintendo's digital DATs name their title metadata and tickets "tmd.16" or
+ * "cetk.0", with the title version as the extension, and the New 3DS one
+ * prefixes the title ID instead. 2,550 of the 2,715 Wii (Digital) games were
+ * a tmd.
+ */
+function isNonGameFile(lowerCaseName) {
+	return nonGameExtensions.includes(path.extname(lowerCaseName))
+		|| /^(?:[0-9a-f]{16})?(?:tmd|tik|cetk|cert)(?:\.\d+)?$/.test(path.basename(lowerCaseName))
+}
+
 /**
  * Convert an XML dat object to a games array.
  */
@@ -1086,8 +1112,9 @@ function getGamesFromXml(filepath, dat) {
 				else if (lowerCaseName.endsWith('.img') && !finalImg) {
 					finalImg = rom
 				}
-				else if (lowerCaseName.endsWith('.txt')) {
-					// Ignore text files
+				else if (isNonGameFile(lowerCaseName)) {
+					// Ignore the metadata, artwork and documents shipped beside
+					// the game, which no emulator loads.
 				}
 				else if (extname == '.sav') {
 					// Ignore save data shipped beside the ROM, so the ROM is the
@@ -1113,7 +1140,9 @@ function getGamesFromXml(filepath, dat) {
 					// Ignore zero extension
 				}
 				*/
-				else {
+				else if (!finalEntry || Number(rom.size) > Number(finalEntry.size)) {
+					// Of the files nothing above recognizes, the largest is the
+					// game, rather than whichever happens to be listed last.
 					finalEntry = rom
 				}
 			}

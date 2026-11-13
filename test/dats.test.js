@@ -92,6 +92,18 @@ test('leaves extensionless entries out of the extension list', function () {
 	assert.deepStrictEqual(getExtensions(games), ['iso'])
 })
 
+test('leaves out what follows the last dot of a name with no extension', function () {
+	const games = collectGames([{
+		A: {title: 'A Game', name: '4541091400000001Christopher_J. - Dawn of Spring', crc: 'A'},
+		B: {title: 'B Game', name: 'Kwik Snax Dizzy (1990)(Codemasters)(File 2 of 2).$!', crc: 'B'},
+		C: {title: 'C Game', name: 'Herzog Zwei - Bloodbath Edition v1.0 (2008-05-04)(Eisfrei)[h Herzog Zwei]', crc: 'C'},
+		D: {title: 'D Game', name: 'A.E. (World).60', crc: 'D'},
+		E: {title: 'E Game', name: 'e.ISO', crc: 'E'}
+	}], 'Test')
+	// The VIC-20's numbered extensions are real ones.
+	assert.deepStrictEqual(getExtensions(games), ['60', 'iso'])
+})
+
 test('writes the extensions into a built DAT', async function () {
 	const dir = fixture({
 		'input/Test.dat': datFile([

@@ -75,6 +75,29 @@
 		<rom name="Championship Soccer '94 (USA) (En,Fr,De,It) (Track 2).bin" size="80000000" crc="20000053"/>
 	</game>
 
+	<!-- Serials that only differ in a "#" or a space clean up to the same one,
+	     which is written out once. -->
+	<game name="21 Card Games (Europe, Australia)" id="4584">
+		<category>Games</category>
+		<serial>SLES-53357, SLES-53357#</serial>
+		<description>21 Card Games (Europe, Australia)</description>
+		<rom name="21 Card Games (Europe, Australia).cue" size="99" crc="20000091"/>
+		<rom name="21 Card Games (Europe, Australia).bin" size="61149648" crc="20000092"/>
+	</game>
+	<game name="Thunderhawk - Operation Phoenix (Europe) (En,Fr,De,Es,It)" id="12360">
+		<category>Games</category>
+		<serial>SLES 50554, SLES-50554</serial>
+		<description>Thunderhawk: Operation Phoenix (Europe) (En,Fr,De,Es,It)</description>
+		<rom name="Thunderhawk - Operation Phoenix (Europe) (En,Fr,De,Es,It).iso" size="1065877504" crc="200000A1"/>
+	</game>
+	<game name="Command &amp; Conquer - Red Alert (Europe) (Disc 1) (Allies)" id="1016">
+		<category>Games</category>
+		<serial>SLES-00949, SLES-00949#</serial>
+		<description>Command &amp; Conquer: Red Alert (Europe) (Disc 1) (Allies)</description>
+		<rom name="Command &amp; Conquer - Red Alert (Europe) (Disc 1) (Allies).cue" size="122" crc="200000B1"/>
+		<rom name="Command &amp; Conquer - Red Alert (Europe) (Disc 1) (Allies).bin" size="735569184" crc="200000B2"/>
+	</game>
+
 	<!-- Every track is audio, so the boot data is the first track of session 2. -->
 	<game name="Battle Morph (USA)" id="64385">
 		<category>Games</category>
