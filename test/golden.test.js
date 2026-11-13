@@ -19,17 +19,24 @@ const {processDat, withoutVersion} = require('..')
  * path that matches where they would really be written.
  */
 async function build(corpus, metadat) {
-	const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'libretro-dats-golden-'))
-	const out = path.join(dir, 'metadat', metadat, 'Corpus')
+	const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'libretro-dats-golden-'))
+	const out = path.join(tmp, 'metadat', metadat, 'Corpus')
 	fs.mkdirSync(path.dirname(out), {recursive: true})
 
-	const fixture = path.join(__dirname, 'fixtures', `${corpus}.dat`)
+	// A corpus that needs files beside it, like Redump's cue sheets, gets a
+	// directory of its own.
+	const dir = path.join(__dirname, 'fixtures', corpus)
+	const fixture = fs.existsSync(dir)
+		? path.join(dir, `${corpus}.dat`)
+		: path.join(__dirname, 'fixtures', `${corpus}.dat`)
 	const result = await processDat({files: [fixture]}, out)
 
+	// A new corpus has no expected output until UPDATE_GOLDEN writes it.
+	const expected = path.join(__dirname, 'fixtures', `${corpus}.expected.dat`)
 	return {
 		result,
 		output: fs.readFileSync(`${out}.dat`, 'utf8'),
-		expected: fs.readFileSync(path.join(__dirname, 'fixtures', `${corpus}.expected.dat`), 'utf8')
+		expected: fs.existsSync(expected) ? fs.readFileSync(expected, 'utf8') : ''
 	}
 }
 
@@ -56,6 +63,11 @@ test('builds the TOSEC corpus exactly as expected', async function () {
 test('builds the No-Intro corpus exactly as expected', async function () {
 	const {output, expected} = await build('no-intro-corpus', 'no-intro')
 	assertMatchesExpected('no-intro-corpus', output, expected)
+})
+
+test('builds the Redump corpus exactly as expected', async function () {
+	const {output, expected} = await build('redump-corpus', 'redump')
+	assertMatchesExpected('redump-corpus', output, expected)
 })
 
 test('stamps the version with the date the DAT was built', async function () {
@@ -130,6 +142,34 @@ test('leaves out entries that do not belong in a DAT', async function () {
 	assert.doesNotMatch(nointro.output, /Phantasy Star Online/)
 	// Nothing but a .sav file to go on.
 	assert.doesNotMatch(nointro.output, /Save Only/)
+})
+
+test('picks the data track a Redump cue sheet points at', async function () {
+	const {output} = await build('redump-corpus', 'redump')
+	// The only data track, rather than the larger audio after it.
+	assert.match(output, /rom \( name "Wipeout \(USA\) \(Track 1\)\.bin"/)
+	// The larger of two data tracks, the high-density area.
+	assert.match(output, /rom \( name "Crazy Taxi \(USA\) \(En,Ja\) \(Track 3\)\.bin"/)
+	// The first track of session 2, when every track is audio.
+	assert.match(output, /rom \( name "Battle Morph \(USA\) \(Track 02\)\.bin"/)
+	// Without a cue sheet, the first .bin.
+	assert.match(output, /rom \( name "Ridge Racer \(USA\) \(Track 01\)\.bin"/)
+})
+
+test('writes the serials a Redump game is matched on', async function () {
+	const {output} = await build('redump-corpus', 'redump')
+	const serials = (title) => [...output.matchAll(/\tname "(.*)"\n(?:\t.*\n)*?\tserial "(.*)"/g)]
+		.filter((match) => match[1] === title)
+		.map((match) => match[2])
+
+	// A disc gets its serial, and the serial suffixed with the disc's index.
+	assert.deepStrictEqual(serials('Final Fantasy VII (USA) (Disc 1)'), ['SCUS-94163', 'SCUS-94163-0'])
+	assert.deepStrictEqual(serials('Final Fantasy VII (USA) (Disc 2)'), ['SCUS-94163', 'SCUS-94163-1'])
+	// Unless the serial carries the index already.
+	assert.deepStrictEqual(serials('Resident Evil 4 (USA) (Disc 2)'), ['DL-DOL-G4BE-1-USA'])
+	// Multiple serials become one game each, however they are separated.
+	assert.deepStrictEqual(serials('0 kara no Mahjong - Mahjong Youchien Tamago-gumi (Japan)'), ['SLPS-01311', 'SLPS-02546'])
+	assert.deepStrictEqual(serials("Championship Soccer '94 (USA) (En,Fr,De,It)"), ['T-93185', 'T-93115'])
 })
 
 // https://github.com/RobLoach/libretro-dats/issues/47

@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!--
+	Real Redump titles and serials covering the parts of getGamesFromXml() and
+	getGameEntry() only Redump reaches: picking the data track out of a cue
+	sheet, and turning the serial into the ones the database matches on. The
+	hashes are made up.
+
+	The cue sheets sit beside this file, the way the download extracts them.
+
+	The expected output is checked in alongside this directory, so a change in
+	track or serial handling shows up as a reviewable diff.
+-->
+<datafile>
+	<header>
+		<name>Redump Corpus</name>
+	</header>
+
+	<!-- Track 1 is the only data track, though the audio after it is larger. -->
+	<game name="Wipeout (USA)" id="2772">
+		<category>Games</category>
+		<serial>SCUS-94301</serial>
+		<description>Wipeout (USA)</description>
+		<rom name="Wipeout (USA).cue" size="945" crc="20000001"/>
+		<rom name="Wipeout (USA) (Track 1).bin" size="58026192" crc="20000002"/>
+		<rom name="Wipeout (USA) (Track 2).bin" size="95638912" crc="20000003"/>
+		<rom name="Wipeout (USA) (Track 3).bin" size="96821968" crc="20000004"/>
+	</game>
+
+	<!-- Both discs carry the first disc's serial, so each also gets the serial
+	     suffixed with its index. -->
+	<game name="Final Fantasy VII (USA) (Disc 1)" id="66">
+		<category>Games</category>
+		<serial>SCUS-94163</serial>
+		<description>Final Fantasy VII (USA) (Disc 1)</description>
+		<rom name="Final Fantasy VII (USA) (Disc 1).cue" size="98" crc="20000011"/>
+		<rom name="Final Fantasy VII (USA) (Disc 1).bin" size="747435024" crc="20000012"/>
+	</game>
+	<game name="Final Fantasy VII (USA) (Disc 2)" id="67">
+		<category>Games</category>
+		<serial>SCUS-94163</serial>
+		<description>Final Fantasy VII (USA) (Disc 2)</description>
+		<rom name="Final Fantasy VII (USA) (Disc 2).cue" size="98" crc="20000021"/>
+		<rom name="Final Fantasy VII (USA) (Disc 2).bin" size="732657408" crc="20000022"/>
+	</game>
+
+	<!-- GameCube serials already carry the disc index, so are left alone. -->
+	<game name="Resident Evil 4 (USA) (Disc 1)" id="693">
+		<category>Games</category>
+		<serial>DL-DOL-G4BE-0-USA</serial>
+		<description>Resident Evil 4 (USA) (Disc 1)</description>
+		<rom name="Resident Evil 4 (USA) (Disc 1).iso" size="1459978240" crc="20000031"/>
+	</game>
+	<game name="Resident Evil 4 (USA) (Disc 2)" id="694">
+		<category>Games</category>
+		<serial>DL-DOL-G4BE-1-USA</serial>
+		<description>Resident Evil 4 (USA) (Disc 2)</description>
+		<rom name="Resident Evil 4 (USA) (Disc 2).iso" size="1459978240" crc="20000032"/>
+	</game>
+
+	<!-- Multiple serials, both ways Redump separates them. The spaces become
+	     dashes. -->
+	<game name="0 kara no Mahjong - Mahjong Youchien Tamago-gumi (Japan)" id="33584">
+		<category>Games</category>
+		<serial>SLPS 01311, SLPS 02546</serial>
+		<description>0 kara no Mahjong - Mahjong Youchien Tamago-gumi (Japan)</description>
+		<rom name="0 kara no Mahjong - Mahjong Youchien Tamago-gumi (Japan).cue" size="120" crc="20000041"/>
+		<rom name="0 kara no Mahjong - Mahjong Youchien Tamago-gumi (Japan).bin" size="104247360" crc="20000042"/>
+	</game>
+	<game name="Championship Soccer '94 (USA) (En,Fr,De,It)" id="4166">
+		<category>Games</category>
+		<serial>T-93185 / T-93115</serial>
+		<description>Championship Soccer '94 (USA) (En,Fr,De,It)</description>
+		<rom name="Championship Soccer '94 (USA) (En,Fr,De,It).cue" size="300" crc="20000051"/>
+		<rom name="Championship Soccer '94 (USA) (En,Fr,De,It) (Track 1).bin" size="70000000" crc="20000052"/>
+		<rom name="Championship Soccer '94 (USA) (En,Fr,De,It) (Track 2).bin" size="80000000" crc="20000053"/>
+	</game>
+
+	<!-- Every track is audio, so the boot data is the first track of session 2. -->
+	<game name="Battle Morph (USA)" id="64385">
+		<category>Games</category>
+		<description>Battle Morph (USA)</description>
+		<rom name="Battle Morph (USA).cue" size="600" crc="20000061"/>
+		<rom name="Battle Morph (USA) (Track 01).bin" size="1000000" crc="20000062"/>
+		<rom name="Battle Morph (USA) (Track 02).bin" size="2000000" crc="20000063"/>
+		<rom name="Battle Morph (USA) (Track 03).bin" size="9000000" crc="20000064"/>
+	</game>
+
+	<!-- Two data tracks, of which the high-density area is the larger. -->
+	<game name="Crazy Taxi (USA) (En,Ja)" id="1580">
+		<category>Games</category>
+		<serial>51035</serial>
+		<description>Crazy Taxi (USA) (En,Ja)</description>
+		<rom name="Crazy Taxi (USA) (En,Ja).cue" size="380" crc="20000071"/>
+		<rom name="Crazy Taxi (USA) (En,Ja) (Track 1).bin" size="1425312" crc="20000072"/>
+		<rom name="Crazy Taxi (USA) (En,Ja) (Track 2).bin" size="1589952" crc="20000073"/>
+		<rom name="Crazy Taxi (USA) (En,Ja) (Track 3).bin" size="1185760800" crc="20000074"/>
+	</game>
+
+	<!-- No cue sheet came with it, so the first .bin is all there is to go on. -->
+	<game name="Ridge Racer (USA)" id="2287">
+		<category>Games</category>
+		<serial>SCUS-94300</serial>
+		<description>Ridge Racer (USA)</description>
+		<rom name="Ridge Racer (USA).cue" size="800" crc="20000081"/>
+		<rom name="Ridge Racer (USA) (Track 01).bin" size="20000000" crc="20000082"/>
+		<rom name="Ridge Racer (USA) (Track 02).bin" size="30000000" crc="20000083"/>
+	</game>
+</datafile>
