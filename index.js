@@ -997,13 +997,10 @@ function getGameEntry(gameName, clean, rom) {
 
 	// Handle when there's a serial.
 	if (rom.serial && !ignoreSerials.includes(rom.serial.trim())) {
-		// Multiple serial split into multiple games.
-		let separator = ' / '
-		if (rom.serial.includes(', ')) {
-			separator = ', '
-		}
-
-		const serials = rom.serial.split(separator)
+		// Multiple serial split into multiple games. A comma always separates
+		// serials, but a slash only does with spaces around it, as unspaced
+		// slashes are part of the serial, like "SLES-52046/P/GER".
+		const serials = rom.serial.split(/\s*,\s*|\s+\/\s+/)
 		let output = ''
 		for (let serial of serials) {
 			let ogParams = extraParams
@@ -1085,6 +1082,8 @@ function cleanSerial(serial) {
 		.trim()
 		.replaceAll(' ', '-')
 		.replaceAll('#', '')
+		// A quote would end the DAT's quoted string early.
+		.replaceAll('"', '')
 	if (output.charAt(0) == '-') {
 		output = output.substring(1)
 	}

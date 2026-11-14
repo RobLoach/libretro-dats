@@ -85,6 +85,14 @@ test('splits a multi-serial entry into one game per serial', function () {
 	assert.match(output, /serial "SLES-05678"/)
 })
 
+test('splits serials on commas and spaced slashes, but not on bare slashes', function () {
+	const serialsOf = (serial) => [...entryFor({title: 'Some Game (Europe)', name: 'e.iso', crc: '5', serial})
+		.matchAll(/^\tserial "([^"]*)"$/gm)].map((match) => match[1])
+	assert.deepStrictEqual(serialsOf('SLES-1, SLES-2 / SLES-3'), ['SLES-1', 'SLES-2', 'SLES-3'])
+	assert.deepStrictEqual(serialsOf('SLES-1,SLES-2'), ['SLES-1', 'SLES-2'])
+	assert.deepStrictEqual(serialsOf('SLES-52046/P/GER'), ['SLES-52046/P/GER'])
+})
+
 test('writes a disc-suffixed serial alongside the plain one', function () {
 	const output = entryFor({title: 'Some Game (USA) (Disc 2)', name: 'f.iso', crc: '6', serial: 'SLUS-00001'})
 	assert.match(output, /serial "SLUS-00001"/)
@@ -206,6 +214,7 @@ test('cleans up serials', function () {
 	assert.strictEqual(cleanSerial(' SLUS 00001 '), 'SLUS-00001')
 	assert.strictEqual(cleanSerial('#SLUS-00001'), 'SLUS-00001')
 	assert.strictEqual(cleanSerial('-SLUS-00001'), 'SLUS-00001')
+	assert.strictEqual(cleanSerial('SLUS-"00001"'), 'SLUS-00001')
 	assert.strictEqual(cleanSerial(''), '')
 })
 
