@@ -56,6 +56,7 @@ game (
 game (
 	name "Animalier 1. (France)"
 	region "France"
+	language "French"
 	rom ( name "Animalier 1. (19xx)(-)(fr).dsk" size 194816 crc 00000022 )
 )
 game (
@@ -63,6 +64,7 @@ game (
 	releaseyear "1985"
 	publisher "MunkHammar"
 	region "Sweden"
+	language "Swedish"
 	rom ( name "Aventyr (1985)(MunkHammar)(SE)(sv).tzx" size 49152 crc 0000000B )
 )
 game (
@@ -81,6 +83,7 @@ game (
 	name "Dizzy"
 	releaseyear "1987"
 	publisher "Codemasters"
+	language "English"
 	rom ( name "Dizzy (1987)(Codemasters)(en).tzx" size 49152 crc 0000000A )
 )
 game (

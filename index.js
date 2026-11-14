@@ -402,6 +402,64 @@ const languageCountries = {
 }
 
 /**
+ * Language codes from No-Intro "(En,Fr)", Redump and TOSEC "(de-fr)" titles,
+ * lowercased, mapped to the language names written to the DAT.
+ */
+const languageNames = {
+	ar: 'Arabic',
+	bg: 'Bulgarian',
+	ca: 'Catalan',
+	cs: 'Czech',
+	cy: 'Welsh',
+	da: 'Danish',
+	de: 'German',
+	el: 'Greek',
+	en: 'English',
+	'en-gb': 'English',
+	'en-us': 'English',
+	eo: 'Esperanto',
+	es: 'Spanish',
+	et: 'Estonian',
+	eu: 'Basque',
+	fa: 'Persian',
+	fi: 'Finnish',
+	fr: 'French',
+	ga: 'Irish',
+	gd: 'Gaelic',
+	he: 'Hebrew',
+	hi: 'Hindi',
+	hr: 'Croatian',
+	hu: 'Hungarian',
+	id: 'Indonesian',
+	is: 'Icelandic',
+	it: 'Italian',
+	ja: 'Japanese',
+	ko: 'Korean',
+	la: 'Latin',
+	lt: 'Lithuanian',
+	lv: 'Latvian',
+	ms: 'Malay',
+	nl: 'Dutch',
+	no: 'Norwegian',
+	pl: 'Polish',
+	pt: 'Portuguese',
+	'pt-br': 'Portuguese',
+	ro: 'Romanian',
+	ru: 'Russian',
+	sk: 'Slovak',
+	sl: 'Slovenian',
+	sr: 'Serbian',
+	sv: 'Swedish',
+	th: 'Thai',
+	tr: 'Turkish',
+	uk: 'Ukrainian',
+	vi: 'Vietnamese',
+	zh: 'Chinese',
+	'zh-hans': 'Chinese',
+	'zh-hant': 'Chinese'
+}
+
+/**
  * Final title cleanups, applied after the date handling.
  */
 const revisionReplacements = [
@@ -843,6 +901,41 @@ function getRegions(title) {
 }
 
 /**
+ * The language names for a list of codes, or null unless every code is known.
+ * Uppercase codes like "(DE)" are TOSEC countries, so they are not languages.
+ */
+function languagesFor(codes) {
+	if (!codes.every((code) => code !== code.toUpperCase() && code.toLowerCase() in languageNames)) {
+		return null
+	}
+	return [...new Set(codes.map((code) => languageNames[code.toLowerCase()]))]
+}
+
+/**
+ * Find the languages a title lists, from TOSEC translations like "[tr ru]",
+ * or the first group made only of language codes: No-Intro's "(En,Fr,De)",
+ * or TOSEC's "(en)" and "(de-fr)".
+ */
+function getLanguages(title) {
+	for (const [, flag] of title.matchAll(/\[tr ([^\] ]+)/g)) {
+		// Keeps "de" from "[tr de-partial]".
+		const languages = languagesFor(flag.split('-').filter((code) => code.toLowerCase() in languageNames))
+		if (languages && languages.length > 0) {
+			return languages
+		}
+	}
+	for (const [, group] of title.matchAll(/\(([^()]+)\)/g)) {
+		// TOSEC joins codes with hyphens, where "(fr-ca)" is French and Catalan.
+		const codes = /^[a-z]{2}(?:-[a-z]{2})+$/.test(group) ? group.split('-') : group.split(',')
+		const languages = languagesFor(codes)
+		if (languages) {
+			return languages
+		}
+	}
+	return null
+}
+
+/**
  * Construct a game entry for a DAT file, under the given name.
  */
 function getGameEntry(gameName, clean, rom) {
@@ -866,6 +959,11 @@ function getGameEntry(gameName, clean, rom) {
 	const regions = getRegions(clean.raw) || getRegions(gameName)
 	if (regions) {
 		extraParams += `\n\tregion "${regions.join(' / ')}"`
+	}
+
+	const languages = getLanguages(clean.raw)
+	if (languages) {
+		extraParams += `\n\tlanguage "${languages.join(' / ')}"`
 	}
 
 	const enhancementHw = getEnhancementHw(clean.raw)
@@ -1274,6 +1372,7 @@ module.exports = {
 	gdiDataTracks,
 	getEnhancementHw,
 	getExtensions,
+	getLanguages,
 	getGameEntry,
 	getGamesFromXml,
 	getHeader,

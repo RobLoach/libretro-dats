@@ -26,18 +26,21 @@ game (
 game (
 	name "Championship Soccer '94 (USA) (En,Fr,De,It)"
 	region "USA"
+	language "English / French / German / Italian"
 	serial "T-93185"
 	rom ( name "Championship Soccer '94 (USA) (En,Fr,De,It) (Track 1).bin" size 70000000 crc 20000052 serial "T-93185" )
 )
 game (
 	name "Championship Soccer '94 (USA) (En,Fr,De,It)"
 	region "USA"
+	language "English / French / German / Italian"
 	serial "T-93115"
 	rom ( name "Championship Soccer '94 (USA) (En,Fr,De,It) (Track 1).bin" size 70000000 crc 20000052 serial "T-93115" )
 )
 game (
 	name "Crazy Taxi (USA) (En,Ja)"
 	region "USA"
+	language "English / Japanese"
 	serial "51035"
 	rom ( name "Crazy Taxi (USA) (En,Ja) (Track 3).bin" size 1185760800 crc 20000074 serial "51035" )
 )

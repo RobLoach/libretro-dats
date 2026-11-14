@@ -55,6 +55,19 @@ test('detects the region from a TOSEC country code', function () {
 	assert.match(entryFor({title: 'Some Game (1990)(Ocean)(DE)', name: 'c.iso', crc: '3'}, TOSEC), /region "Germany"/)
 })
 
+test('detects the languages from a title', function () {
+	assert.match(entryFor({title: 'Some Game (Europe) (En,Fr,De,Es,It)', name: 'a.iso', crc: '1'}), /\tregion "Europe"\n\tlanguage "English \/ French \/ German \/ Spanish \/ Italian"\n/)
+	assert.match(entryFor({title: 'Some Game (Japan) (En)', name: 'b.iso', crc: '2'}), /language "English"\n/)
+	assert.doesNotMatch(entryFor({title: 'Some Game (USA, Europe) (Rev 1)', name: 'c.iso', crc: '3'}), /language/)
+})
+
+test('detects the languages from TOSEC language codes and translations', function () {
+	assert.match(entryFor({title: 'Some Game (1990)(Ocean)(en)', name: 'a.tzx', crc: '1'}, TOSEC), /language "English"\n/)
+	assert.match(entryFor({title: 'Some Game (1990)(Ocean)(de-fr)', name: 'b.tzx', crc: '2'}, TOSEC), /language "German \/ French"\n/)
+	assert.match(entryFor({title: 'Some Game (1990)(Ocean)(DE)', name: 'c.tzx', crc: '3'}, TOSEC), /region "Germany"\n\trom/)
+	assert.match(entryFor({title: 'Some Game (1990)(Ocean)[tr ru]', name: 'd.tzx', crc: '4'}, TOSEC), /language "Russian"\n/)
+})
+
 test('writes the release date alongside the region', function () {
 	const output = entryFor({title: 'Some Game (1990)(Ocean)(DE)', name: 'd.iso', crc: '4'}, TOSEC)
 	assert.match(output, /\treleaseyear "1990"\n\tpublisher "Ocean"\n\tregion "Germany"\n/)
