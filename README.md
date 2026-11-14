@@ -29,7 +29,7 @@ Builds the following sources...
 
 1. Download the No-Intro and TOSEC packs into `input/downloads/`.
 
-1. Extract them, and check they landed where `dats.json` expects.
+1. Extract them into `input/no-intro/` and `input/tosec/`:
     ```
     input/no-intro/No-Intro/Nintendo - Nintendo Entertainment System*.dat
     input/tosec/TOSEC/Sony PlayStation*.dat

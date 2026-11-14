@@ -5,7 +5,7 @@ description: Download the No-Intro, TOSEC and Redump source datfiles and put the
 
 # Getting the source DATs in place
 
-`npm start` builds 137 DATs out of three upstream sources. Redump is fetched by
+`npm start` builds every DAT in `dats.json` out of three upstream sources. Redump is fetched by
 the build itself. No-Intro and TOSEC are fetched with
 [Playwright CLI](https://playwright.dev/agent-cli/introduction), because
 neither has a fixed URL: No-Intro prepares its pack on request through a
@@ -16,17 +16,16 @@ Everything under `input/` is gitignored, so none of this is ever committed.
 
 ## The layout that matters
 
-The single most common mistake is extracting a pack one directory too high.
+The single most common mistake is extracting a pack into the wrong directory:
+one level too high, or into `input/downloads/` beside the zip.
 **The archives already contain their own top-level folder**, so they are
 extracted into the *parent*:
 
-| Source | Extract into | What has to exist afterwards | Patterns |
-|---|---|---|---|
-| No-Intro | `input/no-intro/` | `input/no-intro/No-Intro/` | 115 |
-| No-Intro | — | `input/no-intro/Unofficial/` | 5 |
-| TOSEC | `input/tosec/` | `input/tosec/TOSEC/` | 40 |
-| TOSEC | — | `input/tosec/TOSEC-ISO/` | 10, all disabled |
-| Redump | fetched by `npm start` | `input/redump/<system>/` | 21 |
+| Source | Extract into | What has to exist afterwards |
+|---|---|---|
+| No-Intro | `input/no-intro/` | `input/no-intro/No-Intro/` and `input/no-intro/Unofficial/` |
+| TOSEC | `input/tosec/` | `input/tosec/TOSEC/` (its `TOSEC-ISO/` entries are all disabled) |
+| Redump | fetched by `npm start` | `input/redump/<system>/` |
 
 Note the doubled directory: the No-Intro pack goes into `input/no-intro/` and
 produces `input/no-intro/No-Intro/`. Dropping the datfiles straight into
@@ -63,7 +62,7 @@ What it does on each site, so a run that fails can be finished by hand:
 - **TOSEC** — opens <https://www.tosecdev.org/downloads>, picks the newest dated
   release (the menu is not in date order), and clicks its "DAT Pack - Complete"
   link.
-- **Redump** — nothing to do. `npm start` fetches the 21 systems that
+- **Redump** — nothing to do. `npm start` fetches every system that
   `dats.json` actually reads. A system downloaded less than a day ago is
   reused; anything older is fetched again and replaces what was there.
 
@@ -106,20 +105,27 @@ node .claude/skills/input-dats/scripts/verify-input.js
 ```
 
 Resolves every pattern the build would resolve, grouped by source, and exits
-non-zero when a source looks misplaced. A healthy tree reports:
+non-zero when a source looks misplaced. A healthy tree reports something like:
 
 ```
-input/no-intro/    partial    117 of 120 patterns matched, 148 files
-input/redump/      ready      21 of 21 patterns matched, 21 files
+input/no-intro/    partial    118 of 120 patterns matched, 150 files
+input/redump/      ready      23 of 23 patterns matched, 23 files
 input/tosec/       partial    39 of 40 patterns matched, 188 files
 static/            ready      2 of 2 patterns matched, 2 files
 ```
 
-A misplaced pack reports `MISPLACED only 5 of 120 patterns matched` and names
-the directory that should have existed. Checking this first is much cheaper
-than a build: the glob sweep takes seconds, a full build takes about 90.
+A misplaced pack reports `MISPLACED only 0 of 120 patterns matched` and names
+the directory that should have existed. When the pack's folders are elsewhere
+under `input/`, such as extracted by hand beside the zip in `input/downloads/`,
+it names where it found them and prints the `mv` commands that put them in
+place. Checking this first is much cheaper than a build: the glob sweep takes
+seconds, a full build takes about 90.
 
-`partial` is normal — a pack does not always carry every system. Two DATs
+Before the first `npm start`, `input/redump/` reports `not yet` rather than
+`MISPLACED`, since the build fetches it, and the script suggests `npm start`
+rather than `--skip-download`.
+
+`partial` is normal — a pack does not always carry every system. A DAT or two
 having no input is the expected state with current packs, and the build reports
 them rather than failing.
 
@@ -134,11 +140,11 @@ npm start -- --force-download    # refetch all of Redump, however recent
 A full build takes roughly 90 seconds and writes into the `database`
 submodule, so `git submodule update --init` has to have been run. Only DATs
 whose contents actually changed are rewritten, so the summary line is the
-quickest read on what a refresh did:
+quickest read on what a refresh did, along the lines of:
 
 ```
-Built 135 of 137 DATs.
-20 changed, 115 already up to date.
+Built 137 of 138 DATs.
+20 changed, 117 already up to date.
 ```
 
 ## Troubleshooting
@@ -154,7 +160,12 @@ Built 135 of 137 DATs.
   all. Run the verify script; the packs are almost certainly one level too
   high.
 - **A source reports `MISPLACED`** — extract into the parent, per the table
-  above.
+  above. If the verify script found the pack elsewhere, run the `mv` commands
+  it prints.
+- **Packs extracted by hand into `input/downloads/no-intro/` or
+  `input/downloads/tosec/`** — the build never looks there. The verify script
+  reports this as `MISPLACED` and prints the `mv` commands, or re-extract the
+  zips with the extract script.
 - **Everything is `ready` but a system is missing** — that system is not in
   this pack. Confirm with `grep -i '<system>' dats.json` that it is configured,
   and check whether its `files` pattern still matches what the source names the
