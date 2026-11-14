@@ -109,6 +109,11 @@
 			"input/redump/fmt/Fujitsu - FM-Towns*.dat"
 		]
 	},
+	"database/metadat/redump/NEC - PC-98": {
+		"files": [
+			"input/redump/pc-98/NEC - PC-98*.dat"
+		]
+	},
 	"database/metadat/libretro-dats/Nintendo - Super Nintendo Entertainment System": {
 		"files": [
 			"static/English Translation ROMs/Nintendo - Super Famicom *.dat"
