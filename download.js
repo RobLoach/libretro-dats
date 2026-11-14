@@ -3,7 +3,7 @@ const fs = require('fs')
 const path = require('path')
 const dats = require('./dats.json')
 
-// How many Redump downloads to run at once. Kept low to be polite to redump.org.
+// How many Redump downloads to run at once. Kept low to be polite to Redump.
 const CONCURRENCY = 1
 
 // How long a Redump download is reused before it is fetched again. Redump adds
@@ -33,8 +33,8 @@ async function redumpDownload(element, {force = false} = {}) {
 	const downloads = [
 		// Cue sheets only exist for CD-based systems. For the others, redump
 		// responds with an HTML page instead of a zip, which is fine to skip.
-		{url: `http://redump.org/cues/${element}/serial,version`, zipFile: 'cue.zip', optional: true},
-		{url: `http://redump.org/datfile/${element}/serial,version`, zipFile: 'dat.zip'},
+		{url: `https://redump.info/cues/${element}/serial,version`, zipFile: 'cue.zip', optional: true},
+		{url: `https://redump.info/datfile/${element}/serial,version`, zipFile: 'dat.zip'},
 	]
 
 	if (!force && isFresh(path.join(destDir, 'dat.zip'))) {
