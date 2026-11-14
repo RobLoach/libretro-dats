@@ -823,6 +823,26 @@ function getEnhancementHw(title) {
 }
 
 /**
+ * Find the regions in the first parenthesised group that starts with a known
+ * country, keeping every region from groups like "(USA, Europe)".
+ */
+function getRegions(title) {
+	for (const [, group] of title.matchAll(/\(([^()]+)\)/g)) {
+		const regions = []
+		for (const part of group.split(', ')) {
+			if (!countries.includes(part)) {
+				break
+			}
+			regions.push(part)
+		}
+		if (regions.length > 0) {
+			return regions
+		}
+	}
+	return null
+}
+
+/**
  * Construct a game entry for a DAT file, under the given name.
  */
 function getGameEntry(gameName, clean, rom) {
@@ -843,15 +863,9 @@ function getGameEntry(gameName, clean, rom) {
 		gameParams += ` sha1 ${rom.sha1.toUpperCase()}`
 	}
 
-	for (const country of countries) {
-		if (clean.raw.includes('(' + country + ')') || gameName.includes('(' + country + ')')) {
-			extraParams += `\n\tregion "${country}"`
-			break
-		}
-		if (clean.raw.includes('(' + country + ', ') || gameName.includes('(' + country + ', ')) {
-			extraParams += `\n\tregion "${country}"`
-			break
-		}
+	const regions = getRegions(clean.raw) || getRegions(gameName)
+	if (regions) {
+		extraParams += `\n\tregion "${regions.join(' / ')}"`
 	}
 
 	const enhancementHw = getEnhancementHw(clean.raw)

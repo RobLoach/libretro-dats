@@ -46,7 +46,8 @@ test('leaves out hashes the source did not provide', function () {
 })
 
 test('detects the region from a multi-region title', function () {
-	assert.match(entryFor({title: 'Some Game (Japan, USA)', name: 'a.iso', crc: '1'}), /region "Japan"/)
+	assert.match(entryFor({title: 'Some Game (Japan, USA)', name: 'a.iso', crc: '1'}), /region "Japan \/ USA"/)
+	assert.match(entryFor({title: 'Some Game (USA, Europe) (En,Fr)', name: 'd.iso', crc: '4'}), /region "USA \/ Europe"\n/)
 	assert.match(entryFor({title: 'Some Game (Europe)', name: 'b.iso', crc: '2'}), /region "Europe"/)
 })
 

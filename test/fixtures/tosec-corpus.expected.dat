@@ -145,7 +145,7 @@ game (
 	name "Saboteur (USA, Europe)"
 	releaseyear "1985"
 	publisher "Durell"
-	region "USA"
+	region "USA / Europe"
 	rom ( name "Saboteur (1985)(Durell)(EU-US).tzx" size 49152 crc 00000009 )
 )
 game (
