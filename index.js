@@ -1125,6 +1125,18 @@ function xmlValue(value) {
 }
 
 /**
+ * Whether the DAT marks the game as a BIOS, through MAME's isbios attribute or
+ * a No-Intro/Redump category. Categories with attributes parse to {_: text}.
+ */
+function isBios(game) {
+	if (game['$']?.isbios === 'yes') {
+		return true
+	}
+	const categories = [].concat(game.category || [])
+	return categories.some((category) => String(category?._ ?? category).trim().toLowerCase() === 'bios')
+}
+
+/**
  * The name a DAT gives itself in its header, for logging. The header is
  * optional, so this falls back to the file path.
  */
@@ -1165,6 +1177,11 @@ function getGamesFromXml(filepath, dat) {
 
 	// Loop through each game.
 	games.forEach(function (game, i) {
+		// BIOS files are not games, whatever their name says.
+		if (isBios(game)) {
+			return
+		}
+
 		// Set up the entries to watch for.
 		let title = null
 		let largestData = 0

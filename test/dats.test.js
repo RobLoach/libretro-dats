@@ -434,3 +434,36 @@ test('finds the data tracks in a gdi file', function () {
 test('returns no gdi tracks when the gdi file is missing', function () {
 	assert.deepStrictEqual(gdiDataTracks('/nope/missing.gdi'), [])
 })
+
+test('skips games the DAT marks as a BIOS', function () {
+	const dat = {
+		datafile: {
+			game: [
+				{'$': {name: 'Some System', isbios: 'yes'}, rom: [{'$': {name: 'bios.bin', size: '9', crc: '1'}}]},
+				{'$': {name: 'Some Boot ROM'}, category: ['BIOS'], rom: [{'$': {name: 'boot.bin', size: '9', crc: '2'}}]},
+				{'$': {name: 'Other Boot ROM'}, category: [{_: 'bios', '$': {}}], rom: [{'$': {name: 'other.bin', size: '9', crc: '3'}}]},
+				{'$': {name: 'Some Game (USA)'}, category: ['Games'], rom: [{'$': {name: 'Some Game (USA).bin', size: '9', crc: '4'}}]}
+			]
+		}
+	}
+
+	const games = getGamesFromXml('Test.dat', dat)
+	assert.deepStrictEqual(Object.keys(games), ['4'])
+	assert.strictEqual(games['4'].title, 'Some Game (USA)')
+})
+
+test('leaves BIOS entries out of the written DAT', async function () {
+	const dir = fixture({
+		'input/Test.dat': datFile([
+			'<game name="Some System" isbios="yes"><description>Some System</description><rom name="bios.bin" size="9" crc="00000001"/></game>',
+			'<game name="Some Boot ROM"><category>BIOS</category><description>Some Boot ROM</description><rom name="boot.bin" size="9" crc="00000002"/></game>',
+			'<game name="Some Game (USA)"><category>Games</category><description>Some Game (USA)</description><rom name="Some Game (USA).bin" size="9" crc="00000003"/></game>'
+		].join('\n'))
+	})
+	await quietly({files: [path.join(dir, 'input/*.dat')]}, path.join(dir, 'out'))
+
+	const output = fs.readFileSync(path.join(dir, 'out.dat'), 'utf8')
+	assert.match(output, /Some Game \(USA\)/)
+	assert.doesNotMatch(output, /Some System/)
+	assert.doesNotMatch(output, /Some Boot ROM/)
+})
