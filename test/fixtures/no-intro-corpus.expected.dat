@@ -9,6 +9,7 @@ clrmamepro (
 game (
 	name "1000 Cooking Recipes from Elle a Table (Europe) (En,Fr,De,Es,It) (NDSi Enhanced)"
 	region "Europe"
+	language "English / French / German / Spanish / Italian"
 	enhancement_hw "Nintendo DSi"
 	rom ( name "1000 Cooking Recipes from Elle a Table (Europe) (En,Fr,De,Es,It) (NDSi Enhanced).nds" size 134217728 crc 10000023 )
 )
@@ -48,6 +49,7 @@ game (
 game (
 	name "Buzz! The Big Quiz (Switzerland) (Fr,De,It)"
 	region "Switzerland"
+	language "French / German / Italian"
 	rom ( name "Buzz! The Big Quiz (Switzerland) (Fr,De,It).iso" size 4700000000 crc 10000007 )
 )
 game (
@@ -70,12 +72,14 @@ game (
 game (
 	name "Gran Turismo (Europe) (En,Fr,De)"
 	region "Europe"
+	language "English / French / German"
 	serial "SCES-00984"
 	rom ( name "Gran Turismo (Europe) (En,Fr,De).bin" size 700000000 crc 1000000B serial "SCES-00984" )
 )
 game (
 	name "Gran Turismo (Europe) (En,Fr,De)"
 	region "Europe"
+	language "English / French / German"
 	serial "SCES-01234"
 	rom ( name "Gran Turismo (Europe) (En,Fr,De).bin" size 700000000 crc 1000000B serial "SCES-01234" )
 )
