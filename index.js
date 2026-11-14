@@ -706,13 +706,16 @@ function collectGames(results, name, overrides = serials[name] || {}) {
  * The distinct file extensions the given games use, in alphabetical order.
  *
  * Entries without an extension are left out, rather than contributing an empty
- * entry to the list.
+ * entry to the list. So is whatever follows a dot that ends a title rather
+ * than starts an extension, such as "1 (2016-06-15)(E-122-Psi)" from a
+ * version number, or " - Spoonman" from a DLC track list. Numeric extensions
+ * stay, since VIC-20 and Intellivision name ROMs after their load address.
  */
 function getExtensions(games) {
 	const extensions = new Set()
 	for (const game of Object.values(games).flat()) {
 		const extension = path.extname(romFilename(game.rom)).slice(1).toLowerCase()
-		if (extension) {
+		if (/^[^\s()[\]{},]{1,10}$/.test(extension)) {
 			extensions.add(extension)
 		}
 	}

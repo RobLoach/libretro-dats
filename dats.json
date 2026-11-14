@@ -91,7 +91,7 @@
 	},
 	"database/metadat/redump/The 3DO Company - 3DO": {
 		"files": [
-			"input/redump/3do/Panasonic - 3DO*.dat"
+			"input/redump/3do/3DO Interactive Multiplayer*.dat"
 		]
 	},
 	"database/metadat/redump/Commodore - CD32": {
@@ -106,7 +106,7 @@
 	},
 	"database/metadat/redump/Fujitsu - FM Towns": {
 		"files": [
-			"input/redump/fmt/Fujitsu - FM-Towns*.dat"
+			"input/redump/fmt/Fujitsu - FM Towns*.dat"
 		]
 	},
 	"database/metadat/redump/NEC - PC-98": {
@@ -680,7 +680,7 @@
 	},
 	"database/metadat/no-intro/Nintendo - Wii (Digital)": {
 		"files": [
-			"input/no-intro/No-Intro/Nintendo - Wii (Digital) (CDN)*"
+			"input/no-intro/Unofficial/Unofficial - Nintendo - Wii (Digital) (Deprecated) (WAD)*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Wii U (Digital)": {

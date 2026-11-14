@@ -92,6 +92,17 @@ test('leaves extensionless entries out of the extension list', function () {
 	assert.deepStrictEqual(getExtensions(games), ['iso'])
 })
 
+test('leaves the end of a title out of the extension list', function () {
+	const games = collectGames([{
+		A: {title: 'A Game', name: 'Amy Rose v2.1 (2016-06-15)(E-122-Psi)[h Sonic]', crc: 'A'},
+		B: {title: 'B Game', name: '4541082900000001Rock Band. - Spoonman', crc: 'B'},
+		C: {title: 'C Game', name: 'Alphabet Zoo (Japan, USA) (En).60', crc: 'C'},
+		D: {title: 'D Game', name: 'Crime Busters (1988)(Players Software)[h Flash][t].$b', crc: 'D'},
+		E: {title: 'E Game', name: 'track80.1.hxcstream', crc: 'E'}
+	}], 'Test')
+	assert.deepStrictEqual(getExtensions(games), ['$b', '60', 'hxcstream'])
+})
+
 test('writes the extensions into a built DAT', async function () {
 	const dir = fixture({
 		'input/Test.dat': datFile([

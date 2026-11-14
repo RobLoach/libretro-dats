@@ -7,6 +7,12 @@ clrmamepro (
 )
 
 game (
+	name "1 Nuke! Dasshutsu Game - My Home Hen (Japan) (WiiWare)"
+	region "Japan"
+	serial "WEMJ"
+	rom ( name "1 Nuke! Dasshutsu Game - My Home Hen (Japan) (WiiWare).wad" size 13491392 crc 10000045 serial "WEMJ" )
+)
+game (
 	name "1000 Cooking Recipes from Elle a Table (Europe) (En,Fr,De,Es,It) (NDSi Enhanced)"
 	region "Europe"
 	language "English / French / German / Spanish / Italian"
