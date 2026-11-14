@@ -122,6 +122,6 @@ game (
 )
 game (
 	name "Xbox Live Beta Starter Kit Disc (USA, Europe)"
-	region "USA"
+	region "USA / Europe"
 	rom ( name "Xbox Live Beta Starter Kit Disc (USA, Europe).iso" size 4700000000 crc 10000011 )
 )
