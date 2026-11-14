@@ -278,14 +278,15 @@ function keepDatFlag(trailing) {
  * The publisher TOSEC places right after a release date, or null when that
  * spot is empty, holds a flag, or is TOSEC's "(-)" for an unknown publisher.
  *
- * Co-publishers stay together as TOSEC writes them, "Tengen - Domark", which
- * is also how the curated publisher DATs list them.
+ * TOSEC separates co-publishers with " - ", which become " / " like every other
+ * multi-valued DAT field: "Tengen - Domark" becomes "Tengen / Domark".
  */
 function datPublisher(trailing) {
 	if (!trailing || keepDatFlag(trailing)) {
 		return null
 	}
 	const publisher = trailing.slice(1, -1).replaceAll('"', '\'').trim()
+		.split(' - ').join(' / ')
 	return publisher && publisher !== '-' ? publisher : null
 }
 

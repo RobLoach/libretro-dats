@@ -73,6 +73,11 @@ test('writes the release date alongside the region', function () {
 	assert.match(output, /\treleaseyear "1990"\n\tpublisher "Ocean"\n\tregion "Germany"\n/)
 })
 
+test('separates TOSEC co-publishers with a slash', function () {
+	const output = entryFor({title: 'Some Game (1990)(Tengen - Domark)(EU-US)', name: 'f.iso', crc: '6'}, TOSEC)
+	assert.match(output, /\tpublisher "Tengen \/ Domark"\n\tregion "USA \/ Europe"\n/)
+})
+
 test('splits a multi-serial entry into one game per serial', function () {
 	const output = entryFor({title: 'Some Game (Europe)', name: 'e.iso', crc: '5', serial: 'SLES-01234 / SLES-05678'})
 	assert.deepStrictEqual(namesIn(output), ['Some Game (Europe)', 'Some Game (Europe)'])
