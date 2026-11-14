@@ -52,8 +52,9 @@ test('writes no publisher when the slot holds a flag', function () {
 
 test('reads the TOSEC publisher slot', function () {
 	assert.strictEqual(datPublisher('(Ocean)'), 'Ocean')
-	// Co-publishers stay together, as the curated publisher DATs write them.
-	assert.strictEqual(datPublisher('(Tengen - Domark)'), 'Tengen - Domark')
+	// Co-publishers are separated with " / ", like other multi-valued fields.
+	assert.strictEqual(datPublisher('(Tengen - Domark)'), 'Tengen / Domark')
+	assert.strictEqual(datPublisher('(Richter, Tamas - Heder, Jozsef)'), 'Richter, Tamas / Heder, Jozsef')
 	// "(-)" is TOSEC's unknown publisher, and a flag is not a publisher.
 	assert.strictEqual(datPublisher('(-)'), null)
 	assert.strictEqual(datPublisher('(Disk 1 of 2)'), null)
