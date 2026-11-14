@@ -188,6 +188,39 @@ test('picks the largest data track listed in a cue sheet', function () {
 	assert.strictEqual(games['2'].title, 'Some Game (USA)')
 })
 
+test('picks the largest data track when the cue sheet is listed last', function () {
+	const dir = fixture({
+		'Some Game (USA).cue': [
+			'FILE "Some Game (USA) (Track 01).bin" BINARY',
+			'  TRACK 01 AUDIO',
+			'FILE "Some Game (USA) (Track 02).bin" BINARY',
+			'  TRACK 02 MODE1/2352',
+			'FILE "Some Game (USA) (Track 03).bin" BINARY',
+			'  TRACK 03 MODE1/2352'
+		].join('\n')
+	})
+	const dat = {
+		datafile: {
+			header: [{name: ['Test']}],
+			game: [{
+				'$': {name: 'Some Game (USA)'},
+				description: ['Some Game (USA)'],
+				rom: [
+					{'$': {name: 'Some Game (USA) (Track 01).bin', size: '2000', crc: '1'}},
+					{'$': {name: 'Some Game (USA) (Track 02).bin', size: '300', crc: '2'}},
+					{'$': {name: 'Some Game (USA) (Track 03).bin', size: '900', crc: '3'}},
+					{'$': {name: 'Some Game (USA).cue', size: '10', crc: '4'}}
+				]
+			}]
+		}
+	}
+
+	const games = getGamesFromXml(path.join(dir, 'Some Game (USA).dat'), dat)
+	// The cue comes after the tracks, but the largest data track still wins.
+	assert.deepStrictEqual(Object.keys(games), ['3'])
+	assert.strictEqual(games['3'].name, 'Some Game (USA) (Track 03).bin')
+})
+
 test('says which game is dropped when two share a CRC', function () {
 	const dat = {
 		datafile: {

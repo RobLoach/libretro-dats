@@ -1171,15 +1171,24 @@ function getGamesFromXml(filepath, dat) {
 				throw new Error(`Could not find title in ${filepath} for game ${i}: ${JSON.stringify(game)}`)
 			}
 
+			// Read the cue and gdi files first, so tracks listed before them
+			// are still seen as data tracks.
+			for (const entry of game.rom) {
+				const name = entry['$'].name
+				if (name.toLowerCase().endsWith('.cue')) {
+					dataTracks.push(...cueDataTracks(path.join(dir, name)))
+				}
+				else if (name.toLowerCase().endsWith('.gdi')) {
+					dataTracks.push(...gdiDataTracks(path.join(dir, name)))
+				}
+			}
+
 			for (const entry of game.rom) {
 				const rom = entry['$']
 				const lowerCaseName = rom.name.toLowerCase()
 				const extname = path.extname(lowerCaseName)
-				if (lowerCaseName.endsWith('.cue')) {
-					dataTracks = cueDataTracks(path.join(dir, rom.name))
-				}
-				else if (lowerCaseName.endsWith('.gdi')) {
-					dataTracks = gdiDataTracks(path.join(dir, rom.name))
+				if (lowerCaseName.endsWith('.cue') || lowerCaseName.endsWith('.gdi')) {
+					// Already read above.
 				}
 				else if (dataTracks.includes(rom.name) && Number(rom.size) > largestData) {
 					finalPrimary = rom
