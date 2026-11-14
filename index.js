@@ -145,8 +145,7 @@ const invalidSubstrings = [
 	'Test Cartridge',
 	'Super Nintendo Tester',
 	'Version Data',
-	'(System)',
-	'G. Darius (USA) (Beta)'
+	'(System)'
 ]
 
 /**
@@ -226,7 +225,6 @@ const titleReplacements = [
 	['Demos (cdi)\\', ''],
 	['Demos (elf)\\', ''],
 	[' (United States)', ' (USA)'],
-	//['(PAL)', '(Europe)'], // does not seem to improve situation nowadays
 	['(beta)', '(Beta)'],
 	['(proto)', '(Proto)'],
 	['[!]', ''],
@@ -494,10 +492,35 @@ const tosecAltRegexp = /\[a\d*\]/g
  */
 const ignoreSerials = [
 	'1',
-	1,
 	'n/a',
 	'N/A',
 	'!none'
+]
+
+/**
+ * ROM files that are never the game itself, so are skipped when choosing the
+ * ROM to use.
+ */
+const ignoredRomNames = [
+	// PlayStation license files. They identify the license rather than the
+	// game, so no file scanned can match them, and 15,688 of the 17,092 Vita
+	// PSN entries were a work.bin.
+	'work',
+	'work.bin'
+]
+const ignoredRomExtensions = [
+	// PlayStation license files, as above.
+	'.rap',
+	'.txt',
+	// Save data shipped beside the ROM, so the ROM is the one picked:
+	// https://github.com/RobLoach/libretro-dats/issues/47
+	'.sav',
+	'.snd',
+	'.cg1',
+	'.eg1',
+	'.mg1',
+	// Epoch Cassette Vision's bin777 is the more important file.
+	'.ptn777'
 ]
 
 /**
@@ -1194,10 +1217,8 @@ function getGamesFromXml(filepath, dat) {
 					finalPrimary = rom
 					largestData = Number(rom.size)
 				}
-				else if (['work', 'work.bin'].includes(path.basename(lowerCaseName)) || extname == '.rap') {
-					// Ignore PlayStation license files. They identify the license
-					// rather than the game, so no file scanned can match them, and
-					// 15,688 of the 17,092 Vita PSN entries were a work.bin.
+				else if (ignoredRomNames.includes(path.basename(lowerCaseName)) || ignoredRomExtensions.includes(extname)) {
+					// Not the game itself.
 				}
 				else if (lowerCaseName.endsWith('.bin') && !finalBin) {
 					finalBin = rom
@@ -1208,33 +1229,6 @@ function getGamesFromXml(filepath, dat) {
 				else if (lowerCaseName.endsWith('.img') && !finalImg) {
 					finalImg = rom
 				}
-				else if (lowerCaseName.endsWith('.txt')) {
-					// Ignore text files
-				}
-				else if (extname == '.sav') {
-					// Ignore save data shipped beside the ROM, so the ROM is the
-					// one picked: https://github.com/RobLoach/libretro-dats/issues/47
-				}
-				else if (extname == '.snd') {
-					// Ignore
-				}
-				else if (extname == '.cg1') {
-					// Ignore
-				}
-				else if (extname == '.eg1') {
-					// Ignore
-				}
-				else if (extname == '.mg1') {
-					// Ignore
-				}
-				else if (extname == '.ptn777') {
-					// Ignore, Epoch Cassette Vision's bin777 is more important
-				}
-				/* We'll be adding the no-extensions for now.
-				else if (extname.length == 0) {
-					// Ignore zero extension
-				}
-				*/
 				else {
 					finalEntry = rom
 				}
