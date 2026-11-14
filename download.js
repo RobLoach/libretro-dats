@@ -152,18 +152,35 @@ async function redump(options = {}) {
  * Download the given URL to the destination file.
  *
  * Returns false when an optional file is not found, rather than throwing.
+ * Network errors, timeouts and 5xx/429 responses are retried a few times, so a
+ * stalled connection cannot hang the run.
  */
-async function downloadFile(url, dest, {optional = false} = {}) {
+async function downloadFile(url, dest, {optional = false, attempts = 3, timeout = 5 * 60 * 1000, delay = 5000} = {}) {
 	fs.mkdirSync(path.dirname(dest), {recursive: true})
-	const response = await fetch(url)
-	if (optional && response.status === 404) {
-		return false
+	for (let attempt = 1; ; attempt++) {
+		try {
+			// The signal also covers reading the body.
+			const response = await fetch(url, {signal: AbortSignal.timeout(timeout)})
+			if (optional && response.status === 404) {
+				return false
+			}
+			if (!response.ok) {
+				const err = new Error(`HTTP ${response.status} ${response.statusText} for ${url}`)
+				// Other client errors will not go away by asking again.
+				err.retry = response.status === 429 || response.status >= 500
+				throw err
+			}
+			fs.writeFileSync(dest, Buffer.from(await response.arrayBuffer()))
+			return true
+		} catch (err) {
+			if (err.retry === false || attempt >= attempts) {
+				throw err
+			}
+			console.log(`Retrying ${url} after: ${err.message}`)
+			await new Promise(resolve => setTimeout(resolve, delay))
+		}
 	}
-	if (!response.ok) {
-		throw new Error(`HTTP ${response.status} ${response.statusText} for ${url}`)
-	}
-	fs.writeFileSync(dest, Buffer.from(await response.arrayBuffer()))
-	return true
 }
 
 module.exports.redumpSystems = redumpSystems
+module.exports.downloadFile = downloadFile

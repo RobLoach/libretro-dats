@@ -3,7 +3,8 @@ const assert = require('node:assert')
 const fs = require('node:fs')
 const path = require('node:path')
 const {getOptions} = require('..')
-const {redumpSystems} = require('../download')
+const os = require('node:os')
+const {redumpSystems, downloadFile} = require('../download')
 const dats = require('../dats.json')
 const serials = require('../serials.json')
 
@@ -152,4 +153,60 @@ test('every serial override is for a DAT that gets built', function () {
 			assert.ok(serial.length > 0, `${name} has an empty serial for ${game}`)
 		}
 	}
+})
+
+// Swap in a fake fetch for one test, counting the calls made to it.
+function stubFetch(t, respond) {
+	const original = globalThis.fetch
+	t.after(() => {
+		globalThis.fetch = original
+	})
+	const calls = {count: 0}
+	globalThis.fetch = async function (url, options) {
+		calls.count++
+		return respond(calls.count, options)
+	}
+	return calls
+}
+
+function tempFile(t) {
+	const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'libretro-dats-'))
+	t.after(() => fs.rmSync(dir, {recursive: true, force: true}))
+	return path.join(dir, 'dat.zip')
+}
+
+const FAST = {attempts: 3, timeout: 50, delay: 1}
+
+test('retries a download that fails, then succeeds', async function (t) {
+	const calls = stubFetch(t, function (count) {
+		if (count < 3) {
+			throw new TypeError('fetch failed')
+		}
+		return new Response('PK')
+	})
+	const file = tempFile(t)
+	assert.strictEqual(await downloadFile('http://example.test/a', file, FAST), true)
+	assert.strictEqual(calls.count, 3)
+	assert.strictEqual(fs.readFileSync(file, 'latin1'), 'PK')
+})
+
+test('gives up on a download that keeps failing with a server error', async function (t) {
+	const calls = stubFetch(t, () => new Response('', {status: 500}))
+	await assert.rejects(downloadFile('http://example.test/a', tempFile(t), FAST), /HTTP 500/)
+	assert.strictEqual(calls.count, 3)
+})
+
+test('does not retry a download that is not found', async function (t) {
+	const calls = stubFetch(t, () => new Response('', {status: 404}))
+	await assert.rejects(downloadFile('http://example.test/a', tempFile(t), FAST), /HTTP 404/)
+	assert.strictEqual(calls.count, 1)
+})
+
+test('times out a download that never answers', async function (t) {
+	// Like the real fetch, this only ever ends when its signal aborts.
+	const calls = stubFetch(t, (count, {signal}) => new Promise(function (resolve, reject) {
+		signal.addEventListener('abort', () => reject(signal.reason))
+	}))
+	await assert.rejects(downloadFile('http://example.test/a', tempFile(t), FAST), {name: 'TimeoutError'})
+	assert.strictEqual(calls.count, 3)
 })
