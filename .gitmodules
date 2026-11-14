@@ -4,3 +4,9 @@
 	ignore = dirty
 	branch = master
 	shallow = true
+[submodule "static/CRoSG"]
+	path = static/CRoSG
+	url = https://github.com/pkos/CRoSG.git
+	ignore = dirty
+	branch = main
+	shallow = true
