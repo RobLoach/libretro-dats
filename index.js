@@ -561,7 +561,7 @@ function romFilename(rom) {
  */
 function validRom(rom) {
 	// Skip any .sav files.
-	return !romFilename(rom).includes('.sav')
+	return path.extname(romFilename(rom)).toLowerCase() != '.sav'
 }
 
 /**

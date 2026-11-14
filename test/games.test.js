@@ -231,6 +231,7 @@ test('sanitizes the rom filename', function () {
 test('rejects .sav roms', function () {
 	assert.strictEqual(validRom({name: 'Some Game.sav'}), false)
 	assert.strictEqual(validRom({name: 'Some Game.iso'}), true)
+	assert.strictEqual(validRom({name: 'Some Game.save.bin'}), true)
 })
 
 test('cleanGameName is what collectGames keys on', function () {
