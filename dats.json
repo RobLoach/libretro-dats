@@ -580,7 +580,8 @@
 	},
 	"database/metadat/no-intro/Nintendo - e-Reader": {
 		"files": [
-			"input/no-intro/No-Intro/Nintendo - Game Boy Advance (e-Reader)*"
+			"input/no-intro/No-Intro/Nintendo - Game Boy Advance (e-Reader)*",
+			"input/no-intro/No-Intro/Aftermarket/Nintendo - Game Boy Advance (e-Reader)*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Family Computer Disk System": {
@@ -620,9 +621,9 @@
 	},
 	"database/metadat/no-intro/Nintendo - Nintendo 64": {
 		"files": [
-			"input/no-intro/No-Intro/Nintendo - Nintendo 64 (*",
+			"input/no-intro/No-Intro/Nintendo - Nintendo 64 (B*",
 			"input/no-intro/No-Intro/iQue - iQue (D*",
-			"input/no-intro/No-Intro/Aftermarket/Nintendo - Nintendo 64 (*"
+			"input/no-intro/No-Intro/Aftermarket/Nintendo - Nintendo 64 (B*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Nintendo 64DD": {
@@ -634,7 +635,7 @@
 		"files": [
 			"input/no-intro/No-Intro/Nintendo - Nintendo DS (Decrypted) (2*",
 			"input/no-intro/No-Intro/Nintendo - Nintendo DS (Download Play)*",
-			"input/no-intro/No-Intro/Aftermarket/Nintendo - Nintendo DS (*"
+			"input/no-intro/No-Intro/Aftermarket/Nintendo - Nintendo DS (Decrypted)*"
 		]
 	},
 	"database/metadat/no-intro/Nintendo - Nintendo DSi": {
@@ -699,7 +700,8 @@
 	},
 	"database/metadat/no-intro/Sega - 32X": {
 		"files": [
-			"input/no-intro/No-Intro/Sega - 32X*"
+			"input/no-intro/No-Intro/Sega - 32X*",
+			"input/no-intro/No-Intro/Aftermarket/Sega - 32X*"
 		]
 	},
 	"database/metadat/no-intro/Sega - Beena": {
