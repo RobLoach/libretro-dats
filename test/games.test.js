@@ -224,6 +224,20 @@ test('grabs the disc number', function () {
 	assert.strictEqual(grabDiscNumber('Some Game'), false)
 })
 
+test('grabs the tape and side number', function () {
+	assert.strictEqual(grabDiscNumber('Some Game (Tape 2)'), 2)
+	assert.strictEqual(grabDiscNumber('Some Game (Tape 1 of 2 Side B)'), 1)
+	assert.strictEqual(grabDiscNumber('Some Game (Disk 1 Side B)'), 1)
+	assert.strictEqual(grabDiscNumber('Some Game (Side A)'), 1)
+	assert.strictEqual(grabDiscNumber('Some Game (Side B)'), 2)
+	assert.strictEqual(grabDiscNumber('Some Game (Side C)'), 3)
+	assert.strictEqual(grabDiscNumber('Some Game (Side 2)'), 2)
+	assert.strictEqual(grabDiscNumber('Some Game (Side #2)'), 2)
+	assert.strictEqual(grabDiscNumber('Some Game (Side A - Program)'), 1)
+	assert.strictEqual(grabDiscNumber('Some Game (Tape Version)'), false)
+	assert.strictEqual(grabDiscNumber('Some Game (Siders, Ken)'), false)
+})
+
 test('sanitizes the rom filename', function () {
 	assert.strictEqual(romFilename({name: 'sub/dir/Pokémon.iso'}), 'Pokemon.iso')
 })

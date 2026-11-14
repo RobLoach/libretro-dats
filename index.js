@@ -1048,14 +1048,19 @@ function sameEntry(a, b) {
 
 /**
  * Grab the disc number from a game name, or false when there is none.
+ *
+ * Tapes and sides count as discs too: "(Tape 2)" is 2, and "(Side B)" or
+ * "(Side 2)" is 2. A disc or tape number wins over the side it carries, as
+ * in "(Disk 1 Side B)".
  */
 function grabDiscNumber(gameName) {
-	const match = gameName.replace('(Disk ', '(Disc ').match(/\(Disc (\d+)/)
+	const match = /\((?:Dis[ck]|Tape) (\d+)/.exec(gameName) || /\(Side #?(\d+)\b/.exec(gameName)
 	if (match) {
-		const output = parseInt(match[1])
-		if (!Number.isNaN(output)) {
-			return output
-		}
+		return parseInt(match[1])
+	}
+	const side = /\(Side ([A-Z])\b/.exec(gameName)
+	if (side) {
+		return side[1].charCodeAt(0) - 64
 	}
 	return false
 }
